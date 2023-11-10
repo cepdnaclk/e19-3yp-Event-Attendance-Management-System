@@ -19,7 +19,6 @@ title: Event-Attendance-Management-System
 - E/19/028, A.N.I.Atugedara, [email](e19028@eng.pdn.ac.lk)
 - E/19/167, H.D.N.S.Jayawardena, [email](e19167@eng.pdn.ac.lk)
 - E/19/240, B.M.S.Mendis, [email](e19240@eng.pdn.ac.lk)
-
 - E/19/431, I.W.A.P.D.Wickramaarachchi, [email](e19431@eng.pdn.ac.lk)
 
 <!-- Image (photo/drawing of the final hardware) should be here -->
