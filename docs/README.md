@@ -3,13 +3,13 @@ layout: home
 permalink: index.html
 
 # Please update this with your repository name and project title
-repository-name: eYY-3yp-Event-Attendance-Management
-title: Event-Attendance-Management
+repository-name: eYY-3yp-Event-Attendance-Management-System
+title: Event-Attendance-Management-System
 ---
 
 [comment]: # "This is the standard layout for the project, but you can clean this and use your own template"
 
-# Event-Attendance-Management
+# Event-Attendance-Management-System
 
 ---
 
@@ -19,6 +19,7 @@ title: Event-Attendance-Management
 - E/19/028, A.N.I.Atugedara, [email](e19028@eng.pdn.ac.lk)
 - E/19/167, H.D.N.S.Jayawardena, [email](e19167@eng.pdn.ac.lk)
 - E/19/240, B.M.S.Mendis, [email](e19240@eng.pdn.ac.lk)
+
 - E/19/431, I.W.A.P.D.Wickramaarachchi, [email](e19431@eng.pdn.ac.lk)
 
 <!-- Image (photo/drawing of the final hardware) should be here -->
@@ -67,8 +68,8 @@ What was achieved, future developments, commercialization plans
 
 ## Links
 
-- [Project Repository](https://github.com/cepdnaclk/e19-3yp-Event-Attendance-Management/{{ page.repository-name }}){:target="\_blank"}
-- [Project Page](https://cepdnaclk.github.io/e19-3yp-Event-Attendance-Management/{{ page.repository-name}}){:target="\_blank"}
+- [Project Repository](https://github.com/cepdnaclk/e19-3yp-Event-Attendance-Management-System)
+- [Project Page](https://cepdnaclk.github.io/e19-3yp-Event-Attendance-Management-System/)
 - [Department of Computer Engineering](http://www.ce.pdn.ac.lk/)
 - [University of Peradeniya](https://eng.pdn.ac.lk/)
 
