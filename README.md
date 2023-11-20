@@ -2,15 +2,9 @@
 
 ---
 
-<!--
-This is a sample image, to show how to add images to your page. To learn more options, please refer [this](https://projects.ce.pdn.ac.lk/docs/faq/how-to-add-an-image/)
-
-![Sample Image](./images/sample.png)
- -->
-
 ## Team
 
-- E/19/003, Abeysinghe A.M.H.P., [email](e19003@eng.pdn.ac.lk)
+- E/19/004, R.B.Abeysinghe, [email](e19003@eng.pdn.ac.lk)
 - E/19/028, A.N.I.Atugedara, [email](e19028@eng.pdn.ac.lk)
 - E/19/167, H.D.N.S.Jayawardena, [email](e19167@eng.pdn.ac.lk)
 - E/19/240, B.M.S.Mendis, [email](e19240@eng.pdn.ac.lk)
