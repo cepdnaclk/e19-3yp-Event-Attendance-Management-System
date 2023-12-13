@@ -53,6 +53,23 @@ Detailed designs with many sub-sections
 
 Testing done on hardware and software, detailed + summarized results
 
+Software Testing Strategy for Reliable Event Management System
+
+Our project utilizes a comprehensive testing strategy to ensure the reliability and performance of the event attendance management software. This includes:
+
+Unit Testing: Identifies and fixes bugs within individual units before integration, ensuring fundamental functionalities work as intended. This minimizes the likelihood of unexpected issues arising during live events.
+
+Integration Testing: Verifies seamless communication between various components of the system, including user registration, session management, RFID/NFC data processing, and dashboards. This ensures smooth data flow and prevents compatibility issues.
+
+End-to-End Testing: Simulates user journeys from registration to attendance tracking and data analysis. This identifies hidden issues with user flows and functionalities, guaranteeing a seamless user experience.
+
+Performance Testing: Evaluates system scalability under high load conditions, simulating large numbers of attendees and concurrent sessions. This ensures the system can handle peak demands without compromising responsiveness.
+
+Cross-Browser Testing: Validates the application's functionality across various browsers and devices. This identifies browser-specific bugs and compatibility issues, ensuring widespread accessibility and consistent user experience.
+
+By implementing this comprehensive testing strategy, we aim to deliver a robust and user-friendly event management platform that guarantees a successful and enjoyable event experience for everyone involved.
+
+
 ## Detailed budget
 
 All items and costs
