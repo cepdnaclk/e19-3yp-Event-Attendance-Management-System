@@ -28,8 +28,6 @@ This project is dedicated to simplifying and enhancing the process of tracking a
         src="https://www.youtube.com/watch?v=6XMMViNymo0">
 </iframe>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/6XMMViNymo0?si=cfR05esrMx-4IZQ-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
 ## Solution Architecture
 
 Design Flow
