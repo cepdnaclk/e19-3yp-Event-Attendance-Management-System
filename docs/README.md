@@ -83,12 +83,6 @@ By implementing this comprehensive testing strategy, we aim to deliver a robust 
 
 > <img src="./budget.png" alt="Alt_Text" width="600" height="400">
 
-All items and costs
-
-| Item        | Quantity | Unit Cost |  Total |
-| ----------- | :------: | :-------: | -----: |
-| Sample item |    5     |  10 LKR   | 50 LKR |
-
 ## Conclusion
 
 What was achieved, future developments, commercialization plans
