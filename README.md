@@ -4,11 +4,11 @@
 
 ## Team
 
-- E/19/004, R.B.Abeysinghe, [email](e19003@eng.pdn.ac.lk)
-- E/19/028, A.N.I.Atugedara, [email](e19028@eng.pdn.ac.lk)
-- E/19/167, H.D.N.S.Jayawardena, [email](e19167@eng.pdn.ac.lk)
-- E/19/240, B.M.S.Mendis, [email](e19240@eng.pdn.ac.lk)
-- E/19/431, I.W.A.P.D.Wickramaarachchi, [email](e19431@eng.pdn.ac.lk)
+- E/19/004 [email](e19003@eng.pdn.ac.lk) [R.B.Abeysinghe](https://github.com/RavinduBA) 
+- E/19/028 [email](e19028@eng.pdn.ac.lk) [A.N.I.Atugedara](https://github.com/NilakshiInduwara)  
+- E/19/167 [email](e19167@eng.pdn.ac.lk) [H.D.N.S.Jayawardena](https://github.com/sath8) 
+- E/19/240 [email](e19240@eng.pdn.ac.lk) [B.M.S.Mendis](https://github.com/Shenal-M) 
+- E/19/431 [email](e19431@eng.pdn.ac.lk) [I.W.A.P.D.Wickramaarachchi](https://github.com/Prageeth-Dananjaya) 
 
 ## Table of Contents
 
@@ -30,26 +30,31 @@ This project is dedicated to simplifying and enhancing the process of tracking a
 
 ## Solution Architecture
 
-Data Flow
-> <img src="./designflow.png" alt="Alt Text" width="600" height="400">
+Design Flow
+> <img src="./docs/images/designflow.png" alt="Alt Text" width="600" height="400">
 
 High Level dArchitecture
-> <img src="./highlevelArchi.png" alt="Alt_Text" width="600" height="400">
+> <img src="./docs/images/highlevelArchi.png" alt="Alt_Text" width="600" height="400">
 
 Cloud Architecture
-> <img src="./cloudArchi.png" alt="Alt Text" width="600" height="400">
+> <img src="./docs/images/cloudArchi.png" alt="Alt Text" width="600" height="400">
 
 ## Control & Data Flow
 
 ### Data Flow
 
-> <img src="./dataflow.png" alt="Alt Text" width="600" height="400">
+> <img src="./docs/images/dataflow.png" alt="Alt Text" width="600" height="400">
 
 ## Key Featuers
+Event organizers
 
 ## Budget
-> <img src="./budget.png" alt="Alt Text" width="600" height="400">
+> <img src="./docs/images/budget.png" alt="Alt Text" width="600" height="400">
+
 ## User Experince
+
+## Advising Lecturers
+Dr Isuru Nawinna
 
 ## Links
 

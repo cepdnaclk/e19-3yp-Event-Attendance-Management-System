@@ -15,11 +15,11 @@ title: Event-Attendance-Management-System
 
 ## Team
 
-- E/19/004, R.B.Abeysinghe, [email](e19004@eng.pdn.ac.lk)
-- E/19/028, A.N.I.Atugedara, [email](e19028@eng.pdn.ac.lk)
-- E/19/167, H.D.N.S.Jayawardena, [email](e19167@eng.pdn.ac.lk)
-- E/19/240, B.M.S.Mendis, [email](e19240@eng.pdn.ac.lk)
-- E/19/431, I.W.A.P.D.Wickramaarachchi, [email](e19431@eng.pdn.ac.lk)
+- E/19/004 [email](e19003@eng.pdn.ac.lk) [R.B.Abeysinghe](https://github.com/RavinduBA) 
+- E/19/028 [email](e19028@eng.pdn.ac.lk) [A.N.I.Atugedara](https://github.com/NilakshiInduwara)  
+- E/19/167 [email](e19167@eng.pdn.ac.lk) [H.D.N.S.Jayawardena](https://github.com/sath8) 
+- E/19/240 [email](e19240@eng.pdn.ac.lk) [B.M.S.Mendis](https://github.com/Shenal-M) 
+- E/19/431 [email](e19431@eng.pdn.ac.lk) [I.W.A.P.D.Wickramaarachchi](https://github.com/Prageeth-Dananjaya)
 
 <!-- Image (photo/drawing of the final hardware) should be here -->
 
@@ -47,14 +47,14 @@ This project is dedicated to simplifying and enhancing the process of tracking a
 
 ## Solution Architecture
 
-Data Flow
-> <img src="./designflow.png" alt="Alt Text" width="600" height="400">
+Design Flow
+> <img src="./images/designflow.png" alt="Alt Text" width="600" height="400">
 
 High Level dArchitecture
-> <img src="./highlevelArchi.png" alt="Alt_Text" width="600" height="400">
+> <img src="./images/highlevelArchi.png" alt="Alt_Text" width="600" height="400">
 
 Cloud Architecture
-> <img src="./cloudArchi.png" alt="Alt Text" width="600" height="400">
+> <img src="./images/cloudArchi.png" alt="Alt Text" width="600" height="400">
 
 ## Hardware and Software Designs
 
@@ -62,7 +62,7 @@ Detailed designs with many sub-sections
 
 ## Testing
 
-Testing done on hardware and software, detailed + summarized results
+Testing is done on hardware and software.
 
 #### Software Testing Strategy for Reliable Event Management System
 
@@ -83,13 +83,7 @@ By implementing this comprehensive testing strategy, we aim to deliver a robust 
 
 ## Detailed budget
 
-> <img src="./budget.png" alt="Alt_Text" width="600" height="400">
-
-All items and costs
-
-| Item        | Quantity | Unit Cost |  Total |
-| ----------- | :------: | :-------: | -----: |
-| Sample item |    5     |  10 LKR   | 50 LKR |
+> <img src="./images/budget.png" alt="Alt_Text" width="600" height="400">
 
 ## Conclusion
 
