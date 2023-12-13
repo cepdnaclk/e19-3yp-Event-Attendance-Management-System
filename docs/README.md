@@ -53,7 +53,7 @@ Detailed designs with many sub-sections
 
 Testing done on hardware and software, detailed + summarized results
 
-Software Testing Strategy for Reliable Event Management System
+#### Software Testing Strategy for Reliable Event Management System
 
 Our project utilizes a comprehensive testing strategy to ensure the reliability and performance of the event attendance management software. This includes:
 
