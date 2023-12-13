@@ -83,6 +83,8 @@ By implementing this comprehensive testing strategy, we aim to deliver a robust 
 
 ## Detailed budget
 
+> <img src="./budget.png" alt="Alt_Text" width="600" height="400">
+
 All items and costs
 
 | Item        | Quantity | Unit Cost |  Total |
