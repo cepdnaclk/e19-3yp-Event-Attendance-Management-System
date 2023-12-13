@@ -50,7 +50,11 @@ Cloud Architecture
 
 ## Key Featuers
 
-Event organizers
+RFID/NFC Integration
+Session Tracking in real time
+Dashboard and Analytics for event organizers
+Search and Reporting of attendee information
+Notification System 
 
 ## Budget
 
