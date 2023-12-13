@@ -41,9 +41,20 @@ title: Event-Attendance-Management-System
 
 This project is dedicated to simplifying and enhancing the process of tracking attendance and session participation for registered event attendees. Whether you are organizing conferences, workshops, or any other type of gathering, our solution provides a robust and user-friendly platform to efficiently manage and monitor participant engagement.
 
+<iframe width="90%" height="700px"
+        src="https://www.youtube.com/watch?v=6XMMViNymo0">
+</iframe>
+
 ## Solution Architecture
 
-High level diagram + description
+Data Flow
+> <img src="./designflow.png" alt="Alt Text" width="600" height="400">
+
+High Level dArchitecture
+> <img src="./highlevelArchi.png" alt="Alt_Text" width="600" height="400">
+
+Cloud Architecture
+> <img src="./cloudArchi.png" alt="Alt Text" width="600" height="400">
 
 ## Hardware and Software Designs
 
