@@ -1,10 +1,6 @@
 /* 
 
-TemplateMo 562 Space Dynamic
-
 https://templatemo.com/tm-562-space-dynamic
-
-*/
 
 /* ---------------------------------------------
 Table of contents
@@ -237,6 +233,25 @@ body {
 header
 --------------------------------------------- 
 */
+.Explore{
+  display: flex;
+}
+.b1{
+  margin: 6px;
+  height: 50px;
+  width: 200px;
+  font-size: 20px;
+  border: none;
+  border-radius: 20px;
+  font-weight: 400;
+  background-color: rgb(226, 241, 245);
+  
+}
+.b1:hover{
+  background-color: rgb(255, 221, 181);
+  transition: all 1s ease;
+  color: white;
+}
 
 .background-header {
   background-color: #fff!important;
@@ -935,7 +950,25 @@ Banner Style
   color: #fff;
 }
 
-
+.Explore{
+  display: flex;
+}
+.b1{
+  margin: 6px;
+  height: 50px;
+  width: 200px;
+  font-size: 20px;
+  border: none;
+  border-radius: 20px;
+  font-weight: 400;
+  background-color: rgb(226, 241, 245);
+  
+}
+.b1:hover{
+  background-color: rgb(255, 221, 181);
+  transition: all 1s ease;
+  color: white;
+}
 
 /* 
 ---------------------------------------------
@@ -1164,7 +1197,7 @@ Portfolio
 
 /* 
 ---------------------------------------------
-Blog
+About us part
 --------------------------------------------- 
 */
 .row{
@@ -1183,7 +1216,7 @@ Blog
 }
 .about-col{
   flex-basis: 31%;
-   background: #9bc7db;
+   background: #9ee0ff;
    border-radius: 10px;
    margin-bottom: 5%;
    padding: 20px 12px;
@@ -1196,7 +1229,6 @@ Blog
   line-height: 22px;
   padding: 9px;
 }
-
 h3{
   text-align: center;
   font-weight: 600;
@@ -1206,10 +1238,11 @@ h3{
 }
 .about-col:hover{
   box-shadow: 0 0 20px 0px rgba(1, 1, 1, 0.4);
-  background-color: #e68a51;
+  background-color: #ffa56d;
   cursor: pointer;
   transform: scale(1.06);
   transition: all 1s ease;
+  
 }
 
 .our-blog {
@@ -1233,28 +1266,10 @@ h3{
   max-width: 270px;
 }
 
-
-.our-blog .left-image ul li:last-child {
-  margin-right: 0px;
-}
-
-.our-blog .left-image ul li i {
-  color: #ff4d61;
-  font-size: 16px;
-  margin-right: 8px;
-}
-
-.our-blog .left-image h4 {
-  font-size: 20px;
-  font-weight: 700;
-  color: #2a2a2a;
-  margin: 20px 0px 15px 0px;
-}
-
 .cta{
   margin: auto;
   width: 80%;
-  background-image: linear-gradient(rgba(158, 150, 150, 0.2),rgba(81, 135, 157, 0.1)), url('../images/Design.png');
+  background-image: linear-gradient(rgba(152, 215, 238, 0.2),rgba(81, 135, 157, 0.1)), url('../images/Design.png');
   background-position: center;
   background-size: cover;
   border-radius: 10px;
@@ -1264,7 +1279,7 @@ h3{
 }
 
 .cta:hover{
-  box-shadow: 0 0 20px 0px rgba(1, 1, 1, 0.4);
+  box-shadow: 0 0 20px 0px rgba(135, 219, 255, 0.6);
   background-color: #e68a51;
   cursor: pointer;
   transform: scale(1.06);
