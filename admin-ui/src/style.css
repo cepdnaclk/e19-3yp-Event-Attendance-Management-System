@@ -1,0 +1,108 @@
+*{
+  box-sizing: border-box;
+  font-family:"Poppins", sans-serif;
+}
+
+body{
+  margin: 0;
+  background-image: url('../public/images/background.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+
+
+.header1{
+background-color: rgba(117, 188, 222, 0.2);
+height: 50px;
+}
+.header1 img{
+margin-left: 30px;
+height: 50px;
+}
+.login-container {
+position: relative;
+top: 3.6cm;
+left: 28%;
+background-color: rgba(255, 255, 255, 0.2);
+padding: 20px;
+border-radius: 8px;
+box-shadow: 0 4px 8px rgba(118, 108, 108, 0.1);
+width: 18cm;
+border: solid 0.1px rgb(135, 129, 129);
+}
+h2 {
+  text-align: center;
+  color: #333;
+  font-size: 0.8cm;
+}
+.input-group {
+  margin-bottom: 15px;
+}
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+.login-btn {
+  width: 50%;
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.5s ease; 
+  margin-left: 25%;
+}
+.login-btn:hover {
+  background-color: #0056b3;
+}
+.register-link {
+  text-align: center;
+  margin-top: 10px;
+}
+.register-link a {
+  color: #007bff;
+  text-decoration: none;
+}
+.register-link a:hover {
+  text-decoration: underline;
+}
+.footerpos{
+  position: relative;
+  background-color: #007bff;
+  top: 6.75cm;
+}
+
+
+
+.footer {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding: 3px;
+  background-color: #daeaf2;
+  color: #000000;
+  font-size: 0.8em;
+  justify-content: center;
+  height: 1.0cm;
+  font-weight: 300;
+}
+.footer p{
+  padding-right: 10px;
+}
+.footer a {
+  color: #007bff;
+  text-decoration: none;
+  padding-right: 10px;
+}
+.footer a:hover {
+  text-decoration: underline;
+}
