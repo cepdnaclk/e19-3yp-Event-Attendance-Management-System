@@ -1,0 +1,16 @@
+.team-member .showed-content img {
+    width: 100%; 
+    height: auto; 
+  }
+  
+  .social-links {
+    margin-top: 10px; 
+  }
+  
+  .linkedin-link {
+    color: #0077b5; 
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 5px;
+  }
