@@ -1,4 +1,4 @@
-import "../src/styles/main.scss";
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import ConferenceRooms from "./pages/ConferenceRooms";
@@ -21,6 +21,9 @@ function App() {
                     <Route path="/Attendees" element={<Attendees />} />
                     <Route path="/Overview" element={<Overview />} />
                 </Routes>
+
+
+
             </div>
         </Router>
     );

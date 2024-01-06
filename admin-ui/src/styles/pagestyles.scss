@@ -1,0 +1,29 @@
+*{
+    font-family: inter,sans-serif;
+    margin: 0;
+   
+}
+
+
+
+.conferneceroom{
+    background-color: rgb(47, 65, 65);
+    height: 26cm;
+    display: flex;
+    flex-direction: column;
+
+}
+.card{
+    background-color: aqua;
+    width: 400px;
+    margin: 20px;
+}
+.imageS{
+    width: 300px;
+}
+.roomcontainer{
+    background-color: bisque;
+    height: 14cm;
+    width:70%;
+    margin: 20px  400px;
+}

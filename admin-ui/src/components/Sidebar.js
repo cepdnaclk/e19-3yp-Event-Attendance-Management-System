@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../styles/main.scss";
 
 //import Icon from "../Images/eventflow_color";
 import Profile from "../Images/profile.png";
