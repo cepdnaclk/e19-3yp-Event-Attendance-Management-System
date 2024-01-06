@@ -1,5 +1,6 @@
 @import "./_variables";
 
+
 body {
     overflow: hidden;
     height: 100vh;
@@ -15,6 +16,8 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
+   
+    
 }
 
 .sidebar {
@@ -26,16 +29,21 @@ h1 {
     width: 15rem;
     height: 100vh;
     transition: 0.5s all;
+    
 
     .logoContainer {
         display: flex;
         align-items: center;
         justify-content: flex-start;
+       background-color: rgb(218, 231, 231);
+       height: 72px;
+       border-radius: 20px;
        
         h2.title {
-            font-size: 31.42px;
+            font-size: 30px;
             color: $green;
             padding: 0 0 0 1rem;
+            
         }
     }
 
@@ -49,6 +57,7 @@ h1 {
         height: 35px;
         border-radius: 2rem;
         z-index: 1;
+        
 
         .burgerTrigger {
             content: "";
@@ -72,6 +81,7 @@ h1 {
             bottom: calc(35px / 2);
             left: 0.45rem;
             transition: 0.5s all;
+            
         }
 
         .burgerMenu::after {
@@ -116,6 +126,7 @@ h1 {
         align-items: center;
         justify-content: flex-start;
         padding: 3rem 0 0 0;
+        
 
         img {
             width: auto;
@@ -128,7 +139,7 @@ h1 {
             p.name {
                 padding: 0;
                 margin: 0;
-                font-size: 16.7px;
+                font-size: 16px;
                 color: $darkGrey;
                 text-transform: capitalize;
                 font-weight: $heavyFont;
@@ -137,7 +148,7 @@ h1 {
             p {
                 padding: 0;
                 margin: 0;
-                font-size: 13.9px;
+                font-size: 13px;
                 color: $darkGrey;
                 text-transform: lowercase;
             }
@@ -155,7 +166,7 @@ h1 {
             list-style: none;
             padding: 0;
             margin: 0;
-
+         
             li {
                 display: flex;
                 align-items: center;
@@ -174,7 +185,7 @@ h1 {
                 a {
                     text-decoration: none;
                     color: $darkGrey;
-                    font-size: 20px;
+                    font-size: 17px;
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
@@ -239,3 +250,5 @@ h1 {
         }
     }
 }
+
+
