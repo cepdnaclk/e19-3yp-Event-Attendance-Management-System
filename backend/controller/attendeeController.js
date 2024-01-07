@@ -11,15 +11,14 @@ const getAttendeeDetails = asyncHandler(async (req, res) => {
     throw new Error("User not found");
   }
 
-  const { name, id, email, conNo } = attendee;
+  const { name, id, email, conNo, rfidNo } = attendee;
 
-  res.status(200).json({ name, id, email, conNo });
+  res.status(200).json({ name, id, email, conNo, rfidNo });
 });
 
 module.exports = { getAttendeeDetails };
 
   
-
 
 
 

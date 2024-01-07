@@ -23,6 +23,10 @@ const attendeeSchema = mongoose.Schema({
         type: String,
         required: true,
     },
+    rfidNo: {
+        type: String,
+        required: true,
+    },
 }, {
     timestamps: true,
 });
