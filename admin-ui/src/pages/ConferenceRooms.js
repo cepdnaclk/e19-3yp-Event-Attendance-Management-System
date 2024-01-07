@@ -9,20 +9,23 @@ export default function ConferenceRooms() {
 
     const product = productData.map((item) => (
         <SessionCards
-            name={item.name}
+            Sname={item.Sname}
             url={item.imageurl}
-            price={item.price}
-            description={item.description}
+            Pname={item.presenterName}
+            duration={item.time}
         />
     ));
 
     return (
+        <div>
+            <div className=" cr1"> Conference Room 1</div>
+            <div className="Appss">
 
-        <div className="Appss">
 
-            <Carousel showDots={true} responsive={responsive}>
-                {product}
-            </Carousel>
+                <Carousel showDots={true} responsive={responsive}>
+                    {product}
+                </Carousel>
+            </div>
         </div>
     );
 };

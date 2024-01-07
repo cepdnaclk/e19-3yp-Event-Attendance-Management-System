@@ -1,17 +1,17 @@
 .Appss{
   position: relative;
   left: 9.5cm;
-  top: 2cm;
-  background-color: ;
+  top: 1cm;
+  
   width: 75%;
 }
   h1 {
     margin: 1rem auto 4rem;
   }
   
-  .product--image {
+  .image {
     width: 100%;
-    height: 16em;
+    height: 13em;
     object-fit: cover;
   }
   
@@ -22,9 +22,10 @@
     margin: auto 1rem;
     text-align: center;
     font-family: arial;
+    background-color: rgb(213, 221, 241);
   }
   
-  .price {
+  .Pname {
     color: grey;
     font-size: 22px;
   }
@@ -37,11 +38,24 @@
     background-color: #000;
     text-align: center;
     cursor: pointer;
-    width: 100%;
+    width: 70%;
     font-size: 18px;
+    margin:3px;
+    border-radius: 20px;
   }
   
   .card button:hover {
     opacity: 0.7;
   }
   
+
+
+  .cr1{
+    background-color: ;
+    position: relative;
+    top: 0.5cm;
+    font-size: 25px;
+    width: fit-content;
+    margin-top: 20px;
+    margin-left: 50%;
+  }
