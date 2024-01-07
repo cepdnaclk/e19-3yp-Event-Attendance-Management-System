@@ -5,12 +5,13 @@ export default function SessionCards(props) {
     return (
         <div className="card">
 
-            <img className="product--image" src={props.url} alt="product image" />
-            <h2>{props.name}</h2>
-            <p className="price">{props.price}</p>
-            <p>{props.description}</p>
+            <img className="image" src={props.url} alt="session image" />
+            <h2>{props.Sname}</h2>
+            <p className="Pname">Speaker :{props.Pname}</p>
+            <p>Duration :{props.duration}</p>
             <p>
-                <button>Add to Cart</button>
+                <button >Update</button>
+                <button >Delete</button>
             </p>
 
         </div>
