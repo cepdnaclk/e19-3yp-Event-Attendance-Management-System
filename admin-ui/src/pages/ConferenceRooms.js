@@ -2,12 +2,12 @@ import "./App.css";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import SessionCards from "../components/SessionCards";
-import { productData, responsive } from "./data";
-
+import { sessionData, responsive } from "../DataFiles/Session_data";
+import React from "react";
 
 export default function ConferenceRooms() {
 
-    const product = productData.map((item) => (
+    const session = sessionData.map((item) => (
         <SessionCards
             Sname={item.Sname}
             url={item.imageurl}
@@ -23,7 +23,7 @@ export default function ConferenceRooms() {
 
 
                 <Carousel showDots={true} responsive={responsive}>
-                    {product}
+                    {session}
                 </Carousel>
             </div>
         </div>

@@ -2,7 +2,6 @@
   position: relative;
   left: 9.5cm;
   top: 1cm;
-  
   width: 75%;
 }
   h1 {
@@ -53,9 +52,64 @@
   .cr1{
     background-color: ;
     position: relative;
+    top: 0.4scm;
+    font-size: 25px;
+    width: fit-content;
+    margin-top: 20px;
+    margin-left: 50%;
+   
+  }
+
+  .CAppss{
+    position: relative;
+    left: 9.5cm;
+    top: 2.3cm;
+    width: 75%;
+  }  
+  .Ccr1{
+    background-color: ;
+    position: relative;
     top: 0.5cm;
     font-size: 25px;
     width: fit-content;
     margin-top: 20px;
     margin-left: 50%;
+    top: 1.5cm;
+
+  }
+
+  .Ccard {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 550px;
+    height: 28em;
+    margin: auto 1rem;
+    text-align: center;
+    font-family: arial;
+    background-color: rgb(213, 222, 236);
+    padding: 0.03px;
+
+  }
+  .Ccard h2{
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    width: 50%;
+    margin-left: 22%;
+    border-radius: 13px;
+  }
+  .Cimage {
+    width: 70%;
+    height: 10em;
+    object-fit: cover;
+  }
+  .Cname {
+    color: grey;
+    font-size: 18px;
+  }
+  .Cname p{
+    background-color: ;
+    margin: 5px;
+  }
+  .Cname2 p{
+    background-color: ;
+    margin: 5px;
   }
