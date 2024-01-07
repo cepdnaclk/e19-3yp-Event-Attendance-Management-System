@@ -19,7 +19,7 @@ export const responsive = {
     },
 };
 
-export const productData = [
+export const sessionData = [
     {
         id: 1,
         imageurl:

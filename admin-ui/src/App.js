@@ -23,9 +23,6 @@ export default function App() {
                     <Route path="/Attendees" element={<Attendees />} />
                     <Route path="/Overview" element={<Overview />} />
                 </Routes>
-
-
-
             </div>
         </Router>
     );
