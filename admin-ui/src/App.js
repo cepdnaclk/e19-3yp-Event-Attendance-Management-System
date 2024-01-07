@@ -7,11 +7,14 @@ import Overview from "./pages/Overview ";
 import Settings from "./pages/Settings";
 import Attendees from "./pages/Atendees";
 import Sidebar from "./components/Sidebar";
+import Login_page from "./pages/Login_page";
+import Registration_page from "./pages/Registration_page";
 
-function App() {
+export default function App() {
     return (
         <Router>
             <div className="App">
+                {/* 
                 <Sidebar />
                 <Routes>
                     <Route path="/" element={<Dashboard />} />
@@ -21,12 +24,12 @@ function App() {
                     <Route path="/Attendees" element={<Attendees />} />
                     <Route path="/Overview" element={<Overview />} />
                 </Routes>
-
-
+                */}
+                <Login_page />
 
             </div>
         </Router>
     );
 }
 
-export default App;
+
