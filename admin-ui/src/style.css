@@ -24,7 +24,7 @@ height: 50px;
 
 .login-container {
 position: relative;
-top: 3.6cm;
+top: 3cm;
 left: 28%;
 background-color: rgba(255, 255, 255, 0.2);
 padding: 20px;
@@ -77,12 +77,85 @@ h2 {
 .register-link a:hover {
   text-decoration: underline;
 }
+
+.form-container{
+position: relative;
+top: 2cm;
+left: 28%;
+background-color: rgba(255, 255, 255, 0.2);
+padding: 20px;
+border-radius: 8px;
+box-shadow: 0 4px 8px rgba(118, 108, 108, 0.1);
+width: 18cm;
+border: solid 0.1px rgb(135, 129, 129);
+}
+
+.registration-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+
+/* ... existing CSS ... */
+
+.login-link {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.login-link a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+/* ... existing CSS ... */
+
+
+
 .footerpos{
   position: relative;
   background-color: #007bff;
-  top: 6.75cm;
+  top: 5.8cm;
 }
-
+.footerpos2{
+  position: relative;
+  background-color: #007bff;
+  top: 4cm;
+}
 
 
 .footer {
@@ -90,7 +163,7 @@ h2 {
   align-items: center;
   text-align: center;
   padding: 3px;
-  background-color: #daeaf2;
+  background-color: #c5d5dc;
   color: #000000;
   font-size: 0.8em;
   justify-content: center;
