@@ -113,3 +113,13 @@
     background-color: ;
     margin: 5px;
   }
+  .table-container{
+    margin-left: 360px;
+    margin-top: 50px;
+    margin-right: 20px;
+    border-radius: 10px;
+  }
+
+  .searchbox{
+    margin-bottom: 20px;
+  }
