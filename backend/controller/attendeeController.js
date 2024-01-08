@@ -16,7 +16,18 @@ const getAttendeeDetails = asyncHandler(async (req, res) => {
   res.status(200).json({ name, id, email, conNo, rfidNo });
 });
 
-module.exports = { getAttendeeDetails };
+const getAllAttendees = asyncHandler(async (req, res) => {
+  const attendee = await Attendee.find({});
+
+  if (!attendee) {
+    res.status(404);
+    throw new Error("User not found");
+  }
+
+  res.status(200).json(attendee);
+});
+
+module.exports = { getAttendeeDetails, getAllAttendees };
 
   
 

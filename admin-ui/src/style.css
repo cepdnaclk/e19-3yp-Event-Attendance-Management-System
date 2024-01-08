@@ -8,6 +8,7 @@ body{
   background-image: url('../public/images/background.png');
   background-repeat: no-repeat;
   background-attachment: fixed;
+  background-size: cover;
 }
 
 

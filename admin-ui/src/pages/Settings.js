@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import DataTable from "react-data-table-component";
 import "./App.css";
+import axios from 'axios';
 
 const Settings = () => {
   // Define columns for the DataTable
@@ -56,6 +57,23 @@ const Settings = () => {
   // State variables for managing data and search input
   const [data, setData] = useState(initialData);
   const [searchValue, setSearchValue] = useState("");
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem('token');
+        if (accessToken) {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+          // Validate the token on the server
+          axios.get('http://localhost:5001/api/attendees')
+            .then(response => {
+              console.log(response.data);
+                setData(response.data);
+            })
+            .catch(error => {
+              console.error('Token validation failed', error);
+            });
+        }
+  }, []);
 
   // Function to handle changes in the search input
   const handleSearchChange = (e) => {
@@ -63,7 +81,7 @@ const Settings = () => {
     setSearchValue(value);
 
     // Filter data based on the search value
-    const filteredData = initialData.filter((row) =>
+    const filteredData = data.filter((row) =>
       Object.values(row).some((val) =>
         String(val).toLowerCase().includes(value.toLowerCase())
       )
@@ -76,7 +94,7 @@ const Settings = () => {
   // Function to clear the search input and restore the initial data
   const handleClearSearch = () => {
     setSearchValue("");
-    setData(initialData);
+    setData(data);
   };
 
   return (

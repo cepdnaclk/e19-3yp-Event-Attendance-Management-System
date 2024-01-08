@@ -11,7 +11,7 @@ export default function Registration_page() {
         <div className="registration-form">
 
             <div className="header1">
-                <img src="./images/eventflow_color.svg" />
+                <img src="./images/eventflow_color.svg" alt=""/>
             </div>
 
             <div className="form-container">
@@ -32,7 +32,7 @@ export default function Registration_page() {
                     <button type="submit" className="submit-btn">Register</button>
                 </form>
                 <div className="login-link">
-                    Already have an account? <a href="/login">Login here</a>
+                    Already have an account? <a href="/">Login here</a>
                 </div>
             </div>
             <div className="footerpos2">

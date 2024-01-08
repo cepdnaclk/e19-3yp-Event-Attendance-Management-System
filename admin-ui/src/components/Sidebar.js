@@ -68,10 +68,10 @@ const Sidebar = () => {
                 }
             >
                 <ul>
-                    <li className={location.pathname === "/" ? "active" : ""}>
+                    {/* <li className={location.pathname === "/" ? "active" : ""}>
                         <img src={Dashboard} alt="dashboard" />
                         <a href="/">dashboard</a>
-                    </li>
+                    </li> */}
                     <li
                         className={
                             location.pathname === "/ConferenceRooms"

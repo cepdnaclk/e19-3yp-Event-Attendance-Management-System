@@ -8,27 +8,13 @@ const {
   deleteConference,
   getSessionDetails,
   deleteSession,
+  getAllConferences,
 } = require("../controller/conferenceController");
 const validateToken = require("../middleware/validateTokenHandler");
 
 const router = express.Router();
 
 router.use(validateToken);
-
-////////////// CONFERENCES //////////////////////
-
-// Create a new conference
-router.post("/", createConference);
-
-// Update conference details 
-router.put("/:id", updateConferenceDetails);
-
-// Get conference details
-router.get("/:id", getConferenceDetails);
-
-// Delete a conference
-router.delete("/:id", deleteConference);
-
 
 ////////////// SESSIONS //////////////////////
 
@@ -43,5 +29,22 @@ router.get("/:id/session/:sessionId", getSessionDetails);
 
 // Delete a session
 router.delete("/:id/session/:sessionId", deleteSession);
+
+////////////// CONFERENCES //////////////////////
+
+// Create a new conference
+router.post("/", createConference);
+
+// Update conference details
+router.put("/:id", updateConferenceDetails);
+
+// Get conference details
+router.get("/:id", getConferenceDetails);
+
+// Delete a conference
+router.delete("/:id", deleteConference);
+
+// Get all conferences
+router.get("/", getAllConferences);
 
 module.exports = router;
