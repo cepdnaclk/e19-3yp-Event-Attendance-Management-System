@@ -66,12 +66,12 @@ export default function MainSection() {
       {/* Sidebar with logo and background image */}
       <div className="flex h-screen sticky top-0 items-start flex-col justify-start">
         {/* Logo */}
-        <h1 className="m-12 text-2xl">Logo</h1>
+        <h1 className="m-12 text-2xl">Event Flow</h1>
         {/* Background image */}
         <img
-          src="./login-bg.png"
-          alt="login-bg"
-          className="w-fit overflow-hidden h-fit justify-center items-center mt-12"
+          src="./background.png"
+          alt="background"
+          className="w-200 h-200  overflow-hidden justify-center items-center mt-4 ml-4"
         />
       </div>
       {/* Main content area with upcoming and registered events */}
@@ -79,7 +79,7 @@ export default function MainSection() {
         {/* EventSection for displaying hottest events */}
         <EventSection
           events={ongoingevents.slice(0, 3)} // Displaying the first 3 ongoing events
-          title="Hottest Events"
+          title="Headline Events"
         />
         {/* EventSection for displaying registered events */}
         <EventSection events={events} title="Registered Events" />
