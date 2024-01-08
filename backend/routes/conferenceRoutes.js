@@ -1,5 +1,7 @@
 const express = require("express");
 const {
+  getConferenceIds,
+  getSessionIds,
   createConference,
   createSession,
   updateConferenceDetails,
@@ -13,7 +15,13 @@ const validateToken = require("../middleware/validateTokenHandler");
 
 const router = express.Router();
 
-router.use(validateToken);
+// router.use(validateToken);
+
+// get all conferences ids
+router.get("/conferenceIds", getConferenceIds);
+
+// get all session ids
+router.get("/:conferenceId/sessionIds", getSessionIds);
 
 ////////////// CONFERENCES //////////////////////
 

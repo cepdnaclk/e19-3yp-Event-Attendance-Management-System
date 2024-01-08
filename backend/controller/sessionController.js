@@ -1,3 +1,5 @@
+// should auto run the loop to update the currentAttendees collection
+
 const asyncHandler = require('express-async-handler');
 const { SessionCurrent } = require('../models/sessionCurrentModel');
 const { CurrentAttendee } = require('../models/currentAttendeeModel');

@@ -5,8 +5,6 @@ import "react-multi-carousel/lib/styles.css";
 import ConferneceRoomCards from "../components/ConferenceRoomCards";
 import { conferenceData, responsive } from "../DataFiles/Conference_data";
 
-
-
 export default function Overview() {
 
     const conference = conferenceData.map((item) => (
@@ -20,15 +18,10 @@ export default function Overview() {
         />
     ));
 
-
-
-
     return (
         <div>
             <div className=" Ccr1"> Ongoing Sessions</div>
             <div className="CAppss">
-
-
                 <Carousel showDots={true} responsive={responsive}>
                     {conference}
                 </Carousel>

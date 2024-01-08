@@ -3,7 +3,6 @@ import "../style.css";
 import Footer from "../components/Footer";
 
 
-
 export default function Registration_page() {
     return (
 

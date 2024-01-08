@@ -3,6 +3,23 @@ const Attendee = require("../models/attendeeModel");
 
 // @access Private  
 
+// get all attendee ids
+const getAllAttendeeIds = asyncHandler(async (req, res) => {
+  try {
+    console.log("Getting all attendee ids...");
+    const allAttendeeIds = await Attendee.find({}, "_id");
+    const attendeeIds = allAttendeeIds.map((attendee) => attendee._id.toString());
+
+    console.log("Attendee ids:", attendeeIds);
+    res.status(200).json({ attendeeIds });
+  } 
+  catch (error) {
+    console.error("Error getting attendee ids:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+// Get attendee details
 const getAttendeeDetails = asyncHandler(async (req, res) => {
   const attendee = await Attendee.findById(req.params.id);
 
@@ -16,7 +33,7 @@ const getAttendeeDetails = asyncHandler(async (req, res) => {
   res.status(200).json({ name, id, email, conNo, rfidNo });
 });
 
-module.exports = { getAttendeeDetails };
+module.exports = { getAttendeeDetails, getAllAttendeeIds };
 
   
 
