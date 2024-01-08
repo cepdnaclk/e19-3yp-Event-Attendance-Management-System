@@ -22,6 +22,7 @@ export default function Overview() {
         <div>
             <div className=" Ccr1"> Ongoing Sessions</div>
             <div className="CAppss">
+
                 <Carousel showDots={true} responsive={responsive}>
                     {conference}
                 </Carousel>
