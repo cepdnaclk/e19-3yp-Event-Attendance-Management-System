@@ -2,82 +2,81 @@ import React, { useState } from "react";
 import { useNavigate } from 'react-router'; 
 import "../style.css";
 import Footer from "../components/Footer";
+import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
-export default function Login_page() {
+export default function Login_page({onLogin}) {
   const history = useNavigate(); 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-
-    try {
-      const response = await fetch("http://localhost:5001/api/users/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
+  const handleLogin = () => {
+    // Send a request to your authentication endpoint using Axios
+    axios
+      .post("http://localhost:5001/api/users/login", { email, password })
+      .then((response) => {
+        // console.log(onLogin);
+        if (onLogin) {
+          onLogin(response.data.accessToken);
+          navigate('/ConferenceRooms');
+        }
+      })
+      .catch((error) => {
+        // Handle authentication error
+        console.error("Authentication failed", error);
       });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        console.log("Login successful! Access Token:", data.accessToken);
-
-        // Redirect to the overview page upon successful login
-        history('/Overview'); // Update with the correct path
-
-      } else {
-        console.error("Login failed:", data.message);
-      }
-    } catch (error) {
-      console.error("Error during login:", error);
-    }
   };
 
   return (
-    <div className="logpage">
+    <>
+      <div className="logpage">
+        <div className="header1">
+          <img src="./images/eventflow_color.svg" alt="" />
+        </div>
 
-      <div className="header1">
-        <img src="./images/eventflow_color.svg" alt="EventFlow Logo" />
-      </div>
-
-      <div className="login-container">
-        <h2>Login</h2>
-        <form onSubmit={handleLogin}>
+        <div className="login-container">
+          <h2>Login </h2>
           <div className="input-group">
-            <label htmlFor="email"><b>Email Address</b></label>
+            <label htmlFor="email">
+              <b>Email Address</b>
+            </label>
             <input
               type="email"
+              value={email}
               placeholder="Enter Email"
               name="email"
               autoComplete="off"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
               required
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="input-group">
-            <label htmlFor="psw"><b>Password</b></label>
+            <label htmlFor="psw">
+              <b>Password</b>
+            </label>
             <input
               type="password"
+              value={password}
               placeholder="Enter Password"
               name="psw"
               autoComplete="off"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
               required
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <button type="submit" className="login-btn">Login</button>
-        </form>
-        <div className="register-link">Don't have an account? <a href="/register">Register here</a></div>
-      </div>
+          <button type="submit" className="login-btn" onClick={handleLogin}>
+            Login
+          </button>
+          <div className="register-link">
+            Don't have an account? <a href="/register">Register here</a>
+          </div>
+        </div>
 
-      <div className="footerpos">
-        <Footer />
+        <div className="footerpos">
+          <Footer />
+        </div>
       </div>
-    </div>
+    </>
   );
 }

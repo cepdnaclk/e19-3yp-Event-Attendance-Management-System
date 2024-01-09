@@ -53,6 +53,20 @@ const getSessionIds = asyncHandler(async (req, res) => {
 
 
 ////////////////// Create a new conference room
+/////////////////////// Get all conference details
+const getAllConferences = asyncHandler(async (req, res) => {
+
+  // const conference = await Conference.findById(id);
+  const conference = await Conference.find({});
+
+  if (!conference) {
+    res.status(404);
+    throw new Error("Conference not found");
+  }
+
+  res.status(200).json(conference);
+});
+
 const createConference = asyncHandler(async (req, res) => {
   try {
     const { conferenceDetails } = req.body;
@@ -277,5 +291,6 @@ module.exports = {
   getConferenceDetails,
   getSessionDetails,
   deleteSession,
-  deleteConference
+  deleteConference,
+  getAllConferences,
 };

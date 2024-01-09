@@ -1,11 +1,35 @@
+"use client";
 import React, { useState, useEffect } from 'react';
 import "./App.css";
-import Carousel from "react-multi-carousel";
+// import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import SessionCards from "../components/SessionCards";
+// import SessionCards from "../components/SessionCards";
+// import { productData, responsive } from "./data";
+
 import Croom from "../components/Croom";
+// import { sessionData, responsive } from "../DataFiles/Session_data";
+import axios from "axios";
+import Sidebar from "../components/Sidebar";
 
 export default function ConferenceRooms() {
+  const [conferenceData, setConferenceData] = useState([]);
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem("token");
+    if (accessToken) {
+      axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
+      // Validate the token on the server
+      axios
+        .get("http://localhost:5001/api/conferences/")
+        .then((response) => {
+          console.log(response.data);
+          setConferenceData(response.data);
+        })
+        .catch((error) => {
+          console.error("Token validation failed", error);
+        });
+    }
+  }, []);
   const [modal, setModal] = useState(false);
   const [roomName, setRoomName] = useState('');
   const [conferenceIds, setConferenceIds] = useState([]);
@@ -90,6 +114,10 @@ export default function ConferenceRooms() {
               CLOSE
             </button>
           </div>
+        )}
+        <div className="cardbox">
+          when user input a room , it should display in here
+          <Croom />
         </div>
       )}
       <div className="cardbox">
