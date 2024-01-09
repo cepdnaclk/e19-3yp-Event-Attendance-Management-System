@@ -14,16 +14,16 @@ const Settings = () => {
       // sortable: true, // Uncomment this line if you want the 'Attendee' column to be sortable
     },
     {
-      name: "Time in",
-      selector: (row) => row.timeIn,
+      name: "email",
+      selector: (row) => row.email,
     },
     {
-      name: "Attendence Duration",
-      selector: (row) => row.timeDuration,
+      name: "conferenceNo",
+      selector: (row) => row.conNo,
     },
     {
-      name: "Next Event",
-      selector: (row) => row.nextEvent,
+      name: "rfid No",
+      selector: (row) => row.rfidNo,
     },
   ];
 
