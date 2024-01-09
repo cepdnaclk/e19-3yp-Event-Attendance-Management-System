@@ -7,8 +7,28 @@ import { responsive } from "../DataFiles/Session_data";
 // import { productData, responsive } from "./data";
 import React, { useState } from 'react';
 import Croom from "../components/Croom";
+import { sessionData, responsive } from "../DataFiles/Session_data";
+import axios from 'axios';
+import Sidebar from "../components/Sidebar";
 
 export default function ConferenceRooms() {
+    const [conferenceData, setConferenceData] = useState([]);
+
+    useEffect(() => {
+        const accessToken = localStorage.getItem('token');
+        if (accessToken) {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+          // Validate the token on the server
+          axios.get('http://localhost:5001/api/conferences/')
+            .then(response => {
+              console.log(response.data);
+                setConferenceData(response.data);
+            })
+            .catch(error => {
+              console.error('Token validation failed', error);
+            });
+        }
+    }, [])
 
   const [modal, setModal] = useState(false);
 
@@ -21,7 +41,6 @@ export default function ConferenceRooms() {
   } else {
     document.body.classList.remove('active-modal')
   }
-
 
 
   return (

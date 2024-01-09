@@ -3,14 +3,6 @@
   font-family:"Poppins", sans-serif;
 }
 
-body{
-  margin: 0;
-  background-image: url('../public/images/background.png');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
-
-
 
 .header1{
 background-color: rgba(117, 188, 222, 0.2);
@@ -159,6 +151,9 @@ border: solid 0.1px rgb(135, 129, 129);
 
 
 .footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
   display: flex;
   align-items: center;
   text-align: center;
@@ -169,7 +164,9 @@ border: solid 0.1px rgb(135, 129, 129);
   justify-content: center;
   height: 1.0cm;
   font-weight: 300;
+  width: 100%;
 }
+
 .footer p{
   padding-right: 10px;
 }
@@ -181,3 +178,25 @@ border: solid 0.1px rgb(135, 129, 129);
 .footer a:hover {
   text-decoration: underline;
 }
+
+
+.logpage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-image: url('../public/images/background.png');
+}
+
+.registration-form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-image: url('../public/images/background.png');
+}
+
