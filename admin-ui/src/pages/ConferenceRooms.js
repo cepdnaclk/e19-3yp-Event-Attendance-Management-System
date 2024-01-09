@@ -5,68 +5,50 @@ import "react-multi-carousel/lib/styles.css";
 import SessionCards from "../components/SessionCards";
 import { responsive } from "../DataFiles/Session_data";
 // import { productData, responsive } from "./data";
-import React, { useState, useEffect } from 'react';
-
+import React, { useState } from 'react';
+import Croom from "../components/Croom";
 
 export default function ConferenceRooms() {
-  const [conferenceData, setConferenceData] = useState([]);
 
-  useEffect(() => {
-    const fetchConferenceData = async () => {
-      try {
-        console.log("ksjs;kh");
-        const response = await fetch('http://localhost:5001/api/conferences/conferenceIds');
-        const conferenceIds = await response.json();
+  const [modal, setModal] = useState(false);
 
-        const conferenceDetailsPromises = conferenceIds.map(async (id) => {
-          const sessionResponse = await fetch(`http://localhost:5001/api/conferences/${id}/sessionIds`);
-          const conferenceData = await sessionResponse.json();
-          console.log("ksjshgkk");
-          const sessions = await Promise.all(conferenceData.sessionIds.map(async (sessionId) => {
-            const sessionDetailsResponse = await fetch(`http://localhost:5001/api/conferences/${id}/sessions/${sessionId}`);
-            return await sessionDetailsResponse.json();
-          }));
+  const toggleModal = () => {
+    setModal(!modal);
+  };
 
-          return { conferenceId: id, sessions };
-        });
-        const conferenceDetails = await Promise.all(conferenceDetailsPromises);
-        setConferenceData(conferenceDetails);
+  if (modal) {
+    document.body.classList.add('active-modal')
+  } else {
+    document.body.classList.remove('active-modal')
+  }
 
-      } catch (error) {
-        console.error('Error fetching conference data:', error);
-      }
-    };
 
-    fetchConferenceData();
-  }, []);
-
-  const session = conferenceData.map((item) => (
-    <SessionCards
-      // key={item._id}
-      Sname={item.sessionName}
-      // url={item.imageurl}
-      Pname={item.speaker}
-      duration={item.startTime}
-    />
-  ));
 
   return (
-    <div>
-      <div className="cr1"> Conference Room </div>
-      <div className="Appss">
-        <Carousel showDots={true} responsive={responsive}>
-          {session}
-        </Carousel>
-      </div>
+    <div className="Appss">
+
+      <button onClick={toggleModal} className="btn-modal">
+        Add Room
+      </button>
+
+      {modal && (
+        <div className="modal">
+          <div onClick={toggleModal} className="overlay"></div>
+          <div className="modal-content">
+            <div>
+              <label htmlFor="roomName">Room Name:</label>
+              <input type="text" id="roomName" placeholder="Enter room name" />
+              <button type="submit">Submit</button>
+            </div>
+            <button className="close-modal" onClick={toggleModal}> CLOSE</button>
+          </div>
+        </div>
+      )}
+      <div className="cardbox">when user input a room , it should display in here
+
+        <Croom /></div>
+
     </div>
+
   );
 }
-
-//   {conference.sessions.map((session) => (
-//     <SessionCards
-//       key={session._id}
-//       Sname={session.sessionName}
-//       Pname={session.speaker}
-//       duration={session.endTime}
-//     />
-//   ))}
