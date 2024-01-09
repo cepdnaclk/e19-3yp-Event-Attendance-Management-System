@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import DataTable from "react-data-table-component";
 import "./App.css";
-import axios from 'axios';
+import axios from "axios";
+import Sidebar from "../components/Sidebar";
 
 const Settings = () => {
   // Define columns for the DataTable
@@ -60,19 +61,20 @@ const Settings = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    const accessToken = localStorage.getItem('token');
-        if (accessToken) {
-        axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
-          // Validate the token on the server
-          axios.get('http://localhost:5001/api/attendees')
-            .then(response => {
-              console.log(response.data);
-                setData(response.data);
-            })
-            .catch(error => {
-              console.error('Token validation failed', error);
-            });
-        }
+    const accessToken = localStorage.getItem("token");
+    if (accessToken) {
+      axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
+      // Validate the token on the server
+      axios
+        .get("http://localhost:5001/api/attendees")
+        .then((response) => {
+          console.log(response.data);
+          setData(response.data);
+        })
+        .catch((error) => {
+          console.error("Token validation failed", error);
+        });
+    }
   }, []);
 
   // Function to handle changes in the search input
@@ -98,37 +100,40 @@ const Settings = () => {
   };
 
   return (
-    <div className="table-container">
-      {/* Search box with clear button */}
-      <div className=" searchbox">
-        <input
-          type="text"
-          placeholder="Search attendees"
-          value={searchValue}
-          onChange={handleSearchChange}
-          className="w-full p-2 border border-gray-300 rounded"
+    <>
+      <Sidebar />
+      <div className="table-container">
+        {/* Search box with clear button */}
+        <div className=" searchbox">
+          <input
+            type="text"
+            placeholder="Search attendees"
+            value={searchValue}
+            onChange={handleSearchChange}
+            className="w-full p-2 border border-gray-300 rounded"
+          />
+          {searchValue && (
+            <button
+              className="absolute top-0 right-0 mr-2 mt-2 text-grey-500"
+              onClick={handleClearSearch}
+            >
+              Clear
+            </button>
+          )}
+        </div>
+        {/* DataTable component */}
+        <DataTable
+          columns={columns}
+          data={data}
+          // selectableRows
+          fixedHeader
+          pagination
+          highlightOnHover
+          responsive
+          striped
         />
-        {searchValue && (
-          <button
-            className="absolute top-0 right-0 mr-2 mt-2 text-grey-500"
-            onClick={handleClearSearch}
-          >
-            Clear
-          </button>
-        )}
       </div>
-      {/* DataTable component */}
-      <DataTable
-        columns={columns}
-        data={data}
-        // selectableRows
-        fixedHeader
-        pagination
-        highlightOnHover
-        responsive
-        striped
-      />
-    </div>
+    </>
   );
 };
 

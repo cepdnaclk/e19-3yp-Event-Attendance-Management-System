@@ -1,11 +1,15 @@
 import React from "react";
+import Sidebar from "../components/Sidebar";
 
 const Analytics = () => {
-    return (
-        <div>
-            <h1>Analytics.</h1>
-        </div>
-    );
+  return (
+    <>
+      <Sidebar />
+      <div>
+        <h1>Analytics.</h1>
+      </div>
+    </>
+  );
 };
 
 export default Analytics;

@@ -1,11 +1,15 @@
 import React from "react";
+import Sidebar from "../components/Sidebar";
 
 const Attendees = () => {
-    return (
-        <div>
-            <h1>Attendees .</h1>
-        </div>
-    );
+  return (
+    <>
+      <Sidebar />
+      <div>
+        <h1>Attendees .</h1>
+      </div>
+    </>
+  );
 };
 
 export default Attendees;
