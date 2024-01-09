@@ -13,7 +13,6 @@ import RegistrationPage from "./pages/Registration_page";
 
 // import Sidebar from "./components/Sidebar";
 
-
 export default function App() {
     const [user, setUser] = useState(null);
 

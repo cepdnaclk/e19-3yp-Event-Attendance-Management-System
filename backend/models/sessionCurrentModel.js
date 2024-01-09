@@ -1,11 +1,10 @@
 const mongoose = require("mongoose");
 
 const sessionCurrentSchema = new mongoose.Schema({
+    // _id: mongoose.Types.ObjectId,
     conferenceId: String,
-    details: [{
-      timestamp: { type: Date },  // checkkk---------------------
-      currentAttendee: { rfidNo: String }
-    }]
+    timestamp: String,
+    rfidNo: String ,
 });
 
 const SessionCurrent = mongoose.model('SessionCurrent', sessionCurrentSchema);

@@ -1,8 +1,58 @@
 const asyncHandler = require("express-async-handler");
-const {Conference} = require("../models/conferenceModel");
+const {Conference, Session } = require("../models/conferenceModel");
 
 ////////////////// CONFERENCES //////////////////////
 
+///////////get All conference ids
+const getConferenceIds = asyncHandler (async (req, res) => {
+  try {
+    const conferences = await Conference.find({}, '_id');
+    const conferenceIds = conferences.map(conference => conference._id.toString());
+    console.log('Conference IDs:', conferenceIds);
+    res.status(200).json({ conferenceIds });
+    // return [...new Set(conferenceIds)];
+  } catch (error) {
+    console.error('Error getting conferenceIds:', error);
+    throw error;
+  }
+});
+
+///////////get All session ids
+const getSessionIds = asyncHandler(async (req, res) => {
+  const { conferenceId } = req.params;
+
+  try {
+    const conference = await Conference.findById(conferenceId);
+
+    if (!conference) {
+      res.status(404).json({ message: "Conference not found" });
+      return;
+    }
+
+    const sessionIds = conference.sessions.map(session => session._id.toString());
+
+    res.status(200).json({ sessionIds });
+  } catch (error) {
+    console.error('Error getting session IDs:', error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+// const getSessionIds = async () => {
+//   try {
+//     const sessions = await Session.find({}, '_id');
+//     const sessionIds = sessions.map(session => session._id.toString());
+//     console.log('Session IDs:', sessionIds);
+//     return [...new Set(sessionIds)];
+//   } catch (error) {
+//     console.error('Error getting session IDs:', error);
+//     throw error;
+//   }
+// };
+
+
+
+////////////////// Create a new conference room
 /////////////////////// Get all conference details
 const getAllConferences = asyncHandler(async (req, res) => {
 
@@ -16,8 +66,6 @@ const getAllConferences = asyncHandler(async (req, res) => {
 
   res.status(200).json(conference);
 });
-
-
 
 const createConference = asyncHandler(async (req, res) => {
   try {
@@ -78,7 +126,7 @@ const getConferenceDetails = asyncHandler(async (req, res) => {
   }
 
   // res.status(200).json(conference);
-  res.status(200).json(conference.conferenceDetails);
+  res.status(200).json(conference);
 });
 
 
@@ -234,6 +282,8 @@ const deleteSession = asyncHandler(async (req, res) => {
 
 
 module.exports = {
+  getConferenceIds,
+  getSessionIds,
   createConference,
   createSession,
   updateConferenceDetails,

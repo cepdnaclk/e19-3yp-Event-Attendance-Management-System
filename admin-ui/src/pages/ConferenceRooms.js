@@ -1,9 +1,13 @@
+'use client';
 import "./App.css";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import SessionCards from "../components/SessionCards";
+import { responsive } from "../DataFiles/Session_data";
+// import { productData, responsive } from "./data";
+import React, { useState } from 'react';
+import Croom from "../components/Croom";
 import { sessionData, responsive } from "../DataFiles/Session_data";
-import React , {useState, useEffect} from "react";
 import axios from 'axios';
 import Sidebar from "../components/Sidebar";
 
@@ -26,40 +30,44 @@ export default function ConferenceRooms() {
         }
     }, [])
 
-    const session = sessionData.map((item) => (
-        <SessionCards
-            Sname={item.Sname}
-            url={item.imageurl}
-            Pname={item.presenterName}
-            duration={item.time}
-        />
-    ));
+  const [modal, setModal] = useState(false);
 
-    const conferences = conferenceData.map((item) => (
-        <SessionCards
-            Sname={item.SessionDetails}
-            url={item.imageurl}
-            Pname={item.sessionHolder}
-            duration={item.startTime - item.endTime}
-        />
-    ));
+  const toggleModal = () => {
+    setModal(!modal);
+  };
 
-    return (
-        <>  
-            <Sidebar/>
+  if (modal) {
+    document.body.classList.add('active-modal')
+  } else {
+    document.body.classList.remove('active-modal')
+  }
+
+
+  return (
+    <div className="Appss">
+
+      <button onClick={toggleModal} className="btn-modal">
+        Add Room
+      </button>
+
+      {modal && (
+        <div className="modal">
+          <div onClick={toggleModal} className="overlay"></div>
+          <div className="modal-content">
             <div>
-                <div className=" cr1"> Conference Room 1</div>
-                <div className="Appss">
-
-
-                    <Carousel showDots={true} responsive={responsive}>
-                        {session}
-                    </Carousel>
-                </div>
+              <label htmlFor="roomName">Room Name:</label>
+              <input type="text" id="roomName" placeholder="Enter room name" />
+              <button type="submit">Submit</button>
             </div>
-        </>
-        
-    );
-};
+            <button className="close-modal" onClick={toggleModal}> CLOSE</button>
+          </div>
+        </div>
+      )}
+      <div className="cardbox">when user input a room , it should display in here
 
+        <Croom /></div>
 
+    </div>
+
+  );
+}

@@ -4,7 +4,7 @@ const { updateCurrentAttendees } = require('../controller/sessionController');
 const validateToken = require('../middleware/validateTokenHandler');
 
 const router = express.Router();
-router.use(validateToken);
+// router.use(validateToken);
 
 // Ensure that the route is correctly defined
 router.post('/:id', updateCurrentAttendees);

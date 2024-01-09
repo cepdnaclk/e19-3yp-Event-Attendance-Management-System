@@ -1,10 +1,11 @@
 const express = require('express');
-const {getSessionRegisteredDetails} = require('../controller/sessionRegisteredController');
+const {getSessionRegisteredDetails, getAllSessionRegisteredIds} = require('../controller/sessionRegisteredController');
 const validateToken = require('../middleware/validateTokenHandler');
 
 const router = express.Router();
-router.use(validateToken);
+// router.use(validateToken);
 
+router.get('/', getAllSessionRegisteredIds);
 router.get('/:id', getSessionRegisteredDetails);
 
 module.exports = router;

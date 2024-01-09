@@ -1,12 +1,13 @@
 const express = require("express");
 // const { getEmail, getConferenceNo, getUserId, getUserName } = require("../controller/attendeeController");
-const { getAttendeeDetails, getAllAttendees } = require("../controller/attendeeController");
+const { getAttendeeDetails, getAllAttendeeIds, getAllAttendees } = require("../controller/attendeeController");
 const validateToken = require("../middleware/validateTokenHandler");
 
 const router = express.Router();
 
-router.use(validateToken);  // since all routes are protected routes, validated
+// router.use(validateToken);  // since all routes are protected routes, validated
 
+router.get('/', getAllAttendeeIds);
 router.get('/:id/details', getAttendeeDetails);
 router.get('/', getAllAttendees);
 
