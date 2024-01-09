@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import "./App.css";
 // import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -30,7 +30,7 @@ export default function ConferenceRooms() {
     }
   }, []);
   const [modal, setModal] = useState(false);
-  const [roomName, setRoomName] = useState('');
+  const [roomName, setRoomName] = useState("");
   const [conferenceIds, setConferenceIds] = useState([]);
 
   const toggleModal = () => {
@@ -43,10 +43,10 @@ export default function ConferenceRooms() {
 
   const handleAddRoom = async () => {
     try {
-      const response = await fetch('http://3.110.135.90:5001/api/conferences', {
-        method: 'POST',
+      const response = await fetch("http://3.110.135.90:5001/api/conferences", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ conferenceDetails: roomName }),
       });
@@ -54,30 +54,32 @@ export default function ConferenceRooms() {
       const data = await response.json();
 
       if (response.ok) {
-        console.log('Conference created successfully:', data);
+        console.log("Conference created successfully:", data);
         // Refresh the list of conferences after creation
         fetchConferenceIds();
       } else {
-        console.error('Error creating conference:', data.message);
+        console.error("Error creating conference:", data.message);
       }
     } catch (error) {
-      console.error('Error creating conference:', error);
+      console.error("Error creating conference:", error);
     }
   };
 
   const fetchConferenceIds = async () => {
     try {
-      const response = await fetch('http://3.110.135.90:5001/api/conferences/conferenceIds');
+      const response = await fetch(
+        "http://3.110.135.90:5001/api/conferences/conferenceIds"
+      );
       const data = await response.json();
 
       if (response.ok) {
         setConferenceIds(data.conferenceIds);
-        console.log('ConferenceIds fetched successfully:', data.conferenceIds	);
+        console.log("ConferenceIds fetched successfully:", data.conferenceIds);
       } else {
-        console.error('Error fetching conferenceIds:', data.message);
+        console.error("Error fetching conferenceIds:", data.message);
       }
     } catch (error) {
-      console.error('Error fetching conferenceIds:', error);
+      console.error("Error fetching conferenceIds:", error);
     }
   };
 
@@ -88,44 +90,47 @@ export default function ConferenceRooms() {
 
   return (
     <>
-    <Sidebar />
+      <Sidebar />
       <div className="Appss">
-      <button onClick={toggleModal} className="btn-modal">
-        Add Room
-      </button>
-  
-      {modal && (
-        <div className="modal">
-          <div onClick={toggleModal} className="overlay"></div>
-          <div className="modal-content">
-            <div>
-              <label htmlFor="roomName">Room Name:</label>
-              <input
-                type="text"
-                id="roomName"
-                placeholder="Enter room name"
-                value={roomName}
-                onChange={handleRoomNameChange}
-              />
-              <button type="submit" onClick={handleAddRoom}>
-                Submit
+        <button onClick={toggleModal} className="btn-modal">
+          Add Room
+        </button>
+
+        {modal && (
+          <div className="modal">
+            <div onClick={toggleModal} className="overlay"></div>
+            <div className="modal-content">
+              <div>
+                <label htmlFor="roomName">Room Name:</label>
+                <input
+                  type="text"
+                  id="roomName"
+                  placeholder="Enter room name"
+                  value={roomName}
+                  onChange={handleRoomNameChange}
+                />
+                <button
+                  className="rounded"
+                  type="submit"
+                  onClick={handleAddRoom}
+                >
+                  Submit
+                </button>
+              </div>
+              <button className="close-modal" onClick={toggleModal}>
+                CLOSE
               </button>
             </div>
-            <button className="close-modal" onClick={toggleModal}>
-              CLOSE
-            </button>
           </div>
+        )}
+
+        <div className="cardbox">
+          {/* Render each conference based on the conferenceIds */}
+          {conferenceIds.map((conferenceId) => (
+            <Croom key={conferenceId} conferenceId={conferenceId} />
+          ))}
         </div>
-      )}
-  
-      <div className="cardbox">
-        {/* Render each conference based on the conferenceIds */}
-        {conferenceIds.map((conferenceId) => (
-          <Croom key={conferenceId} conferenceId={conferenceId} />
-        ))}
       </div>
-    </div>
     </>
-    
   );
 }

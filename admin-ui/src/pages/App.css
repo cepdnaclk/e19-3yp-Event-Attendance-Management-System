@@ -69,7 +69,7 @@
     width: 75%;
   }  
   .Ccr1{
-    background-color: ;
+    /* background-color: ; */
     position: relative;
     top: 0.5cm;
     font-size: 25px;
@@ -81,18 +81,20 @@
   }
 
   .Ccard {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    max-width: 550px;
-    height: 28em;
-    margin: auto 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 450px;
+    height: 20rem;
+    margin: 20px auto;
     text-align: center;
-    font-family: arial;
-    background-color: rgb(213, 222, 236);
-    padding: 0.03px;
+    font-family: 'Arial', sans-serif;
+    background-color: rgb(138, 215, 239);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
 
   }
   .Ccard h2{
-    background-color: rgb(255, 255, 255);
+    background-color: transparent;
     padding: 10px;
     width: 50%;
     margin-left: 22%;
@@ -104,11 +106,11 @@
     object-fit: cover;
   }
   .Cname {
-    color: grey;
+    color: rgb(10, 9, 9);
     font-size: 18px;
   }
   .Cname p{
-    background-color: ;
+    /* background-color: ; */
     margin: 5px;
   }
   .Cname2 p{
@@ -126,6 +128,7 @@
     display: block;
     margin: 10px auto 0;
     font-size: 18px;
+    border-radius: 10px;
 }
 
 .modal, .overlay {
@@ -188,20 +191,22 @@ button:hover {
 
 
 .cardbox{
-  height: 15cm;
-  background-color: #f4f9f4;
-  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 10px;
 }
 .cx{
-  top:2cm;
-  background-color: #cae0e2;
+  /* top:2cm; */
+  background-color: #cdf5f9;
   /* height: 9cm; */
-  width: 9cm;
+  width:fit-content;
   border-radius: 10px;
   /* margin-left: 400px; */
   display: inline-block;
   margin-right: 5px;
   margin-bottom: 5px;
+  padding: 5px 5px;
 }
 
   .table-container{

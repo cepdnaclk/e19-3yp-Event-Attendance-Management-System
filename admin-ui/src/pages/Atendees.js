@@ -17,7 +17,9 @@ export default function Attendees() {
     const fetchAttendeeData = async () => {
       try {
         // Get all attendee IDs
-        const responseIds = await fetch("http://3.110.135.90:5001/api/attendees/");
+        const responseIds = await fetch(
+          "http://3.110.135.90:5001/api/attendees/"
+        );
         const dataIds = await responseIds.json();
 
         // Fetch details for each attendee using their IDs
