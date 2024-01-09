@@ -67,7 +67,7 @@ export default function App() {
                         <Route path="*" element={<LoginPage onLogin={handleLogin} />} />
                     )}
                     <Route path="/register" element={<RegistrationPage />} />
-                    <Route path="/" element={<LoginPage />} />
+                    <Route path="/" element={<LoginPage onLogin={handleLogin} />} />
 
                     <Route path="*" element={<Navigate to="/" />} />
                 </Routes>
