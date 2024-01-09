@@ -195,10 +195,11 @@ button:hover {
 .cx{
   top:2cm;
   background-color: #cae0e2;
-  height: 9cm;
+  /* height: 9cm; */
   width: 9cm;
   border-radius: 10px;
   margin-left: 400px;
+  display: inline-block;
 }
 
   .table-container{
@@ -213,4 +214,3 @@ button:hover {
     border-radius: 10px;
   }
 
-  

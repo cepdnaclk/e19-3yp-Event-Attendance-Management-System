@@ -10,6 +10,7 @@ import Settings from "./pages/Settings";
 import Attendees from "./pages/Atendees";
 import LoginPage from "./pages/Login_page";
 import RegistrationPage from "./pages/Registration_page";
+import Sidebar from "./components/Sidebar";
 
 // import Sidebar from "./components/Sidebar";
 
