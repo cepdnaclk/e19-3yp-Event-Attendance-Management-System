@@ -3,6 +3,8 @@
   left: 9.5cm;
   top: 1cm;
   width: 75%;
+  text-align: center;
+  
 }
   h1 {
     margin: 1rem auto 4rem;
@@ -114,6 +116,7 @@
     margin: 5px;
   }
 
+
   body.active-modal {
     overflow-y: hidden;
 }
@@ -186,12 +189,30 @@ button:hover {
 
 .cardbox{
   height: 15cm;
-  background-color: rgb(215, 241, 225);
+  background-color: #f4f9f4;
   margin-top: 20px;
 }
 .cx{
   top:2cm;
   background-color: #cae0e2;
-  height: 9cm;
+  /* height: 9cm; */
   width: 9cm;
+  border-radius: 10px;
+  /* margin-left: 400px; */
+  display: inline-block;
+  margin-right: 5px;
+  margin-bottom: 5px;
 }
+
+  .table-container{
+    margin-left: 360px;
+    margin-top: 50px;
+    margin-right: 20px;
+    border-radius: 10px;
+  }
+
+  .searchbox{
+    margin-bottom: 20px;
+    border-radius: 10px;
+  }
+

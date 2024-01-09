@@ -3,7 +3,7 @@ import "../styles/main.scss";
 
 //import Icon from "../Images/eventflow_color";
 import Profile from "../Images/profile.png";
-import Dashboard from "../Images/dashboard.svg";
+// import Dashboard from "../Images/dashboard.svg";
 import Transactions from "../Images/transactions.svg";
 import Performance from "../Images/performance.svg";
 import News from "../Images/news.svg";
@@ -56,7 +56,7 @@ const Sidebar = () => {
             >
                 <img src={Profile} alt="profile" className="profile" />
                 <div className="profileContents">
-                    <p className="name">Hello, John👋</p>
+                    <p className="name">John  Smith</p>
                     <p>johnsmith@gmail.com</p>
                 </div>
             </div>
@@ -68,10 +68,10 @@ const Sidebar = () => {
                 }
             >
                 <ul>
-                    <li className={location.pathname === "/" ? "active" : ""}>
+                    {/* <li className={location.pathname === "/" ? "active" : ""}>
                         <img src={Dashboard} alt="dashboard" />
                         <a href="/">dashboard</a>
-                    </li>
+                    </li> */}
                     <li
                         className={
                             location.pathname === "/ConferenceRooms"
@@ -80,25 +80,16 @@ const Sidebar = () => {
                     >
                         <img src={News} alt="ConferenceRooms" />
                         <a href="/ConferenceRooms">Conference Rooms</a>
-                    </li>
+                    </li>                    
 
-                    <li
-                        className={
-                            location.pathname === "/Analytics" ? "active" : ""
-                        }
-                    >
-                        <img src={Performance} alt="Analytics" />
-                        <a href="/Analytics">Analytics</a>
-                    </li>
-
-                    <li
+                    {/* <li
                         className={
                             location.pathname === "/Attendees" ? "active" : ""
                         }
                     >
                         <img src={Support} alt="Attendees" />
                         <a href="/Attendees ">Attendees</a>
-                    </li>
+                    </li> */}
 
                     <li
                         className={
@@ -116,7 +107,16 @@ const Sidebar = () => {
                         }
                     >
                         <img src={Settings} alt="Settings" />
-                        <a href="/settings">settings</a>
+                        <a href="/settings">Attendees</a>
+                    </li>
+
+                    <li
+                        className={
+                            location.pathname === "/Analytics" ? "active" : ""
+                        }
+                    >
+                        <img src={Performance} alt="Analytics" />
+                        <a href="/Analytics">Analytics</a>
                     </li>
 
                 </ul>

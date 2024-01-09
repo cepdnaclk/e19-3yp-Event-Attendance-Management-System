@@ -3,7 +3,36 @@
 const asyncHandler = require('express-async-handler');
 const { SessionCurrent } = require('../models/sessionCurrentModel');
 
-// Get all SessionCurrent IDs
+////////////////////// Get sessionIds of ongoing sessions
+const getOngoingSessionIds = asyncHandler(async (req, res) => {
+  try {
+    // Get the current date and time
+    const currentDate = new Date();
+
+    // Find conferences that have ongoing sessions
+    const conferences = await Conference.find({
+      "sessions.startTime": { $lt: currentDate },
+      "sessions.endTime": { $gt: currentDate }
+    });
+
+    // Extract sessionIds from ongoing sessions
+    const ongoingSessionIds = conferences.reduce((sessionIds, conference) => {
+      const ongoingSessions = conference.sessions.filter(
+        session => session.startTime < currentDate && session.endTime > currentDate
+      );
+      const sessionIdsForConference = ongoingSessions.map(session => session._id.toString());
+      return sessionIds.concat(sessionIdsForConference);
+    }, []);
+
+    console.log('Ongoing Session IDs:', ongoingSessionIds);
+    res.status(200).json({ ongoingSessionIds });
+  } catch (error) {
+    console.error('Error getting ongoing sessionIds:', error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+/////////////////////// Get all SessionCurrent IDs
 const getAllSessionCurrentIds = asyncHandler(async (req, res) => {
   try {
     console.log('Getting all SessionCurrent IDs...');
@@ -20,7 +49,7 @@ const getAllSessionCurrentIds = asyncHandler(async (req, res) => {
 });
 
 
-// Get session registered Attendees details
+////////////////// Get session registered Attendees details
 const getSessionCurrentDetails = asyncHandler(async (req, res) => {
   try {
     const sessionCurrent = await SessionCurrent.findById(req.params.id);
@@ -38,7 +67,7 @@ const getSessionCurrentDetails = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { getSessionCurrentDetails, getAllSessionCurrentIds };
+module.exports = { getOngoingSessionIds, getSessionCurrentDetails, getAllSessionCurrentIds };
 
 
 

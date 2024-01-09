@@ -26,7 +26,7 @@ h1 {
     top: 0;
     left: 0;
     padding: 2rem 3rem;
-    width: 15rem;
+    width: 20rem;
     height: 100vh;
     transition: 0.5s all;
     
@@ -35,13 +35,13 @@ h1 {
         display: flex;
         align-items: center;
         justify-content: flex-start;
-       background-color: rgb(218, 231, 231);
+    //    background-color: rgb(218, 231, 231);
        height: 72px;
        border-radius: 20px;
        
         h2.title {
             font-size: 30px;
-            color: $green;
+            color: rgba(21, 0, 255, 0.829);
             padding: 0 0 0 1rem;
             
         }
@@ -49,7 +49,7 @@ h1 {
 
     .burgerContainer {
         content: "";
-        background-color: $green;
+        background-color: blue;
         position: absolute;
         right: (-35px / 2);
         top: calc(9rem / 1.15);
@@ -95,6 +95,7 @@ h1 {
             transform: translateY(-0.4rem) rotate(45deg);
             transition: 0.5s all;
         }
+        
 
         .burgerMenu::before {
             content: "";
@@ -197,7 +198,7 @@ h1 {
                 background-color: $veryLightGreen;
 
                 a {
-                    color: $green;
+                    color: blue;
                 }
             }
 

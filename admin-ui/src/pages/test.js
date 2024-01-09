@@ -10,7 +10,7 @@ export default function ConferenceRooms() {
     const [data, setData] = useState(sessionData);
 
     useEffect(() => {
-        fetch("http://localhost:5001/rooms")
+        fetch("http://3.110.135.90:5001/rooms")
             .then((res) => res.json())
             .then((data) => {
                 setData(data);
