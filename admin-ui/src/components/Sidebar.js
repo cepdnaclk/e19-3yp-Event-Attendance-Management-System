@@ -3,7 +3,7 @@ import "../styles/main.scss";
 
 //import Icon from "../Images/eventflow_color";
 import Profile from "../Images/profile.png";
-import Dashboard from "../Images/dashboard.svg";
+// import Dashboard from "../Images/dashboard.svg";
 import Transactions from "../Images/transactions.svg";
 import Performance from "../Images/performance.svg";
 import News from "../Images/news.svg";
@@ -56,7 +56,7 @@ const Sidebar = () => {
             >
                 <img src={Profile} alt="profile" className="profile" />
                 <div className="profileContents">
-                    <p className="name">Hello, John👋</p>
+                    <p className="name">John  Smith</p>
                     <p>johnsmith@gmail.com</p>
                 </div>
             </div>
@@ -116,7 +116,7 @@ const Sidebar = () => {
                         }
                     >
                         <img src={Settings} alt="Settings" />
-                        <a href="/settings">settings</a>
+                        <a href="/settings">Settings</a>
                     </li>
 
                 </ul>

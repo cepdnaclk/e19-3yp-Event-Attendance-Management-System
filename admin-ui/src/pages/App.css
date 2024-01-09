@@ -3,6 +3,8 @@
   left: 9.5cm;
   top: 1cm;
   width: 75%;
+  text-align: center;
+  
 }
   h1 {
     margin: 1rem auto 4rem;
@@ -187,7 +189,7 @@ button:hover {
 
 .cardbox{
   height: 15cm;
-  background-color: rgb(215, 241, 225);
+  background-color: #f4f9f4;
   margin-top: 20px;
 }
 .cx{
@@ -195,6 +197,8 @@ button:hover {
   background-color: #cae0e2;
   height: 9cm;
   width: 9cm;
+  border-radius: 10px;
+  margin-left: 400px;
 }
 
   .table-container{
@@ -206,6 +210,7 @@ button:hover {
 
   .searchbox{
     margin-bottom: 20px;
+    border-radius: 10px;
   }
 
   

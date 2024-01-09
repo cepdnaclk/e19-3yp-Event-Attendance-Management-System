@@ -6,7 +6,7 @@ const Analytics = () => {
     <>
       <Sidebar />
       <div>
-        <h1>Analytics.</h1>
+        <h1>Under Construction</h1>
       </div>
     </>
   );
