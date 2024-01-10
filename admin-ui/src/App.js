@@ -23,7 +23,7 @@ export default function App() {
         if (accessToken) {
         axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
           // Validate the token on the server
-          axios.get('http://localhost:5001/api/users/current')
+          axios.get('http://3.110.135.90:5001/api/users/current')
             .then(response => {
               setUser({ isAuthenticated: true, username: response.data.name });
             })
@@ -61,10 +61,9 @@ export default function App() {
                             <Route path="/Overview" element={<Overview />} />
                             <Route path="/Analytics" element={<Analytics />} />
                             <Route path="*" element={<Navigate to="/" />} />
-                            {/* Add other authenticated routes here */}
                         </>
                     ) : (
-                        <Route path="*" element={<LoginPage onLogin={handleLogin} />} />
+                        <Route path="*" />
                     )}
                     <Route path="/register" element={<RegistrationPage />} />
                     <Route path="/" element={<LoginPage onLogin={handleLogin} />} />

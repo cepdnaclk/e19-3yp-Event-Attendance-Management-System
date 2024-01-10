@@ -80,25 +80,16 @@ const Sidebar = () => {
                     >
                         <img src={News} alt="ConferenceRooms" />
                         <a href="/ConferenceRooms">Conference Rooms</a>
-                    </li>
+                    </li>                    
 
-                    <li
-                        className={
-                            location.pathname === "/Analytics" ? "active" : ""
-                        }
-                    >
-                        <img src={Performance} alt="Analytics" />
-                        <a href="/Analytics">Analytics</a>
-                    </li>
-
-                    <li
+                    {/* <li
                         className={
                             location.pathname === "/Attendees" ? "active" : ""
                         }
                     >
                         <img src={Support} alt="Attendees" />
                         <a href="/Attendees ">Attendees</a>
-                    </li>
+                    </li> */}
 
                     <li
                         className={
@@ -116,7 +107,16 @@ const Sidebar = () => {
                         }
                     >
                         <img src={Settings} alt="Settings" />
-                        <a href="/settings">Settings</a>
+                        <a href="/settings">Attendees</a>
+                    </li>
+
+                    <li
+                        className={
+                            location.pathname === "/Analytics" ? "active" : ""
+                        }
+                    >
+                        <img src={Performance} alt="Analytics" />
+                        <a href="/Analytics">Analytics</a>
                     </li>
 
                 </ul>

@@ -17,13 +17,13 @@ export default function Attendees() {
     const fetchAttendeeData = async () => {
       try {
         // Get all attendee IDs
-        const responseIds = await fetch("http://localhost:5001/api/attendees/");
+        const responseIds = await fetch("http://3.110.135.90:5001/api/attendees/");
         const dataIds = await responseIds.json();
 
         // Fetch details for each attendee using their IDs
         const detailsPromises = dataIds.attendeeIds.map(async (id) => {
           const responseDetails = await fetch(
-            `http://localhost:5001/api/attendees/${id}/details`
+            `http://3.110.135.90:5001/api/attendees/${id}/details`
           );
           return await responseDetails.json();
         });
@@ -44,7 +44,7 @@ export default function Attendees() {
   useEffect(() => {
     const fetchRegAttendeeData = async () => {
       try {
-        const regIds = await fetch("http://localhost:5001/api/sessionreg/");
+        const regIds = await fetch("http://3.110.135.90:5001/api/sessionreg/");
         const dataRegIds = await regIds.json();
 
         // Extract session IDs from dataRegIds
@@ -53,7 +53,7 @@ export default function Attendees() {
         // Fetch session details for each session ID
         const sessionDetailsPromises = sessionIds.map(async (sessionId) => {
           const sessionDetailsResponse = await axios.get(
-            `http://localhost:5001/api/sessions/${sessionId}`
+            `http://3.110.135.90:5001/api/sessions/${sessionId}`
           );
           return sessionDetailsResponse.data; // Assuming your API returns the session details
         });

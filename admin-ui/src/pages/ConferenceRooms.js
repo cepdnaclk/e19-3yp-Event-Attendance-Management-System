@@ -19,7 +19,7 @@ export default function ConferenceRooms() {
       axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
       // Validate the token on the server
       axios
-        .get("http://localhost:5001/api/conferences/")
+        .get("http://l3.110.135.90:5001/api/conferences/")
         .then((response) => {
           console.log(response.data);
           setConferenceData(response.data);
@@ -43,7 +43,7 @@ export default function ConferenceRooms() {
 
   const handleAddRoom = async () => {
     try {
-      const response = await fetch('http://localhost:5001/api/conferences', {
+      const response = await fetch('http://3.110.135.90:5001/api/conferences', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -67,7 +67,7 @@ export default function ConferenceRooms() {
 
   const fetchConferenceIds = async () => {
     try {
-      const response = await fetch('http://localhost:5001/api/conferences/conferenceIds');
+      const response = await fetch('http://3.110.135.90:5001/api/conferences/conferenceIds');
       const data = await response.json();
 
       if (response.ok) {

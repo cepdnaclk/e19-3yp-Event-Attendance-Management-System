@@ -4,8 +4,10 @@ import "../style.css";
 import Footer from "../components/Footer";
 import axios from "axios";
 
+// 3.110.135.90
+
 export default function Login_page({onLogin}) {
-  const history = useNavigate(); 
+  // const history = useNavigate(); 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -13,7 +15,7 @@ export default function Login_page({onLogin}) {
   const handleLogin = () => {
     // Send a request to your authentication endpoint using Axios
     axios
-      .post("http://localhost:5001/api/users/login", { email, password })
+      .post("http://3.110.135.90:5001/api/users/login", { email, password })
       .then((response) => {
         // console.log(onLogin);
         if (onLogin) {

@@ -1,3 +1,5 @@
+// this is Attendees page
+
 import React, { useEffect } from "react";
 import { useState } from "react";
 import DataTable from "react-data-table-component";
@@ -58,7 +60,7 @@ const Settings = () => {
   // State variables for managing data and search input
   const [data, setData] = useState(initialData);
   const [searchValue, setSearchValue] = useState("");
-  const [users, setUsers] = useState([]);
+  // const [users, setUsers] = useState([]);
 
   useEffect(() => {
     const accessToken = localStorage.getItem("token");
@@ -66,7 +68,7 @@ const Settings = () => {
       axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
       // Validate the token on the server
       axios
-        .get("http://localhost:5001/api/attendees")
+        .get("http://3.110.135.90:5001/api/attendees")
         .then((response) => {
           console.log(response.data);
           setData(response.data);
