@@ -5,7 +5,6 @@ import "./App.css";
 import "react-multi-carousel/lib/styles.css";
 // import SessionCards from "../components/SessionCards";
 // import { productData, responsive } from "./data";
-
 import Croom from "../components/Croom";
 // import { sessionData, responsive } from "../DataFiles/Session_data";
 import axios from "axios";
@@ -88,11 +87,13 @@ export default function ConferenceRooms() {
   }, []); // Empty dependency array ensures the effect runs only once
 
   return (
-    <div className="Appss">
+    <>
+    <Sidebar />
+      <div className="Appss">
       <button onClick={toggleModal} className="btn-modal">
         Add Room
       </button>
-
+  
       {modal && (
         <div className="modal">
           <div onClick={toggleModal} className="overlay"></div>
@@ -114,12 +115,9 @@ export default function ConferenceRooms() {
               CLOSE
             </button>
           </div>
-        )}
-        <div className="cardbox">
-          when user input a room , it should display in here
-          <Croom />
         </div>
       )}
+  
       <div className="cardbox">
         {/* Render each conference based on the conferenceIds */}
         {conferenceIds.map((conferenceId) => (
@@ -127,5 +125,7 @@ export default function ConferenceRooms() {
         ))}
       </div>
     </div>
+    </>
+    
   );
 }

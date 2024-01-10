@@ -198,8 +198,10 @@ button:hover {
   /* height: 9cm; */
   width: 9cm;
   border-radius: 10px;
-  margin-left: 400px;
+  /* margin-left: 400px; */
   display: inline-block;
+  margin-right: 5px;
+  margin-bottom: 5px;
 }
 
   .table-container{
