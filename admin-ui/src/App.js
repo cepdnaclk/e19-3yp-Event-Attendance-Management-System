@@ -7,7 +7,7 @@ import Overview from "./pages/Overview ";
 import Settings from "./pages/Settings";
 import Attendees from "./pages/Atendees";
 import Sidebar from "./components/Sidebar";
-//import Login_page from "./pages/Login_page";
+import Login_page from "./pages/Login_page";
 
 
 export default function App() {
@@ -17,8 +17,8 @@ export default function App() {
 
                 <Sidebar />
                 <Routes>
-                    <Route path="/" element={<Dashboard />} />
-                    {/* <Route path="/" element={<Login_page />} /> */}
+                    {/* <Route path="/" element={<Dashboard />} /> */}
+                    <Route path="/" element={<Login_page />} />
                     <Route path="/ConferenceRooms" element={<ConferenceRooms />} />
                     <Route path="/Analytics" element={<Analytics />} />
                     <Route path="/settings" element={<Settings />} />

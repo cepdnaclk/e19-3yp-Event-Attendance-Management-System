@@ -1,10 +1,11 @@
 const express = require('express');
-const {getSessionRegisteredDetails, getAllSessionRegisteredIds} = require('../controller/sessionRegisteredController');
+const {getSessionIds, getSessionRegisteredDetails, getAllSessionRegisteredIds} = require('../controller/sessionRegisteredController');
 const validateToken = require('../middleware/validateTokenHandler');
 
 const router = express.Router();
 // router.use(validateToken);
 
+router.get('/rfid/:rfidNo', getSessionIds);
 router.get('/', getAllSessionRegisteredIds);
 router.get('/:id', getSessionRegisteredDetails);
 

@@ -1,13 +1,15 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router'; 
 import "../style.css";
 import Footer from "../components/Footer";
 
 export default function Login_page() {
+  const history = useNavigate(); 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = async (e) => {
-    e.preventDefault(); // Prevent the default form submission
+    e.preventDefault();
 
     try {
       const response = await fetch("http://localhost:5001/api/users/login", {
@@ -18,16 +20,15 @@ export default function Login_page() {
         body: JSON.stringify({ email, password }),
       });
 
-      // console.log({ email, password });
-
       const data = await response.json();
 
-      // Assuming the server sends an access token upon successful login
       if (response.ok) {
-        // You can store the token in local storage or a global state management solution
         console.log("Login successful! Access Token:", data.accessToken);
+
+        // Redirect to the overview page upon successful login
+        history('/Overview'); // Update with the correct path
+
       } else {
-        // Handle login failure
         console.error("Login failed:", data.message);
       }
     } catch (error) {
