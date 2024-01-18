@@ -1,14 +1,14 @@
 import React from "react";
 import EventCard from "./EventCard";
+import "../style.css";
 
 // EventSection component to display a section of events
 export default function EventSection({ events, title }) {
   return (
     // Container with padding for the entire event section
-    <div className="p-2">
-      
+    <div className=" rounded-lg mt-4 bg-gradient-to-bl from-teal-200 via-teal-300 to-teal-400 p-4 ">
       {/* Title of the event section */}
-      <h2 className="text-lg md:text-2xl lg:text-3xl text-gray-800 font-medium w-full text-center">
+      <h2 className="text-lg md:text-2xl lg:text-3xl text-gray-800 font-medium w-full text-center font-serif text-custom">
         {title}
       </h2>
 
@@ -22,4 +22,3 @@ export default function EventSection({ events, title }) {
     </div>
   );
 }
-

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import EventSection from "./EventSection";
 
 // MainSection component representing the main content of the application
@@ -60,18 +60,39 @@ export default function MainSection() {
     },
   ];
 
+  // // State to manage the rotation angle
+  // const [rotationAngle, setRotationAngle] = useState(0);
+
+  // // Function to update the rotation angle
+  // const updateRotation = () => {
+  //   setRotationAngle((prevAngle) => prevAngle + 0.01);
+  // };
+
+  // // useEffect to continuously update the rotation
+  // useEffect(() => {
+  //   const interval = setInterval(updateRotation, 10); // Adjust the interval as needed
+
+  //   // Clear the interval when the component unmounts
+  //   return () => clearInterval(interval);
+  // }, []);
+
   return (
     // Container for the main section with flex layout
-    <div className="w-full flex flex-row gap-4">
+    <div className="w-full flex flex-row gap-4 bg-orange-50">
       {/* Sidebar with logo and background image */}
       <div className="flex h-screen sticky top-0 items-start flex-col justify-start">
         {/* Logo */}
-        <h1 className="m-12 text-2xl">Event Flow</h1>
+        <img src="./logo.png" alt="logo" className="w-72 h-auto m-4 mb-0" />
         {/* Background image */}
+
         <img
           src="./background.png"
           alt="background"
-          className="w-200 h-200  overflow-hidden justify-center items-center mt-4 ml-4"
+          className=" w-200 h-200 overflow-hidden justify-center items-center mt-0 ml-11 rounded-full border-2 border-blue-600"
+          // style={{
+          //   transform: `rotate(${rotationAngle}deg)`, // Rotate based on state
+          //   transition: "transform 5s linear", // Optional: Add a smooth transition effect
+          // }}
         />
       </div>
       {/* Main content area with upcoming and registered events */}
