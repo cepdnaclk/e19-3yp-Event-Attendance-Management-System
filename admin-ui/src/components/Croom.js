@@ -28,9 +28,115 @@ export default function Croom({ conferenceId }) {
         setModal(!modal);
     };
 
+    const handleSessionDelete = async (sessionId) => {
+      // Display a confirmation dialog
+      const shouldDelete = window.confirm("Are you sure you want to delete this session?");
+
+      if (!shouldDelete) {
+        // User canceled the deletion
+        return;
+      }
+      try {
+        const response = await fetch(`http://localhost:5001/api/conferences/${conferenceId}/session/${sessionId}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+  
+        if (response.ok) {
+          console.log('Session deleted successfully');
+          getSessions();
+          // toggleModal();
+        } else {
+          const data = await response.json();
+          console.error('Session deletion failed:', data.message);
+          // Handle error and show appropriate message to the user
+        }
+      } catch (error) {
+        console.error('Error during session deletion:', error);
+        // Handle error and show appropriate message to the user
+      }
+    };
+
+    const handleSessionEdit = async (sessionId) => {
+        try {
+          // Fetch the existing session details
+          const existingSession = sessionDetailsList.find(session => session._id === sessionId);
+    
+          // Check if the session exists
+          if (!existingSession) {
+            console.error('Session not found for the given sessionId:', sessionId);
+            return;
+          }
+    
+          // Open the modal with existing session details
+          setSessionName(existingSession.sessionName);
+          setSpeakerName(existingSession.speaker);
+          setSessionDetails(existingSession.SessionDetails);
+          setMaxCapacity(existingSession.maxAttendeeCap);
+          // setStartTime(existingSession.startTime);
+          // setEndTime(existingSession.endTime);
+          // Format the date and time values for the datetime-local input fields
+          const formattedStartTime = existingSession.startTime.slice(0, -1); // Remove the 'Z' at the end
+          const formattedEndTime = existingSession.endTime.slice(0, -1); // Remove the 'Z' at the end
+          setStartTime(formattedStartTime);
+          setEndTime(formattedEndTime);
+    
+          // Close the modal after editing if needed
+          toggleModal();
+    
+          // Make a PUT request to update the session on the server
+          const response = await fetch(`http://localhost:5001/api/conferences/${conferenceId}/sessionup/${sessionId}`, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              sessionName,
+              speakerName,
+              sessionDetails,
+              maxCapacity: parseInt(maxCapacity),
+              // startTime: new Date(startTime),
+              // endTime: new Date(endTime),
+              startTime: new Date(formattedStartTime),
+              endTime: new Date(formattedEndTime),  
+            }),
+          });
+    
+          console.log('response');
+          if (response.ok) {
+            console.log('Session updated successfully');
+            getSessions();
+            // toggleModal();
+          } else {
+            const data = await response.json();
+            console.error('Session update failed:', data.message);
+            // Handle error and show appropriate message to the user
+          }
+        } catch (error) {
+          console.error('Error during session update:', error);
+          // Handle error and show appropriate message to the user
+        }
+      };
+
+
+    // create a new session
     const handleSessionCreate = async () => {
         try {
-            const response = await fetch(`http://3.110.135.90:5001/api/conferences/session/${conferenceId}`, {
+          console.log('conferenceId:', conferenceId);
+          setSessionName((prevSessionName) => {
+            console.log('sessionName:', prevSessionName);
+            return prevSessionName; // Return the updated value
+          });
+        //   console.log('sessionName:', sessionName);
+        // console.log('speakerName:', speakerName);
+        // console.log('sessionDetails:', sessionDetails);
+        // console.log('maxCapacity:', maxCapacity);
+        // console.log('startTime:', startTime);
+        // console.log('endTime:', endTime);
+            const response = await fetch(`http://localhost:5001/api/conferences/session/${conferenceId}`, {
+            // const response = await fetch(`http://3.110.135.90:5001/api/conferences/session/65993c23a87fe5df449913c2`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -45,7 +151,16 @@ export default function Croom({ conferenceId }) {
                 }),
             });
 
+            console.log('sessionName:', sessionName);
+        console.log('speakerName:', speakerName);
+        console.log('sessionDetails:', sessionDetails);
+        console.log('maxCapacity:', maxCapacity);
+        console.log('startTime:', startTime);
+        console.log('endTime:', endTime);
             const data = await response.json();
+
+            console.log('Response status:', response.status);
+        console.log('Response data:', data);
 
             if (response.ok) {
                 console.log('Session created successfully:', data);
@@ -61,9 +176,10 @@ export default function Croom({ conferenceId }) {
         }
     };
 
+    // get session details for all sessions
     const getSessions = async () => {
         try {
-            const response = await fetch(`http://3.110.135.90:5001/api/conferences/${conferenceId}/sessionIds`);
+            const response = await fetch(`http://localhost:5001/api/conferences/${conferenceId}/sessionIds`);
             const data = await response.json();
 
             if (response.ok) {
@@ -87,9 +203,10 @@ export default function Croom({ conferenceId }) {
         getSessions();
     }, []);
 
+    // get details of one session
     const getSessionDetails = async (sessionId) => {
         try {
-          const response = await fetch(`http://3.110.135.90:5001/api/conferences/${conferenceId}/session/${sessionId}`);
+          const response = await fetch(`http://localhost:5001/api/conferences/${conferenceId}/session/${sessionId}`);
           const data = await response.json();
     
           if (response.ok) {
@@ -110,6 +227,8 @@ export default function Croom({ conferenceId }) {
             <button onClick={toggleModal} className="btn-modal">
                 Add session
             </button>
+            <h5>Conference Room: {conferenceId}</h5>
+
             {modal && (
                 <div className="modal">
                     <div onClick={toggleModal} className="overlay"></div>
@@ -174,7 +293,7 @@ export default function Croom({ conferenceId }) {
                             </button>
                         </div>
                         <button className="close-modal" onClick={toggleModal}>
-                            CLOSE
+                            Close
                         </button>
                     </div>
                 </div>
@@ -188,6 +307,12 @@ export default function Croom({ conferenceId }) {
                 <p>End Time : {(new Date(session.endTime)).toLocaleString('en-US', { timeZone: 'Asia/Colombo' }) || "Loading"}</p>
                 <p>Speaker : {session.speaker || "Loading"}</p>
                 <br></br>
+                <button onClick={() => handleSessionDelete(session._id)}>
+                    Delete Session
+                </button>
+                <button onClick={() => handleSessionEdit(session._id)}>
+                    Edit Session
+                </button>
             </div>
             ))} 
         </div>

@@ -1,6 +1,7 @@
 const express = require("express");
 // const { getEmail, getConferenceNo, getUserId, getUserName } = require("../controller/attendeeController");
 const {
+  createAttendee,
   getAttendeeDetails,
   getAllAttendeeIds,
   getAllAttendees,
@@ -11,6 +12,7 @@ const router = express.Router();
 
 // router.use(validateToken);  // since all routes are protected routes, validated
 
+router.post("/create", createAttendee);
 // router.get('/', getAllAttendeeIds);
 router.get("/:id/details", getAttendeeDetails);
 router.get("/", getAllAttendees);

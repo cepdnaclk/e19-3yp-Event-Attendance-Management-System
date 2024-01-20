@@ -12,6 +12,9 @@ import Sidebar from "../components/Sidebar";
 
 export default function ConferenceRooms() {
   const [conferenceData, setConferenceData] = useState([]);
+  const [modal, setModal] = useState(false);
+  const [roomName, setRoomName] = useState("");
+  const [conferenceIds, setConferenceIds] = useState([]);
 
   useEffect(() => {
     const accessToken = localStorage.getItem("token");
@@ -19,7 +22,8 @@ export default function ConferenceRooms() {
       axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
       // Validate the token on the server
       axios
-        .get("http://l3.110.135.90:5001/api/conferences/")
+      // .get("http://localhost:5001/api/conferences/")
+        .get("http://localhost:5001/api/conferences/get")
         .then((response) => {
           console.log(response.data);
           setConferenceData(response.data);
@@ -29,9 +33,6 @@ export default function ConferenceRooms() {
         });
     }
   }, []);
-  const [modal, setModal] = useState(false);
-  const [roomName, setRoomName] = useState("");
-  const [conferenceIds, setConferenceIds] = useState([]);
 
   const toggleModal = () => {
     setModal(!modal);
@@ -41,9 +42,10 @@ export default function ConferenceRooms() {
     setRoomName(e.target.value);
   };
 
+  // add a new conference room
   const handleAddRoom = async () => {
     try {
-      const response = await fetch("http://3.110.135.90:5001/api/conferences", {
+      const response = await fetch("http://localhost:5001/api/conferences", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -57,6 +59,8 @@ export default function ConferenceRooms() {
         console.log("Conference created successfully:", data);
         // Refresh the list of conferences after creation
         fetchConferenceIds();
+        // Close the modal
+        toggleModal();
       } else {
         console.error("Error creating conference:", data.message);
       }
@@ -68,7 +72,7 @@ export default function ConferenceRooms() {
   const fetchConferenceIds = async () => {
     try {
       const response = await fetch(
-        "http://3.110.135.90:5001/api/conferences/conferenceIds"
+        "http://localhost:5001/api/conferences/conferenceIds"
       );
       const data = await response.json();
 
@@ -98,7 +102,7 @@ export default function ConferenceRooms() {
 
         {modal && (
           <div className="modal">
-            <div onClick={toggleModal} className="overlay"></div>
+            <div onClick={toggleModal} className="overlay"></div>   
             <div className="modal-content">
               <div>
                 <label htmlFor="roomName">Room Name:</label>
@@ -109,16 +113,12 @@ export default function ConferenceRooms() {
                   value={roomName}
                   onChange={handleRoomNameChange}
                 />
-                <button
-                  className="rounded"
-                  type="submit"
-                  onClick={handleAddRoom}
-                >
+                <button className="rounded" type="submit" onClick={handleAddRoom}>
                   Submit
                 </button>
               </div>
               <button className="close-modal" onClick={toggleModal}>
-                CLOSE
+                Close
               </button>
             </div>
           </div>

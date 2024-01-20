@@ -15,7 +15,7 @@ export default function Login_page({onLogin}) {
   const handleLogin = () => {
     // Send a request to your authentication endpoint using Axios
     axios
-      .post("http://3.110.135.90:5001/api/users/login", { email, password })
+      .post("http://localhost:5001/api/users/login", { email, password })
       .then((response) => {
         // console.log(onLogin);
         if (onLogin) {

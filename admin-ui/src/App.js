@@ -23,12 +23,15 @@ export default function App() {
         if (accessToken) {
         axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
           // Validate the token on the server
-          axios.get('http://3.110.135.90:5001/api/users/current')
+          axios.get('http://localhost:5001/api/users/current')
             .then(response => {
               setUser({ isAuthenticated: true, username: response.data.name });
             })
             .catch(error => {
               console.error('Token validation failed', error);
+
+              // If the token is expired or invalid, redirect to the login page
+            //   setUser({ isAuthenticated: false });
             });
         }
       }, []);
@@ -67,7 +70,6 @@ export default function App() {
                     )}
                     <Route path="/register" element={<RegistrationPage />} />
                     <Route path="/" element={<LoginPage onLogin={handleLogin} />} />
-
                     <Route path="*" element={<Navigate to="/" />} />
                 </Routes>
             </div>
