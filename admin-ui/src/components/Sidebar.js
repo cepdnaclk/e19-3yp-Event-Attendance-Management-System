@@ -1,125 +1,87 @@
 import React, { useState } from "react";
 import "../styles/main.scss";
-
-//import Icon from "../Images/eventflow_color";
+import { IoHomeOutline } from "react-icons/io5";
+import { TbBrandGoogleAnalytics } from "react-icons/tb";
+import { HiOutlineBuildingOffice2 } from "react-icons/hi2";
+import { MdOutlinePeopleAlt } from "react-icons/md";
+import { RiUserSettingsLine } from "react-icons/ri";
+import { GrUserManager } from "react-icons/gr";
+import { MdOutlinePhone } from "react-icons/md";
+import { IoIosLogOut } from "react-icons/io";
+import Icon from "../Images/eventflow_color.svg";
 import Profile from "../Images/profile.png";
-// import Dashboard from "../Images/dashboard.svg";
-import Transactions from "../Images/transactions.svg";
-import Performance from "../Images/performance.svg";
-import News from "../Images/news.svg";
-import Settings from "../Images/settings.svg";
-import Support from "../Images/support.svg";
 import { useLocation } from "react-router-dom";
 
 const Sidebar = () => {
     const location = useLocation();
 
-    const [closeMenu, setCloseMenu] = useState(false);
-
-    const handleCloseMenu = () => {
-        setCloseMenu(!closeMenu);
-    };
-
     return (
-        <div className={closeMenu === false ? "sidebar" : "sidebar active"}>
-            <div
-                className={
-                    closeMenu === false
-                        ? "logoContainer"
-                        : "logoContainer active"
-                }
-            >
+        <div className="sidebar">
+            <div className="logoContainer">
+                <img src={Icon} alt="profile" className="eventflowicon" />
+            </div>
 
-                <h2 className="title">EVENT FLOW</h2>
-            </div>
-            <div
-                className={
-                    closeMenu === false
-                        ? "burgerContainer"
-                        : "burgerContainer active"
-                }
-            >
-                <div
-                    className="burgerTrigger"
-                    onClick={() => {
-                        handleCloseMenu();
-                    }}
-                ></div>
-                <div className="burgerMenu"></div>
-            </div>
-            <div
-                className={
-                    closeMenu === false
-                        ? "profileContainer"
-                        : "profileContainer active"
-                }
-            >
+            <div className="profileContainer" >
                 <img src={Profile} alt="profile" className="profile" />
                 <div className="profileContents">
                     <p className="name">John  Smith</p>
                     <p>johnsmith@gmail.com</p>
                 </div>
             </div>
-            <div
-                className={
-                    closeMenu === false
-                        ? "contentsContainer"
-                        : "contentsContainer active"
-                }
-            >
+
+            <div className="contentsContainer">
+                <div className="mainT1"> Menu</div>
                 <ul>
                     {/* <li className={location.pathname === "/" ? "active" : ""}>
                         <img src={Dashboard} alt="dashboard" />
                         <a href="/">dashboard</a>
                     </li> */}
-                    <li
-                        className={
-                            location.pathname === "/ConferenceRooms"
-                                ? "active" : ""
-                        }
-                    >
-                        <img src={News} alt="ConferenceRooms" />
+                    <li className={location.pathname === "/ConferenceRooms" ? "active" : ""}>
+                        <HiOutlineBuildingOffice2 className=" sidebaricons" />
                         <a href="/ConferenceRooms">Conference Rooms</a>
-                    </li>                    
+                    </li>
 
-                    {/* <li
-                        className={
-                            location.pathname === "/Attendees" ? "active" : ""
-                        }
-                    >
+                    {/* <li className ={location.pathname === "/Attendees" ? "active" : ""}>
                         <img src={Support} alt="Attendees" />
                         <a href="/Attendees ">Attendees</a>
                     </li> */}
 
-                    <li
-                        className={
-                            location.pathname === "/Overview"
-                                ? "active"
-                                : ""
-                        }
-                    >
-                        <img src={Transactions} alt="Overview" />
-                        <a href="/Overview ">Overview </a>
-                    </li>
-                    <li
-                        className={
-                            location.pathname === "/settings" ? "active" : ""
-                        }
-                    >
-                        <img src={Settings} alt="Settings" />
-                        <a href="/settings">Attendees</a>
+                    <li className={location.pathname === "/Overview" ? "active" : ""}>
+                        <IoHomeOutline className=" sidebaricons" />
+                        <a href="/Overview">Overview </a>
                     </li>
 
-                    <li
-                        className={
-                            location.pathname === "/Analytics" ? "active" : ""
-                        }
-                    >
-                        <img src={Performance} alt="Analytics" />
+                    <li className={location.pathname === "/Settings" ? "active" : ""}>
+                        <MdOutlinePeopleAlt className=" sidebaricons" />
+                        <a href="/Settings">Attendees</a>
+                    </li>
+
+                    <li className={location.pathname === "/Analytics" ? "active" : ""}>
+                        <TbBrandGoogleAnalytics className=" sidebaricons" />
                         <a href="/Analytics">Analytics</a>
                     </li>
 
+                    <div className="mainT2"> Settings</div>
+                    <li className={location.pathname === "/Analytics" ? "active" : ""}>
+                        <RiUserSettingsLine className=" sidebaricons" />
+                        <a href="/Analytics">Profile</a>
+                    </li>
+                    <li className={location.pathname === "/Analytics" ? "active" : ""}>
+                        <GrUserManager className=" sidebaricons" />
+                        <a href="/Analytics">Session Manager</a>
+                    </li>
+                    <li className={location.pathname === "/Analytics" ? "active" : ""}>
+                        <MdOutlinePhone className=" sidebaricons" />
+                        <a href="/Analytics">Contact us</a>
+                    </li>
+                    <li className={location.pathname === "/Analytics" ? "active" : ""}>
+                        <IoIosLogOut className=" sidebaricons" />
+                        <a href="/Analytics">Logout</a>
+                    </li>
+
                 </ul>
+
+
             </div>
         </div>
     );
