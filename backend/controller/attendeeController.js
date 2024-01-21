@@ -1,7 +1,32 @@
 const asyncHandler = require("express-async-handler");
 const Attendee = require("../models/attendeeModel");
 
-// @access Private  
+// @access Private
+
+const createAttendee = asyncHandler(async (req, res) => {
+  const { name, email, password, conNo, rfidNo } = req.body;
+
+  try {
+      const attendee = await Attendee.create({
+          name,
+          email,
+          password,
+          conNo,
+          rfidNo,
+      });
+
+      res.status(201).json({
+          _id: attendee._id,
+          name: attendee.name,
+          email: attendee.email,
+          conNo: attendee.conNo,
+          rfidNo: attendee.rfidNo,
+      });
+  } catch (error) {
+      console.error('Error creating attendee:', error);
+      res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
 
 // get all attendee ids
 const getAllAttendeeIds = asyncHandler(async (req, res) => {
@@ -44,7 +69,7 @@ const getAllAttendees = asyncHandler(async (req, res) => {
   res.status(200).json(attendee);
 });
 
-module.exports = { getAttendeeDetails, getAllAttendees, getAllAttendeeIds };
+module.exports = { createAttendee, getAttendeeDetails, getAllAttendees, getAllAttendeeIds };
 
   
 

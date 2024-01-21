@@ -38,6 +38,8 @@ const getSessionIds = asyncHandler(async (req, res) => {
   }
 });
 
+// get all 
+
 // const getSessionIds = async () => {
 //   try {
 //     const sessions = await Session.find({}, '_id');
@@ -52,7 +54,6 @@ const getSessionIds = asyncHandler(async (req, res) => {
 
 
 
-////////////////// Create a new conference room
 /////////////////////// Get all conference details
 const getAllConferences = asyncHandler(async (req, res) => {
 
@@ -67,6 +68,8 @@ const getAllConferences = asyncHandler(async (req, res) => {
   res.status(200).json(conference);
 });
 
+
+////////////////// Create a new conference room
 const createConference = asyncHandler(async (req, res) => {
   try {
     const { conferenceDetails } = req.body;

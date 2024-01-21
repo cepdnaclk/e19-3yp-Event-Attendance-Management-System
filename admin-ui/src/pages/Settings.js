@@ -68,7 +68,7 @@ const Settings = () => {
       axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
       // Validate the token on the server
       axios
-        .get("http://3.110.135.90:5001/api/attendees")
+        .get("http://localhost:5001/api/attendees")
         .then((response) => {
           console.log(response.data);
           setData(response.data);

@@ -18,6 +18,9 @@ const router = express.Router();
 
 // router.use(validateToken);
 
+// Get all conferences
+router.get("/get", getAllConferences);
+
 // get all conferences ids
 router.get("/conferenceIds", getConferenceIds);
 
@@ -30,7 +33,7 @@ router.get("/:conferenceId/sessionIds", getSessionIds);
 router.post("/session/:id", createSession);
 
 // Update Session details
-router.put("/:id/session/:sessionId", updateSessionDetails);
+router.put("/:id/sessionup/:sessionId", updateSessionDetails);
 
 // Get session details
 router.get("/:id/session/:sessionId", getSessionDetails);
@@ -51,8 +54,5 @@ router.get("/:id", getConferenceDetails);
 
 // Delete a conference
 router.delete("/:id", deleteConference);
-
-// Get all conferences
-router.get("/", getAllConferences);
 
 module.exports = router;
