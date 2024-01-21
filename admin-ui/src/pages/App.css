@@ -1,9 +1,10 @@
 .Appss{
-  position: relative;
-  left: 9.5cm;
-  top: 1cm;
+  position: absolute;
+  left: 7.5cm;
+  
   width: 75%;
   text-align: center;
+  background-color: antiquewhite;
   
 }
   h1 {
@@ -63,34 +64,38 @@
   }
 
   .CAppss{
-    position: relative;
-    left: 9.5cm;
+    position: fixed;
+    left: 8.5cm;
     top: 2.3cm;
     width: 75%;
+   
+  
+   
+    
   }  
   .Ccr1{
     /* background-color: ; */
-    position: relative;
-    top: 0.5cm;
-    font-size: 25px;
-    width: fit-content;
-    margin-top: 20px;
-    margin-left: 50%;
-    top: 1.5cm;
+    position: absolute;
+    font-size: 20px;
+    left: 8.5cm;
+    top: 1cm;
 
   }
-
+.ss{
+  background-color: beige;
+ 
+}
   .Ccard {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     max-width: 450px;
     height: 20rem;
-    margin: 20px auto;
+    margin: 20px 20px;
     text-align: center;
     font-family: 'Arial', sans-serif;
     background-color: rgb(138, 215, 239);
     border-radius: 10px;
     overflow: hidden;
-    position: relative;
+   
 
   }
   .Ccard h2{
@@ -221,3 +226,73 @@ button:hover {
     border-radius: 10px;
   }
 
+  .des{
+    position: relative;
+    background-color: #ffffff;
+    top: 0.5cm;
+    width: 75%;
+    left: 8.8cm;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .contactContainer {
+   position: relative;
+    background-color: #ffffff;
+   padding-left: 15px;
+   padding-right: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  width: 600px;
+   left: 40%;
+    height: 14cm;
+    top: 0.4cm;
+   
+}
+
+.contactContainer h2 {
+    text-align: center;
+    color: #615c5c;
+    margin-bottom: 1px;
+}
+
+.contactContainer form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contactContainer label {
+    margin-bottom: 4px;
+    color: #252323;
+}
+
+.contactContainer input[type="text"],
+.contactContainer input[type="email"],
+.contactContainer textarea {
+    width: 100%;
+    padding: 5px;
+    margin-top: 2px;
+    border: 1px solid #ada8a8;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.contactContainer textarea {
+    height: 80px;
+    
+}
+
+.contactContainer button {
+  
+    color: white;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contactContainer button:hover {
+    background-color: #10293d;
+}

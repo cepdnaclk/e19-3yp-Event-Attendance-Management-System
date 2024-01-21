@@ -70,9 +70,9 @@ const Sidebar = () => {
                         <GrUserManager className=" sidebaricons" />
                         <a href="/Analytics">Session Manager</a>
                     </li>
-                    <li className={location.pathname === "/Analytics" ? "active" : ""}>
+                    <li className={location.pathname === "/ContactUs" ? "active" : ""}>
                         <MdOutlinePhone className=" sidebaricons" />
-                        <a href="/Analytics">Contact us</a>
+                        <a href="/ContactUs">Contact us</a>
                     </li>
                     <li className={location.pathname === "/Analytics" ? "active" : ""}>
                         <IoIosLogOut className=" sidebaricons" />
