@@ -5,26 +5,36 @@ import EventSection from "./EventSection";
 export default function MainSection() {
   // Sample data for upcoming events
   const events = [
-    // Event 1
+    // Event desc1
     {
       id: 1,
       title: "Event 1",
-      img: "/event1.jpg",
-      description: "Location: Conference Room 1",
+      location: "Conference Room 1",
+      startTime: "9.30 AM",
+      endTime:"11.30 AM",
     },
     // Event 2
     {
       id: 2,
       title: "Event 2",
-      img: "/event2.jpg",
-      description: "Location: Conference Room 2",
+      location: "Conference Room 2",
+      startTime: "9.30 AM",
+      endTime:"11.30 AM",
     },
     // Event 3
     {
       id: 3,
       title: "Event 3",
-      img: "/event3.jpg",
-      description: "Location: Conference Room 3",
+      location: "Conference Room 3",
+      startTime: "9.30 AM",
+      endTime:"11.30 AM",
+    },
+    {
+      id: 4,
+      title: "Event 3",
+      location: "Conference Room 3",
+      startTime: "9.30 AM",
+      endTime:"11.30 AM",
     },
   ];
 
@@ -34,29 +44,33 @@ export default function MainSection() {
     {
       id: 1,
       title: "Event 1",
-      img: "/event4.jpg",
-      description: "Location: Conference Room 1",
+      location: "Conference Room 1",
+      startTime: "9.30 AM",
+      endTime:"11.30 AM",
     },
     // Ongoing Event 2
     {
       id: 2,
       title: "Event 2",
-      img: "/event3.jpg",
-      description: "Location: Conference Room 2",
+      location: "Conference Room 2",
+      startTime: "9.30 AM",
+      endTime:"11.30 AM",
     },
     // Ongoing Event 3
     {
       id: 3,
       title: "Event 3",
-      img: "/event2.jpg",
-      description: "Location: Conference Room 3",
+      location: "Conference Room 3",
+      startTime: "9.30 AM",
+      endTime:"11.30 AM",
     },
     // Ongoing Event 4
     {
       id: 4,
       title: "Event 4",
-      img: "/event2.jpg",
-      description: "Location: Conference Room 4",
+      location: "Conference Room 4",
+      startTime: "9.30 AM",
+      endTime:"11.30 AM",
     },
   ];
 
@@ -82,13 +96,13 @@ export default function MainSection() {
       {/* Sidebar with logo and background image */}
       <div className="flex h-screen sticky top-0 items-start flex-col justify-start">
         {/* Logo */}
-        <img src="./logo.png" alt="logo" className="w-72 h-auto m-4 mb-0" />
+        <img src="./logo.png" alt="logo" className="w-72 h-auto m-3 mb-0" />
         {/* Background image */}
 
         <img
           src="./background.png"
           alt="background"
-          className=" w-200 h-200 overflow-hidden justify-center items-center mt-0 ml-11 rounded-full border-2 border-blue-600"
+          className="lg:w-200 lg:h-200 md:w-50 md:h-50 overflow-hidden justify-center items-center mt-0 lg:ml-11 sm:ml-3 rounded-full border-2 border-blue-600 transition duration-300 ease-in-out transform hover:scale-105 object-fill-cover"
           // style={{
           //   transform: `rotate(${rotationAngle}deg)`, // Rotate based on state
           //   transition: "transform 5s linear", // Optional: Add a smooth transition effect
@@ -96,6 +110,7 @@ export default function MainSection() {
         />
       </div>
       {/* Main content area with upcoming and registered events */}
+
       <div className="flex flex-col gap-2 justify-start items-center flex-1">
         {/* EventSection for displaying hottest events */}
         <EventSection
