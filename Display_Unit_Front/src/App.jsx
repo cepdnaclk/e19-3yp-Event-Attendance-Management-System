@@ -13,7 +13,7 @@ function App() {
     setTimeout(() => {
       // Set isScanned to true after the delay
       setIsScanned(true);
-    }, 68000); // 68 seconds delay
+    }, 1000); // 1 seconds delay
   }, [isScanned]); // useEffect will re-run when isScanned changes
 
   // Conditional rendering based on the isScanned state

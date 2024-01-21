@@ -11,7 +11,7 @@ export default function MainSection() {
       title: "Event 1",
       location: "Conference Room 1",
       startTime: "9.30 AM",
-      endTime:"11.30 AM",
+      endTime: "11.30 AM",
     },
     // Event 2
     {
@@ -19,7 +19,7 @@ export default function MainSection() {
       title: "Event 2",
       location: "Conference Room 2",
       startTime: "9.30 AM",
-      endTime:"11.30 AM",
+      endTime: "11.30 AM",
     },
     // Event 3
     {
@@ -27,14 +27,14 @@ export default function MainSection() {
       title: "Event 3",
       location: "Conference Room 3",
       startTime: "9.30 AM",
-      endTime:"11.30 AM",
+      endTime: "11.30 AM",
     },
     {
       id: 4,
       title: "Event 3",
       location: "Conference Room 3",
       startTime: "9.30 AM",
-      endTime:"11.30 AM",
+      endTime: "11.30 AM",
     },
   ];
 
@@ -46,7 +46,7 @@ export default function MainSection() {
       title: "Event 1",
       location: "Conference Room 1",
       startTime: "9.30 AM",
-      endTime:"11.30 AM",
+      endTime: "11.30 AM",
     },
     // Ongoing Event 2
     {
@@ -54,7 +54,7 @@ export default function MainSection() {
       title: "Event 2",
       location: "Conference Room 2",
       startTime: "9.30 AM",
-      endTime:"11.30 AM",
+      endTime: "11.30 AM",
     },
     // Ongoing Event 3
     {
@@ -62,7 +62,7 @@ export default function MainSection() {
       title: "Event 3",
       location: "Conference Room 3",
       startTime: "9.30 AM",
-      endTime:"11.30 AM",
+      endTime: "11.30 AM",
     },
     // Ongoing Event 4
     {
@@ -70,7 +70,7 @@ export default function MainSection() {
       title: "Event 4",
       location: "Conference Room 4",
       startTime: "9.30 AM",
-      endTime:"11.30 AM",
+      endTime: "11.30 AM",
     },
   ];
 
@@ -96,13 +96,17 @@ export default function MainSection() {
       {/* Sidebar with logo and background image */}
       <div className="flex h-screen sticky top-0 items-start flex-col justify-start">
         {/* Logo */}
-        <img src="./logo.png" alt="logo" className="w-72 h-auto m-3 mb-0" />
+        <img
+          src="./eventflow_color.svg"
+          alt="logo"
+          className="w-64 h-auto m-3 mb-11"
+        />
         {/* Background image */}
 
         <img
-          src="./background.png"
+          src="./bg.png"
           alt="background"
-          className="lg:w-200 lg:h-200 md:w-50 md:h-50 overflow-hidden justify-center items-center mt-0 lg:ml-11 sm:ml-3 rounded-full border-2 border-blue-600 transition duration-300 ease-in-out transform hover:scale-105 object-fill-cover"
+          className="lg:w-200 lg:h-200 md:w-50 md:h-50 overflow-hidden justify-center items-center mt-0 lg:ml-11 sm:ml-3  transition duration-300 ease-in-out transform hover:scale-105 "
           // style={{
           //   transform: `rotate(${rotationAngle}deg)`, // Rotate based on state
           //   transition: "transform 5s linear", // Optional: Add a smooth transition effect
