@@ -5,6 +5,7 @@ export default function ConferneceRoomCards(props) {
 
         <div className="Ccard">
 
+
             <h2>Conference Room {props.room}</h2>
             {/* <img className="Cimage" src={props.url} alt="" /> */}
 

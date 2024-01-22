@@ -16,57 +16,57 @@ export default function Overview() {
       console.log("got");
 
       if (response.ok) {
-      const filteredConferences = data.filter((conference) =>
-        conference.sessions.some((session) => {
-          const startTime = new Date(session.startTime);
-          const endTime = new Date(session.endTime);
-          const currentTime = new Date();
+        const filteredConferences = data.filter((conference) =>
+          conference.sessions.some((session) => {
+            const startTime = new Date(session.startTime);
+            const endTime = new Date(session.endTime);
+            const currentTime = new Date();
 
-          // Format the dates to the desired format
+            // Format the dates to the desired format
 
-          // const options = {
-          //   timeZone: 'Asia/Colombo',
-          //   weekday: 'short',
-          //   year: 'numeric',
-          //   month: 'short',
-          //   day: 'numeric',
-          //   hour: 'numeric',
-          //   minute: 'numeric',
-          //   second: 'numeric',
-          // };          
-          // const formattedStartTime = startTime.toLocaleString('en-US', options);
-          // const formattedEndTime = endTime.toLocaleString('en-US', options);
-          // const formattedCurrentTime = currentTime.toLocaleString('en-US', options);
-      
-          const formattedStartTime = startTime.toLocaleString('en-US', { timeZone: 'Asia/Colombo' });
-          const formattedEndTime = endTime.toLocaleString('en-US', { timeZone: 'Asia/Colombo' });
-          const ToformattedCurrentTime = currentTime.toLocaleString('en-US', { timeZone: 'Asia/Colombo' });
+            // const options = {
+            //   timeZone: 'Asia/Colombo',
+            //   weekday: 'short',
+            //   year: 'numeric',
+            //   month: 'short',
+            //   day: 'numeric',
+            //   hour: 'numeric',
+            //   minute: 'numeric',
+            //   second: 'numeric',
+            // };          
+            // const formattedStartTime = startTime.toLocaleString('en-US', options);
+            // const formattedEndTime = endTime.toLocaleString('en-US', options);
+            // const formattedCurrentTime = currentTime.toLocaleString('en-US', options);
 
-          // Convert the formatted string to a Date object
-          const CurrentTime = new Date(ToformattedCurrentTime);
+            const formattedStartTime = startTime.toLocaleString('en-US', { timeZone: 'Asia/Colombo' });
+            const formattedEndTime = endTime.toLocaleString('en-US', { timeZone: 'Asia/Colombo' });
+            const ToformattedCurrentTime = currentTime.toLocaleString('en-US', { timeZone: 'Asia/Colombo' });
 
-          // Subtract 15 hours and 30 minutes
-          const formattedCurrentTime = new Date(
-          CurrentTime.getFullYear(),
-          CurrentTime.getMonth(),
-          CurrentTime.getDate(), 
-          CurrentTime.getHours() - 19,
-          CurrentTime.getMinutes(),
-          CurrentTime.getSeconds(),
+            // Convert the formatted string to a Date object
+            const CurrentTime = new Date(ToformattedCurrentTime);
+
+            // Subtract 15 hours and 30 minutes
+            const formattedCurrentTime = new Date(
+              CurrentTime.getFullYear(),
+              CurrentTime.getMonth(),
+              CurrentTime.getDate(),
+              CurrentTime.getHours() - 19,
+              CurrentTime.getMinutes(),
+              CurrentTime.getSeconds(),
+            );
+
+            const adjustedTime = formattedCurrentTime.toLocaleString('en-US', { timeZone: 'Asia/Colombo' });
+
+            console.log('Start Time:', formattedStartTime);
+            console.log('End Time:', formattedEndTime);
+            // console.log('Current Time:', formattedCurrentTime);
+            // console.log('Current Time:', CurrentTime.toLocaleString('en-US', { timeZone: 'Asia/Colombo' }));
+            console.log('Adjusted Time:', adjustedTime);
+
+            // Return true or false based on the comparison
+            return formattedStartTime <= adjustedTime && adjustedTime <= formattedEndTime;
+          })
         );
-
-        const adjustedTime = formattedCurrentTime.toLocaleString('en-US', { timeZone: 'Asia/Colombo' });
-
-          console.log('Start Time:', formattedStartTime);
-          console.log('End Time:', formattedEndTime);
-          // console.log('Current Time:', formattedCurrentTime);
-          // console.log('Current Time:', CurrentTime.toLocaleString('en-US', { timeZone: 'Asia/Colombo' }));
-          console.log('Adjusted Time:', adjustedTime);
-
-        // Return true or false based on the comparison
-        return formattedStartTime <= adjustedTime && adjustedTime <= formattedEndTime;
-        })
-      );
         setOngoingConferences(filteredConferences);
         console.log("Ongoing Conferences fetched successfully:", filteredConferences);
       } else {
@@ -117,9 +117,10 @@ export default function Overview() {
   }, [ongoingConferences]);
 
   return (
-    <>
-      <Sidebar />
-      <div>
+    <div className="ss">
+      <>
+        <Sidebar />
+
         <div className=" Ccr1"> Ongoing Sessions</div>
         <div className="CAppss">
           <Carousel showDots={true} responsive={responsive}>
@@ -136,15 +137,16 @@ export default function Overview() {
                       topic={session.sessionName}
                       Ccapacity={conference.CurrentCapacity}
                       Mcapacity={conference.MaxCapacity}
-                      // Add more properties as needed
+                    // Add more properties as needed
                     />
                   ))}
               </div>
             ))}
           </Carousel>
         </div>
-      </div>
-    </>
+
+      </>
+    </div>
   );
 }
 
