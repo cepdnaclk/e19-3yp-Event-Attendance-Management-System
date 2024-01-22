@@ -3,76 +3,9 @@ import EventSection from "./EventSection";
 
 // MainSection component representing the main content of the application
 export default function MainSection() {
-  // Sample data for upcoming events
-  const events = [
-    // Event desc1
-    {
-      id: 1,
-      title: "Event 1",
-      location: "Conference Room 1",
-      startTime: "9.30 AM",
-      endTime:"11.30 AM",
-    },
-    // Event 2
-    {
-      id: 2,
-      title: "Event 2",
-      location: "Conference Room 2",
-      startTime: "9.30 AM",
-      endTime:"11.30 AM",
-    },
-    // Event 3
-    {
-      id: 3,
-      title: "Event 3",
-      location: "Conference Room 3",
-      startTime: "9.30 AM",
-      endTime:"11.30 AM",
-    },
-    {
-      id: 4,
-      title: "Event 3",
-      location: "Conference Room 3",
-      startTime: "9.30 AM",
-      endTime:"11.30 AM",
-    },
-  ];
-
-  // Sample data for ongoing events
-  const ongoingevents = [
-    // Ongoing Event 1
-    {
-      id: 1,
-      title: "Event 1",
-      location: "Conference Room 1",
-      startTime: "9.30 AM",
-      endTime:"11.30 AM",
-    },
-    // Ongoing Event 2
-    {
-      id: 2,
-      title: "Event 2",
-      location: "Conference Room 2",
-      startTime: "9.30 AM",
-      endTime:"11.30 AM",
-    },
-    // Ongoing Event 3
-    {
-      id: 3,
-      title: "Event 3",
-      location: "Conference Room 3",
-      startTime: "9.30 AM",
-      endTime:"11.30 AM",
-    },
-    // Ongoing Event 4
-    {
-      id: 4,
-      title: "Event 4",
-      location: "Conference Room 4",
-      startTime: "9.30 AM",
-      endTime:"11.30 AM",
-    },
-  ];
+  const [ongoingEvents, setOngoingEvents] = useState([]);
+  const [registeredEvents, setRegisteredEvents] = useState([]);
+  
 
   // // State to manage the rotation angle
   // const [rotationAngle, setRotationAngle] = useState(0);
@@ -113,12 +46,15 @@ export default function MainSection() {
 
       <div className="flex flex-col gap-2 justify-start items-center flex-1">
         {/* EventSection for displaying hottest events */}
-        <EventSection
+        {/* <EventSection
           events={ongoingevents.slice(0, 3)} // Displaying the first 3 ongoing events
           title="Headline Events"
-        />
+        /> */}
+        <EventSection events={ongoingEvents} title="Headline Events" />
+
         {/* EventSection for displaying registered events */}
-        <EventSection events={events} title="Registered Events" />
+        {/* <EventSection events={events} title="Registered Events" /> */}
+        <EventSection events={registeredEvents} title="Registered Events" />
       </div>
     </div>
   );
