@@ -5,19 +5,22 @@ export default function ConferneceRoomCards(props) {
 
         <div className="Ccard">
 
-            <h4>{props.topic}</h4>
+            <div className='ceee'>{props.topic}</div>
             {/* <img className="Cimage" src={props.url} alt="" /> */}
+            <hr />
             <p className="Cname">
-                <p>Room: {props.conferenceName}</p>
-                <p>Speaker: {props.name}</p>
-                <p>About: {props.details}</p>
-                <p>Start Time: {props.StartTime}</p>
-                <p>End Time: {props.EndTime}</p>
-
+                <div className='r2'>Room: {props.conferenceName}</div>
+                <div className='ab'>About: {props.details}</div>
+                <div className='sp'>Speaker: {props.name}</div>
+                <div className='ti'> {props.StartTime}-{props.EndTime} </div>
             </p>
+            <hr />
             <p className="Cname2">
-                <p>Current Capacity :{props.Ccapacity}</p>
-                <p> Max Capacity    :{props.Mcapacity}</p>
+                <span className="label21">Current Capacity</span>
+                <span className="ca1">{props.Ccapacity}</span>
+                <br />
+                <span className="label22">Max Capacity</span>
+                <span className="ca2">{props.Mcapacity}</span>
             </p>
 
         </div>
