@@ -5,13 +5,15 @@ export default function ConferneceRoomCards(props) {
 
         <div className="Ccard">
 
-
-            <h2>Conference Room {props.room}</h2>
+            <h4>{props.topic}</h4>
             {/* <img className="Cimage" src={props.url} alt="" /> */}
-
             <p className="Cname">
+                <p>Room: {props.conferenceName}</p>
                 <p>Speaker: {props.name}</p>
-                <p>Topic: {props.topic}</p>
+                <p>About: {props.details}</p>
+                <p>Start Time: {props.StartTime}</p>
+                <p>End Time: {props.EndTime}</p>
+
             </p>
             <p className="Cname2">
                 <p>Current Capacity :{props.Ccapacity}</p>
