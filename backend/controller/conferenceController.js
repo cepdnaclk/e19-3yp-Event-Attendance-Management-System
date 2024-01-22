@@ -1,6 +1,20 @@
 const asyncHandler = require("express-async-handler");
 const {Conference, Session } = require("../models/conferenceModel");
 
+////////////get hot sessions
+const getHotSessions = async () => {
+  try {
+    const hotSessions = await Session.find()
+      .sort({ maxAttendeeCap: -1 }) // Sort sessions in descending order based on maxAttendeeCap
+      .limit(5); // Limit the result to the top 5 sessions (adjust as needed)
+
+    return hotSessions;
+  } catch (error) {
+    console.error('Error getting hot sessions:', error);
+    throw error;
+  }
+};
+
 ////////////////// CONFERENCES //////////////////////
 
 ///////////get All conference ids
@@ -229,6 +243,29 @@ const updateSessionDetails = asyncHandler(async (req, res) => {
   res.status(200).json({ message: "Session details updated successfully" });
 });
 
+
+////////////////// Get session details by session ID without conference ID
+const getSessionDetailsBy_SesId = asyncHandler(async (req, res) => {
+  const { id: conferenceId, sessionId } = req.params;
+
+  // Check if the conference exists
+  const conference = await Conference.findById(conferenceId);
+
+  if (!conference) {
+    res.status(404);
+    throw new Error("Conference not found for the given conferenceId");
+  }
+
+  // Find the session in the sessions array based on sessionId
+  const sessionDetails = conference.sessions.id(sessionId);
+
+  if (!sessionDetails) {
+    res.status(404);
+    throw new Error("Session not found for the given sessionId");
+  }
+
+  res.status(200).json(sessionDetails);
+});
 
 ////////////////// Get session details by session ID
 const getSessionDetails = asyncHandler(async (req, res) => {
