@@ -122,8 +122,16 @@ body {
             }
 
             li:hover {
-                background-color: $lightGrey;
-                transition: 0.25s;
+                a {
+                    color: rgb(14, 137, 231);
+                    transition: 0.30s;
+                  
+                }
+                .sidebaricons{
+                    color: rgb(14, 137, 231);
+                    transition: 0.30s;
+                }
+             
             }
         }
     }
