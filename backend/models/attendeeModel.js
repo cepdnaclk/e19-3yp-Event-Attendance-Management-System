@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
 const attendeeSchema = mongoose.Schema({
-    id: {
-        type: String,
-        required: true,
-        unique: true,
-    },
+    // id: {
+    //     type: String,
+    //     required: true,
+    //     unique: true,
+    // },
     name: {
         type: String,
         required: true,
@@ -17,7 +17,7 @@ const attendeeSchema = mongoose.Schema({
     password: {
         type: String,
         required: true,
-        unique: true,
+        // unique: true,
     },
     conNo: {
         type: String,

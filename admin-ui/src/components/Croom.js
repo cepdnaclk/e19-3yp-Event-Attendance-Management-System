@@ -130,11 +130,6 @@ export default function Croom({ conferenceId }) {
             return prevSessionName; // Return the updated value
           });
         //   console.log('sessionName:', sessionName);
-        // console.log('speakerName:', speakerName);
-        // console.log('sessionDetails:', sessionDetails);
-        // console.log('maxCapacity:', maxCapacity);
-        // console.log('startTime:', startTime);
-        // console.log('endTime:', endTime);
             const response = await fetch(`http://localhost:5001/api/conferences/session/${conferenceId}`, {
             // const response = await fetch(`http://3.110.135.90:5001/api/conferences/session/65993c23a87fe5df449913c2`, {
                 method: 'POST',
@@ -152,15 +147,15 @@ export default function Croom({ conferenceId }) {
             });
 
             console.log('sessionName:', sessionName);
-        console.log('speakerName:', speakerName);
-        console.log('sessionDetails:', sessionDetails);
-        console.log('maxCapacity:', maxCapacity);
-        console.log('startTime:', startTime);
-        console.log('endTime:', endTime);
+            console.log('speakerName:', speakerName);
+            console.log('sessionDetails:', sessionDetails);
+            console.log('maxCapacity:', maxCapacity);
+            console.log('startTime:', startTime);
+            console.log('endTime:', endTime);
             const data = await response.json();
 
             console.log('Response status:', response.status);
-        console.log('Response data:', data);
+            console.log('Response data:', data);
 
             if (response.ok) {
                 console.log('Session created successfully:', data);
@@ -221,6 +216,28 @@ export default function Croom({ conferenceId }) {
           return 'Error';
         }
       };
+
+
+      const subtractTime = (dateTimeString, hours, minutes) => {
+        const dateTime = new Date(dateTimeString);
+        dateTime.setHours(dateTime.getHours() - hours);
+        dateTime.setMinutes(dateTime.getMinutes() - minutes);
+      
+        // Format the adjusted date and time
+        const adjustedTime = dateTime.toLocaleString('en-US', {
+          timeZone: 'Asia/Colombo',
+          // weekday: 'short',
+          year: 'numeric',
+          month: 'numeric',
+          day: 'numeric',
+          hour: 'numeric',
+          minute: 'numeric',
+          second: 'numeric',
+        });
+      
+        return adjustedTime;
+      };
+      
 
     return (
         <div className="cx">
@@ -303,8 +320,10 @@ export default function Croom({ conferenceId }) {
                 <p>Session Name : {session.sessionName || "Loading"}</p>
                 <p>Session Details : {session.SessionDetails || "Loading"}</p>
                 <p>Max Capacity : {session.maxAttendeeCap || "Loading"}</p>
-                <p>Start Time : {(new Date(session.startTime)).toLocaleString('en-US', { timeZone: 'Asia/Colombo' }) || "Loading"}</p>
-                <p>End Time : {(new Date(session.endTime)).toLocaleString('en-US', { timeZone: 'Asia/Colombo' }) || "Loading"}</p>
+                <p>Start Time : {subtractTime(session.startTime, 5, 30) || "Loading"}</p>
+                <p>End Time : {subtractTime(session.endTime, 5, 30) || "Loading"}</p>
+                {/* <p>Start Time : {session.startTime || "Loading"}</p>
+                <p>End Time : {session.endTime || "Loading"}</p> */}
                 <p>Speaker : {session.speaker || "Loading"}</p>
                 <br></br>
                 <button onClick={() => handleSessionDelete(session._id)}>
