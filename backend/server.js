@@ -3,6 +3,7 @@ const errorHandler = require("./middleware/errorHandler");
 const connectDB = require("./config/dbConnection");
 const dotenv = require("dotenv").config();
 const cors = require("cors");
+// const validateToken = require("./middleware/validateToken");
 
 // const mqtt = require("./controller/sessionCurrentController"); // Import the MQTT controller
 
@@ -37,6 +38,7 @@ app.get("/", (req, res) => {
 // Routes
 app.use("/api/users", require("./routes/userRoutes"));
 app.use("/api/attendees", require("./routes/attendeeRoutes"));
+// app.use("/api/attendees", validateToken, require("./routes/attendeeRoutes"));
 app.use("/api/conferences", require("./routes/conferenceRoutes"));
 app.use("/api/sessionreg", require("./routes/sessionRegisteredRoutes"));
 app.use("/api/sessioncurrent", require("./routes/sessionCurrentRoutes"));

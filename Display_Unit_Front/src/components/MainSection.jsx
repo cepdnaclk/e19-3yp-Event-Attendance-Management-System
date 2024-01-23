@@ -3,9 +3,50 @@ import EventSection from "./EventSection";
 
 // MainSection component representing the main content of the application
 export default function MainSection() {
+  // const [ongoingEvents, setOngoingEvents] = useState([]);
+  const [hotSessions, setHotSessions] = useState([]);
+  const [registeredSessions, setRegisteredSessions] = useState([]);
+  const [rfidNo, setRfidNo] = useState('');
 
-  const [ongoingEvents, setOngoingEvents] = useState([]);
-  const [registeredEvents, setRegisteredEvents] = useState([]);
+  // Function to fetch registered sessions for a relevant rfidNo
+  const fetchRegisteredSessions = async () => {
+    try {
+      // const response = await fetch(`http://localhost:5001/api/sessionreg/rfid/${rfidNo}`);
+      const response = await fetch(`http://localhost:5001/api/sessionreg/rfid/003`);
+      const data = await response.json();
+
+      if (response.ok) {
+        const sessionIds = data.sessionIds;
+
+        // Fetch session details for the obtained sessionIds
+        const sessionDetailsResponse = await fetch(`http://localhost:5001/api/conferences/allSessionDetails`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ sessionIds }),
+        });
+        const sessionDetailsData = await sessionDetailsResponse.json();
+
+        if (sessionDetailsResponse.ok) {
+          setRegisteredSessions(sessionDetailsData.sessionDetails);
+        } else {
+          console.error('Error fetching session details:', sessionDetailsData.message);
+        }
+      } else {
+        console.error('Error fetching session ids:', data.message);
+      }
+    } catch (error) {
+      console.error('Error fetching registered sessions:', error);
+    }
+  };
+
+  // useEffect to fetch registered sessions when rfidNo changes
+  useEffect(() => {
+    if (rfidNo) {
+      fetchRegisteredSessions();
+    }
+  }, [rfidNo]);  
 
   // // State to manage the rotation angle
   // const [rotationAngle, setRotationAngle] = useState(0);
@@ -54,11 +95,11 @@ export default function MainSection() {
           events={ongoingevents.slice(0, 3)} // Displaying the first 3 ongoing events
           title="Headline Events"
         /> */}
-        <EventSection events={ongoingEvents} title="Headline Events" />
+        <EventSection events={hotSessions} title="Hot Sessions" />
 
         {/* EventSection for displaying registered events */}
         {/* <EventSection events={events} title="Registered Events" /> */}
-        <EventSection events={registeredEvents} title="Registered Events" />
+        <EventSection events={registeredSessions} title="Registered Sessions" />
       </div>
     </div>
   );

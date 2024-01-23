@@ -1,8 +1,31 @@
 const asyncHandler = require("express-async-handler");
 const Attendee = require("../models/attendeeModel");
+const SessionRegistered = require("../models/sessionRegisteredModel");
 
 // @access Private
 
+// get attendee datails by rfidNo
+const getAttendeeDetailsByRfidNo = asyncHandler(async (req, res) => {
+  const { rfidNo } = req.params;
+  console.log(rfidNo);
+  try {
+    const attendee = await Attendee.findOne({ rfidNo: rfidNo });
+
+    if (!attendee) {
+      res.status(404);
+      throw new Error("User not found");
+    }
+
+    const { name, id, email, conNo } = attendee;
+
+    res.status(200).json({ name, id, email, conNo });
+  } catch (error) {
+    console.error("Error fetching attendee data:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+// dont need
 const createAttendee = asyncHandler(async (req, res) => {
   const { name, email, password, conNo, rfidNo } = req.body;
 
@@ -44,6 +67,42 @@ const getAllAttendeeIds = asyncHandler(async (req, res) => {
   }
 });
 
+/// doesnt work and doent need ----------------------------------------
+// get all attendee details for registered sessions
+// const getAllAttendeeDetails = asyncHandler(async (req, res) => {
+//   try {
+//     // Fetch all registered session IDs
+//     const allSessionRegisteredIds = await SessionRegistered.find({}, 'sessionId');
+//     const sessionRegisteredIds = allSessionRegisteredIds.map((sessionRegistered) => sessionRegistered.sessionId.toString());
+
+//     // Find attendees for the registered session IDs
+//     const allAttendeeDetails = await Attendee.find({ sessionId: { $in: sessionRegisteredIds } });
+
+//     console.log('All Attendee Details:', allAttendeeDetails);
+//     res.status(200).json({ allAttendeeDetails });
+//   } catch (error) {
+//     console.error('Error getting attendee details:', error);
+//     res.status(500).json({ message: 'Internal Server Error' });
+//   }
+// });
+
+// get all registered sessionIds
+const getAllSessionRegisteredIds = async (req, res) => {
+  try {
+    // Find all documents and project only the 'sessionId' field
+    const allSessionRegisteredIds = await SessionRegistered.find({}, 'sessionId');
+
+    // Map the session IDs to strings
+    const sessionRegisteredIds = allSessionRegisteredIds.map(session => session.sessionId.toString());
+
+    console.log('Session Registered IDs:', sessionRegisteredIds);
+    res.status(200).json({ sessionRegisteredIds });
+  } catch (error) {
+    console.error('Error getting session registered IDs:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+};
+
 // Get attendee details
 const getAttendeeDetails = asyncHandler(async (req, res) => {
   const attendee = await Attendee.findById(req.params.id);
@@ -69,7 +128,9 @@ const getAllAttendees = asyncHandler(async (req, res) => {
   res.status(200).json(attendee);
 });
 
-module.exports = { createAttendee, getAttendeeDetails, getAllAttendees, getAllAttendeeIds };
+module.exports = { 
+  // getAllAttendeeDetails, 
+  getAttendeeDetailsByRfidNo, createAttendee, getAttendeeDetails, getAllAttendees, getAllAttendeeIds };
 
   
 
