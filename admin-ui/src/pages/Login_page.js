@@ -25,7 +25,7 @@ export default function Login_page({onLogin}) {
       })
       .catch((error) => {
         // Handle authentication error
-        console.error("Authentication failed", error);
+        // console.error("Authentication failed", error);
       });
   };
 

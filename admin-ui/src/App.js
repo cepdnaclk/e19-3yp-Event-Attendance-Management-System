@@ -12,8 +12,6 @@ import LoginPage from "./pages/Login_page";
 import RegistrationPage from "./pages/Registration_page";
 import Sidebar from "./components/Sidebar";
 
-// import Sidebar from "./components/Sidebar";
-
 export default function App() {
     const [user, setUser] = useState(null);
 
@@ -31,7 +29,7 @@ export default function App() {
               console.error('Token validation failed', error);
 
               // If the token is expired or invalid, redirect to the login page
-            //   setUser({ isAuthenticated: false });
+              setUser({ isAuthenticated: false });
             });
         }
       }, []);
