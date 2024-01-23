@@ -1,4 +1,6 @@
-import React from 'react'
+
+import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 export default function ConferneceRoomCards(props) {
     return (
@@ -12,7 +14,8 @@ export default function ConferneceRoomCards(props) {
                 <div className='r2'>Room: {props.conferenceName}</div>
                 <div className='ab'>About: {props.details}</div>
                 <div className='sp'>Speaker: {props.name}</div>
-                <div className='ti'> {props.StartTime}-{props.EndTime} </div>
+                <div className='ti'>
+                     {props.StartTime}-{props.EndTime} </div>
             </p>
             <hr />
             <p className="Cname2">
@@ -22,7 +25,8 @@ export default function ConferneceRoomCards(props) {
                 <span className="label22">Max Capacity</span>
                 <span className="ca2">{props.Mcapacity}</span>
             </p>
-
+            <a href="/ConferenceRooms" className='vi'>View room ></a>
+           
         </div>
     )
 }

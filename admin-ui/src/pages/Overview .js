@@ -160,19 +160,6 @@ export default function Overview() {
             <div className="CAppss" key={session.conferenceId + session.sessionName}>
               {/* <h3>Conference Name: {session.confName}</h3> */}
               {/* <p>{session.sessionName}</p> */}
-              <ConferneceRoomCards
-                key={session._id}
-                conferenceName={session.confName}
-                // room={session.conferenceId}
-                details={session.SessionDetails}
-                name={session.speaker}
-                topic={session.sessionName}
-                StartTime={formatTime(session.startTime)}
-                EndTime={formatTime(session.endTime)}
-                // Ccapacity={conference.CurrentCapacity}
-                Ccapacity={session.CurrentCapacity}
-                Mcapacity={session.MaxCapacity}
-              />
 
               <ConferneceRoomCards
                 key={session._id}
@@ -187,7 +174,19 @@ export default function Overview() {
                 Ccapacity={session.CurrentCapacity}
                 Mcapacity={session.MaxCapacity}
               />
-
+              <ConferneceRoomCards
+                key={session._id}
+                conferenceName={session.confName}
+                // room={session.conferenceId}
+                details={session.SessionDetails}
+                name={session.speaker}
+                topic={session.sessionName}
+                StartTime={formatTime(session.startTime)}
+                EndTime={formatTime(session.endTime)}
+                // Ccapacity={conference.CurrentCapacity}
+                Ccapacity={session.CurrentCapacity}
+                Mcapacity={session.MaxCapacity}
+              />
               <ConferneceRoomCards
                 key={session._id}
                 conferenceName={session.confName}

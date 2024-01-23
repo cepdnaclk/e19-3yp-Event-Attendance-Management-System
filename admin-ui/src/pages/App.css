@@ -7,7 +7,7 @@
   background-color: antiquewhite;
   
 }
-  h1 {
+h1 {
     margin: 1rem auto 4rem;
   }
   
@@ -53,7 +53,7 @@
 
 
   .cr1{
-    background-color: ;
+  
     position: relative;
     top: 0.4scm;
     font-size: 25px;
@@ -73,7 +73,7 @@
    flex-wrap: wrap;
    align-content: flex-start;
    justify-content: flex-start;
-  
+ 
    padding-bottom: 60px;
   }  
 
@@ -103,13 +103,16 @@
     font-family: 'Arial', sans-serif;
     background-color: rgb(255, 255, 255);
     border-radius: 15px;
-   
     padding: 10px;
-   
+    transition: transform 0.3s ease-in-out;
   }
+  .Ccard:hover {
+    transform: scale(1.05);
+  }
+
   .ceee{
     position: relative;
-    right: 90px;
+    right: 70px;
     font-size: 16x;
     font-weight: 200;
     margin-bottom: 10px;
@@ -122,7 +125,7 @@
   .sp{
     color: rgb(14, 137, 231);
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 600;
   }
 .Cname2{
   font-size:14px ;
@@ -133,7 +136,7 @@
 }
 .label22{
   position: relative;
-  right: 64px;
+  right: 67px;
 }
 .label21{
   position: relative;
@@ -144,8 +147,20 @@
 }
 .ca2{
   color: rgb(14, 137, 231);
-  left: 23px;
+  left: 17px;
   position: relative;
+}
+.vi{
+  position: relative;
+  left: 80px;
+  color: rgb(14, 137, 231);
+  font-size: 13px;
+  text-decoration: none;
+}
+.vi:hover{
+  color: rgb(2, 31, 53);
+  font-weight: 600;
+  
 }
   body.active-modal {
     overflow-y: hidden;
