@@ -8,61 +8,103 @@ export default function MainSection() {
   const [registeredSessions, setRegisteredSessions] = useState([]);
   const [rfidNo, setRfidNo] = useState('');
 
-  // Function to fetch registered sessions for a relevant rfidNo
-  const fetchRegisteredSessions = async () => {
+  const fetchAndSetRegisteredSessions = async (rfidNo) => {
+    const sessionIds = await fetchSessionIds(rfidNo);
+    const sessionDetails = await fetchSessionDetails(sessionIds);
+    console.log('sessionDetailssss', sessionDetails);
+    setRegisteredSessions(sessionDetails);
+  };
+
+  useEffect(() => {
+    // Set a default RFID number or use any logic to determine the RFID number initially
+    const defaultRfidNo = '003';
+    setRfidNo(defaultRfidNo);
+
+    // Fetch and set registered sessions when the component mounts
+    fetchAndSetRegisteredSessions(defaultRfidNo);
+  }, []);
+
+  // Fetch and set registered sessions whenever rfidNo changes
+  useEffect(() => {
+    if (rfidNo) {
+      fetchAndSetRegisteredSessions(rfidNo);
+    }
+  }, [rfidNo]);
+
+  const fetchSessionIds = async (rfidNo) => {
     try {
-      // const response = await fetch(`http://localhost:5001/api/sessionreg/rfid/${rfidNo}`);
-      const response = await fetch(`http://localhost:5001/api/sessionreg/rfid/003`);
+      const rfidNo = '003';
+      const response = await fetch(`http://localhost:5001/api/sessionreg/rfid/${rfidNo}`);
       const data = await response.json();
-
+  
+      console.log('data', data);
       if (response.ok) {
-        const sessionIds = data.sessionIds;
-
-        // Fetch session details for the obtained sessionIds
-        const sessionDetailsResponse = await fetch(`http://localhost:5001/api/conferences/allSessionDetails`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ sessionIds }),
-        });
-        const sessionDetailsData = await sessionDetailsResponse.json();
-
-        if (sessionDetailsResponse.ok) {
-          setRegisteredSessions(sessionDetailsData.sessionDetails);
-        } else {
-          console.error('Error fetching session details:', sessionDetailsData.message);
-        }
+        return data.sessionIds;
       } else {
         console.error('Error fetching session ids:', data.message);
+        return [];
       }
     } catch (error) {
-      console.error('Error fetching registered sessions:', error);
+      console.error('Error fetching session ids:', error);
+      return [];
     }
   };
 
-  // useEffect to fetch registered sessions when rfidNo changes
-  useEffect(() => {
-    if (rfidNo) {
-      fetchRegisteredSessions();
+  const fetchSessionDetails = async (sessionIds) => {
+    try {
+      // Array to store session details for each session ID
+      const sessionDetailsArray = [];
+  
+      // Iterate over session IDs and fetch details for each
+      for (const sessionId of sessionIds) {
+        const sessionDetailsResponse = await fetch(`http://localhost:5001/api/conferences/sessions/${sessionId}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+  
+        console.log('sessionDetailsResponse', sessionDetailsResponse);
+        const sessionDetailsData = await sessionDetailsResponse.json();
+  
+        if (sessionDetailsResponse.ok) {
+          sessionDetailsArray.push(sessionDetailsData);
+        } else {
+          console.error(`Error fetching session details for session ID ${sessionId}:`, sessionDetailsData.message);
+        }
+      }
+  
+      return sessionDetailsArray;
+    } catch (error) {
+      console.error('Error fetching session details:', error);
+      return [];
     }
-  }, [rfidNo]);  
+  };
+  
 
-  // // State to manage the rotation angle
-  // const [rotationAngle, setRotationAngle] = useState(0);
-
-  // // Function to update the rotation angle
-  // const updateRotation = () => {
-  //   setRotationAngle((prevAngle) => prevAngle + 0.01);
-  // };
-
-  // // useEffect to continuously update the rotation
-  // useEffect(() => {
-  //   const interval = setInterval(updateRotation, 10); // Adjust the interval as needed
-
-  //   // Clear the interval when the component unmounts
-  //   return () => clearInterval(interval);
-  // }, []);
+  // const fetchSessionDetails = async (sessionIds) => {
+  //   try {
+  //     const sessionDetailsResponse = await fetch(`http://localhost:5001/api/conferences/allSessionDetails?sessionIds=${sessionIds.join(',')}`, {
+  //       method: 'GET',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //     });
+  
+  //     console.log('sessionDetailsResponse', sessionDetailsResponse);
+  //     const sessionDetailsData = await sessionDetailsResponse.json();
+  
+  //     if (sessionDetailsResponse.ok) {
+  //       return sessionDetailsData.sessionDetails;
+  //     } else {
+  //       console.error('Error fetching session details:', sessionDetailsData.message);
+  //       return [];
+  //     }
+  //   } catch (error) {
+  //     console.error('Error fetching session details:', error);
+  //     return [];
+  //   }
+  // };  
 
   return (
     // Container for the main section with flex layout
@@ -96,6 +138,9 @@ export default function MainSection() {
           title="Headline Events"
         /> */}
         <EventSection events={hotSessions} title="Hot Sessions" />
+
+        {/* Input for entering rfidNo */}
+        <input type="text" value={rfidNo} onChange={(e) => setRfidNo(e.target.value)} placeholder="Enter rfidNo" />
 
         {/* EventSection for displaying registered events */}
         {/* <EventSection events={events} title="Registered Events" /> */}
