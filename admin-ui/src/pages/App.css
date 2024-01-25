@@ -1,11 +1,42 @@
 .Appss{
   position: absolute;
   left: 7.5cm;
-  
-  width: 75%;
+  width: 85%;
   text-align: center;
-  background-color: antiquewhite;
-  
+  background-color: rgb(234, 195, 145);
+}
+
+.vr{
+  position: absolute;
+  left: 1.5cm;
+  font-size: 20px;
+  top: 40px;
+  font-weight: 600;
+
+}
+.btn111{
+  position: absolute;
+  right: 5.5cm;
+  top: 1cm;
+  padding: 10px;
+  background-color: rgba(94, 23, 235, 1);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border-radius: 14px;
+}
+.btn111:hover {
+  background-color:rgba(141, 94, 235, 1);
+}
+
+.cardbox{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 90px;
+  background-color: rosybrown;
+  padding-top: 20px;
 }
 h1 {
     margin: 1rem auto 4rem;
@@ -156,6 +187,7 @@ h1 {
   color: rgb(14, 137, 231);
   font-size: 13px;
   text-decoration: none;
+  
 }
 .vi:hover{
   color: rgb(2, 31, 53);
@@ -166,13 +198,6 @@ h1 {
     overflow-y: hidden;
 }
 
-.btn-modal {
-    padding: 10px 20px;
-    display: block;
-    margin: 10px auto 0;
-    font-size: 18px;
-    border-radius: 10px;
-}
 
 .modal, .overlay {
     width: 100vw;
@@ -198,15 +223,43 @@ h1 {
     border-radius: 3px;
     max-width: 600px;
     min-width: 300px;
+    border-radius: 20px;
 }
+.roomnaame{
+  background-color: yellow;
+  width: 150px;
+  font-size: 15px;
+  text-align: left;
+  margin-top: 5px;
 
-.close-modal {
+}
+.close-btn {
     position: absolute;
     top: 10px;
     right: 10px;
-    padding: 5px 7px;
+    border-radius: 10px;
+    background-color: rgba(94, 23, 235, 1);
+    transition: background-color 0.3s;
+    color: rgb(255, 255, 255);
+    border: none;
+    cursor: pointer;
 }
-
+.close-btn:hover{
+  background-color:rgba(141, 94, 235, 1);
+}
+.submitbtn{
+    height: 35px;
+    width: 75px;
+    border-radius: 10px;
+    background-color: rgba(94, 23, 235, 1);
+    transition: background-color 0.3s;
+    color: rgb(255, 255, 255);
+    border: none;
+    cursor: pointer;
+}
+.submitbtn:hover{
+  background-color:rgba(141, 94, 235, 1);
+}
 
 label {
   display: block;
@@ -219,26 +272,7 @@ input {
   margin-bottom: 10px;
 }
 
-button {
-  padding: 10px;
-  background-color: #3498db;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
 
-button:hover {
-  background-color: #2980b9;
-}
-
-
-.cardbox{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  margin-top: 10px;
-}
 .cx{
   /* top:2cm; */
   background-color: #cdf5f9;

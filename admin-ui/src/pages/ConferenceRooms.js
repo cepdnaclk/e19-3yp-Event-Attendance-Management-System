@@ -11,6 +11,9 @@ import axios from "axios";
 import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
 
+import { IoCloseSharp } from "react-icons/io5";
+
+
 export default function ConferenceRooms() {
   const [conferenceData, setConferenceData] = useState([]);
   const [modal, setModal] = useState(false);
@@ -97,8 +100,9 @@ export default function ConferenceRooms() {
     <>
       <Sidebar />
       <div className="Appss">
-        <button onClick={toggleModal} className="btn-modal">
-          Add Room
+        <div className="vr">Conference Rooms</div>
+        <button onClick={toggleModal} className="btn111">
+          Create Room
         </button>
 
         {modal && (
@@ -106,20 +110,21 @@ export default function ConferenceRooms() {
             <div onClick={toggleModal} className="overlay"></div>
             <div className="modal-content">
               <div>
-                <label htmlFor="roomName">Room Name:</label>
+                <label className="roomnaame">Room Name:</label>
                 <input
+                className="i1"
                   type="text"
                   id="roomName"
                   placeholder="Enter room name"
                   value={roomName}
                   onChange={handleRoomNameChange}
                 />
-                <button className="rounded" type="submit" onClick={handleAddRoom}>
+                <button className="submitbtn" type="submit" onClick={handleAddRoom}>
                   Submit
                 </button>
               </div>
-              <button className="close-modal" onClick={toggleModal}>
-                Close
+              <button className="close-btn" onClick={toggleModal}>
+                close
               </button>
             </div>
           </div>
@@ -133,7 +138,7 @@ export default function ConferenceRooms() {
         </div>
       </div>
 
-      <Footer />
+
     </>
   );
 }

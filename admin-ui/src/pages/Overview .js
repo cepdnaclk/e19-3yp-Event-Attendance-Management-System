@@ -154,82 +154,35 @@ export default function Overview() {
         <Sidebar />
 
         <div className=" Ccr1"> Ongoing Sessions</div>
+        <div >
+          <Carousel showDots={true} responsive={responsive}>
+          <div className="CAppss" >
+            {ongoingConferences.map((session) => (
+              <div key={session.conferenceId + session.sessionName}>
+                {/* <h3>Conference Name: {session.confName}</h3> */}
+                {/* <p>{session.sessionName}</p> */}
 
-        <Carousel showDots={true} responsive={responsive}>
-          {ongoingConferences.map((session) => (
-            <div className="CAppss" key={session.conferenceId + session.sessionName}>
-              {/* <h3>Conference Name: {session.confName}</h3> */}
-              {/* <p>{session.sessionName}</p> */}
+                <ConferneceRoomCards
+                  key={session._id}
+                  conferenceName={session.confName}
+                  // room={session.conferenceId}
+                  details={session.SessionDetails}
+                  name={session.speaker}
+                  topic={session.sessionName}
+                  StartTime={formatTime(session.startTime)}
+                  EndTime={formatTime(session.endTime)}
+                  // Ccapacity={conference.CurrentCapacity}
+                  Ccapacity={session.CurrentCapacity}
+                  Mcapacity={session.MaxCapacity}
+                />
+               
 
-              <ConferneceRoomCards
-                key={session._id}
-                conferenceName={session.confName}
-                // room={session.conferenceId}
-                details={session.SessionDetails}
-                name={session.speaker}
-                topic={session.sessionName}
-                StartTime={formatTime(session.startTime)}
-                EndTime={formatTime(session.endTime)}
-                // Ccapacity={conference.CurrentCapacity}
-                Ccapacity={session.CurrentCapacity}
-                Mcapacity={session.MaxCapacity}
-              />
-              <ConferneceRoomCards
-                key={session._id}
-                conferenceName={session.confName}
-                // room={session.conferenceId}
-                details={session.SessionDetails}
-                name={session.speaker}
-                topic={session.sessionName}
-                StartTime={formatTime(session.startTime)}
-                EndTime={formatTime(session.endTime)}
-                // Ccapacity={conference.CurrentCapacity}
-                Ccapacity={session.CurrentCapacity}
-                Mcapacity={session.MaxCapacity}
-              />
-              <ConferneceRoomCards
-                key={session._id}
-                conferenceName={session.confName}
-                // room={session.conferenceId}
-                details={session.SessionDetails}
-                name={session.speaker}
-                topic={session.sessionName}
-                StartTime={formatTime(session.startTime)}
-                EndTime={formatTime(session.endTime)}
-                // Ccapacity={conference.CurrentCapacity}
-                Ccapacity={session.CurrentCapacity}
-                Mcapacity={session.MaxCapacity}
-              />
-              <ConferneceRoomCards
-                key={session._id}
-                conferenceName={session.confName}
-                // room={session.conferenceId}
-                details={session.SessionDetails}
-                name={session.speaker}
-                topic={session.sessionName}
-                StartTime={formatTime(session.startTime)}
-                EndTime={formatTime(session.endTime)}
-                // Ccapacity={conference.CurrentCapacity}
-                Ccapacity={session.CurrentCapacity}
-                Mcapacity={session.MaxCapacity}
-              />
-              <ConferneceRoomCards
-                key={session._id}
-                conferenceName={session.confName}
-                // room={session.conferenceId}
-                details={session.SessionDetails}
-                name={session.speaker}
-                topic={session.sessionName}
-                StartTime={formatTime(session.startTime)}
-                EndTime={formatTime(session.endTime)}
-                // Ccapacity={conference.CurrentCapacity}
-                Ccapacity={session.CurrentCapacity}
-                Mcapacity={session.MaxCapacity}
-              />
 
+              </div>
+            ))}
             </div>
-          ))}
-        </Carousel>
+          </Carousel>
+        </div>
 
 
       </>
