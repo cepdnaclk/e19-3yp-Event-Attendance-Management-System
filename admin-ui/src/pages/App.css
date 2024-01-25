@@ -1,12 +1,127 @@
 .Appss{
   position: absolute;
   left: 7.5cm;
-  
-  width: 75%;
+  width: 32cm;
   text-align: center;
-  background-color: antiquewhite;
-  
+ 
 }
+
+.vr{
+  position: absolute;
+  left: 1.5cm;
+  font-size: 20px;
+  top: 40px;
+  font-weight: 600;
+
+}
+.btn111{
+  position: absolute;
+  font-size: 16px;
+  font-weight: 600;
+  width: 140px;
+  height: 50px;
+  right: 2.5cm;
+  top: 1cm;
+  padding: 8px;
+  background-color: rgba(94, 23, 235, 1);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border-radius: 14px;
+  transition: transform 0.3s ease-in-out;
+}
+.btn111:hover {
+  
+  transform: scale(1.2);
+}
+
+.cardbox{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 90px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.cx{
+
+  background-color: #ffffff;
+  width:28cm;
+  border-radius: 10px;
+
+  display: inline-block;
+ margin: 10px 45px;
+ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 25px 20px;
+}
+.cx h5{
+  font-size: 16px;
+}
+.cx11{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.btnse{
+  height: 25px;
+    border-radius: 10px;
+    color: rgb(255, 255, 255);
+    background-color:rgba(94, 23, 235, 1) ;
+    transition: transform 0.3s ease-in-out;
+   font-size: 14px;
+   font-weight: 600;
+    border: none;
+    cursor: pointer;
+    height: 40px;
+    width:150px;
+}
+.btnse:hover{
+  transform: scale(1.2);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: #000;
+}
+
+th {
+  background-color: #f5f1f8;
+   font-size: 13px;
+}
+
+tr {
+  transition: background-color 0.3s;
+  border-bottom: 0.5px solid #bfbbbb;
+  font-size: 13px;
+}
+
+tr:hover {
+  background-color: #f7f5fb;
+}
+.btned{
+  margin-left:8px;
+  color: rgba(94, 23, 235, 1);
+  background-color: rgba(236, 228, 253, 1);
+  transition: background-color 0.3s;
+  border: none;
+  height: 30px;
+  width: 80px;
+  border-radius: 10px;
+}
+.btned:hover{
+  color: rgb(255, 255, 255);
+  background-color:rgba(94, 23, 235, 1) ;
+}
+
+
 h1 {
     margin: 1rem auto 4rem;
   }
@@ -62,6 +177,9 @@ h1 {
     margin-left: 50%;
    
   }
+  .ss{
+    width: 40.5cm; 
+   }
 
   .CAppss{
     position: relative;
@@ -156,6 +274,7 @@ h1 {
   color: rgb(14, 137, 231);
   font-size: 13px;
   text-decoration: none;
+  
 }
 .vi:hover{
   color: rgb(2, 31, 53);
@@ -166,13 +285,6 @@ h1 {
     overflow-y: hidden;
 }
 
-.btn-modal {
-    padding: 10px 20px;
-    display: block;
-    margin: 10px auto 0;
-    font-size: 18px;
-    border-radius: 10px;
-}
 
 .modal, .overlay {
     width: 100vw;
@@ -185,7 +297,7 @@ h1 {
 }
 
 .overlay {
-    background: rgba(49,49,49,0.8);
+    background: rgba(49,49,49,0.5);
 }
 .modal-content {
     position: absolute;
@@ -193,20 +305,50 @@ h1 {
     left: 50%;
     transform: translate(-50%, -50%);
     line-height: 1.4;
-    background: #f1f1f1;
+    background: #ffffff;
     padding: 14px 28px;
-    border-radius: 3px;
     max-width: 600px;
     min-width: 300px;
+    border-radius: 15px;
 }
-
-.close-modal {
+.roomnaame{
+ font-weight: 600;
+  width: 150px;
+  font-size: 15px;
+  text-align: left;
+  margin-top: px;
+}
+.i1{
+  margin-top: 10px;
+}
+.close-btn {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    padding: 5px 7px;
+    top: 11px;
+    right: 27px;
+    height: 25px;
+    border-radius: 10px;
+    background-color: rgba(94, 23, 235, 1);
+    transition: background-color 0.3s;
+    color: rgb(255, 255, 255);
+    border: none;
+    cursor: pointer;
 }
-
+.close-btn:hover{
+  background-color:rgba(141, 94, 235, 1);
+}
+.submitbtn{
+    height: 35px;
+    width: 75px;
+    border-radius: 10px;
+    background-color: rgba(94, 23, 235, 1);
+    transition: background-color 0.3s;
+    color: rgb(255, 255, 255);
+    border: none;
+    cursor: pointer;
+}
+.submitbtn:hover{
+  background-color:rgba(141, 94, 235, 1);
+}
 
 label {
   display: block;
@@ -219,38 +361,8 @@ input {
   margin-bottom: 10px;
 }
 
-button {
-  padding: 10px;
-  background-color: #3498db;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-button:hover {
-  background-color: #2980b9;
-}
 
 
-.cardbox{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  margin-top: 10px;
-}
-.cx{
-  /* top:2cm; */
-  background-color: #cdf5f9;
-  /* height: 9cm; */
-  width:fit-content;
-  border-radius: 10px;
-  /* margin-left: 400px; */
-  display: inline-block;
-  margin-right: 5px;
-  margin-bottom: 5px;
-  padding: 5px 5px;
-}
 
   .table-container{
     margin-left: 360px;
