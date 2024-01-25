@@ -1034,23 +1034,24 @@ IMplementationss
   display: flexbox;
   width: 100%;
   align-items: center;
-  padding-left: 4cm;
  
 }
 
 .campus-col img{
-  width: 22cm;
+  max-width: 22cm;
   display: block;
-  height: 12cm;
+  height: auto;
 }
 
 .campus-col img:hover{
   box-shadow: 0 0 20px 0px rgba(1, 1, 1, 0.6);
   background-color: #e68a51;
   cursor: pointer;
-  transform: scale(1.06);
-  transition: all 1s ease;
+  /* transform: scale(1.06);
+  transition: all 1s ease; */
 }
+
+
 .row11{
   margin-top: 5%;
   display: flex;
@@ -1068,9 +1069,6 @@ IMplementationss
   background-color: #3B566E;
   width:10cm;
 }
-
-
-
 
 .our-services {
   margin-top: 0px;
@@ -1102,6 +1100,17 @@ IMplementationss
   font-size: 18px;
   font-weight: 600;
   color: #03a4ed;
+}
+.architecture{
+  display: flex;
+  justify-content: space-between;
+  /* padding-top: 100px; */
+}
+@media screen and (max-width: 768px){
+  .architecture{
+    flex-direction: column;
+  }
+  
 }
 
 
@@ -1274,7 +1283,7 @@ h3{
   max-width: 270px;
 }
 
-.cta{
+/* .cta{
   margin: auto;
   width: 80%;
   background-image: linear-gradient(rgba(152, 215, 238, 0.2),rgba(81, 135, 157, 0.1)), url('../images/Design.png');
@@ -1284,7 +1293,7 @@ h3{
   text-align: center;
   padding: 40px 0;
   height: 13cm;
-}
+} */
 
 .cta:hover{
   box-shadow: 0 0 20px 0px rgba(135, 219, 255, 0.6);
@@ -1624,9 +1633,10 @@ responsive
 
 .description1 img{
   background-color: rgb(68, 80, 91);
- margin: auto;
-  height: 11cm;
-  width: 16cm;
+  margin: auto;
+  height: auto;
+  width: auto;
+  object-fit: fill;
   
 }
 .description1 img:hover{
@@ -1638,92 +1648,12 @@ responsive
 
 
 
-/* 
-  <section class="campus">
-      
-          <div class="campus-col">
-              <img src="assets/images/9.png" >
-              <div class="layer">
-                  <h3>LONDON</h3>
-              </div>
-          </div>
-      
-          <div class="campus-col">
-  
-              <img src="assets/images/10.png" >
-              <div class="layer">
-                  <h3>NEWYORK</h3>
-              </div>
-          </div>
-      
-          <div class="campus-col">
-              <img src="assets/images/14.png" >
-              <div class="layer">
-                  <h3>WASHINGTON</h3>
-              </div>
-          </div>
-  
-        </div>
-  
-      </section>
-
 .campus{
- 
-  text-align: center;
-  background-color: #03ed8b;
-  height:fit-content;
-  flex-wrap: wrap;
-  display: flexbox;
-  width: 100%;
-  align-items: center;
-  padding-left: 4cm;
- 
-}
-.campus-col{
-  flex-basis: 32%;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  position: relative;
-  overflow:hidden;
-  height: 13cm;
-  width: 22cm;
-
-  background-color: #8daeba;
-}
-.campus-col img{
-  width: 22cm;
-  display: block;
-  height: 12cm;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.layer{
-  background: transparent;
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transition: 0.5s;
-}
-.layer:hover{
-background:rgba(226,0,0,0.7) ;
-}
-.layer h3{
-  width: 100%;
-  font-weight: 500;
-  color: #fff;
-  font-size: 26px;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  position: absolute;
-  transition: 0.5s;
-  opacity: 0;
-}
-.layer:hover h3{
-  bottom: 49%;
-  opacity: 1;
-} */
 
 /*--------------------------------------------------------------
 # Footer
