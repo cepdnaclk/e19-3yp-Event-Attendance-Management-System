@@ -200,12 +200,12 @@ export default function Croom({ conferenceId }) {
   return (
     <div className="cx">
       <div className='cx11'>
-      <h5>CR: {conferenceId}</h5>
-      <button onClick={toggleModal} className="btnse"> Create session</button>
+        <h5>CR: {conferenceId}</h5>
+        <button onClick={toggleModal} className="btnse"> Create session</button>
       </div>
       {modal && (
         <div className="modal">
-          <div onClick={toggleModal} className="overlay"></div>
+          <div onClick={toggleModal} className="overlay2"></div>
           <div className="modal-content">
             <div>
               <label htmlFor="sessionName">Sessions Name:</label>
@@ -272,29 +272,29 @@ export default function Croom({ conferenceId }) {
         </div>
       )}
 
-<table>
-  <thead>
-    <tr>
-      <th>Session Name</th>
-      <th>Start Time</th>
-      <th>Speaker</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    {sessionDetailsList.map((session) => (
-      <tr key={session._id}>
-        <td>{session.sessionName}</td>
-        <td>{new Date(session.startTime).toLocaleDateString('en-US', options)}</td>
-        <td>{session.speaker}</td>
-        <td>
-          <button className='btned' onClick={() => handleSessionEdit(session._id)}>Edit</button>
-          <button className='btned' onClick={() => handleSessionDelete(session._id)}>Delete</button>
-        </td>
-      </tr>
-    ))}
-  </tbody>
-</table>
+      <table>
+        <thead>
+          <tr>
+            <th>Session Name</th>
+            <th>Start Time</th>
+            <th>Speaker</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {sessionDetailsList.map((session) => (
+            <tr key={session._id}>
+              <td>{session.sessionName}</td>
+              <td>{new Date(session.startTime).toLocaleDateString('en-US', options)}</td>
+              <td>{session.speaker}</td>
+              <td>
+                <button className='btned' onClick={() => handleSessionEdit(session._id)}>Edit</button>
+                <button className='btned' onClick={() => handleSessionDelete(session._id)}>Delete</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }

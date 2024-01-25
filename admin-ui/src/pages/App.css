@@ -55,6 +55,11 @@
  margin: 10px 45px;
  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 25px 20px;
+  transition: transform 0.3s ease-in-out;
+}
+.cx:hover {
+  
+  transform: scale(1.02);
 }
 .cx h5{
   font-size: 16px;
@@ -296,6 +301,19 @@ h1 {
     position: fixed;
 }
 
+ .overlay2{
+  width: 100vh;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+}
+.overlay2 {
+  background: rgba(49,49,49,0.5);
+}
+
 .overlay {
     background: rgba(49,49,49,0.5);
 }
@@ -324,6 +342,8 @@ h1 {
 .close-btn {
     position: absolute;
     top: 11px;
+    width: 60px;
+    height: 40px;
     right: 27px;
     height: 25px;
     border-radius: 10px;
@@ -339,6 +359,7 @@ h1 {
 .submitbtn{
     height: 35px;
     width: 75px;
+    width: 80px;
     border-radius: 10px;
     background-color: rgba(94, 23, 235, 1);
     transition: background-color 0.3s;
