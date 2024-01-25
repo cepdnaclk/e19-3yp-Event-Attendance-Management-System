@@ -110,7 +110,7 @@ export default function ConferenceRooms() {
             <div onClick={toggleModal} className="overlay"></div>
             <div className="modal-content">
               <div>
-                <label className="roomnaame">Room Name:</label>
+                <label className="roomnaame">Room Name</label>
                 <input
                 className="i1"
                   type="text"
