@@ -51,9 +51,9 @@ const Sidebar = () => {
                         <a href="/Overview">Overview </a>
                     </li>
 
-                    <li className={location.pathname === "/Settings" ? "active" : ""}>
+                    <li className={location.pathname === "/Attendees" ? "active" : ""}>
                         <MdOutlinePeopleAlt className=" sidebaricons" />
-                        <a href="/Settings">Attendees</a>
+                        <a href="/Attendees">Attendees</a>
                     </li>
 
                     <li className={location.pathname === "/Analytics" ? "active" : ""}>
