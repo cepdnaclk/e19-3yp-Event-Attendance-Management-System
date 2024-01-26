@@ -6,8 +6,7 @@ import axios from 'axios';
 import ConferenceRooms from "./pages/ConferenceRooms";
 import Analytics from "./pages/Analytics";
 import Overview from "./pages/Overview ";
-import Settings from "./pages/Settings";
-import Attendees from "./pages/Atendees";
+import Attendees from "./pages/Attendees";
 import LoginPage from "./pages/Login_page";
 import RegistrationPage from "./pages/Registration_page";
 import Sidebar from "./components/Sidebar";
@@ -60,7 +59,6 @@ export default function App() {
                     {user && user.isAuthenticated ? (
                         <>
                             <Route path="/ConferenceRooms" element={<ConferenceRooms />} />
-                            <Route path="/settings" element={<Settings />} />
                             <Route path="/Attendees" element={<Attendees />} />
                             <Route path="/Overview" element={<Overview />} />
                             <Route path="/Analytics" element={<Analytics />} />

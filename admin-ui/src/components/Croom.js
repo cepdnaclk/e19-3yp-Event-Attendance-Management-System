@@ -204,9 +204,9 @@ export default function Croom({ conferenceId }) {
         <button onClick={toggleModal} className="btnse"> Create session</button>
       </div>
       {modal && (
-        <div className="modal">
+        <div className="modal2">
           <div onClick={toggleModal} className="overlay2"></div>
-          <div className="modal-content">
+          <div className="modal-content2">
             <div>
               <label htmlFor="sessionName">Sessions Name:</label>
               <input

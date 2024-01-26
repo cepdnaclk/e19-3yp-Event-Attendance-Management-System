@@ -26,6 +26,8 @@ function ContactUs() {
     return (
         <div className='asdd'>
             <Sidebar />
+
+            <div className="att">Contact Us</div>
             <div className='des'> We're excited to hear from you! Whether you have a question, a brilliant idea, or just want to say hello,
                 our team is ready to listen. Drop us a message below, and we'll make sure to get back to you as soon as possible.
                 Your thoughts and feedback are invaluable to us, as they help us improve and tailor our services to meet your needs.
@@ -33,7 +35,6 @@ function ContactUs() {
 
             <div className="contactContainer">
 
-                <h2>Contact Us</h2>
                 <form ref={form} onSubmit={sendEmail} >
                     <label>Name:
                         <input type="text" name="user_name" placeholder='Enter name' />
@@ -51,7 +52,7 @@ function ContactUs() {
                         <textarea name="message" placeholder='Type your message here...' />
                     </label>
                     <br />
-                    <button type="submit">Submit</button>
+                    <button type="submit" className='subat'>Submit</button>
                 </form>
 
             </div>

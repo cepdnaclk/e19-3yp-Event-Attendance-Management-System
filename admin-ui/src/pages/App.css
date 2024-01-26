@@ -300,10 +300,8 @@ h1 {
     bottom: 0;
     position: fixed;
 }
-
- .overlay2{
-  width: 100vh;
-  height: 100vh;
+.modal2, .overlay2 {
+ 
   top: 0;
   left: 0;
   right: 0;
@@ -311,9 +309,39 @@ h1 {
   position: fixed;
 }
 .overlay2 {
-  background: rgba(49,49,49,0.5);
+  background: rgba(49,49,49,0.3);
 }
 
+.modal-content2 {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1.4;
+  background: #ffffff;
+  padding: 14px 28px;
+  max-width: 600px;
+  min-width: 300px;
+  border-radius: 15px;
+  font-weight: 600;
+  font-size: 13px;
+  border: solid rgba(94, 23, 235, 0.6) 0.5px;
+
+}
+.btn-modal{
+  border-radius: 10px;
+    background-color: rgba(94, 23, 235, 1);
+    transition: background-color 0.3s;
+    color: rgb(255, 255, 255);
+    border: none;
+    cursor: pointer;
+    height: 30px;
+    margin-left: 7px;
+    padding-left: 8px;
+}
+.btn-modal:hover{
+  background-color:rgba(141, 94, 235, 1);
+}
 .overlay {
     background: rgba(49,49,49,0.5);
 }
@@ -383,13 +411,24 @@ input {
 }
 
 
-
+.att{
+  position: absolute;
+  top: 1cm;
+  font-size: 20px;
+  left: 9cm;
+  font-weight: 600;
+}
 
   .table-container{
+    position: absolute;
+    top: 1cm;
+    right: 3cm;
     margin-left: 360px;
     margin-top: 50px;
     margin-right: 20px;
     border-radius: 10px;
+    width: 28cm;
+   
   }
 
   .searchbox{
@@ -399,42 +438,48 @@ input {
 
   .des{
     position: relative;
-    background-color: #ffffff;
-    top: 0.5cm;
-    width: 75%;
+    font-size: 13px;
+    top:2cm;
+    width: 25cm;
     left: 8.8cm;
-    text-align: center;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
   }
 
   .contactContainer {
    position: relative;
     background-color: #ffffff;
+    padding-top: 15px;
+    padding-bottom: 30px;
    padding-left: 15px;
    padding-right: 15px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-  width: 600px;
-   left: 40%;
-    height: 14cm;
-    top: 0.4cm;
+  width: 24cm;
+  left: 8.8cm;
+    height: 12.2cm;
+    top: 2.6cm;
+    font-weight: 600;
+    font-size: 14px;
    
 }
-
-.contactContainer h2 {
-    text-align: center;
-    color: #615c5c;
-    margin-bottom: 1px;
+.subat{
+  color: rgb(255, 255, 255);
+background-color:rgba(94, 23, 235, 1) ;
+transition: transform 0.3s ease-in-out;
+  border-radius: 10px;
+  border: none;
+cursor: pointer;
+  height: 40px;
+  width: 100px;
+  font-size: 15px;
 }
-
-.contactContainer form {
-    display: flex;
-    flex-direction: column;
+.subat:hover{
+  transform: scale(1.1);
 }
 
 .contactContainer label {
-    margin-bottom: 4px;
+    margin-bottom: 0px;
     color: #252323;
 }
 
@@ -451,19 +496,5 @@ input {
 
 .contactContainer textarea {
     height: 80px;
-    
 }
 
-.contactContainer button {
-  
-    color: white;
-    padding: 8px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.contactContainer button:hover {
-    background-color: #10293d;
-}
