@@ -2057,13 +2057,13 @@ responsive
   /* overflow: hidden; */
 }
 
-.portfolio-item img {
+/* .portfolio-item img {
   transition: transform 0.5s ease-in-out;
-}
+} */
 
-.portfolio-item:hover img {
+/* .portfolio-item:hover img {
   transform: scale(1.5); 
-}
+} */
 
 .portfolio .portfolio-item .portfolio-info {
   opacity: 0;
@@ -2219,6 +2219,210 @@ responsive
     margin-top: 30px;
   }
 }
+
+/*--------------------------------------------------------------
+# Design
+--------------------------------------------------------------*/
+.design #design-flters {
+  padding: 0;
+  margin: 0 auto 15px auto;
+  list-style: none;
+  text-align: center;
+  border-radius: 50px;
+  padding: 2px 15px;
+}
+
+.design #design-flters li {
+  cursor: pointer;
+  display: inline-block;
+  padding: 10px 15px 8px 15px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #444444;
+  margin-bottom: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.design #design-flters li:hover, .design #design-flters li.filter-active {
+  color: #106eea;
+}
+
+.design #design-flters li:last-child {
+  margin-right: 0;
+}
+
+.design .design-item {
+  margin-bottom: 30px;
+  /* overflow: hidden; */
+}
+
+.design-item img {
+  /* transition: transform 0.5s ease-in-out; */
+  max-height: 350px;
+  width: auto;
+}
+
+/* .portfolio-item:hover img {
+  transform: scale(1.5); 
+} */
+
+.design .design-item .design-info {
+  opacity: 0;
+  position: absolute;
+  left: 30px;
+  right: 30px;
+  bottom: 0;
+  z-index: 3;
+  transition: all ease-in-out 0.3s;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 15px;
+}
+
+.design .design-item .design-info h4 {
+  font-size: 18px;
+  color: #fff;
+  font-weight: 600;
+  color: #222222;
+}
+
+.design .design-item .design-info p {
+  color: #555555;
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+.design .design-item .design-info .preview-link, .design .design-item .design-info .details-link {
+  position: absolute;
+  right: 40px;
+  font-size: 24px;
+  top: calc(50% - 18px);
+  color: #3c3c3c;
+}
+
+.design .design-item .design-info .preview-link:hover, .design .design-item .design-info .details-link:hover {
+  color: #106eea;
+}
+
+.design .design-item .design-info .details-link {
+  right: 10px;
+}
+
+.design .design-item .design-links {
+  opacity: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 3;
+  position: absolute;
+  transition: all ease-in-out 0.3s;
+}
+
+.design .design-item .design-links a {
+  color: #fff;
+  margin: 0 2px;
+  font-size: 28px;
+  display: inline-block;
+  transition: 0.3s;
+}
+
+.design .design-item .design-links a:hover {
+  color: #6ba7f5;
+}
+
+.design .design-item:hover .design-info {
+  opacity: 1;
+  bottom: 20px;
+}
+
+/*--------------------------------------------------------------
+# design Details
+--------------------------------------------------------------*/
+.design-details {
+  padding-top: 30px;
+}
+
+.design-details .design-details-container {
+  position: relative;
+}
+
+.design-details .design-details-carousel {
+  position: relative;
+  z-index: 1;
+}
+
+.design-details .design-details-carousel .owl-nav, .design-details .design-details-carousel .owl-dots {
+  margin-top: 5px;
+  text-align: left;
+}
+
+.design-details .design-details-carousel .owl-dot {
+  display: inline-block;
+  margin: 0 10px 0 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #ddd !important;
+}
+
+.design-details .design-details-carousel .owl-dot.active {
+  background-color: #106eea !important;
+}
+
+.design-details .design-info {
+  padding: 30px;
+  position: absolute;
+  right: 0;
+  bottom: -70px;
+  background: #fff;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+
+.design-details .design-info h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.design-details .design-info ul {
+  list-style: none;
+  padding: 0;
+  font-size: 15px;
+}
+
+.design-details .design-info ul li + li {
+  margin-top: 10px;
+}
+
+.design-details .design-description {
+  padding-top: 50px;
+}
+
+.design-details .design-description h2 {
+  width: 50%;
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.design-details .design-description p {
+  padding: 0 0 0 0;
+}
+
+@media (max-width: 768px) {
+  .design-details .design-description h2 {
+    width: 100%;
+  }
+  .design-details .design-info {
+    position: static;
+    margin-top: 30px;
+  }
+}
+
 
 
 
