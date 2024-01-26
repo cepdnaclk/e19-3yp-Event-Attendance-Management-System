@@ -2,7 +2,8 @@ const express = require("express");
 const {
   // getTopSessions,
   getAllSessionDetails,
-  getHotSessionIds,
+  getSessionDetailsForConference,
+  // getHotSessionIds,
   getSessionDetailsBySesId,
   getConferenceIds,
   getSessionIds,
@@ -24,7 +25,7 @@ const router = express.Router();
 
 // Get hot sessions
 // router.get("/topSessions", getTopSessions);
-router.get("/hotSessions", getHotSessionIds);
+// router.get("/hotSessions", getHotSessionIds);
 
 // get all session details for a list of sessionIds
 router.get("/allSessionDetails", getAllSessionDetails);
@@ -48,6 +49,9 @@ router.put("/:id/sessionup/:sessionId", updateSessionDetails);
 
 // Get session details
 router.get("/:id/session/:sessionId", getSessionDetails);
+
+// Get all session details for a conferenceId
+router.get("/:conferenceId/sessions", getSessionDetailsForConference);
 
 // Get session details without conferenceId
 router.get("/sessions/:sessionId", getSessionDetailsBySesId);

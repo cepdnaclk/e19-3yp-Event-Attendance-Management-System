@@ -1,3 +1,5 @@
+// doesnt need this - implemented in aws
+
 // should auto run the loop to update the currentAttendees collection
 
 const asyncHandler = require('express-async-handler');
