@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import EventSection from "./EventSection";
 
-// MainSection component representing the main content of the application
 export default function MainSection() {
   const [hotSessions, setHotSessions] = useState([]);
   const [registeredSessions, setRegisteredSessions] = useState([]);
@@ -15,8 +14,9 @@ export default function MainSection() {
   };
 
   useEffect(() => {
-    // Set a default RFID number or use any logic to determine the RFID number initially
-    const defaultRfidNo = '003';
+    // const defaultRfidNo = '003';
+    const defaultRfidNo = new URLSearchParams(window.location.search).get('id') || '1894-75';
+
     setRfidNo(defaultRfidNo);
 
     // Fetch and set registered sessions when the component mounts
@@ -32,8 +32,13 @@ export default function MainSection() {
 
   const fetchSessionIds = async (rfidNo) => {
     try {
-      const rfidNo = '003';
-      const response = await fetch(`http://localhost:5001/api/sessionreg/rfid/${rfidNo}`);
+      // const rfidNo = '002';
+      // console.log('_________rfidNo', rfidNo);
+      const userid = await fetch(`http://localhost:5001/api/attendees/rfidNo/${rfidNo}`);
+      const useridData = await userid.json();
+      const user_id = useridData.userId;
+      // console.log('__________useridData', user_id);
+      const response = await fetch(`http://localhost:5001/api/sessionreg/rfid/${user_id}`);
       const data = await response.json();
   
       console.log('data', data);
