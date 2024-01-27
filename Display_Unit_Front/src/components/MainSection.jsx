@@ -15,9 +15,9 @@ export default function MainSection() {
 
   useEffect(() => {
     // const defaultRfidNo = '003';
-    // const defaultRfidNo = new URLSearchParams(window.location.search).get('id') || '1894-75';
-    const defaultRfidNo = new URLSearchParams(window.location.search).get('id');
-    console.log('--------------defaultRfidNo', defaultRfidNo);
+
+    const defaultRfidNo = new URLSearchParams(window.location.search).get('id') || '1894-75';
+
     setRfidNo(defaultRfidNo);
 
     // Fetch and set registered sessions when the component mounts
@@ -35,11 +35,15 @@ export default function MainSection() {
     try {
       // const rfidNo = '002';
       // console.log('_________rfidNo', rfidNo);
-      const userid = await fetch(`http://localhost:5001/api/attendees/rfidNo/${rfidNo}`);
+      
+      const userid = await fetch(`http://13.201.130.222:5001/api/attendees/rfidNo/${rfidNo}`);
+      // const userid = await fetch(`http://localhost:5001/api/attendees/rfidNo/${rfidNo}`);
       const useridData = await userid.json();
       const user_id = useridData.userId;
       // console.log('__________useridData', user_id);
-      const response = await fetch(`http://localhost:5001/api/sessionreg/rfid/${user_id}`);
+      const response = await fetch(`http://13.201.130.222:5001/api/sessionreg/rfid/${user_id}`);
+      // const response = await fetch(`http://localhost:5001/api/sessionreg/rfid/${user_id}`);
+
       const data = await response.json();
   
       console.log('data', data);
@@ -62,7 +66,8 @@ export default function MainSection() {
   
       // Iterate over session IDs and fetch details for each
       for (const sessionId of sessionIds) {
-        const sessionDetailsResponse = await fetch(`http://localhost:5001/api/conferences/sessions/${sessionId}`, {
+        // const sessionDetailsResponse = await fetch(`http://localhost:5001/api/conferences/sessions/${sessionId}`, {
+        const sessionDetailsResponse = await fetch(`http://13.201.130.222:5001/api/conferences/sessions/${sessionId}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -89,7 +94,8 @@ export default function MainSection() {
   useEffect(() => {
     const fetchHotSessions = async () => {
       try {
-        const topSessionsResponse = await fetch("http://localhost:5001/api/currentattendee/topSessions");
+        const topSessionsResponse = await fetch("http://13.201.130.222:5001/api/currentattendee/topSessions");
+        // const topSessionsResponse = await fetch("http://localhost:5001/api/currentattendee/topSessions");
         const topSessionsData = await topSessionsResponse.json();
 
         // console.log('topSessionsData', topSessionsData);
@@ -103,10 +109,12 @@ export default function MainSection() {
         const hotSessionsList = [];
 
         for (const conferenceId of conferenceIds) {
-          const conferenceRoom = await fetch(`http://localhost:5001/api/conferences/${conferenceId}`);
+          // const conferenceRoom = await fetch(`http://localhost:5001/api/conferences/${conferenceId}`);
+          const conferenceRoom = await fetch(`http://13.201.130.222:5001/api/conferences/${conferenceId}`);
           const confRoomName = await conferenceRoom.json();
 
-          const sessionDetailsResponse = await fetch(`http://localhost:5001/api/conferences/${conferenceId}/sessions`);
+          const sessionDetailsResponse = await fetch(`http://13.201.130.222:5001/api/conferences/${conferenceId}/sessions`);
+          // const sessionDetailsResponse = await fetch(`http://localhost:5001/api/conferences/${conferenceId}/sessions`);
           const sessionDetailsData = await sessionDetailsResponse.json();
           console.log('sessionDetailsData: --', sessionDetailsData);
           

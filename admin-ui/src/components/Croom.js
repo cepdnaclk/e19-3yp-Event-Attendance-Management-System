@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-// import { use } from '../../../backend/routes/conferenceRoutes';
 
 export default function Croom({ conferenceId }) {
+
     const [modal, setModal] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
 
@@ -29,27 +29,43 @@ export default function Croom({ conferenceId }) {
 
       if (!shouldDelete) {
         // User canceled the deletion
+
         return;
       }
-      try {
-        const response = await fetch(`http://localhost:5001/api/conferences/${conferenceId}/session/${sessionId}`, {
-          method: 'DELETE',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-  
-        if (response.ok) {
-          console.log('Session deleted successfully');
-          getSessions();
-          // toggleModal();
-        } else {
-          const data = await response.json();
-          console.error('Session deletion failed:', data.message);
-          // Handle error and show appropriate message to the user
-        }
-      } catch (error) {
-        console.error('Error during session deletion:', error);
+
+      setSessionName(existingSession.sessionName);
+      setSpeakerName(existingSession.speaker);
+      setSessionDetails(existingSession.SessionDetails);
+      setMaxCapacity(existingSession.maxAttendeeCap);
+
+      const formattedStartTime = existingSession.startTime.slice(0, -1);
+      const formattedEndTime = existingSession.endTime.slice(0, -1);
+      setStartTime(formattedStartTime);
+      setEndTime(formattedEndTime);
+
+      toggleModal();
+
+      const response = await fetch(`http://localhost:5001/api/conferences/${conferenceId}/sessionup/${sessionId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          sessionName,
+          speakerName,
+          sessionDetails,
+          maxCapacity: parseInt(maxCapacity),
+          startTime: new Date(formattedStartTime),
+          endTime: new Date(formattedEndTime),
+        }),
+      });
+
+      if (response.ok) {
+        console.log('Session updated successfully');
+        getSessions();
+      } else {
+        const data = await response.json();
+        console.error('Session update failed:', data.message);
         // Handle error and show appropriate message to the user
       }
     };
@@ -218,7 +234,9 @@ export default function Croom({ conferenceId }) {
         } catch (error) {
             console.error('Error fetching sessions:', error);
         }
+
     }
+  };
 
     // get conference details
     useEffect(() => {
@@ -412,8 +430,43 @@ export default function Croom({ conferenceId }) {
                 }}>
                   Edit Session
                 </button> */}
+
             </div>
-            ))} 
+            <div>
+              <button onClick={handleSessionCreate} className="btn-modal">
+                Create Session
+              </button>
+              <button onClick={toggleModal} className="btn-modal">
+                Cancel
+              </button>
+            </div>
+          </div>
         </div>
-    );
+      )}
+
+      <table>
+        <thead>
+          <tr>
+            <th>Session Name</th>
+            <th>Start Time</th>
+            <th>Speaker</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {sessionDetailsList.map((session) => (
+            <tr key={session._id}>
+              <td>{session.sessionName}</td>
+              <td>{new Date(session.startTime).toLocaleDateString('en-US', options)}</td>
+              <td>{session.speaker}</td>
+              <td>
+                <button className='btned' onClick={() => handleSessionEdit(session._id)}>Edit</button>
+                <button className='btned' onClick={() => handleSessionDelete(session._id)}>Delete</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
 }

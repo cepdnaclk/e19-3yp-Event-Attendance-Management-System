@@ -6,11 +6,11 @@ import axios from 'axios';
 import ConferenceRooms from "./pages/ConferenceRooms";
 import Analytics from "./pages/Analytics";
 import Overview from "./pages/Overview ";
-import Settings from "./pages/Settings";
-import Attendees from "./pages/Atendees";
+import Attendees from "./pages/Attendees";
 import LoginPage from "./pages/Login_page";
 import RegistrationPage from "./pages/Registration_page";
 import Sidebar from "./components/Sidebar";
+import ContactUs from "./pages/ContactUs";
 
 export default function App() {
     const [user, setUser] = useState(null);
@@ -19,20 +19,21 @@ export default function App() {
         // Check if the user is already authenticated on page load
         const accessToken = localStorage.getItem('token');
         if (accessToken) {
-        axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
-          // Validate the token on the server
-          axios.get('http://localhost:5001/api/users/current')
-            .then(response => {
-              setUser({ isAuthenticated: true, username: response.data.name });
-            })
-            .catch(error => {
-              console.error('Token validation failed', error);
+            axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+            // Validate the token on the server
+            axios.get('http://localhost:5001/api/users/current')
+                .then(response => {
+                    setUser({ isAuthenticated: true, username: response.data.name });
+                })
+                .catch(error => {
+                    console.error('Token validation failed', error);
+
 
               // If the token is expired or invalid, redirect to the login page
               setUser({ isAuthenticated: false });
             });
         }
-      }, []);
+    }, []);
 
     const handleLogin = (accessToken) => {
         // Save the JWT token in local storage or cookies
@@ -57,10 +58,10 @@ export default function App() {
                     {user && user.isAuthenticated ? (
                         <>
                             <Route path="/ConferenceRooms" element={<ConferenceRooms />} />
-                            <Route path="/settings" element={<Settings />} />
                             <Route path="/Attendees" element={<Attendees />} />
                             <Route path="/Overview" element={<Overview />} />
                             <Route path="/Analytics" element={<Analytics />} />
+                            <Route path="/ContactUs" element={<ContactUs />} />
                             <Route path="*" element={<Navigate to="/" />} />
                         </>
                     ) : (

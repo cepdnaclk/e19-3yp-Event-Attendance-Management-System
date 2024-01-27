@@ -9,18 +9,24 @@
     <meta name="author" content="">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
+    
+    <link rel="Icon" href="assets/icons/eventflow.ico">
     <title>EventFlow</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="vendor/venobox/venobox.css">
+    <link rel="stylesheet" href="vendor/boxicons/css/boxicons.min.css">
+    <!-- <link rel="stylesheet" href="vendor/aos/aos.css"> -->
     <link rel="stylesheet" href="assets/css/fontawesome.css">
     <link rel="stylesheet" href="assets/css/templatemo-space-dynamic.css">
     <link rel="stylesheet" href="assets/css/animated.css">
     <link rel="stylesheet" href="assets/css/owl.css">
     <link rel="stylesheet" href="assets/css/team-members.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-...." crossorigin="anonymous" />
+    
 
   </head>
 
@@ -47,7 +53,7 @@
           <nav class="main-nav">
             <!-- ***** Logo Start ***** -->
             <a href="index.html" class="logo">
-              <h4>EVENT<span>FLOW</span></h4>
+              <img src="assets/images/eventflow.png" alt="logo" width="80px" height="60px" style="margin-bottom: 30px; ">
             </a>
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
@@ -55,11 +61,14 @@
               <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
               <li class="scroll-to-section"><a href="#about">About</a></li>
               <li class="scroll-to-section"><a href="#features">Features</a></li>
-              <li class="scroll-to-section"><a href="#Implementation">Implementation</a></li>
-              <li class="scroll-to-section"><a href="#contact">Team</a></li> 
+              <li class="scroll-to-section"><a href="#Implementation">Architecture</a></li>
+              <li class="scroll-to-section"><a href="#design">Design</a></li>
+              <li class="scroll-to-section"><a href="#testing">Testing</a></li>
+              <li class="scroll-to-section"><a href="#portfolio">Team</a></li> 
+              <li class="scroll-to-section"><a href="#budget">Budget</a></li> 
               <li class="scroll-to-section"><div class="main-red-button"><a href="#contact">Contact Us</a></div></li> 
             </ul>        
-            <a class='menu-trigger'>
+            <a class='menu-trigger'>  
                 <span>Menu</span>
             </a>
             <!-- ***** Menu End ***** -->
@@ -79,8 +88,8 @@
           <div class="row">
             <div class="col-lg-6 align-self-center">
               <div class="left-content header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
-                <h6>Welcome to EVENTFLOW</h6>
-                <h2>Automate<em> Events</em> with our <span>  Human-less</span>  Attendance System.</h2>
+                <h4>Welcome to EVENTFLOW</h4>
+                <h2>Automate<em> Events</em> with our <em>Human-less</em> Attendance System.</h2>
                 <p>Streamline attendance tracking for conferences, workshops, and events. Our user-friendly platform simplifies registration and empowers organizers to efficiently manage and monitor participant engagement</p>
                 <div class="e&v">
                  <div class="Explore">
@@ -112,7 +121,7 @@
       <div class="row">
         <div class="col-lg-6 wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.25s">
           <div class="section-heading">
-            <h2>Dive Deep<em> Into</em> Our<span> System</span>...</h2>
+            <h2>Dive Deep into Our System...</h2>
           </div>
         </div>
         <div class="col-lg-6 wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.25s">
@@ -125,7 +134,7 @@
         
         <section class="about" id="coursee">
 
-      <div class="row">
+      <div class="row mt-4">
 
            <div class="about-col">
             <h3>Problem Facing</h3>
@@ -135,8 +144,8 @@
            </div>
            <div class="about-col">
             <h3>What our System Does</h3>
-            <p class="p3"> We Provides a Admin very accurate way to Tracks and analyses attendees entering and leaving. Also atendee Can see
-                event information through Display hub
+            <p class="p3"> We Provides a Admin very accurate way to track and analyse attendees entering and leaving. Also attendee Can see
+                event information through information hub
             </p>
            </div>
            <div class="about-col">
@@ -149,7 +158,7 @@
            </div>
       </div>
 </section>
-<section class="cta">
+<!-- <section class="cta"> -->
 </section>
           </div>
         </div>
@@ -229,173 +238,558 @@
 
     <div class="container">
 
-      <div class="col-lg-6 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.2s">
-        <div class="section-heading">
-          <h2>Control ,Data <em>Flow</em> & <span> High-Level</span> architecture</h2>
-          <p>Whether you are organizing conferences, workshops, or any other type of gathering, our solution 
-            provides a robust and user-friendly platform to efficiently manage and monitor participant engagement.
-            Take a look at Control & Data flow , solution arcitecture and UI.
-          </p>
+      <section class="architecture">
+        <div class="col-lg-6 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.2s">
+          <div class="section-heading">
+            <h2>Control ,Data Flow & High-Level architecture</h2>
+            <p>Whether you are organizing conferences, workshops, or any other type of gathering, our solution 
+              provides a robust and user-friendly platform to efficiently manage and monitor participant engagement.
+              Take a look at Control & Data flow , solution arcitecture and UI.
+            </p>
+          </div>
         </div>
-      </div>
-     
-        <section class="campus">
-      
-          <div class="campus-col">
-              <img src="assets/images/9.png" >
-          </div>
-      
-          <div class="campus-col">
-              <img src="assets/images/10.png" >   
-          </div>
-      
-          <div class="campus-col">
-              <img src="assets/images/14.png" >
-          </div>
-  
+        <div >
+          <img src="assets/images/9.png" >
         </div>
-  
       </section>
+     
+        <section class="architecture">
+            <div >
+                <img src="assets/images/10.png" >   
+            </div>
+        
+            <div >
+                <img src="assets/images/highlevel.png" >
+            </div>
+    
+          </div>
+    
+        </section>
       
 
       </div>
     </div>
   </div>
 
-  <br> <br> 
+  <br id="design"> <br> 
 
-  <div id="contact" >
+<!-- ======= Design Section ======= -->
+<section id="design" class="design" style="margin-top: 60px;background: #f1f6fe;">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-title text-center">
+      <h2 class="mb-4">Design</h2>
+      <p>Designs of our system</p>
+    </div>
+
+    <div class="row" data-aos="fade-up" data-aos-delay="100">
+      <div class="col-lg-12 d-flex justify-content-center">
+        <ul id="design-flters">
+          <li data-filter="*" class="filter-active">All</li>
+          <li data-filter=".filter-app">Software</li>
+          <li data-filter=".filter-card">Hardware</li>
+          <li data-filter=".filter-web">User Interfaces</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row design-container">
+
+      <div class="col-lg-4 col-md-6 design-item filter-card">
+        <img src="assets/images/pinconnect1.jpeg" class="img-fluid" alt="">
+      </div>
+
+      <div class="col-lg-4 col-md-6 design-item filter-card">
+        <img src="assets/images/pinconnect2.jpeg" class="img-fluid" alt="">
+      </div>
+
+      <div class="col-lg-4 col-md-6 design-item filter-card">
+        <video controls width="100%" height="250px">
+          <source src="assets/videos/design1.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <div class="col-lg-4 col-md-6 design-item filter-card" >
+        <img src="assets/images/design1.jpeg" class="img-fluid" alt="">
+      </div>
+
+      <div class="col-lg-4 col-md-6 design-item filter-card">
+        <img src="assets/images/design2.jpeg" class="img-fluid" alt="">
+      </div>
+
+      <div class="col-lg-4 col-md-6 design-item filter-card">
+        <video controls width="100%" height="250px">
+          <source src="assets/videos/design2.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+    </div>
+  </div>
+</section>
+<br id="testing">
+<!-- End Design Section -->
+
+
+
+<!-- ======= Portfolio Section ======= -->
+<section class="portfolio" style="margin-top: 60px;">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-title text-center">
+      <h2 class="mb-4">Testing</h2>
+      <p>These are the tests we are done on our system</p>
+    </div>
+
+    <div class="row" data-aos="fade-up" data-aos-delay="100">
+      <div class="col-lg-12 d-flex justify-content-center">
+        <ul id="portfolio-flters">
+          <li data-filter="*" class="filter-active">All</li>
+          <li data-filter=".filter-app">Front End</li>
+          <li data-filter=".filter-card">Back End</li>
+          <li data-filter=".filter-web">Hardware</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row portfolio-container">
+
+      <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+        <img src="assets/images/AttendeeCards.png" class="img-fluid" alt="">
+      </div>
+
+      <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+        <img src="assets/images/ConferenceRoomCards.png" class="img-fluid" alt="">
+      </div>
+
+      <!-- <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+        <img src="assets/images/11.png" class="img-fluid" alt="">
+      </div> -->
+
+      <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+        <img src="assets/images/Croom.png" class="img-fluid" alt="">
+      </div>
+
+      <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+        <img src="assets/images/SessionCards.png" class="img-fluid" alt="">
+      </div>
+
+      <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+        <img src="assets/images/endpoint1.jpeg" class="img-fluid" alt="">
+      </div>
+
+      <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+        <img src="assets/images/Footer.png" class="img-fluid" alt="">
+      </div>
+
+      <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+        <img src="assets/images/AttendeeCards.png" class="img-fluid" alt="">
+      </div>
+
+      <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+        <img src="assets/images/Sidebar.png" class="img-fluid" alt="">
+      </div>
+
+      <!-- <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+        <img src="assets/images/11.png" class="img-fluid" alt="">
+      </div> -->
+
+      <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+        <img src="assets/images/endpoint2.jpeg" class="img-fluid" alt="">
+      </div>
+      <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+        <img src="assets/images/endpoint3.jpeg" class="img-fluid" alt="">
+      </div>
+    </div>
+  </div>
+</section><!-- End Portfolio Section -->
+
+
+
+  <!-- <div id="ui" >
    
 
-      <section class="footer">
-       
-       <div class="description">
-        <img src="assets/images/12.png" alt="">
-       </div>
-       <div class="description">
-        <img src="assets/images/13.png" alt="">
-       </div>
+  
      
     </section>
-   
-  </div>
+  
+  </div> -->
 
-   <!-- Team -->
+<div class="people"  style="background: #f1f6fe;">
+     <!-- Team -->
 
-  <div id="portfolio" class="our-portfolio section">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 offset-lg-3">
-          <div class="section-heading  wow bounceIn" data-wow-duration="1s" data-wow-delay="0.2s">
-            <h2><em>Our</em><span> Team</span></h2>
+     <div id="portfolio" class="our-portfolio section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 offset-lg-3">
+            <div class="section-heading  wow bounceIn" data-wow-duration="1s" data-wow-delay="0.2s">
+              <h2>Our Team</h2>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+  
+          <div class="col-lg-3 col-sm-6">
+            <a href="#" class="team-member">
+              <div class="item wow bounceInUp " data-wow-duration="1s" data-wow-delay="0.3s">
+                <div class="hidden-content">
+                  <h4>Ravindu Abeysinghe</h4>
+                  <p>E/19/004</p>
+                  <div class="social-links">
+                    <a href="https://www.linkedin.com/in/ravindu1" target="_blank" class="linkedin-link"><i class="fab fa-linkedin" style="font-size: 2em; color: black;"></i></a>
+                    <a href="https://github.com/RavinduBA" target="_blank" class="github-link"><i class="fab fa-github" style="font-size: 2em; color: black;padding-left: 5px;"></i></a>
+                    <a href="https://www.thecn.com/RA1136" target="_blank" class="portfolio-link"><i class="fa fa-briefcase" style="font-size: 2em; color: black;padding-left: 5px;"></i></a>
+                  </div>
+                </div>
+                <div class="showed-content">
+                  <img src="assets/images/ravindu.png" alt="profilepic" class="profile-pic" >
+                </div>
+              </div>
+            </a>
+          </div>
+  
+          <div class="col-lg-3 col-sm-6">
+            <a href="#" class="team-member">
+              <div class="item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.4s">
+                <div class="hidden-content">
+                  <h4>Shenal Mendis</h4>
+                  <p>E/19/240</p>
+                  <div class="social-links">
+                    <a href="https://www.linkedin.com/in/shenal-mendis-bb30201a2/" target="_blank" class="linkedin-link"><i class="fab fa-linkedin" style="font-size: 2em; color: black;"></i></a>
+                    <a href="https://github.com/Shenal-M" target="_blank" class="github-link"><i class="fab fa-github" style="font-size: 2em; color: black;padding-left: 5px;"></i></a>
+                    <a href="thecn.com/BM1169" target="_blank" class="portfolio-link"><i class="fa fa-briefcase" style="font-size: 2em; color: black;padding-left: 5px;"></i></a>
+                  </div>
+                </div>
+                <div class="showed-content">
+                  <img src="assets/images/shenal.png" alt="">
+                </div>
+              </div>
+            </a>
+          </div>
+  
+          <div class="col-lg-3 col-sm-6">
+            <a href="#" class="team-member">
+              <div class="item wow bounceInUp hello" data-wow-duration="1s" data-wow-delay="0.5s">
+                <div class="hidden-content hello">
+                  <h4>Nipuni Sathya</h4>
+                  <p>E/19/167</p>
+                  <div class="social-links">
+                    <a href="https://www.linkedin.com/in/nipuni-jayawardena-339929201?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="linkedin-link"><i class="fab fa-linkedin" style="font-size: 2em; color: black;"></i></a>
+                    <a href="https://github.com/sath8" target="_blank" class="github-link"><i class="fab fa-github" style="font-size: 2em; color: black;padding-left: 5px;"></i></a>
+                    <a href="https://www.thecn.com/HJ430" target="_blank" class="portfolio-link"><i class="fa fa-briefcase" style="font-size: 2em; color: black;padding-left: 5px;"></i></a>
+                  </div>
+                </div>
+                <div class="showed-content">
+                  <img src="assets/images/sathya.png" alt="">
+                </div>
+              </div>
+            </a>
+          </div>
+  
+          <div class="col-lg-3 col-sm-6 ">
+            <a href="#" class="team-member">
+              <div class="item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.6s">
+                <div class="hidden-content">
+                  <h4>Prageeth Dananjaya</h4>
+                  <p>E/19/431</p>
+                  <div class="social-links">
+                    <a href="https://www.linkedin.com/in/prageeth-wickramaarachchi-716506279/" target="_blank" class="linkedin-link"><i class="fab fa-linkedin" style="font-size: 2em; color: black;"></i></a>
+                    <a href="https://github.com/Prageeth-Dananjaya" target="_blank" class="github-link"><i class="fab fa-github" style="font-size: 2em; color: black;padding-left: 5px;"></i></a>
+                    <a href="https://www.thecn.com/PW489" target="_blank" class="github-link"><i class="fa fa-briefcase" style="font-size: 2em; color: black;padding-left: 5px;"></i></a>
+                  </div>
+                </div>
+                <div class="showed-content">
+                  <img src="assets/images/prageeth.png" alt="">
+                </div>
+              </div>
+            </a>
+          </div>
+  
+          <div class="col-lg-3 col-sm-6 ">
+            <a href="#" class="team-member">
+              <div class="item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.6s">
+                <div class="hidden-content">
+                  <h4>Nilakshi Induwara</h4>
+                  <p>E/19/028</p>
+                  <div class="social-links">
+                    <a href="https://www.linkedin.com/in/nilakshi-induwara-34511225b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="linkedin-link"><i class="fab fa-linkedin" style="font-size: 2em; color: black;"></i></a>
+                    <a href="https://github.com/NilakshiInduwara" target="_blank" class="github-link"><i class="fab fa-github" style="font-size: 2em; color: black;padding-left: 5px;"></i></a>
+                    <a href="https://www.thecn.com/AA3656" target="_blank" class="github-link"><i class="fa fa-briefcase" style="font-size: 2em; color: black;padding-left: 5px;"></i></a>
+                  </div>
+                </div>
+                <div class="showed-content">
+                  <img src="assets/images/nilakshi.png" alt="">
+                </div>
+              </div>
+            </a>
           </div>
         </div>
       </div>
-      <div class="row">
-
-        <div class="col-lg-3 col-sm-6">
-          <a href="#" class="team-member">
-            <div class="item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.3s">
-              <div class="hidden-content">
-                <h4>Ravindu Abeysinghe</h4>
-                <p>E/19/004</p>
-                <div class="social-links">
-                  <a href="https://www.linkedin.com/in/ravindu/" target="_blank" class="linkedin-link">LinkedIn</a>
-                </div>
-              </div>
-              <div class="showed-content">
-                <img src="assets/images/ravindu.png" alt="" class="imgus">
-              </div>
+    </div>
+  <br>
+  <br>
+  <br>
+  
+     <!-- Advisors -->
+  
+     <div id="portfolio" class="our-advisors section" >
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 offset-lg-3">
+            <div class="section-heading  wow bounceIn" data-wow-duration="1s" data-wow-delay="0.2s">
+              <h2 style="text-align: center; margin-bottom: 40px;">Our Advisors</h2>
             </div>
-          </a>
+          </div>
         </div>
-
-        <div class="col-lg-3 col-sm-6">
-          <a href="#" class="team-member">
-            <div class="item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.4s">
-              <div class="hidden-content">
-                <h4>Shenal Mendis</h4>
-                <p>E/19/240</p>
-                <div class="social-links">
-                  <a href="https://www.linkedin.com/in/shenal/" target="_blank" class="linkedin-link">LinkedIn</a>
+        <div class="row">
+  
+          <div class="col-lg-3 col-sm-6 ">
+            <a href="#" class="advisor" id="emailLink">
+              <div>
+                <div class="showed-content">
+                  <img src="assets/images/dr-isuru-nawinne.png" alt="profilepic" class="profile-pic">
                 </div>
               </div>
-              <div class="showed-content">
-                <img src="assets/images/shenal.png" alt="">
+              <h3 class="text-center">Dr Isuru Nawinne</h3>
+              <i class="fa fa-envelope" id="emailIcon" style="padding-left: 150px; font-size: 25px;"></i>
+            </a>
+          
+            <script>
+              document.getElementById('emailIcon').addEventListener('click', function() {
+                window.location.href = 'mailto:isurunawinne@eng.pdn.ac.lk';
+              });
+            </script>
+          </div>
+  
+          <div class="col-lg-3 col-sm-6 ">
+            <a href="#" class="advisor" id="emailLink">
+              <div>
+                <div class="showed-content">
+                  <img src="assets/images/dr-asitha-bandaranayake.jpg" alt="profilepic" class="profile-pic">
+                </div>
               </div>
-            </div>
-          </a>
+              <h3 class="text-center">Dr Asitha Bandaranayake</h3>
+              <i class="fa fa-envelope" id="emailIcon" style="padding-left: 150px; font-size: 25px;"></i>
+            </a>
+          
+            <script>
+              document.getElementById('emailIcon').addEventListener('click', function() {
+                window.location.href = 'mailto:asithab@eng.pdn.ac.lk';
+              });
+            </script>
+          </div>
+  
+          <div class="col-lg-3 col-sm-6 ">
+            <a href="#" class="advisor" id="emailLink">
+              <div>
+                <div class="showed-content">
+                  <img src="assets/images/dr-ziyan-maraikar.png" alt="profilepic" class="profile-pic">
+                </div>
+              </div>
+              <h3 class="text-center">Mr Ziyan Maraikar</h3>
+              <i class="fa fa-envelope" id="emailIcon" style="padding-left: 150px; font-size: 25px;"></i>
+            </a>
+          
+            <script>
+              document.getElementById('emailIcon').addEventListener('click', function() {
+                window.location.href = 'mailto:ziyanm@eng.pdn.ac.lk';
+              });
+            </script>
+          </div>
         </div>
+      </div>
+    </div>
+</div>
+<br>
+<br id="budget">
 
-        <div class="col-lg-3 col-sm-6">
-          <a href="#" class="team-member">
-            <div class="item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.5s">
-              <div class="hidden-content">
-                <h4>Nipuni Sathya</h4>
-                <p>E/19/167</p>
-                <div class="social-links">
-                  <a href="https://www.linkedin.com/in/sathya/" target="_blank" class="linkedin-link">LinkedIn</a>
-                </div>
-              </div>
-              <div class="showed-content">
-                <img src="assets/images/sathya.png" alt="">
-              </div>
-            </div>
-          </a>
+<!-- Budget section -->
+<div  class="budget-overview section">
+  <div class="container-budget">
+    <h2 class="text-center">Estimated Budget According to the market price</h2>
+    <br><br>
+    <section class="budget">
+      <div class="description1">
+        <img src="assets/images/Complete Budget.png" alt="">
+      </div>
+    </section>
+  </div>
+</div>
+<br>
+<br>
+<br id="contact">
+<!-- End of Budget section -->
+
+<!-- ======= Contact Section ======= -->
+<section  class="contact" style="margin-top: 70px;">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-title">
+      <h2 class="text-center">Contact Us</h2><br>
+      <p class="text-center">Feel free to contact regarding any matter</p><br>
+    </div>
+
+    <div class="row" data-aos="fade-up" data-aos-delay="100">
+      <div class="col-lg-6">
+        <div class="info-box mb-4">
+          <i class="fa fa-map-marker"></i>
+          <h3>Address</h3>
+          <p>University of Peradeniya, Peradeniya</p>
         </div>
+      </div>
 
-        <div class="col-lg-3 col-sm-6">
-          <a href="#" class="team-member">
-            <div class="item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.6s">
-              <div class="hidden-content">
-                <h4>Prageeth Dananjaya</h4>
-                <p>E/19/431</p>
-                <div class="social-links">
-                  <a href="https://www.linkedin.com/in/prageeth/" target="_blank" class="linkedin-link">LinkedIn</a>
-                </div>
-              </div>
-              <div class="showed-content">
-                <img src="assets/images/prageeth.png" alt="">
-              </div>
-            </div>
-          </a>
+      <div class="col-lg-3 col-md-6">
+        <div class="info-box  mb-4">
+          <i class="fa fa-envelope"></i>
+          <h3>Email Us</h3>
+          <p>e19431@eng.pdn.ac.lk</p>
         </div>
+      </div>
 
-        <div class="col-lg-3 col-sm-6">
-          <a href="#" class="team-member">
-            <div class="item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.6s">
-              <div class="hidden-content">
-                <h4>Nilakshi Induwara</h4>
-                <p>E/19/028</p>
-                <div class="social-links">
-                  <a href="https://www.linkedin.com/in/nilakshi/" target="_blank" class="linkedin-link">LinkedIn</a>
-                </div>
-              </div>
-              <div class="showed-content">
-                <img src="assets/images/nilakshi.png" alt="">
-              </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="info-box  mb-4">
+          <i class="fa fa-phone"></i>
+          <h3>Call Us</h3>
+          <p>+94783397449</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row" data-aos="fade-up" data-aos-delay="100">
+
+      <div class="col-lg-6 ">
+        <iframe class="mb-4 mb-lg-0"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.8860489929775!2d80.58944891507424!3d7.253807994763886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae36f2b331d4a3b%3A0xfcecb1ac7b82edec!2sThe%20Faculty%20of%20Engineering%2C%20University%20of%20Peradeniya!5e0!3m2!1sen!2slk!4v1605245368463!5m2!1sen!2slk"
+          frameborder="0" style="border:0; width: 100%; height: 384px;" allowfullscreen></iframe>
+      </div>
+
+      <div class="col-lg-6">
+        <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+          <div class="form-row">
+            <div class="col form-group">
+              <input type="text" name="name" class="form-control" id="name" placeholder="Your Name"
+                data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+              <div class="validate"></div>
             </div>
-          </a>
+            <div class="col form-group">
+              <input type="email" class="form-control" name="email" id="email" placeholder="Your Email"
+                data-rule="email" data-msg="Please enter a valid email" />
+              <div class="validate"></div>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject"
+              data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+            <div class="validate"></div>
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" name="message" rows="5" data-rule="required"
+              data-msg="Please write something for us" placeholder="Message"></textarea>
+            <div class="validate"></div>
+          </div>
+          <div class="mb-3">
+            <div class="loading">Loading</div>
+            <div class="error-message"></div>
+            <div class="sent-message">Your message has been sent. Thank you!</div>
+          </div>
+          <div class="text-center"><button type="submit">Send Message</button></div>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<!-- End Contact Section -->
+
+
+
+<!-- ======= Footer ======= -->
+<footer id="footer">
+
+  <div class="footer-newsletter">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <h4>Github Repo</h4>
+          <p>Visit our project Repository</p>
+          <div class="section-title">
+            <a href="https://github.com/cepdnaclk/e19-3yp-Event-Attendance-Management-System" target="_blank">
+              <i class="fab fa-github" style="font-size: 5em; color: black;"></i>
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </div>
-<br>
-<br>
-<br>
 
-
-   <!-- Footer-->
-
-  <footer>
+  <div class="footer-newsletter">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-12 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.25s">
-          <p>© Copyright 2024 Event Flow Co. All Rights Reserved. 
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <h4>Pre-Order</h4>
+          <p>Enter the E-mail. One of our team member will contact you</p>
+          <form action="" method="post">
+            <input type="email" name="email"><input type="submit" value="Pre-Order">
+          </form>
         </div>
       </div>
     </div>
-  </footer>
+  </div>
+
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-4 col-md-6 footer-contact">
+            <h3 style="text-align: left;">University of Peradeniya</h3>
+            <p style="text-align: left;">
+              University of Peradeniya <br>
+              Peradeniya<br>
+              Sri Lanka <br><br>
+              <strong>Phone:</strong> +94 81 239 33 00<br>
+              <strong>Email:</strong> vc@pdn.ac.lk<br>
+              <strong>Web-site:</strong> <a href="http://www.pdn.ac.lk/" class="text-primary">http://www.pdn.ac.lk/</a> <br>
+            </p>
+        </div>
+
+        <div class="col-lg-4 col-md-6 footer-contact">
+          <h3 style="text-align: left;">Faculty of Engineering</h3>
+          <p style="text-align: left;">
+            Faculty of Engineering <br>
+            University of Peradeniya <br>
+            Peradeniya<br>
+            Sri Lanka <br><br>
+            <strong>Phone:</strong> +94 81 239 33 02<br>
+            <strong>Web-site:</strong> <a href="http://eng.pdn.ac.lk/" class="text-primary">http://eng.pdn.ac.lk/</a> <br>
+          </p>
+        </div>
+
+
+        <div class="col-lg-4 col-md-6 footer-contact">
+          <h3 style="text-align: left;">Computer Engineering Department</h3>
+          <p style="text-align: left;">
+            Computer Engineering Department<br>
+            Faculty of Engineering <br>
+            University of Peradeniya <br>
+            Peradeniya<br>
+            Sri Lanka <br><br>
+            <strong>Phone:</strong> +94 81 239 39 14<br>
+            <strong>Web-site:</strong> <a href="http://www.ce.pdn.ac.lk/" class="text-primary">http://www.ce.pdn.ac.lk/</a> <br>
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div style="height: 20px; margin-top: 0; padding-top: 0; padding-bottom: 0;"   >
+        <p>© Copyright 2024 Event Flow Co. All Rights Reserved. 
+  </div>
+</footer><!-- End Footer -->
+
   <!-- Scripts -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -403,6 +797,68 @@
   <script src="assets/js/animation.js"></script>
   <script src="assets/js/imagesloaded.js"></script>
   <script src="assets/js/templatemo-custom.js"></script>
+  <script src="vendor/aos/aos.js"></script>
+  <script src="vendor/venobox/venobox.min.js"></script>
+  <script src="vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="vendor/php-email-form/validate.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+  <!-- Testing JS File -->
+  <script>
+    $(document).ready(function () {
+      // Define the maximum number of images to display
+      var maxImagesToShow = 9;
+  
+      // Hide extra items if more than the maximum limit
+      $('.portfolio-item:gt(' + (maxImagesToShow - 1) + ')').hide();
+  
+      // Handle filter click event
+      $('#portfolio-flters li').on('click', function () {
+        // Reset the display for all items
+        $('.portfolio-item').hide();
+  
+        // Remove active class from all filter items
+        $('#portfolio-flters li').removeClass('filter-active');
+  
+        // Add active class to the clicked filter item
+        $(this).addClass('filter-active');
+  
+        // Show only the first four items based on the selected filter
+        var selectedFilter = $(this).data('filter');
+        $('.portfolio-item' + selectedFilter + ':lt(' + maxImagesToShow + ')').show();
+      });
+    });
+  </script>
+
+<!-- Design JS File -->
+<script>
+  $(document).ready(function () {
+    // Define the maximum number of images to display
+    var maxImages = 9;
+
+    // Hide extra items if more than the maximum limit
+    $('.design-item:gt(' + (maxImages - 1) + ')').hide();
+
+    // Handle filter click event
+    $('#design-flters li').on('click', function () {
+      // Reset the display for all items
+      $('.design-item').hide();
+
+      // Remove active class from all filter items
+      $('#design-flters li').removeClass('filter-active');
+
+      // Add active class to the clicked filter item
+      $(this).addClass('filter-active');
+
+      // Show only the first four items based on the selected filter
+      var selectedFilter = $(this).data('filter');
+      $('.design-item' + selectedFilter + ':lt(' + maxImages + ')').show();
+    });
+  });
+</script>
+  
+  
+  
 
 </body>
 </html>

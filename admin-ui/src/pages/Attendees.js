@@ -1,4 +1,3 @@
-// this is Attendees page
 
 import React, { useEffect } from "react";
 import { useState } from "react";
@@ -7,7 +6,7 @@ import "./App.css";
 import axios from "axios";
 import Sidebar from "../components/Sidebar";
 
-const Settings = () => {
+const Attendees = () => {
   // Define columns for the DataTable
   const columns = [
     {
@@ -104,6 +103,8 @@ const Settings = () => {
   return (
     <>
       <Sidebar />
+      <div className="att">Attendees</div>
+
       <div className="table-container">
         {/* Search box with clear button */}
         <div className=" searchbox">
@@ -139,4 +140,4 @@ const Settings = () => {
   );
 };
 
-export default Settings;
+export default Attendees;
