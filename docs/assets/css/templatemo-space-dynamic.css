@@ -1553,11 +1553,11 @@ responsive
     text-align: left;
   }
   .our-services {
-    margin-top: 200px;
+    margin-top: 60px;
   }
   .our-services .left-image {
     margin-right: 0px;
-    margin-bottom: 45px;
+    margin-bottom: 30px;
   }
   .our-services .section-heading h2,
   .our-services .section-heading p {
@@ -2223,6 +2223,11 @@ responsive
 /*--------------------------------------------------------------
 # Design
 --------------------------------------------------------------*/
+
+.design{
+  padding-top: 45px;
+}
+
 .design #design-flters {
   padding: 0;
   margin: 0 auto 15px auto;
@@ -2260,7 +2265,7 @@ responsive
 
 .design-item img {
   /* transition: transform 0.5s ease-in-out; */
-  max-height: 350px;
+  height: 250px;
   width: auto;
 }
 
