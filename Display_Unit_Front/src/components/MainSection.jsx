@@ -16,7 +16,9 @@ export default function MainSection() {
 
   useEffect(() => {
     // Set a default RFID number or use any logic to determine the RFID number initially
-    const defaultRfidNo = '003';
+    // const defaultRfidNo = '003';
+    const defaultRfidNo = new URLSearchParams(window.location.search).get('id') || '003';
+
     setRfidNo(defaultRfidNo);
 
     // Fetch and set registered sessions when the component mounts
