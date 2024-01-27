@@ -9,6 +9,10 @@ import Croom from "../components/Croom";
 // import { sessionData, responsive } from "../DataFiles/Session_data";
 import axios from "axios";
 import Sidebar from "../components/Sidebar";
+import Footer from "../components/Footer";
+
+import { IoCloseSharp } from "react-icons/io5";
+
 
 export default function ConferenceRooms() {
   const [conferenceData, setConferenceData] = useState([]);
@@ -22,7 +26,7 @@ export default function ConferenceRooms() {
       axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
       // Validate the token on the server
       axios
-      // .get("http://localhost:5001/api/conferences/")
+        // .get("http://localhost:5001/api/conferences/")
         .get("http://localhost:5001/api/conferences/get")
         .then((response) => {
           console.log(response.data);
@@ -96,29 +100,31 @@ export default function ConferenceRooms() {
     <>
       <Sidebar />
       <div className="Appss">
-        <button onClick={toggleModal} className="btn-modal">
-          Add Room
+        <div className="vr">Conference Rooms</div>
+        <button onClick={toggleModal} className="btn111">
+          Create Room
         </button>
 
         {modal && (
           <div className="modal">
-            <div onClick={toggleModal} className="overlay"></div>   
+            <div onClick={toggleModal} className="overlay"></div>
             <div className="modal-content">
               <div>
-                <label htmlFor="roomName">Room Name:</label>
+                <label className="roomnaame">Room Name</label>
                 <input
+                className="i1"
                   type="text"
                   id="roomName"
                   placeholder="Enter room name"
                   value={roomName}
                   onChange={handleRoomNameChange}
                 />
-                <button className="rounded" type="submit" onClick={handleAddRoom}>
+                <button className="submitbtn" type="submit" onClick={handleAddRoom}>
                   Submit
                 </button>
               </div>
-              <button className="close-modal" onClick={toggleModal}>
-                Close
+              <button className="close-btn" onClick={toggleModal}>
+                close
               </button>
             </div>
           </div>
@@ -131,6 +137,8 @@ export default function ConferenceRooms() {
           ))}
         </div>
       </div>
+
+
     </>
   );
 }

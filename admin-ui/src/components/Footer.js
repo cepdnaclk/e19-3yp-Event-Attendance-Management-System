@@ -9,7 +9,7 @@ export default function Footer() {
       <a href="/terms-of-use">Terms of Use</a>
       <p>
         Contact us:{" "}
-        <a href="mailto:e19004@eng.pdn.ac.lk">e19004@eng.pdn.ac.lk"</a>
+        <a href="mailto:eventflow6@gmail.com">eventflow6@gmail.com</a>
       </p>
     </div>
   );
