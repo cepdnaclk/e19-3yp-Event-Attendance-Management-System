@@ -15,18 +15,26 @@ export default function EventCard({ card }) {
       {/* <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40"></div> */}
 
       {/* Title of the event */}
-      <h3 className=" mt-3 text-2xl font-bold text-black">{card.title}</h3>
+      <h3 className=" mt-3 text-2xl font-bold text-black">{card.sessionName}</h3>
 
       {/* Description of the event */}
       <div className="gap-y-1 overflow-hidden text-sm leading-6 text-black">
-        Location: {card.location}
+        Conference Room: {card.confName}
       </div>
       <div className="gap-y-1 overflow-hidden text-sm leading-6 text-black">
-        Start Time: {card.startTime}
+        About: {card.SessionDetails}
       </div>
       <div className="gap-y-1 overflow-hidden text-sm leading-6 text-black">
-        End Time: {card.endTime}
+        Speaker: {card.speaker}
       </div>
+      <div className="gap-y-1 overflow-hidden text-sm leading-6 text-black">
+        {/* Start Time: {card.startTime} */}
+        Start Time: {new Date(card.startTime).toLocaleString('en-US', { timeZone: 'Asia/Colombo' })}
+      </div>
+      <div className="gap-y-1 overflow-hidden text-sm leading-6 text-black">
+        {/* End Time: {card.endTime} */}
+        End Time: {new Date(card.endTime).toLocaleString('en-US', { timeZone: 'Asia/Colombo' })}
+      </div>      
     </article>
   );
 }

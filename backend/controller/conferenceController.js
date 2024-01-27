@@ -1,19 +1,118 @@
 const asyncHandler = require("express-async-handler");
 const {Conference, Session } = require("../models/conferenceModel");
+// const { CurrentAttendee } = require('..models/currentAttendeeModel');
 
-////////////get hot sessions
-const getHotSessions = async () => {
-  try {
-    const hotSessions = await Session.find()
-      .sort({ maxAttendeeCap: -1 }) // Sort sessions in descending order based on maxAttendeeCap
-      .limit(5); // Limit the result to the top 5 sessions (adjust as needed)
+// dont need
 
-    return hotSessions;
-  } catch (error) {
-    console.error('Error getting hot sessions:', error);
-    throw error;
-  }
-};
+///////////get All hot session ids based on currentCapacity
+// const getTopSessions = async () => {
+//   try {
+//     const topSessions = await CurrentAttendee.find()
+//       .sort({ currentCapacity: -1 })
+//       .limit(3);
+
+//     // Extract session details using the fetched session data
+//     const sessionDetailsPromises = topSessions.map(async (attendee) => {
+//       const session = await Session.findOne({ _id: attendee.conferenceId });
+//       return {
+//         sessionName: session.sessionName,
+//         maxAttendeeCap: session.maxAttendeeCap,
+//         // Add other session details you want to include
+//       };
+//     });
+//     const sessionDetails = await Promise.all(sessionDetailsPromises);
+
+//     console.log('Top sessions based on currentCapacity:', sessionDetails);
+//     return sessionDetails;
+//   } catch (error) {
+//     console.error('Error getting top sessions by currentCapacity:', error);
+//     throw error;
+//   }
+// };
+
+// const getTopSessions = async () => {
+//   try {
+//     // Find sessions, sort them in descending order based on maxAttendeeCap, and limit to the top 3
+//     const topSessions = await Session.find()
+//       .sort({ maxAttendeeCap: -1 })
+//       .limit(3);
+
+//     return topSessions;
+//   } catch (error) {
+//     console.error('Error getting top sessions:', error);
+//     throw error;
+//   }
+// };
+
+
+
+//wrong
+// const getHotSessionIds = async (conferenceId, sessionId) => {
+//   try {
+//     const matchStage = { $match: { _id: mongoose.Types.ObjectId(conferenceId) } };
+//     const unwindStage = { $unwind: "$sessions" };
+//     const matchSessionStage = { $match: { "sessions._id": mongoose.Types.ObjectId(sessionId) } };
+//     const sortStage = { $sort: { "sessions.maxAttendeeCap": -1 } };
+//     const limitStage = { $limit: 3 };
+
+//     const hotSessions = await Conference.aggregate([
+//       matchStage,
+//       unwindStage,
+//       matchSessionStage,
+//       sortStage,
+//       limitStage,
+//     ]);
+
+//     console.log('Hot sessions maxAttendeeCap:', hotSessions.map(session => session.sessions.maxAttendeeCap));
+
+//     if (!hotSessions || hotSessions.length === 0) {
+//       console.log('No hot sessions found');
+//       return [];
+//     }
+
+//     const hotSessionDetails = hotSessions.map(session => ({
+//       _id: session._id.toString(),
+//       sessionName: session.sessions.sessionName,
+//       maxAttendeeCap: session.sessions.maxAttendeeCap,
+//       startTime: session.sessions.startTime,
+//       endTime: session.sessions.endTime,
+//     }));
+
+//     return hotSessionDetails;
+//   } catch (error) {
+//     console.error('Error getting hot session details:', error);
+//     throw error;
+//   }
+// };
+
+// const getHotSessionIds = async () => {
+//   try {
+//     const hotSessions = await Session.find()
+//       .sort({ maxAttendeeCap: -1 }) // Sort sessions in descending order based on maxAttendeeCap
+//       .limit(3); // Limit the result to the top 3 sessions (adjust as needed)
+
+//     console.log('Hot sessions maxAttendeeCap:', hotSessions.map(session => session.maxAttendeeCap));
+
+//     if (!hotSessions || hotSessions.length === 0) {
+//       // Check if hotSessions is empty
+//       console.log('No hot sessions found');
+//       return [];
+//     }
+
+//     const hotSessionDetails = hotSessions.map(session => ({
+//       _id: session._id.toString(),
+//       sessionName: session.sessionName,
+//       maxAttendeeCap: session.maxAttendeeCap,
+//       startTime: session.startTime,
+//       endTime: session.endTime,
+//     }));
+
+//     return hotSessionDetails;
+//   } catch (error) {
+//     console.error('Error getting hot session details:', error);
+//     throw error;
+//   }
+// };
 
 ////////////////// CONFERENCES //////////////////////
 
@@ -30,43 +129,6 @@ const getConferenceIds = asyncHandler (async (req, res) => {
     throw error;
   }
 });
-
-///////////get All session ids
-const getSessionIds = asyncHandler(async (req, res) => {
-  const { conferenceId } = req.params;
-
-  try {
-    const conference = await Conference.findById(conferenceId);
-
-    if (!conference) {
-      res.status(404).json({ message: "Conference not found" });
-      return;
-    }
-
-    const sessionIds = conference.sessions.map(session => session._id.toString());
-
-    res.status(200).json({ sessionIds });
-  } catch (error) {
-    console.error('Error getting session IDs:', error);
-    res.status(500).json({ message: "Internal Server Error" });
-  }
-});
-
-// get all 
-
-// const getSessionIds = async () => {
-//   try {
-//     const sessions = await Session.find({}, '_id');
-//     const sessionIds = sessions.map(session => session._id.toString());
-//     console.log('Session IDs:', sessionIds);
-//     return [...new Set(sessionIds)];
-//   } catch (error) {
-//     console.error('Error getting session IDs:', error);
-//     throw error;
-//   }
-// };
-
-
 
 /////////////////////// Get all conference details
 const getAllConferences = asyncHandler(async (req, res) => {
@@ -147,13 +209,12 @@ const getConferenceDetails = asyncHandler(async (req, res) => {
 });
 
 
-// this doent work________________________________________________________________
 ////////////////// Delete a conference
 const deleteConference = asyncHandler(async (req, res) => {
   const { id } = req.params;
 
   // Check if the conference exists
-  const conference = await Conference.findById(id);
+  const conference = await Conference.findByIdAndDelete(id);
 
   if (!conference) {
     res.status(404);
@@ -161,7 +222,7 @@ const deleteConference = asyncHandler(async (req, res) => {
   }
 
   // Delete the conference
-  await conference.remove();
+  // await conference.remove();
 
   // console.log("Received conferenceId:", id);
 
@@ -172,11 +233,92 @@ const deleteConference = asyncHandler(async (req, res) => {
 
 ////////////////// SESSIONS //////////////////////
 
+// Assuming you have the sessionIds array in the request body like this:
+// {
+//   "sessionIds": [
+//     "65993c78a87fe5df449913c5",
+//     "659d04a8eaf8a86c393d4335"
+//   ]
+// }
+
+///////////get All session ids
+const getSessionIds = asyncHandler(async (req, res) => {
+  const { conferenceId } = req.params;
+
+  try {
+    const conference = await Conference.findById(conferenceId);
+
+    if (!conference) {
+      res.status(404).json({ message: "Conference not found" });
+      return;
+    }
+
+    const sessionIds = conference.sessions.map(session => session._id.toString());
+
+    res.status(200).json({ sessionIds });
+  } catch (error) {
+    console.error('Error getting session IDs:', error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+// get all session details for a conferenceId
+const getSessionDetailsForConference = asyncHandler(async (req, res) => {
+  const { conferenceId } = req.params;
+
+  try {
+    const conference = await Conference.findById(conferenceId);
+
+    if (!conference) {
+      res.status(404).json({ message: "Conference not found" });
+      return;
+    }
+    // Extract session details for all sessions in the conference
+    const sessionDetails = conference.sessions.map(session => ({
+      sessionId: session._id.toString(),
+      sessionName: session.sessionName,
+      sessionDetails: session.SessionDetails,
+      maxAttendeeCap: session.maxAttendeeCap,
+      startTime: session.startTime,
+      endTime: session.endTime,
+      speaker: session.speaker,
+    }));
+
+    res.status(200).json({ sessionDetails });
+  } catch (error) {
+    console.error('Error getting session IDs:', error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+// have to check this -------------------------------------
+// get all sessionDetails for a list of sessionIds
+const getAllSessionDetails = async (req, res) => {
+  try {
+    const { sessionIds } = req.body;
+    // const {["65993c78a87fe5df449913c5","659d04a8eaf8a86c393d4335"]: sessionIds } = req.body;    
+
+    // Find sessions that match the provided sessionIds
+    const sessions = await Session.find({ _id: { $in: sessionIds } });
+
+    if (sessions.length === 0) {
+      return res.status(404).json({ message: 'No sessions found for the provided sessionIds' });
+    }
+
+    console.log('Session Details:', sessions);
+    res.status(200).json({ sessionDetails: sessions });
+  } catch (error) {
+    console.error('Error getting session details:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+};
 
 ////////////////// Create a new session
 const createSession = asyncHandler(async (req, res) => {
   const { id } = req.params;
   const { sessions } = req.body;
+
+  // console.log(req.body);
 
   // Check if the conference exists
   const conference = await Conference.findById(id);
@@ -245,27 +387,27 @@ const updateSessionDetails = asyncHandler(async (req, res) => {
 
 
 ////////////////// Get session details by session ID without conference ID
-const getSessionDetailsBy_SesId = asyncHandler(async (req, res) => {
-  const { id: conferenceId, sessionId } = req.params;
+const getSessionDetailsBySesId = asyncHandler(async (req, res) => {
+  const { sessionId } = req.params;
 
-  // Check if the conference exists
-  const conference = await Conference.findById(conferenceId);
+  try {
+    // Find the session in the sessions array based on sessionId across all conferences
+    const sessionDetails = await Conference.findOne({ "sessions._id": sessionId })
+      .select("sessions.$")
+      .exec();
 
-  if (!conference) {
-    res.status(404);
-    throw new Error("Conference not found for the given conferenceId");
+    if (!sessionDetails) {
+      res.status(404).json({ error: "Session not found for the given sessionId" });
+      return;
+    }
+
+    res.status(200).json(sessionDetails.sessions[0]);
+  } catch (error) {
+    console.error("Error fetching session details:", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
-
-  // Find the session in the sessions array based on sessionId
-  const sessionDetails = conference.sessions.id(sessionId);
-
-  if (!sessionDetails) {
-    res.status(404);
-    throw new Error("Session not found for the given sessionId");
-  }
-
-  res.status(200).json(sessionDetails);
 });
+
 
 ////////////////// Get session details by session ID
 const getSessionDetails = asyncHandler(async (req, res) => {
@@ -320,8 +462,26 @@ const deleteSession = asyncHandler(async (req, res) => {
   res.status(200).json({ message: "Session deleted successfully" });
 });
 
+// get all 
+
+// const getSessionIds = async () => {
+//   try {
+//     const sessions = await Session.find({}, '_id');
+//     const sessionIds = sessions.map(session => session._id.toString());
+//     console.log('Session IDs:', sessionIds);
+//     return [...new Set(sessionIds)];
+//   } catch (error) {
+//     console.error('Error getting session IDs:', error);
+//     throw error;
+//   }
+// };
 
 module.exports = {
+  // getTopSessions,
+  getAllSessionDetails,
+  getSessionDetailsForConference,
+  // getHotSessionIds,
+  getSessionDetailsBySesId,
   getConferenceIds,
   getSessionIds,
   createConference,

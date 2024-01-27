@@ -2,6 +2,68 @@
 
 const asyncHandler = require('express-async-handler');
 const { CurrentAttendee } = require('../models/currentAttendeeModel');
+const { Conference, Session } = require("../models/conferenceModel");
+
+///////////get All hot session ids based on currentCapacity
+// const getTopSessions = async (req, res) => {
+//   try {
+//     const topSessions = await CurrentAttendee.find()
+//       .sort({ currentCapacity: -1 })
+//       .limit(3);
+
+//     const sessionDetailsPromises = topSessions.map(async (attendee) => {
+//       const conference = await Conference.findOne({ _id: attendee.conferenceId });
+//       // const session = conference.sessions.find((session) => /* add your condition to select the session based on time */);
+      
+//       return {
+//         sessionName: session.sessionName,
+//         maxAttendeeCap: session.maxAttendeeCap,
+//         // Add other session details you want to include
+//       };
+//     });
+
+//     const sessionDetails = await Promise.all(sessionDetailsPromises);
+
+//     console.log('Top sessions based on currentCapacity:', sessionDetails);
+//     return sessionDetails;
+//   } catch (error) {
+//     console.error('Error getting top sessions by currentCapacity:', error);
+//     throw error;
+//   }
+// };
+
+const getTopSessions = async (req, res) => {
+    try {
+      const topSessions = await CurrentAttendee.find()
+        .sort({ currentCapacity: -1 })
+        .limit(3);
+
+      // console.log('Top sessions based on currentCapacity:', topSessions);
+
+      // Extract conferenceIds from the fetched sessions
+      const conferenceIds = topSessions.map((session) => session.conferenceId);
+
+      console.log('Top conferenceIds based on currentCapacity:', conferenceIds);
+      res.status(200).json({ conferenceIds });
+      // return conferenceIds;
+  
+      // // Extract session details using the fetched session data
+      // const sessionDetailsPromises = topSessions.map(async (attendee) => {
+      //   const session = await Session.findOne({ _id: attendee.conferenceId });
+      //   return {
+      //     sessionName: session.sessionName,
+      //     maxAttendeeCap: session.maxAttendeeCap,
+      //   };
+      // });
+      // const sessionDetails = await Promise.all(sessionDetailsPromises);
+      // console.log('Top sessions based on currentCapacity:', sessionDetails);
+      // return sessionDetails;
+
+    } catch (error) {
+      console.error('Error getting top sessions by currentCapacity:', error);
+      throw error;
+    }
+  };
 
 // get all current attendee ids
 const getAllCurrentAttendeeIds = asyncHandler(async (req, res) => {
@@ -31,4 +93,4 @@ const getCurrentAttendeeDetails = asyncHandler(async (req, res) => {
     res.status(200).json({ currentAttendee });
 });
 
-module.exports = { getCurrentAttendeeDetails, getAllCurrentAttendeeIds };
+module.exports = { getTopSessions, getCurrentAttendeeDetails, getAllCurrentAttendeeIds };

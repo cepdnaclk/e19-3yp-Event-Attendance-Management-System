@@ -1,5 +1,10 @@
 const express = require("express");
 const {
+  // getTopSessions,
+  getAllSessionDetails,
+  getSessionDetailsForConference,
+  // getHotSessionIds,
+  getSessionDetailsBySesId,
   getConferenceIds,
   getSessionIds,
   createConference,
@@ -17,6 +22,13 @@ const validateToken = require("../middleware/validateTokenHandler");
 const router = express.Router();
 
 // router.use(validateToken);
+
+// Get hot sessions
+// router.get("/topSessions", getTopSessions);
+// router.get("/hotSessions", getHotSessionIds);
+
+// get all session details for a list of sessionIds
+router.get("/allSessionDetails", getAllSessionDetails);
 
 // Get all conferences
 router.get("/get", getAllConferences);
@@ -37,6 +49,12 @@ router.put("/:id/sessionup/:sessionId", updateSessionDetails);
 
 // Get session details
 router.get("/:id/session/:sessionId", getSessionDetails);
+
+// Get all session details for a conferenceId
+router.get("/:conferenceId/sessions", getSessionDetailsForConference);
+
+// Get session details without conferenceId
+router.get("/sessions/:sessionId", getSessionDetailsBySesId);
 
 // Delete a session
 router.delete("/:id/session/:sessionId", deleteSession);
