@@ -85,34 +85,34 @@ const {Conference, Session } = require("../models/conferenceModel");
 //   }
 // };
 
-const getHotSessionIds = async () => {
-  try {
-    const hotSessions = await Session.find()
-      .sort({ maxAttendeeCap: -1 }) // Sort sessions in descending order based on maxAttendeeCap
-      .limit(3); // Limit the result to the top 3 sessions (adjust as needed)
+// const getHotSessionIds = async () => {
+//   try {
+//     const hotSessions = await Session.find()
+//       .sort({ maxAttendeeCap: -1 }) // Sort sessions in descending order based on maxAttendeeCap
+//       .limit(3); // Limit the result to the top 3 sessions (adjust as needed)
 
-    console.log('Hot sessions maxAttendeeCap:', hotSessions.map(session => session.maxAttendeeCap));
+//     console.log('Hot sessions maxAttendeeCap:', hotSessions.map(session => session.maxAttendeeCap));
 
-    if (!hotSessions || hotSessions.length === 0) {
-      // Check if hotSessions is empty
-      console.log('No hot sessions found');
-      return [];
-    }
+//     if (!hotSessions || hotSessions.length === 0) {
+//       // Check if hotSessions is empty
+//       console.log('No hot sessions found');
+//       return [];
+//     }
 
-    const hotSessionDetails = hotSessions.map(session => ({
-      _id: session._id.toString(),
-      sessionName: session.sessionName,
-      maxAttendeeCap: session.maxAttendeeCap,
-      startTime: session.startTime,
-      endTime: session.endTime,
-    }));
+//     const hotSessionDetails = hotSessions.map(session => ({
+//       _id: session._id.toString(),
+//       sessionName: session.sessionName,
+//       maxAttendeeCap: session.maxAttendeeCap,
+//       startTime: session.startTime,
+//       endTime: session.endTime,
+//     }));
 
-    return hotSessionDetails;
-  } catch (error) {
-    console.error('Error getting hot session details:', error);
-    throw error;
-  }
-};
+//     return hotSessionDetails;
+//   } catch (error) {
+//     console.error('Error getting hot session details:', error);
+//     throw error;
+//   }
+// };
 
 ////////////////// CONFERENCES //////////////////////
 
@@ -262,6 +262,34 @@ const getSessionIds = asyncHandler(async (req, res) => {
   }
 });
 
+// get all session details for a conferenceId
+const getSessionDetailsForConference = asyncHandler(async (req, res) => {
+  const { conferenceId } = req.params;
+
+  try {
+    const conference = await Conference.findById(conferenceId);
+
+    if (!conference) {
+      res.status(404).json({ message: "Conference not found" });
+      return;
+    }
+    // Extract session details for all sessions in the conference
+    const sessionDetails = conference.sessions.map(session => ({
+      sessionId: session._id.toString(),
+      sessionName: session.sessionName,
+      sessionDetails: session.SessionDetails,
+      maxAttendeeCap: session.maxAttendeeCap,
+      startTime: session.startTime,
+      endTime: session.endTime,
+      speaker: session.speaker,
+    }));
+
+    res.status(200).json({ sessionDetails });
+  } catch (error) {
+    console.error('Error getting session IDs:', error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
 
 // have to check this -------------------------------------
 // get all sessionDetails for a list of sessionIds
@@ -451,7 +479,8 @@ const deleteSession = asyncHandler(async (req, res) => {
 module.exports = {
   // getTopSessions,
   getAllSessionDetails,
-  getHotSessionIds,
+  getSessionDetailsForConference,
+  // getHotSessionIds,
   getSessionDetailsBySesId,
   getConferenceIds,
   getSessionIds,
