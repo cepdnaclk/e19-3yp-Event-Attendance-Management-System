@@ -274,7 +274,8 @@
   <br id="design"> <br> 
 
 <!-- ======= Design Section ======= -->
-<section id="design" class="design" style="margin-top: 60px;background: #f1f6fe;">
+<section id="design" class="design" > 
+  <!--  style="margin-top: 60px;background: #f1f6fe;" -->
   <div class="container" data-aos="fade-up">
 
     <div class="section-title text-center">
@@ -328,9 +329,43 @@
     </div>
   </div>
 </section>
-<br id="testing">
 <!-- End Design Section -->
 
+ <!-- ======= Clients Section ======= -->
+ <section id="clients" class="clients section-bg" style="margin-top: 60px;background: #f1f6fe; padding: 10px">
+  <div class="container" data-aos="zoom-in">
+
+    <div class="row">
+
+      <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+        <img src="assets/images/platformio.png" class="img-fluid" alt=""  style="max-width: 60px;">
+      </div>
+
+      <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+        <img src="assets/images/jest.png" class="img-fluid" alt="" style="max-width: 60px;">
+      </div>
+
+      <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+        <img src="assets/images/react.png" class="img-fluid" alt="" style="max-width: 60px;">
+      </div>
+
+      <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+        <img src="assets/images/express.png" class="img-fluid" alt="" style="max-width: 175px;">
+      </div>
+
+      <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+        <img src="assets/images/mongodb.png" class="img-fluid" alt="" style="max-width: 150px;">
+      </div>
+
+      <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+        <img src="assets/images/nodejs.png" class="img-fluid" alt="" style="max-width: 80px;">
+      </div>
+
+    </div>
+
+  </div>
+</section><!-- End Clients Section -->
+<br id="testing">
 
 
 <!-- ======= Portfolio Section ======= -->
@@ -339,7 +374,17 @@
 
     <div class="section-title text-center">
       <h2 class="mb-4">Testing</h2>
-      <p>These are the tests we are done on our system</p>
+      <section style="display: flex; flex-direction: row;justify-content: space-evenly;">
+        <div>
+          <p style="max-width: 600px; padding-top: 100px; ">In our commitment to guarantee the excellence and functionality of our system, 
+            we have established a robust testing strategy employing diverse tools. We have used PlatformIO, 
+            an open-source ecosystem tailored for IoT development and Jest for unit testing.
+            
+            </p>
+        </div>
+        
+        <img src="assets/images/testbg.png" alt="" style="max-width: 400px;">
+      </section>
     </div>
 
     <div class="row" data-aos="fade-up" data-aos-delay="100">
@@ -807,7 +852,7 @@
   <script>
     $(document).ready(function () {
       // Define the maximum number of images to display
-      var maxImagesToShow = 9;
+      var maxImagesToShow = 6;
   
       // Hide extra items if more than the maximum limit
       $('.portfolio-item:gt(' + (maxImagesToShow - 1) + ')').hide();
@@ -834,7 +879,7 @@
 <script>
   $(document).ready(function () {
     // Define the maximum number of images to display
-    var maxImages = 9;
+    var maxImages = 6;
 
     // Hide extra items if more than the maximum limit
     $('.design-item:gt(' + (maxImages - 1) + ')').hide();
