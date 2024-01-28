@@ -4,7 +4,7 @@ const sessionSchema = new mongoose.Schema({
   sessionId: String,
   regAttendees: {
     registeredCapacity: Number,
-    registeredRfidNo: [String],
+    registeredRfidNo: [String],   // this is the userId
   },
 });
 

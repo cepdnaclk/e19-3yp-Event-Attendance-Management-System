@@ -4,8 +4,10 @@ const sessionSchema = new mongoose.Schema({
   sessionName: String,
   SessionDetails: String,
   maxAttendeeCap: Number,
-  startTime: Date,
-  endTime: Date,
+  // startTime: Date,
+  // endTime: Date,
+  startTime: String,
+  endTime: String,
   speaker: String,
 });
 

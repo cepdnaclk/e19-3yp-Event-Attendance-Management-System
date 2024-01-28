@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emailjs/browser": "^3.12.1",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.15.3",
@@ -13,10 +14,11 @@
     "react": "^18.2.0",
     "react-data-table-component": "^7.5.4",
     "react-dom": "^18.2.0",
+    "react-icons": "^5.0.1",
     "react-multi-carousel": "^2.8.4",
     "react-router-dom": "^6.21.1",
-    "react-scripts": "5.0.1",
     "recharts": "^2.10.4",
+    "react-scripts": "^5.0.1",
     "sass": "^1.69.7",
     "web-vitals": "^2.1.4"
   },
@@ -43,5 +45,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   }
 }

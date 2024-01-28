@@ -2,6 +2,99 @@
 
 const asyncHandler = require('express-async-handler');
 const { SessionCurrent } = require('../models/sessionCurrentModel');
+const { Conference, Session } = require("../models/conferenceModel");
+
+///////////////////// ANALITYCS ///////////////////////
+
+// get the number of rfidNos in a time range
+const getRfidnoCount = asyncHandler(async (req, res) => {
+  try {
+    // const conferenceTime = await Conference.find({}, 'sessions.startTime sessions.endTime');
+    // console.log("jhfkjh",conferenceTime);
+
+    const { conferenceId, sessionId } = req.params;
+
+    // console.log("hii",sessionId);
+    // const sessionTime = await Session.findById(sessionId, 'startTime endTime');
+    // console.log("jhfkjh",sessionTime);
+
+    // const startTime = sessionTime.startTime;
+    // const endTime = sessionTime.endTime;
+
+    // Retrieve session details based on sessionId
+    const sessionDetails = await Conference.findOne({ "sessions._id": sessionId })
+      .select("sessions.$")
+      .exec();
+    console.log("sessionDetails: ",sessionDetails);
+    
+    if (!sessionDetails) {
+      res.status(404).json({ error: "Session not found for the given sessionId" });
+      return;
+    }
+
+    const startTime = sessionDetails.sessions[0].startTime;
+    const endTime = sessionDetails.sessions[0].endTime;
+
+    console.log('startTime:', startTime);
+    console.log('endTime:', endTime);
+
+    // Validate input parameters
+    if (!sessionId || !startTime || !endTime) {
+      return res.status(400).json({ message: 'Session ID, start time, and end time are required.' });
+    }
+
+    // Parse input parameters to Date objects
+    const startDate = new Date(startTime);
+    const endDate = new Date(endTime);
+
+    console.log("startDate: ",startDate);
+
+    // MongoDB Aggregation Pipeline to count rfidNos within the specified time range for the given session
+    const result = await SessionCurrent.aggregate([
+      {
+        $match: {
+          conferenceId: conferenceId, // Assuming conferenceId in SessionCurrent matches conferenceId
+          timestamp: { $gte: startDate, $lt: endDate },
+        },
+      },
+      {
+        $group: {
+          _id: {
+            $dateToString: {
+              date: '$timestamp',
+              format: '%Y-%m-%dT%H', // Group by hour
+            },
+          },
+          count: { $sum: 1 },
+        },
+      },
+      {
+        $project: {
+          _id: 0,
+          hour: '$_id',
+          value: '$count',
+        },
+      },
+      {
+        $sort: { hour: 1 },
+      },
+    ]);
+    // Log the timestamps to the console
+    const timestamps = await SessionCurrent.find({
+      conferenceId: conferenceId,
+      timestamp: { $gte: startDate, $lt: endDate },
+    }).select('timestamp');
+    console.log('Timestamps in SessionCurrent:', timestamps);
+
+    console.log('RfidNo count for session:', result);
+    res.status(200).json(result);
+  } catch (error) {
+    console.error('Error fetching rfidNo count for session:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
+
 
 ////////////////////// Get sessionIds of ongoing sessions
 const getOngoingSessionIds = asyncHandler(async (req, res) => {
@@ -67,7 +160,9 @@ const getSessionCurrentDetails = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { getOngoingSessionIds, getSessionCurrentDetails, getAllSessionCurrentIds };
+module.exports = { getRfidnoCount,
+  getOngoingSessionIds,
+  getSessionCurrentDetails, getAllSessionCurrentIds };
 
 
 

@@ -1,22 +1,32 @@
-import React from 'react'
+
+import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 export default function ConferneceRoomCards(props) {
     return (
 
         <div className="Ccard">
 
-            <h2>Conference Room {props.room}</h2>
+            <div className='ceee'>{props.topic}</div>
             {/* <img className="Cimage" src={props.url} alt="" /> */}
-
+            <hr />
             <p className="Cname">
-                <p>Speaker: {props.name}</p>
-                <p>Topic: {props.topic}</p>
+                <div className='r2'>Room: {props.conferenceName}</div>
+                <div className='ab'>About: {props.details}</div>
+                <div className='sp'>Speaker: {props.name}</div>
+                <div className='ti'>
+                     {props.StartTime}-{props.EndTime} </div>
             </p>
+            <hr />
             <p className="Cname2">
-                <p>Current Capacity :{props.Ccapacity}</p>
-                <p> Max Capacity    :{props.Mcapacity}</p>
+                <span className="label21">Current Capacity</span>
+                <span className="ca1">{props.Ccapacity}</span>
+                <br />
+                <span className="label22">Max Capacity</span>
+                <span className="ca2">{props.Mcapacity}</span>
             </p>
-
+            <a href="/ConferenceRooms" className='vi'>View room </a>
+           
         </div>
     )
 }

@@ -5,7 +5,7 @@
 
 
 .header1{
-background-color: rgba(117, 188, 222, 0.2);
+background-color: rgba(196, 178, 232, 0.2);
 height: 50px;
 }
 .header1 img{
@@ -23,29 +23,33 @@ padding: 20px;
 border-radius: 8px;
 box-shadow: 0 4px 8px rgba(118, 108, 108, 0.1);
 width: 18cm;
-border: solid 0.1px rgb(135, 129, 129);
+border: solid 0.1px rgb(213, 198, 198);
 }
 h2 {
   text-align: center;
   color: #333;
-  font-size: 0.8cm;
+  font-size: 0.7cm;
 }
 .input-group {
   margin-bottom: 15px;
+ 
+ 
 }
 .input-group label {
   display: block;
   margin-bottom: 5px;
+ 
+  
 }
 .input-group input {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+ 
+ 
 }
 .login-btn {
-  width: 50%;
-  background-color: #007bff;
+  width: 45%;
+  background-color: rgba(94, 23, 235, 1);
   color: white;
   padding: 10px;
   border: none;
@@ -63,7 +67,7 @@ h2 {
   margin-top: 10px;
 }
 .register-link a {
-  color: #007bff;
+  color: rgba(94, 23, 235, 1);
   text-decoration: none;
 }
 .register-link a:hover {
@@ -79,7 +83,7 @@ padding: 20px;
 border-radius: 8px;
 box-shadow: 0 4px 8px rgba(118, 108, 108, 0.1);
 width: 18cm;
-border: solid 0.1px rgb(135, 129, 129);
+border: solid 0.1px rgb(226, 223, 223);
 }
 
 .registration-form h2 {
@@ -105,13 +109,16 @@ border: solid 0.1px rgb(135, 129, 129);
 }
 
 .submit-btn {
-  width: 100%;
+  width:35%;
   padding: 10px;
   border: none;
   border-radius: 4px;
-  background-color: #007bff;
+  background-color: rgba(94, 23, 235, 1);
   color: white;
   cursor: pointer;
+  font-size: 16px;
+  margin-left: 32%;
+
 }
 
 .submit-btn:hover {
@@ -126,7 +133,7 @@ border: solid 0.1px rgb(135, 129, 129);
 }
 
 .login-link a {
-  color: #007bff;
+  color:rgba(94, 23, 235, 1);
   text-decoration: none;
 }
 
@@ -140,13 +147,16 @@ border: solid 0.1px rgb(135, 129, 129);
 
 .footerpos{
   position: relative;
-  background-color: #007bff;
+  background-color: rgba(94, 23, 235, 1);
   top: 5.8cm;
 }
 .footerpos2{
   position: relative;
-  background-color: #007bff;
+  background-color:rgba(94, 23, 235, 1);
   top: 4cm;
+}
+.pl{
+  background-color: white;
 }
 
 
@@ -158,7 +168,7 @@ border: solid 0.1px rgb(135, 129, 129);
   align-items: center;
   text-align: center;
   padding: 3px;
-  background-color: #c5d5dc;
+  background-color: rgba(196, 178, 232, 0.3);
   color: #000000;
   font-size: 0.8em;
   justify-content: center;
@@ -171,7 +181,7 @@ border: solid 0.1px rgb(135, 129, 129);
   padding-right: 10px;
 }
 .footer a {
-  color: #007bff;
+  color:rgba(94, 23, 235, 1);
   text-decoration: none;
   padding-right: 10px;
 }
@@ -187,7 +197,8 @@ border: solid 0.1px rgb(135, 129, 129);
   width: 100%;
   height: 100%;
   background-size: cover;
-  background-image: url('../public/images/background.png');
+  background-image: url('../public/images/background2.jpg');
+ 
 }
 
 .registration-form {
@@ -197,6 +208,6 @@ border: solid 0.1px rgb(135, 129, 129);
   width: 100%;
   height: 100%;
   background-size: cover;
-  background-image: url('../public/images/background.png');
+  background-image: url('../public/images/background2.jpg');
 }
 

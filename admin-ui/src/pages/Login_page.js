@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { useNavigate } from 'react-router'; 
+import { useNavigate } from 'react-router';
 import "../style.css";
 import Footer from "../components/Footer";
 import axios from "axios";
 
 // 3.110.135.90
 
-export default function Login_page({onLogin}) {
+export default function Login_page({ onLogin }) {
   // const history = useNavigate(); 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -25,7 +25,7 @@ export default function Login_page({onLogin}) {
       })
       .catch((error) => {
         // Handle authentication error
-        console.error("Authentication failed", error);
+        // console.error("Authentication failed", error);
       });
   };
 
@@ -57,6 +57,7 @@ export default function Login_page({onLogin}) {
               <b>Password</b>
             </label>
             <input
+              className="pl"
               type="password"
               value={password}
               placeholder="Enter Password"

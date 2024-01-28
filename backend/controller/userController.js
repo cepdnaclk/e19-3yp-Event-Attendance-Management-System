@@ -1,5 +1,7 @@
 // for organizers
 
+// to lengthen the token expiration time go to line 67
+
 const asyncHandler = require("express-async-handler");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -62,7 +64,7 @@ const loginUser = asyncHandler(async (req, res) => {
       },
       process.env.ACCESS_TOKEN_SECRET,
       // expiration time for token
-      { expiresIn: "15m" }
+      { expiresIn: "60m" }
     );
     res.status(200).json({ accessToken });
   } else {
