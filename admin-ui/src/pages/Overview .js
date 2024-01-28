@@ -1,4 +1,4 @@
-// currentcap
+// currentcap 
 
 import React, { useState, useEffect } from "react";
 import "./App.css";
@@ -37,17 +37,19 @@ export default function Overview() {
             const formattedEndTime = endTime.toLocaleString('en-US', { timeZone: 'Asia/Colombo' });
             const ToformattedCurrentTime = currentTime.toLocaleString('en-US', { timeZone: 'Asia/Colombo' });
 
+            console.log('********Start Time:', formattedStartTime);
+
             // Convert the formatted string to a Date object
             const CurrentTime = new Date(ToformattedCurrentTime);
             const StartTime = new Date(formattedStartTime);
             const EndTime = new Date(formattedEndTime);
             
-            // substract 15 hours
+            // substract 15 hours  (31)
             const formatted_StartTime = new Date(
               StartTime.getFullYear(),
               StartTime.getMonth(),
               StartTime.getDate(), 
-              StartTime.getHours() - 15,
+              StartTime.getHours() - 19,
               StartTime.getMinutes(),
               StartTime.getSeconds(),
               );
@@ -56,7 +58,7 @@ export default function Overview() {
               EndTime.getFullYear(),
               EndTime.getMonth(),
               EndTime.getDate(), 
-              EndTime.getHours() - 15,
+              EndTime.getHours() - 24,
               EndTime.getMinutes(),
               EndTime.getSeconds(),
               );
@@ -77,7 +79,9 @@ export default function Overview() {
 
             console.log('Start Time:', adjusted_StartTime);
             console.log('End Time:', adjusted_EndTime);
-            // console.log('Current Time:', formattedCurrentTime);
+            console.log('_________Formated Start Time:', formatted_StartTime);
+            console.log('_________Formated End Time:', formatted_EndTime);
+            console.log('Current Time:', formattedCurrentTime);
             // console.log('Current Time:', CurrentTime.toLocaleString('en-US', { timeZone: 'Asia/Colombo' }));
             console.log('Adjusted Time:', adjustedTime);
 
@@ -95,7 +99,8 @@ export default function Overview() {
                 // console.log(currentCapacity);
 
                 // if (formattedStartTime <= adjustedTime && adjustedTime <= formattedEndTime) {    
-                if(formatted_StartTime <= formattedCurrentTime && formattedCurrentTime <= formatted_EndTime) {          
+                if(formatted_StartTime <= formattedCurrentTime && formattedCurrentTime <= formatted_EndTime) {    
+                // if(adjusted_StartTime <= adjustedTime && adjustedTime <= adjusted_EndTime) {          
                   ongoingSessionsList.push({
                     conferenceId: conference._id,
                     confName: conference.conferenceDetails,

@@ -388,8 +388,8 @@ export default function Croom({ conferenceId }) {
                 <p>Session Name : {session.sessionName || "Loading"}</p>
                 <p>Session Details : {session.SessionDetails || "Loading"}</p>
                 <p>Max Capacity : {session.maxAttendeeCap || "Loading"}</p>
-                <p>Start Time : {subtractTime(session.startTime, 5, 30) || "Loading"}</p>
-                <p>End Time : {subtractTime(session.endTime, 5, 30) || "Loading"}</p>
+                <p>Start Time : {subtractTime(session.startTime, 9, 30) || "Loading"}</p>
+                <p>End Time : {subtractTime(session.endTime, 9, 30) || "Loading"}</p>
                 {/* <p>Start Time : {session.startTime || "Loading"}</p>
                 <p>End Time : {session.endTime || "Loading"}</p> */}
                 <p>Speaker : {session.speaker || "Loading"}</p>
