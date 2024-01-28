@@ -4,6 +4,26 @@ const SessionRegistered = require("../models/sessionRegisteredModel");
 
 // @access Private
 
+// get userId by rfidNo
+const getRfidno = asyncHandler(async (req, res) => {
+  try {
+    const { rfidNo } = req.params;
+
+    // Find the attendee with the provided userId
+    const attendee = await Attendee.findOne({ rfidNo });
+
+    if (!attendee) {
+      return res.status(404).json({ error: 'Attendee not found for the given rfidNo' });
+    }
+
+    // Return the rfidNo for the found attendee
+    res.status(200).json({ userId: attendee.userId });
+  } catch (error) {
+    console.error('Error fetching userId:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 // get attendee datails by rfidNo
 const getAttendeeDetailsByRfidNo = asyncHandler(async (req, res) => {
   const { rfidNo } = req.params;
@@ -130,6 +150,7 @@ const getAllAttendees = asyncHandler(async (req, res) => {
 
 module.exports = { 
   // getAllAttendeeDetails, 
+  getRfidno,
   getAttendeeDetailsByRfidNo, createAttendee, getAttendeeDetails, getAllAttendees, getAllAttendeeIds };
 
   
