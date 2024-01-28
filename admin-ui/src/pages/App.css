@@ -497,4 +497,59 @@ cursor: pointer;
 .contactContainer textarea {
     height: 80px;
 }
+.CA{
+  position: relative;
+  top: 13cm;
+  left:9cm;
+  font-size:19px;
+  font-weight: 600;
+}
+.atendeecontainer{
+position: absolute;
+  background-color: rgb(172, 231, 231);
+  height: 20cm;
+  width: 28cm;
+  left: 8.6cm;
+  top:15cm;
+  display: flex;
+  flex-direction: column;
+  
+  
+}
+.attendee_page_card{
+  background-color: #ada8a8;
+  width:20cm;
+  height: fit-content;
+  margin: 20px;
+}
+.rc1{
+  display: flex;
+  justify-content: space-around;
+  margin: 10px;
+}
+.r1 {
+  font-weight: bold;
+}
 
+.session-name {
+  font-weight: bold;
+  
+}
+
+.custom-table1 {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px;
+  
+}
+.ee{
+  width: 15cm;
+}
+
+.table-data {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+  transition: background-color 0.3s ease;
+ 
+
+}
