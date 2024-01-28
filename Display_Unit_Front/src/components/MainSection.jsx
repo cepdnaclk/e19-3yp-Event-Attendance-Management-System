@@ -15,6 +15,7 @@ export default function MainSection() {
 
   useEffect(() => {
     // const defaultRfidNo = '003';
+
     const defaultRfidNo = new URLSearchParams(window.location.search).get('id') || '1894-75';
 
     setRfidNo(defaultRfidNo);
@@ -34,6 +35,7 @@ export default function MainSection() {
     try {
       // const rfidNo = '002';
       // console.log('_________rfidNo', rfidNo);
+      
       const userid = await fetch(`http://13.201.130.222:5001/api/attendees/rfidNo/${rfidNo}`);
       // const userid = await fetch(`http://localhost:5001/api/attendees/rfidNo/${rfidNo}`);
       const useridData = await userid.json();
@@ -41,6 +43,7 @@ export default function MainSection() {
       // console.log('__________useridData', user_id);
       const response = await fetch(`http://13.201.130.222:5001/api/sessionreg/rfid/${user_id}`);
       // const response = await fetch(`http://localhost:5001/api/sessionreg/rfid/${user_id}`);
+
       const data = await response.json();
   
       console.log('data', data);

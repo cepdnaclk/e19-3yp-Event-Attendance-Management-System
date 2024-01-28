@@ -2,118 +2,6 @@ const asyncHandler = require("express-async-handler");
 const {Conference, Session } = require("../models/conferenceModel");
 // const { CurrentAttendee } = require('..models/currentAttendeeModel');
 
-// dont need
-
-///////////get All hot session ids based on currentCapacity
-// const getTopSessions = async () => {
-//   try {
-//     const topSessions = await CurrentAttendee.find()
-//       .sort({ currentCapacity: -1 })
-//       .limit(3);
-
-//     // Extract session details using the fetched session data
-//     const sessionDetailsPromises = topSessions.map(async (attendee) => {
-//       const session = await Session.findOne({ _id: attendee.conferenceId });
-//       return {
-//         sessionName: session.sessionName,
-//         maxAttendeeCap: session.maxAttendeeCap,
-//         // Add other session details you want to include
-//       };
-//     });
-//     const sessionDetails = await Promise.all(sessionDetailsPromises);
-
-//     console.log('Top sessions based on currentCapacity:', sessionDetails);
-//     return sessionDetails;
-//   } catch (error) {
-//     console.error('Error getting top sessions by currentCapacity:', error);
-//     throw error;
-//   }
-// };
-
-// const getTopSessions = async () => {
-//   try {
-//     // Find sessions, sort them in descending order based on maxAttendeeCap, and limit to the top 3
-//     const topSessions = await Session.find()
-//       .sort({ maxAttendeeCap: -1 })
-//       .limit(3);
-
-//     return topSessions;
-//   } catch (error) {
-//     console.error('Error getting top sessions:', error);
-//     throw error;
-//   }
-// };
-
-
-
-//wrong
-// const getHotSessionIds = async (conferenceId, sessionId) => {
-//   try {
-//     const matchStage = { $match: { _id: mongoose.Types.ObjectId(conferenceId) } };
-//     const unwindStage = { $unwind: "$sessions" };
-//     const matchSessionStage = { $match: { "sessions._id": mongoose.Types.ObjectId(sessionId) } };
-//     const sortStage = { $sort: { "sessions.maxAttendeeCap": -1 } };
-//     const limitStage = { $limit: 3 };
-
-//     const hotSessions = await Conference.aggregate([
-//       matchStage,
-//       unwindStage,
-//       matchSessionStage,
-//       sortStage,
-//       limitStage,
-//     ]);
-
-//     console.log('Hot sessions maxAttendeeCap:', hotSessions.map(session => session.sessions.maxAttendeeCap));
-
-//     if (!hotSessions || hotSessions.length === 0) {
-//       console.log('No hot sessions found');
-//       return [];
-//     }
-
-//     const hotSessionDetails = hotSessions.map(session => ({
-//       _id: session._id.toString(),
-//       sessionName: session.sessions.sessionName,
-//       maxAttendeeCap: session.sessions.maxAttendeeCap,
-//       startTime: session.sessions.startTime,
-//       endTime: session.sessions.endTime,
-//     }));
-
-//     return hotSessionDetails;
-//   } catch (error) {
-//     console.error('Error getting hot session details:', error);
-//     throw error;
-//   }
-// };
-
-// const getHotSessionIds = async () => {
-//   try {
-//     const hotSessions = await Session.find()
-//       .sort({ maxAttendeeCap: -1 }) // Sort sessions in descending order based on maxAttendeeCap
-//       .limit(3); // Limit the result to the top 3 sessions (adjust as needed)
-
-//     console.log('Hot sessions maxAttendeeCap:', hotSessions.map(session => session.maxAttendeeCap));
-
-//     if (!hotSessions || hotSessions.length === 0) {
-//       // Check if hotSessions is empty
-//       console.log('No hot sessions found');
-//       return [];
-//     }
-
-//     const hotSessionDetails = hotSessions.map(session => ({
-//       _id: session._id.toString(),
-//       sessionName: session.sessionName,
-//       maxAttendeeCap: session.maxAttendeeCap,
-//       startTime: session.startTime,
-//       endTime: session.endTime,
-//     }));
-
-//     return hotSessionDetails;
-//   } catch (error) {
-//     console.error('Error getting hot session details:', error);
-//     throw error;
-//   }
-// };
-
 ////////////////// CONFERENCES //////////////////////
 
 ///////////get All conference ids
@@ -232,14 +120,6 @@ const deleteConference = asyncHandler(async (req, res) => {
 
 
 ////////////////// SESSIONS //////////////////////
-
-// Assuming you have the sessionIds array in the request body like this:
-// {
-//   "sessionIds": [
-//     "65993c78a87fe5df449913c5",
-//     "659d04a8eaf8a86c393d4335"
-//   ]
-// }
 
 ///////////get All session ids
 const getSessionIds = asyncHandler(async (req, res) => {
@@ -462,20 +342,6 @@ const deleteSession = asyncHandler(async (req, res) => {
   res.status(200).json({ message: "Session deleted successfully" });
 });
 
-// get all 
-
-// const getSessionIds = async () => {
-//   try {
-//     const sessions = await Session.find({}, '_id');
-//     const sessionIds = sessions.map(session => session._id.toString());
-//     console.log('Session IDs:', sessionIds);
-//     return [...new Set(sessionIds)];
-//   } catch (error) {
-//     console.error('Error getting session IDs:', error);
-//     throw error;
-//   }
-// };
-
 module.exports = {
   // getTopSessions,
   getAllSessionDetails,
@@ -494,3 +360,115 @@ module.exports = {
   deleteConference,
   getAllConferences,
 };
+
+
+// dont need
+
+///////////get All hot session ids based on currentCapacity
+// const getTopSessions = async () => {
+//   try {
+//     const topSessions = await CurrentAttendee.find()
+//       .sort({ currentCapacity: -1 })
+//       .limit(3);
+
+//     // Extract session details using the fetched session data
+//     const sessionDetailsPromises = topSessions.map(async (attendee) => {
+//       const session = await Session.findOne({ _id: attendee.conferenceId });
+//       return {
+//         sessionName: session.sessionName,
+//         maxAttendeeCap: session.maxAttendeeCap,
+//         // Add other session details you want to include
+//       };
+//     });
+//     const sessionDetails = await Promise.all(sessionDetailsPromises);
+
+//     console.log('Top sessions based on currentCapacity:', sessionDetails);
+//     return sessionDetails;
+//   } catch (error) {
+//     console.error('Error getting top sessions by currentCapacity:', error);
+//     throw error;
+//   }
+// };
+
+// const getTopSessions = async () => {
+//   try {
+//     // Find sessions, sort them in descending order based on maxAttendeeCap, and limit to the top 3
+//     const topSessions = await Session.find()
+//       .sort({ maxAttendeeCap: -1 })
+//       .limit(3);
+
+//     return topSessions;
+//   } catch (error) {
+//     console.error('Error getting top sessions:', error);
+//     throw error;
+//   }
+// };
+
+
+//wrong
+// const getHotSessionIds = async (conferenceId, sessionId) => {
+//   try {
+//     const matchStage = { $match: { _id: mongoose.Types.ObjectId(conferenceId) } };
+//     const unwindStage = { $unwind: "$sessions" };
+//     const matchSessionStage = { $match: { "sessions._id": mongoose.Types.ObjectId(sessionId) } };
+//     const sortStage = { $sort: { "sessions.maxAttendeeCap": -1 } };
+//     const limitStage = { $limit: 3 };
+
+//     const hotSessions = await Conference.aggregate([
+//       matchStage,
+//       unwindStage,
+//       matchSessionStage,
+//       sortStage,
+//       limitStage,
+//     ]);
+
+//     console.log('Hot sessions maxAttendeeCap:', hotSessions.map(session => session.sessions.maxAttendeeCap));
+
+//     if (!hotSessions || hotSessions.length === 0) {
+//       console.log('No hot sessions found');
+//       return [];
+//     }
+
+//     const hotSessionDetails = hotSessions.map(session => ({
+//       _id: session._id.toString(),
+//       sessionName: session.sessions.sessionName,
+//       maxAttendeeCap: session.sessions.maxAttendeeCap,
+//       startTime: session.sessions.startTime,
+//       endTime: session.sessions.endTime,
+//     }));
+
+//     return hotSessionDetails;
+//   } catch (error) {
+//     console.error('Error getting hot session details:', error);
+//     throw error;
+//   }
+// };
+
+// const getHotSessionIds = async () => {
+//   try {
+//     const hotSessions = await Session.find()
+//       .sort({ maxAttendeeCap: -1 }) // Sort sessions in descending order based on maxAttendeeCap
+//       .limit(3); // Limit the result to the top 3 sessions (adjust as needed)
+
+//     console.log('Hot sessions maxAttendeeCap:', hotSessions.map(session => session.maxAttendeeCap));
+
+//     if (!hotSessions || hotSessions.length === 0) {
+//       // Check if hotSessions is empty
+//       console.log('No hot sessions found');
+//       return [];
+//     }
+
+//     const hotSessionDetails = hotSessions.map(session => ({
+//       _id: session._id.toString(),
+//       sessionName: session.sessionName,
+//       maxAttendeeCap: session.maxAttendeeCap,
+//       startTime: session.startTime,
+//       endTime: session.endTime,
+//     }));
+
+//     return hotSessionDetails;
+//   } catch (error) {
+//     console.error('Error getting hot session details:', error);
+//     throw error;
+//   }
+// };

@@ -1,6 +1,7 @@
+// this is to try out the analytics page
+
 import React, { useState, useEffect } from "react";
 import Sidebar from "../components/Sidebar";
-import baseUrl from "../baseUrl";
 
 const Analytics = () => {
   const [percentageData, setPercentageData] = useState([]);
@@ -67,7 +68,7 @@ const Analytics = () => {
         <ul>
           {percentageData.map((item) => (
             <li key={item.conferenceId}>
-              Conference Name: {item.conferenceName}, Percentage: {item.percentage}
+              Conference ID: {item.conferenceId}, Percentage: {item.percentage}
             </li>
           ))}
         </ul>

@@ -20,7 +20,6 @@ const {
 const validateToken = require("../middleware/validateTokenHandler");
 
 const router = express.Router();
-
 // router.use(validateToken);
 
 // Get hot sessions
