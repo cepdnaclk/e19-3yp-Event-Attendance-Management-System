@@ -14,7 +14,7 @@ export default function Overview() {
   //   try {
   //     const response = await fetch("http://localhost:5001/api/currentattendee/conferenceId");
   //     const data = await response.json();
-
+      
 
   const fetchOngoingConferences = async () => {
     try {
@@ -24,10 +24,10 @@ export default function Overview() {
       if (response.ok) {
         const ongoingSessionsList = [];
 
-        for (const conference of data) {
-          for (const session of conference.sessions) {
-            // data.forEach((conference) => {
-            //   conference.sessions.forEach((session) => {
+          for (const conference of data) {
+            for (const session of conference.sessions) {
+        // data.forEach((conference) => {
+        //   conference.sessions.forEach((session) => {
             const startTime = new Date(session.startTime);
             const endTime = new Date(session.endTime);
             const currentTime = new Date();
@@ -41,34 +41,34 @@ export default function Overview() {
             const CurrentTime = new Date(ToformattedCurrentTime);
             const StartTime = new Date(formattedStartTime);
             const EndTime = new Date(formattedEndTime);
-
+            
             // substract 15 hours
             const formatted_StartTime = new Date(
               StartTime.getFullYear(),
               StartTime.getMonth(),
-              StartTime.getDate(),
+              StartTime.getDate(), 
               StartTime.getHours() - 15,
               StartTime.getMinutes(),
               StartTime.getSeconds(),
-            );
+              );
 
             const formatted_EndTime = new Date(
               EndTime.getFullYear(),
               EndTime.getMonth(),
-              EndTime.getDate(),
+              EndTime.getDate(), 
               EndTime.getHours() - 15,
               EndTime.getMinutes(),
               EndTime.getSeconds(),
-            );
+              );
 
-            // Subtract 19 hours
+            // Subtract 19 hours 
             const formattedCurrentTime = new Date(
-              CurrentTime.getFullYear(),
-              CurrentTime.getMonth(),
-              CurrentTime.getDate(),
-              CurrentTime.getHours() - 19,
-              CurrentTime.getMinutes(),
-              CurrentTime.getSeconds(),
+            CurrentTime.getFullYear(),
+            CurrentTime.getMonth(),
+            CurrentTime.getDate(), 
+            CurrentTime.getHours() - 19,
+            CurrentTime.getMinutes(),
+            CurrentTime.getSeconds(),
             );
 
             const adjusted_StartTime = formatted_StartTime.toLocaleString('en-US', { timeZone: 'Asia/Colombo' });
@@ -86,7 +86,7 @@ export default function Overview() {
             // console.log('Type of adjustedTime:', typeof adjustedTime);
             // console.log('Type of adjusted_EndTime:', typeof adjusted_EndTime);
 
-            try {
+            try{
               const currentAttendeesResponse = await fetch(`http://localhost:5001/api/currentattendee/${conference._id}`);
               const currentAttendeesData = await currentAttendeesResponse.json();
 
@@ -94,8 +94,8 @@ export default function Overview() {
                 const currentCapacity = currentAttendeesData.currentCapacity || 0;
                 // console.log(currentCapacity);
 
-                // if (formattedStartTime <= adjustedTime && adjustedTime <= formattedEndTime) {
-                if (formatted_StartTime <= formattedCurrentTime && formattedCurrentTime <= formatted_EndTime) {
+                // if (formattedStartTime <= adjustedTime && adjustedTime <= formattedEndTime) {    
+                if(formatted_StartTime <= formattedCurrentTime && formattedCurrentTime <= formatted_EndTime) {          
                   ongoingSessionsList.push({
                     conferenceId: conference._id,
                     confName: conference.conferenceDetails,
@@ -108,15 +108,15 @@ export default function Overview() {
                     CurrentCapacity: currentCapacity,
                   });
                 }
-              } else {
+              }else{
                 console.error(`Error fetching currentCapacity for conferenceId ${conference._id}:`, currentAttendeesData.message);
               }
-            } catch (error) {
+            }catch(error){
               console.error(`Error fetching currentCapacity for conferenceId ${conference._id}:`, error);
             }
-
-            //   });
-            // });
+                      
+        //   });
+        // });
           }
         }
 
@@ -136,7 +136,7 @@ export default function Overview() {
 
   const formatTime = (dateTimeString) => {
     const dateTime = new Date(dateTimeString);
-
+  
     // Format the date and time
     const formattedTime = dateTime.toLocaleString('en-US', {
       timeZone: 'Asia/Colombo',
@@ -144,49 +144,40 @@ export default function Overview() {
       minute: 'numeric',
       second: 'numeric',
     });
-
+  
     return formattedTime;
   };
-
+  
   return (
-    <div className="ss">
-      <>
-        <Sidebar />
-
+    <>
+      <Sidebar />
+      <div>
         <div className=" Ccr1"> Ongoing Sessions</div>
-        <div >
+        <div className="CAppss">
           <Carousel showDots={true} responsive={responsive}>
-          <div className="CAppss" >
             {ongoingConferences.map((session) => (
               <div key={session.conferenceId + session.sessionName}>
                 {/* <h3>Conference Name: {session.confName}</h3> */}
                 {/* <p>{session.sessionName}</p> */}
-
-                <ConferneceRoomCards
-                  key={session._id}
-                  conferenceName={session.confName}
-                  // room={session.conferenceId}
-                  details={session.SessionDetails}
-                  name={session.speaker}
-                  topic={session.sessionName}
-                  StartTime={formatTime(session.startTime)}
-                  EndTime={formatTime(session.endTime)}
-                  // Ccapacity={conference.CurrentCapacity}
-                  Ccapacity={session.CurrentCapacity}
-                  Mcapacity={session.MaxCapacity}
-                />
-               
-
-
+                    <ConferneceRoomCards
+                      key={session._id}
+                      conferenceName={session.confName}
+                      // room={session.conferenceId}
+                      details={session.SessionDetails}
+                      name={session.speaker}
+                      topic={session.sessionName}
+                      StartTime={formatTime(session.startTime)}
+                      EndTime={formatTime(session.endTime)}
+                      // Ccapacity={conference.CurrentCapacity}
+                      Ccapacity={session.CurrentCapacity}
+                      Mcapacity={session.MaxCapacity}
+                    />
               </div>
             ))}
-            </div>
           </Carousel>
         </div>
-
-
-      </>
-    </div>
+      </div>
+    </>
   );
 }
 
