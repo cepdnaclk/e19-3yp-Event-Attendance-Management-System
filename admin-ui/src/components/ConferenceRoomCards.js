@@ -25,7 +25,7 @@ export default function ConferneceRoomCards(props) {
                 <span className="label22">Max Capacity</span>
                 <span className="ca2">{props.Mcapacity}</span>
             </p>
-            <a href="/ConferenceRooms" className='vi'>View room ></a>
+            <a href="/ConferenceRooms" className='vi'>View room </a>
            
         </div>
     )
