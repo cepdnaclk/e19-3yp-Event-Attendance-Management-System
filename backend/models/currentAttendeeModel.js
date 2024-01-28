@@ -6,7 +6,7 @@ const currentAttendeeSchema = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: 'conferences',
     },
-   time: String,
+   // time: String,
    rfidNo: [{ type: String }],
    currentCapacity: Number,
 });
