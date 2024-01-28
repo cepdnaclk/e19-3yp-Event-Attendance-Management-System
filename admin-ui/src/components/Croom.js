@@ -379,43 +379,44 @@ export default function Croom({ conferenceId }) {
               {/* <button type="submit" onClick={handleSubmitButtonClick}>
                                 Submit
                             </button> */}
-              <button type="submit" onClick={handleSubmitButtonClick}>
+              <button className='btn-modal' type="submit" onClick={handleSubmitButtonClick}>
                 {isEditing ? 'Update' : 'Submit'}
               </button>
-            </div>
-            <button className="close-modal" onClick={toggleModal}>
+            
+            <button className="btn-modal" onClick={toggleModal}>
               Close
             </button>
+            </div>
           </div>
         </div>
       )}
-     <table>
-  <thead>
-    <tr>
-      <th>Session Name</th>
-      <th>Start Time</th>
-      <th>Speaker</th>
-      <th>Max Capacity</th>
-      <th>Session Details</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    {sessionDetailsList.map((session) => (
-      <tr key={session._id}>
-        <td>{session.sessionName || "Loading"}</td>
-        <td>{new Date(session.startTime).toLocaleDateString('en-US') || "Loading"}</td>
-        <td>{session.speaker || "Loading"}</td>
-        <td>{session.maxAttendeeCap || "Loading"}</td>
-        <td>{session.SessionDetails || "Loading"}</td>
-        <td>
-          <button className='btned' onClick={() => handleSessionEdit(session._id)}>Edit</button>
-          <button className='btned' onClick={() => handleSessionDelete(session._id)}>Delete</button>
-        </td>
-      </tr>
-    ))}
-  </tbody>
-</table>
+      <table>
+        <thead>
+          <tr>
+            <th>Session Name</th>
+            <th>Start Time</th>
+            <th>Speaker</th>
+            <th>Max Capacity</th>
+            <th>Session Details</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {sessionDetailsList.map((session) => (
+            <tr key={session._id}>
+              <td>{session.sessionName || "Loading"}</td>
+              <td>{new Date(session.startTime).toLocaleDateString('en-US') || "Loading"}</td>
+              <td>{session.speaker || "Loading"}</td>
+              <td>{session.maxAttendeeCap || "Loading"}</td>
+              <td>{session.SessionDetails || "Loading"}</td>
+              <td>
+                <button className='btned' onClick={() => handleSessionEdit(session._id)}>Edit</button>
+                <button className='btned' onClick={() => handleSessionDelete(session._id)}>Delete</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
 
     </div>
   );

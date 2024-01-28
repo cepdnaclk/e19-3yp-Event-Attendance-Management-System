@@ -188,16 +188,16 @@ h1 {
 
   .CAppss{
     position: relative;
-    left: 8.5cm;
-    top: 1.9cm;
-    height: 18cm;
-    width: 32cm;
+    left: 8.2cm;
+    top: 2.2cm;
+    height: fit-content;
+    width: 30cm;
     display: flex;
    flex-wrap: wrap;
    align-content: flex-start;
    justify-content: flex-start;
- 
    padding-bottom: 60px;
+   flex-direction: row;
   }  
 
 
@@ -219,9 +219,9 @@ h1 {
 
   .Ccard {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.55);
-    width: 280px;
+    width: 300px;
     height: fit-content;
-    margin: 10px 10px;
+    margin: 10px 30px;
     text-align: center;
     font-family: 'Arial', sans-serif;
     background-color: rgb(255, 255, 255);
@@ -236,18 +236,19 @@ h1 {
   .ceee{
     position: relative;
     right: 70px;
-    font-size: 16x;
-    font-weight: 200;
+    font-size: 14px;
+    font-weight: 400;
     margin-bottom: 10px;
     margin-top: 10px;
+    color: rgba(94, 23, 235, 1);
   }
   .ab{
     font-weight: 800;
-    font-size: 20px;
+    font-size:17px;
   }
   .sp{
-    color: rgb(14, 137, 231);
-    font-size: 16px;
+    color: rgba(94, 23, 235, 1);
+    font-size: 15px;
     font-weight: 600;
   }
 .Cname2{
@@ -266,23 +267,23 @@ h1 {
   right: 60px;
 }
 .ca1{
-  color: rgb(14, 137, 231);
+  color:rgba(94, 23, 235, 1);
 }
 .ca2{
-  color: rgb(14, 137, 231);
+  color: rgba(94, 23, 235, 1);
   left: 17px;
   position: relative;
 }
 .vi{
   position: relative;
   left: 80px;
-  color: rgb(14, 137, 231);
+  color: rgba(94, 23, 235, 1);
   font-size: 13px;
   text-decoration: none;
   
 }
 .vi:hover{
-  color: rgb(2, 31, 53);
+  color: rgb(80, 11, 139);
   font-weight: 600;
   
 }
@@ -328,16 +329,17 @@ h1 {
   border: solid rgba(94, 23, 235, 0.6) 0.5px;
 
 }
+
 .btn-modal{
-  border-radius: 10px;
+  border-radius: 15px;
     background-color: rgba(94, 23, 235, 1);
     transition: background-color 0.3s;
     color: rgb(255, 255, 255);
     border: none;
     cursor: pointer;
-    height: 30px;
+    height: 38px;
     margin-left: 7px;
-    padding-left: 8px;
+    padding: 10px;
 }
 .btn-modal:hover{
   background-color:rgba(141, 94, 235, 1);
@@ -552,4 +554,40 @@ position: absolute;
   transition: background-color 0.3s ease;
  
 
+}
+
+
+
+.profilee{
+  background-color: aquamarine;
+  position: absolute;
+  top: 3cm;
+  left:9cm;
+  width: 28cm;
+  height: 20cm;
+  display: flex;
+  padding: 20px;
+}
+.profile1{
+  background-color: #ffffff;
+  width: 10cm;
+  height: 10cm;
+  margin: 10px;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.RFIDuser{
+  background-color: #ffffff;
+  width: 10cm;
+  height: 10cm;
+  margin: 10px;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }

@@ -62,13 +62,9 @@ const Sidebar = () => {
                     </li>
 
                     <div className="mainT2"> Settings</div>
-                    <li className={location.pathname === "/Analytics" ? "active" : ""}>
+                    <li className={location.pathname === "/Profile" ? "active" : ""}>
                         <RiUserSettingsLine className=" sidebaricons" />
-                        <a href="/Analytics">Profile</a>
-                    </li>
-                    <li className={location.pathname === "/Analytics" ? "active" : ""}>
-                        <GrUserManager className=" sidebaricons" />
-                        <a href="/Analytics">Session Manager</a>
+                        <a href="/Profile">Profile</a>
                     </li>
                     <li className={location.pathname === "/ContactUs" ? "active" : ""}>
                         <MdOutlinePhone className=" sidebaricons" />
