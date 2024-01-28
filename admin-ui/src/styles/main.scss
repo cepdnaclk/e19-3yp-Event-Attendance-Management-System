@@ -17,23 +17,24 @@ body {
     top: 20px;
     left: 20px;
     padding-top: 5px;
-    padding-left: 7px;
-    width: 16rem;
+    padding-left: 20px;
+    width: 17rem;
     height: 94vh;
     transition: 0.5s all;
-    border-radius: 25px;
-    box-shadow: 2px 2px 10px 0px rgba(0,0,0,0.25);
+    border-radius: 10px;
+    // box-shadow: 2px 2px 10px 0px rgba(0,0,0,0.25);
+    border: 2px solid #E8E8E8;
     
 
     .logoContainer {
       
        height: 70px;
        border-radius: 20px;
-       margin-top: 5px;
+       margin-top: 10px;
        width: 85%;
     }
     .eventflowicon{
-        height: 65px;
+        height: 55px;
     }
 
 
