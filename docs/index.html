@@ -289,12 +289,25 @@
           <li data-filter="*" class="filter-active">All</li>
           <li data-filter=".filter-app">Software</li>
           <li data-filter=".filter-card">Hardware</li>
-          <li data-filter=".filter-web">User Interfaces</li>
         </ul>
       </div>
     </div>
 
     <div class="row design-container">
+
+      <div class="col-lg-4 col-md-6 design-item filter-app">
+        <!-- <p style="text-align: center;">There are the wireframes we created before starting the front end</p> -->
+        <img src="assets/images/Overview.png" class="img-fluid" alt="">
+        
+      </div>
+
+      <div class="col-lg-4 col-md-6 design-item filter-app">
+        <img src="assets/images/Session Manager.png" class="img-fluid" alt="">
+      </div>
+
+      <div class="col-lg-4 col-md-6 design-item filter-app">
+        <img src="assets/images/Dashboard Home Screen.png" class="img-fluid" alt="">
+      </div>
 
       <div class="col-lg-4 col-md-6 design-item filter-card">
         <img src="assets/images/pinconnect1.jpeg" class="img-fluid" alt="">
@@ -330,6 +343,9 @@
   </div>
 </section>
 <!-- End Design Section -->
+
+
+<!-- End of User Interface --> 
 
  <!-- ======= Clients Section ======= -->
  <section id="clients" class="clients section-bg" style="margin-top: 60px;background: #f1f6fe; padding: 10px">
@@ -450,16 +466,73 @@
   </div>
 </section><!-- End Portfolio Section -->
 
-
-
-  <!-- <div id="ui" >
+<!-- User Interface -->
+<h2 style="text-align: center;">Test Results</h1>
+  <section class="mt-4" id="ui" style="display: flex; flex-direction: row; margin-bottom: 50px;">
+    <div style="margin-left: 50px;">
+      <h6 class="text-center" style="margin-top: 40px; margin-bottom: 30px;">Test Summary of Our System </h6>
+      <table class="no-hover" style="max-width: 1000px;">
+        <tr>
+          <th>Test</th>
+          <th>No of Test Cases</th>
+          <th>Technology Used</th>
+          <th>Result</th>
+        </tr>
+        <tr>
+          <td>AttendeeCards react component test</td>
+          <td>2</td>
+          <td>Jest</td>
+          <td>All the test cases passed</td>
+        </tr>
+        <tr>
+          <td>ConferenceRoomCards react component test</td>
+          <td>3</td>
+          <td>Jest</td>
+          <td>All the test cases passed</td>
+        </tr>
+        <tr>
+          <td>CRoom react component test</td>
+          <td>7</td>
+          <td>Jest</td>
+          <td>All the test cases passed</td>
+        </tr>
+        <tr>
+          <td>RegAttendeeCards react component test</td>
+          <td>11</td>
+          <td>Jest</td>
+          <td>All the test cases passed</td>
+        </tr>
+        <tr>
+          <td>SessionCards react component test</td>
+          <td>14</td>
+          <td>Jest</td>
+          <td>All the test cases passed</td>
+        </tr>
+        <tr>
+          <td>Sidebar react component test</td>
+          <td>17</td>
+          <td>Jest</td>
+          <td>All the test cases passed</td>
+        </tr>
+        <tr>
+          <td>Footer react component test</td>
+          <td>9</td>
+          <td>Jest</td>
+          <td>All the test cases passed</td>
+        </tr>
+      </table>
+    </div>
+    <div style="max-width: 400px; padding-left: 50px; padding-top: 200px;">
+      <img src="assets/images/testsuccess.png" alt="">
+    </div>
+  </section>
    
 
   
      
     </section>
   
-  </div> -->
+  </div> 
 
 <div class="people"  style="background: #f1f6fe;">
      <!-- Team -->
@@ -649,7 +722,96 @@
 <br>
 <br id="budget">
 
-<!-- Budget section -->
+<!-- budget -->
+<div class="budget-area">
+  <div class="budget-block">
+    <h1 class="main-topic" style="text-align: center; margin-bottom: 15px;">Budget</h1>
+    <h6 class="text-center">This is the final budget according to market price</h6>
+    <br>
+    <br>
+    <br>
+    <table>
+      <tr>
+        <th>Component</th>
+        <th>Unit Price(Rs.)</th>
+        <th>Quantity</th>
+        <th>Price</th>
+      </tr>
+      <tr>
+        <td>Raspberry pi 3 model B</td>
+        <td>21000</td>
+        <td>1</td>
+        <td>1500</td>
+      </tr>
+      <tr>
+        <td>UHF RFID Reader</td>
+        <td>53000</td>
+        <td>1</td>
+        <td>53000</td>
+      </tr>
+      <tr>
+        <td>RC522 RFID module</td>
+        <td>450</td>
+        <td>2</td>
+        <td>900</td>
+      </tr>
+      <tr>
+        <td>RFID tags(short range)</td>
+        <td>200</td>
+        <td>10</td>
+        <td>2000</td>
+      </tr>
+      <tr>
+        <td>RFID tags(long range)</td>
+        <td>200</td>
+        <td>10</td>
+        <td>2000</td>
+      </tr>
+      <tr>
+        <td>NodeMCU ESP32S board</td>
+        <td>2000</td>
+        <td>1</td>
+        <td>2000</td>
+      </tr>
+      <tr>
+        <td>Flash memory</td>
+        <td>1000</td>
+        <td>1</td>
+        <td>1000</td>
+      </tr>
+      <tr>
+        <td>Li-Po battery</td>
+        <td>590</td>
+        <td>1</td>
+        <td>590</td>
+      </tr>
+      <tr>
+        <td>Connection wires</td>
+        <td>60</td>
+        <td>15</td>
+        <td>900</td>
+      </tr>
+      <tr>
+        <td>Charging module</td>
+        <td>300</td>
+        <td>1</td>
+        <td>300</td>
+      </tr>
+      <tr>
+        <td>Boost power supply</td>
+        <td>240</td>
+        <td>2</td>
+        <td>480</td>
+      </tr>
+      <tr>
+        <td class="total" colspan="3" style="text-align: right; padding-right: 120px; color: #fff;">Total</td>
+        <td class="total" style="background: #f1f6fe;">84170</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<!-- Budget section
 <div  class="budget-overview section">
   <div class="container-budget">
     <h2 class="text-center">Estimated Budget According to the market price</h2>
@@ -660,7 +822,7 @@
       </div>
     </section>
   </div>
-</div>
+</div> -->
 <br>
 <br>
 <br id="contact">
@@ -897,7 +1059,18 @@
 
       // Show only the first four items based on the selected filter
       var selectedFilter = $(this).data('filter');
-      $('.design-item' + selectedFilter + ':lt(' + maxImages + ')').show();
+
+      // Show paragraphs only if the selected filter is for software
+      if (selectedFilter === ".filter-app") {
+        $('.design-item' + selectedFilter + ':lt(' + maxImages + ')').show();
+        // Show paragraphs
+        $('.design-item' + selectedFilter + ' p').show();
+      } else {
+        // Show only the first four items based on the selected filter (excluding paragraphs)
+        $('.design-item' + selectedFilter + ':lt(' + maxImages + ')').show();
+        // Hide paragraphs
+        $('.design-item' + selectedFilter + ' p').hide();
+      }
     });
   });
 </script>
