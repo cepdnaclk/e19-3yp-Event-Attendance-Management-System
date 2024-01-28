@@ -4,6 +4,7 @@ import DataTable from "react-data-table-component";
 import "./App.css";
 import axios from "axios";
 import Sidebar from "../components/Sidebar";
+import Attendee_page_card from "../components/Attendee_page_card";
 
 const Attendees = () => {
   // Define columns for the DataTable
@@ -70,10 +71,10 @@ const Attendees = () => {
       if (response.ok) {
         const ongoingSessionsList = [];
 
-          for (const conference of data) {
-            for (const session of conference.sessions) {
-        // data.forEach((conference) => {
-        //   conference.sessions.forEach((session) => {
+        for (const conference of data) {
+          for (const session of conference.sessions) {
+            // data.forEach((conference) => {
+            //   conference.sessions.forEach((session) => {
             const startTime = new Date(session.startTime);
             const endTime = new Date(session.endTime);
             const currentTime = new Date();
@@ -87,34 +88,34 @@ const Attendees = () => {
             const CurrentTime = new Date(ToformattedCurrentTime);
             const StartTime = new Date(formattedStartTime);
             const EndTime = new Date(formattedEndTime);
-            
+
             // substract 15 hours
             const formatted_StartTime = new Date(
               StartTime.getFullYear(),
               StartTime.getMonth(),
-              StartTime.getDate(), 
+              StartTime.getDate(),
               StartTime.getHours() - 15,
               StartTime.getMinutes(),
               StartTime.getSeconds(),
-              );
+            );
 
             const formatted_EndTime = new Date(
               EndTime.getFullYear(),
               EndTime.getMonth(),
-              EndTime.getDate(), 
+              EndTime.getDate(),
               EndTime.getHours() - 15,
               EndTime.getMinutes(),
               EndTime.getSeconds(),
-              );
+            );
 
             // Subtract 19 hours 
             const formattedCurrentTime = new Date(
-            CurrentTime.getFullYear(),
-            CurrentTime.getMonth(),
-            CurrentTime.getDate(), 
-            CurrentTime.getHours() - 19,
-            CurrentTime.getMinutes(),
-            CurrentTime.getSeconds(),
+              CurrentTime.getFullYear(),
+              CurrentTime.getMonth(),
+              CurrentTime.getDate(),
+              CurrentTime.getHours() - 19,
+              CurrentTime.getMinutes(),
+              CurrentTime.getSeconds(),
             );
 
             const adjusted_StartTime = formatted_StartTime.toLocaleString('en-US', { timeZone: 'Asia/Colombo' });
@@ -133,12 +134,12 @@ const Attendees = () => {
             // console.log('Type of adjusted_EndTime:', typeof adjusted_EndTime);
 
             console.log(conference._id);
-            if(adjusted_StartTime <= adjustedTime && adjustedTime <= adjusted_EndTime) {                   
-              try{
+            if (adjusted_StartTime <= adjustedTime && adjustedTime <= adjusted_EndTime) {
+              try {
                 const currentAttendeesResponse = await fetch(`http://localhost:5001/api/currentattendee/getData/${conference._id}`);
                 const currentAttendeesData = await currentAttendeesResponse.json();
-                console.log("(((((((((((curentcap",currentAttendeesData.currentCapacity);
-  
+                console.log("(((((((((((curentcap", currentAttendeesData.currentCapacity);
+
                 if (currentAttendeesResponse.ok) {
                   const currentCapacity = currentAttendeesData.currentCapacity || 0;
                   // console.log(currentCapacity);
@@ -146,17 +147,17 @@ const Attendees = () => {
                     conferenceId: conference._id,
                     sessionId: session._id,
                   });
-                  console.log("______________",ongoingSessionsList);
-                }else{
+                  console.log("______________", ongoingSessionsList);
+                } else {
                   console.error(`Error fetching currentCapacity for conferenceId ${conference._id}:`, currentAttendeesData.message);
                 }
-              }catch(error){
+              } catch (error) {
                 console.error(`Error fetching currentCapacity for conferenceId ${conference._id}:`, error);
               }
 
-            }else{
+            } else {
               console.log("No ongoing sessions");
-            }      
+            }
           }
         }
         setOngoingConferences(ongoingSessionsList);
@@ -213,7 +214,7 @@ const Attendees = () => {
   };
 
   return (
-    <>
+    <div className="atendeee">
       <Sidebar />
       <div className="att">Attendees</div>
 
@@ -248,7 +249,20 @@ const Attendees = () => {
           striped
         />
       </div>
-    </>
+
+      <div className="CA"> Current Attendees</div>
+
+      <div className="atendeecontainer" >
+
+        <Attendee_page_card />
+      
+        
+      </div>
+
+
+
+
+    </div>
   );
 };
 
