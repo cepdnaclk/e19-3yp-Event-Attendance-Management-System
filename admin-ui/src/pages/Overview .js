@@ -110,6 +110,7 @@ export default function Overview() {
                   });
                   // console.log("______________",ongoingSessionsList);
                   // console.log("@@@@@@@@@@",formatTime(session.startTime));
+
                 } else {
                   console.error(`Error fetching currentCapacity for conferenceId ${conference._id}:`, currentAttendeesData.message);
                 }
@@ -186,35 +187,33 @@ export default function Overview() {
 
   return (
     <>
-      <Sidebar />
+    <Sidebar />
       <div>
-        <div className=" Ccr1"> Ongoing Sessions</div>
-
+      <div className=" Ccr1"> Ongoing Sessions</div>
         {/* <div className=" Ccr1"> Ongoing Sessions</div> */}
-        <div >
-          <div className="CAppss">
-
-            {ongoingConferences.map((session) => (
-              <div key={session.conferenceId + session.sessionName}>
-
-
-                <ConferenceRoomCards
-                  key={session._id}
-                  conferenceName={session.confName}
-                  details={session.SessionDetails}
-                  name={session.speaker}
-                  topic={session.sessionName}
-                  StartTime={formatTime(session.startTime)}
-                  EndTime={formatTime(session.endTime)}
-                  Ccapacity={session.CurrentCapacity}
-                  Mcapacity={session.MaxCapacity}
-                />
-
-              </div>
-            ))}
+        <div className="CAppss">
+      
+          
+        {ongoingConferences.map((session) => (
+          <div key={session.conferenceId + session.sessionName}>
+            {/* <h3>Conference Name: {session.confName}</h3> */}
+            {/* <p>{session.sessionName}</p> */}
+            <ConferenceRoomCards
+              key={session._id}
+              conferenceName={session.confName}
+              details={session.SessionDetails}
+              name={session.speaker}
+              topic={session.sessionName}
+              StartTime={formatTime(session.startTime)}
+              EndTime={formatTime(session.endTime)}
+              Ccapacity={session.CurrentCapacity}
+              Mcapacity={session.MaxCapacity}
+            />
           </div>
+        ))}
+
         </div>
-      </div>
+      </div>  
     </>
   );
 }

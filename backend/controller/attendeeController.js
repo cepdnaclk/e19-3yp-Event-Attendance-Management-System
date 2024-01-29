@@ -37,6 +37,30 @@ const getAttendeeDetailsForConference = asyncHandler(async (req, res) => {
   }
 });
 
+// Route to update rfidNo by userId
+const putRfidNo = asyncHandler(async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const { rfidNo } = req.body;
+
+    // Update the rfidNo for the given userId
+    const updatedAttendee = await Attendee.findOneAndUpdate(
+      { userId },
+      { $set: { rfidNo } },
+      { new: true }
+    );
+
+    if (!updatedAttendee) {
+      return res.status(404).json({ message: 'No attendee found for the given userId' });
+    }
+
+    res.json({ message: 'rfidNo updated successfully', attendee: updatedAttendee });
+  } catch (error) {
+    console.error('Error updating rfidNo:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
 // get userId by rfidNo
 const getRfidno = asyncHandler(async (req, res) => {
   try {
@@ -184,6 +208,7 @@ const getAllAttendees = asyncHandler(async (req, res) => {
 module.exports = { 
   // getAllAttendeeDetails, 
   getRfidno,
+  putRfidNo,
   getAttendeeDetailsForConference,
   getAttendeeDetailsByRfidNo, createAttendee, getAttendeeDetails, getAllAttendees, getAllAttendeeIds };
 

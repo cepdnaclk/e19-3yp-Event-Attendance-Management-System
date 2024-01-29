@@ -311,6 +311,18 @@ const getTopSessions = async (req, res) => {
     }
   };
 
+// Get all conferenceIds
+const getAllConferenceIds = asyncHandler(async (req, res) => {
+  try {
+    const conferenceIds = await CurrentAttendee.distinct('conferenceId');
+    res.json({ conferenceIds });
+  } catch (error) {
+    console.error('Error retrieving conferenceIds:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
+// doesnt need
 // get all current attendee ids
 const getAllCurrentAttendeeIds = asyncHandler(async (req, res) => {
     try {
@@ -419,7 +431,8 @@ module.exports = {
   getSumofMaxCap,
   getCapacityPercentage,
   maxCurrentCapacityConference,
-  getTopSessions, getCurrentAttendeeDetails, getAllCurrentAttendeeIds };
+  getTopSessions,
+  getAllConferenceIds, getCurrentAttendeeDetails, getAllCurrentAttendeeIds };
 
   // dont need
 // Get the sum of currentCapacity with conferenceIds
