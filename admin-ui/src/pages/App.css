@@ -112,7 +112,7 @@ tr:hover {
   background-color: #f7f5fb;
 }
 .btned{
-  margin-left:8px;
+  margin:8px;
   color: rgba(94, 23, 235, 1);
   background-color: rgba(236, 228, 253, 1);
   transition: background-color 0.3s;
