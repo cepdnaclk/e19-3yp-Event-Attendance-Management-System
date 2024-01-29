@@ -1,10 +1,11 @@
+// doesnt need
 import React from 'react';
 
 function AttendeePageCard(props) {
   return (
     <div className='attendee_page_card'>
       <div className='rc1'>
-        <div className='r1'>{props.roomName}</div>
+        <div className='r1'>Conference Name: {props.roomName}</div>
         <div className='session-name'>{props.sessionName}</div>
       </div>
       <table className='custom-table1'>

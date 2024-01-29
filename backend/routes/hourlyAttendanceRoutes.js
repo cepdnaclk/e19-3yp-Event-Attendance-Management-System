@@ -1,5 +1,5 @@
 const express = require("express");
-const { getHourlyAtten } = require("../controller/hourlyAttenController");
+const { getHourlyAtten } = require("../controller/hourlyAttendanceController");
 
 const router = express.Router();
 

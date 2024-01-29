@@ -30,7 +30,6 @@ const attendeeSchema = mongoose.Schema({
     },
     rfidNo: {
         type: String,
-        required: true,
         unique: true,
     },
 }, {

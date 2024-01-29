@@ -58,6 +58,7 @@ const Attendees = () => {
 
   // State variables for managing data and search input
   const [data, setData] = useState([]);
+  const [data2, setData2] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [conferenceIds, setConferenceIds] = useState([]);
   // const [users, setUsers] = useState([]);
@@ -114,10 +115,32 @@ const Attendees = () => {
     fetchConferenceIds();
   }, []);
 
+  const fetchAttendeeTime = async (rfidNo) => {    
+    try {
+      const response = await axios.get(`http://localhost:5001/api/sessioncurrent/timestamp/${rfidNo}`);
+      // console.log("ti++++",response.data.timestamp);
+      return response.data.timestamp;       
+    } catch (error) {
+      console.error(`Error fetching timestamp for rfidNo ${rfidNo}:`, error);
+      return null; // Return null or a default value in case of an error
+    }
+  };  
+
   const fetchAttendeeDetails = async (conferenceId) => {
     try {
       const response = await axios.get(`http://localhost:5001/api/attendees/attendeesOfConf/${conferenceId}`);
-      return response.data.attendeeDetails;
+      const attendeeDetails = response.data.attendeeDetails;
+
+      // Fetch timestamp for each attendee
+      for (const attendee of attendeeDetails) {
+        // console.log("$$$$$",attendee.rfidNo);
+        const timestamp = await fetchAttendeeTime(attendee.rfidNo);
+        console.log(timestamp);
+        attendee.timestamp = timestamp; 
+        // console.log("jkgf_________",attendee.timestamp);
+      }
+      
+      return attendeeDetails;
     } catch (error) {
       console.error(`Error fetching attendee details for conferenceId ${conferenceId}:`, error);
       return [];
@@ -133,10 +156,10 @@ const Attendees = () => {
         // allAttendeeDetails.push({ conferenceId, attendeeDetails });
         // allAttendeeDetails.push({ conferenceId, attendeeDetails: attendeeDetails });
         allAttendeeDetails.push({ conferenceId, attendeeDetails });
-
       }
-      // setData(allAttendeeDetails);
-      setData((prevData) => [...prevData, ...allAttendeeDetails]);
+      setData2(allAttendeeDetails);
+      // setData((prevData) => [...prevData, ...allAttendeeDetails]);
+      console.log("_________", allAttendeeDetails);
     };
 
     fetchAllAttendeeDetails();
@@ -145,7 +168,7 @@ const Attendees = () => {
   return (
     <div className="atendeee">
       <Sidebar />
-      <div className="att">Attendees</div>
+      <div className="att">Registered Attendees</div>
 
       <div className="table-container">
         {/* Search box with clear button */}
@@ -181,30 +204,46 @@ const Attendees = () => {
 
       <div className="CA"> Current Attendees</div>
 
-      <div className="atendeecontainer" >
-        {/* <Attendee_page_card /> */}
-        {data.map((conference) => (
-        <div key={conference.conferenceId}>
-          <div className='CA'>Current Attendees - Conference ID: {conference.conferenceId}</div>
-
-          {conference.attendeeDetails?.map((attendee) => (
-            <AttendeePageCard
-              key={attendee.rfidNo}
-              roomName={conference.conferenceId} 
-              sessionName={''} 
-              attendeeName={attendee.name}
-              inTime={''} 
-              rfidNo={attendee.rfidNo}
-            />
-          ))}
+      {/* <div className="atendeecontainer" > */}
+      <div className="atendeecontainer">
+      {data2.map((conference) => (
+        <div key={conference.conferenceId} className="attendee-card">
+          {/* <div className='CA'>Current Attendees - Conference ID: {conference.conferenceId}</div> */}
+          <div className='CA'>  
+          <pre></pre>
+          <pre></pre>
+          </div>
+          <div className="r1">
+          <p className="rc1">Conference Id: {conference.conferenceId}</p>
+          {/* <div className='session-name'>ahlf</div> */}
+          </div>
+          
+          <table>          
+            <thead>
+              <tr>
+                <th>Attendee Name</th>
+                <th>In Time</th>
+                <th>Email</th>
+                <th>Contact No</th>
+                <th>Rfid No</th>
+              </tr>
+            </thead>
+            <tbody>
+              {conference.attendeeDetails?.map((attendee) => (
+                <tr key={attendee.rfidNo}>
+                  <td>{attendee.name}</td>
+                  <td>{attendee.timestamp}</td>
+                  <td>{attendee.email}</td>
+                  <td>{attendee.conNo}</td>
+                  <td>{attendee.rfidNo}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       ))}
-    
-      </div>
-
-
-
-
+        {/* <Attendee_page_card /> */}
+    </div>
     </div>
   );
 };
