@@ -253,9 +253,9 @@ export default function MainSection() {
     // w-full flex flex-row gap-4
     // Container for the main section with flex layout
     <div className="w-full flex flex-row gap-4 background">
-      {/* Sidebar with logo and background image */}
+      
       <div className="flex h-screen sticky top-0 items-start flex-col justify-start">
-        {/* Logo */}
+   
         <img
           src="./eventflow_color.svg"
           alt="logo"
@@ -267,29 +267,19 @@ export default function MainSection() {
           src="./bg.png"
           alt="background"
           className="lg:w-200 lg:h-200 md:w-50 md:h-50 overflow-hidden justify-center items-center mt-0 lg:ml-11 sm:ml-3  transition duration-300 ease-in-out transform hover:scale-105 "
-          // style={{
-          //   transform: `rotate(${rotationAngle}deg)`, // Rotate based on state
-          //   transition: "transform 5s linear", // Optional: Add a smooth transition effect
-          // }}
+    
         />
       </div>
       {/* Main content area with upcoming and registered events */}
 
-      <div className="flex flex-col gap-0 justify-start items-center flex-1">
-        {/* Input for entering rfidNo */}
-        {/* <h1 className="text-3xl font-bold text-black">Welcome to EventFlow, {userName}</h1> */}
-        {/* <input type="text" value={rfidNo} onChange={(e) => setRfidNo(e.target.value)} placeholder="Enter rfidNo" /> */}
-
-        {/* EventSection for displaying registered events */}
-        {/* <EventSection events={events} title="Registered Events" /> */}
+      <div className="cr1">
+       
         <EventSection events={registeredSessions} title="Registered Sessions" />
-
-        {/* EventSection for displaying hottest events */}
-        {/* <EventSection
-          events={ongoingevents.slice(0, 3)} // Displaying the first 3 ongoing events
-          title="Headline Events"
-        /> */}
-        <EventSection events={hotSessions} title="Headline Sessions" />
+<div className="sec2">
+      
+        <EventSection  events={hotSessions} title="Headline Sessions" />
+        </div>
+     
       </div>
     </div>
   );
