@@ -11,6 +11,8 @@ import LoginPage from "./pages/Login_page";
 import RegistrationPage from "./pages/Registration_page";
 import Sidebar from "./components/Sidebar";
 import ContactUs from "./pages/ContactUs";
+import Profile from "./pages/Profile";
+
 
 export default function App() {
     const [user, setUser] = useState(null);
@@ -62,6 +64,7 @@ export default function App() {
                             <Route path="/Overview" element={<Overview />} />
                             <Route path="/Analytics" element={<Analytics />} />
                             <Route path="/ContactUs" element={<ContactUs />} />
+                            <Route path="/Profile" element={<Profile />} />
                             <Route path="*" element={<Navigate to="/" />} />
                         </>
                     ) : (
