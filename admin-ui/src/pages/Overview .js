@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import ConferneceRoomCards from "../components/ConferenceRoomCards";
+import ConferenceRoomCards from "../components/ConferenceRoomCards";
 import Sidebar from "../components/Sidebar";
 
 export default function Overview() {
@@ -81,8 +81,8 @@ export default function Overview() {
             // console.log('Current Time:', CurrentTime.toLocaleString('en-US', { timeZone: 'Asia/Colombo' }));
             console.log('Adjusted Time:', adjustedTime);
 
-            console.log('Condition 1:', adjusted_StartTime <= adjustedTime);
-            console.log('Condition 2:', adjustedTime <= formattedEndTime);
+            // console.log('Condition 1:', adjusted_StartTime <= adjustedTime);
+            // console.log('Condition 2:', adjustedTime <= formattedEndTime);
             // console.log('Type of adjustedTime:', typeof adjustedTime);
             // console.log('Type of adjusted_EndTime:', typeof adjusted_EndTime);
 
@@ -108,7 +108,8 @@ export default function Overview() {
                     MaxCapacity: session.maxAttendeeCap,
                     CurrentCapacity: currentCapacity,
                   });
-                  console.log("______________",ongoingSessionsList);
+                  // console.log("______________",ongoingSessionsList);
+                  // console.log("@@@@@@@@@@",formatTime(session.startTime));
                 }else{
                   console.error(`Error fetching currentCapacity for conferenceId ${conference._id}:`, currentAttendeesData.message);
                 }
@@ -156,7 +157,7 @@ export default function Overview() {
           }
         }
         setOngoingConferences(ongoingSessionsList);
-        console.log("Ongoing Conferences fetched successfully:", ongoingSessionsList);
+        console.log("Ongoing Conferences fetched successfully:", ongoingConferences);
       } else {
         console.error("Error fetching conferences:", data.message);
       }
@@ -185,33 +186,31 @@ export default function Overview() {
   
   return (
     <>
-      <Sidebar />
+    <Sidebar />
       <div>
-        <div className=" Ccr1"> Ongoing Sessions</div>
+        {/* <div className=" Ccr1"> Ongoing Sessions</div> */}
         <div className="CAppss">
-          <Carousel showDots={true} responsive={responsive}>
-            {ongoingConferences.map((session) => (
-              <div key={session.conferenceId + session.sessionName}>
-                {/* <h3>Conference Name: {session.confName}</h3> */}
-                {/* <p>{session.sessionName}</p> */}
-                    <ConferneceRoomCards
-                      key={session._id}
-                      conferenceName={session.confName}
-                      // room={session.conferenceId}
-                      details={session.SessionDetails}
-                      name={session.speaker}
-                      topic={session.sessionName}
-                      StartTime={formatTime(session.startTime)}
-                      EndTime={formatTime(session.endTime)}
-                      // Ccapacity={conference.CurrentCapacity}
-                      Ccapacity={session.CurrentCapacity}
-                      Mcapacity={session.MaxCapacity}
-                    />
-              </div>
-            ))}
-          </Carousel>
+        <div className=" Ccr1"> Ongoing Sessions</div>
+          
+        {ongoingConferences.map((session) => (
+          <div key={session.conferenceId + session.sessionName}>
+            {/* <h3>Conference Name: {session.confName}</h3> */}
+            {/* <p>{session.sessionName}</p> */}
+            <ConferenceRoomCards
+              key={session._id}
+              conferenceName={session.confName}
+              details={session.SessionDetails}
+              name={session.speaker}
+              topic={session.sessionName}
+              StartTime={formatTime(session.startTime)}
+              EndTime={formatTime(session.endTime)}
+              Ccapacity={session.CurrentCapacity}
+              Mcapacity={session.MaxCapacity}
+            />
+          </div>
+        ))}
         </div>
-      </div>
+      </div>  
     </>
   );
 }
