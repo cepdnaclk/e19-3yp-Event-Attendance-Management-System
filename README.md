@@ -1,6 +1,8 @@
-# Event Attendance Management System
-
----
+<div align="center">
+  <img src="/docs/images/eventflow.png" alt="EventFlow Logo" width="100">
+  <h1 style="display: inline-block; margin-left: 20px;">EventFlow | Event Attendance Management System</h1>
+  <h3> Elevating Experiences</h3>
+</div>
 
 ## Team
 
