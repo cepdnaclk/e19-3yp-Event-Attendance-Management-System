@@ -72,7 +72,7 @@ export default function MainSection() {
 
   const getConferenceName = async (conferenceId) => {    
     const getNameResponse = await fetch(
-      `http://localhost:5001/api/conferences/${conferenceId}`,
+      `http://13.201.130.222:5001/api/conferences/${conferenceId}`,
       {
         method: "GET",
         headers: {
