@@ -209,10 +209,7 @@ const Attendees = () => {
       {data2.map((conference) => (
         <div key={conference.conferenceId} className="attendee-card">
           {/* <div className='CA'>Current Attendees - Conference ID: {conference.conferenceId}</div> */}
-          <div className='CA'>  
-          <pre></pre>
-          <pre></pre>
-          </div>
+         
           <div className="r1">
           <p className="rc1">Conference Id: {conference.conferenceId}</p>
           {/* <div className='session-name'>ahlf</div> */}

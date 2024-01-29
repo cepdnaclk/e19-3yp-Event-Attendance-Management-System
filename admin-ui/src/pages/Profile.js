@@ -5,6 +5,20 @@ import Sidebar from '../components/Sidebar'
 import Profile1 from '../Images/profile.png'
 
 function Profile() {
+    const [modal, setModal] = useState(false);
+
+    const toggleModal = () => {
+        setModal(!modal);
+    };
+
+    if (modal) {
+        document.body.classList.add('active-modal')
+    } else {
+        document.body.classList.remove('active-modal')
+    }
+
+
+
     const location = useLocation();
     const emailFromLogin = location?.state?.email || ''; // Get email from state
 
@@ -32,34 +46,56 @@ function Profile() {
     return (
         <div  >
             <Sidebar />
+            <div className="att">Profile</div>
             <div className='profilee'>
 
                 <div className='profile1' >
-                    {/* <img src={Profile1} alt="profile" className="profile" /> */}
-                    <div>My Profile</div>
+                     <img src={Profile1} alt="profile" className="profile" /> 
+                    <div className='pr1'>My Profile</div>
                     <div className="profileContents">
-                        <p className="name">John Smith</p>
-                        <p>{emailFromLogin}</p>
+                        <p className="name1">John Smith</p>
+                        <p className="mail1">johnsmith@gmail.com</p>
                     </div>
 
-                    <button  className="btn-modal">
-                        Change
+                    <button  className="btn-modal" onClick={toggleModal}>
+                        Change Password
                     </button>
+               
+                    {modal && (
+                        <div className="modal">
+                            <div onClick={toggleModal} className="overlay"></div>
+                            <div className="modal-content">
+                                <div>
+                                    <label className="roomnaame">Current Password</label>
+                                    <input type="password" placeholder="Enter current password" autocomplete="off" />
+
+                                    <label className="roomnaame">New Password</label>
+                                    <input type="password" placeholder="Enter current password" autocomplete="off" />
+
+                                    <button className="submitbtn" type="submit" > Submit</button>
+                                </div>
+                                <button className="close-btn" onClick={toggleModal}>
+                                    close
+                                </button>
+                            </div>
+                        </div>
+                    )}
+
                 </div>
 
 
                 {/* Assigning RfidNO to UsesrId */}
                 <div className=' RFIDuser'>
-                    <div>Asssign RFID to Attendee</div>
+                    <div className='rw'>Asssign RFID to Attendee</div>
                     <div>
-                        <label htmlFor="RFID_NO">RFID NO:</label>
+                        <label className='l11' htmlFor="RFID_NO">RFID NO:</label>
                         <input
                             type="text"
                             id="RFID_NO"
                             value={rfidNo}
                             onChange={(e) => setRfidNo(e.target.value)}
                         />
-                        <label htmlFor="USER_ID">USER ID:</label>
+                        <label className='l11' htmlFor="USER_ID">USER ID:</label>
                         <input
                             type="text"
                             id="USER_ID"
