@@ -57,10 +57,10 @@
   padding: 25px 20px;
   transition: transform 0.3s ease-in-out;
 }
-.cx:hover {
+/* .cx:hover {
   
   transform: scale(1.02);
-}
+} */
 .cx h5{
   font-size: 16px;
 }
@@ -220,14 +220,14 @@ h1 {
 
   .Ccard {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.55);
-    width: 300px;
-    height: fit-content;
-    margin: 10px 30px;
+    width: 330px;
+    height: 100%;
+    margin: 10px 20px;
     text-align: center;
     font-family: 'Arial', sans-serif;
     background-color: rgb(255, 255, 255);
     border-radius: 15px;
-    padding: 10px;
+    padding: 20px;
     transition: transform 0.3s ease-in-out;
   }
   .Ccard:hover {
@@ -235,17 +235,17 @@ h1 {
   }
 
   .ceee{
-    position: relative;
+    /* position: relative; */
     right: 70px;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 400;
     margin-bottom: 10px;
     margin-top: 10px;
     color: rgba(94, 23, 235, 1);
   }
   .ab{
-    font-weight: 800;
-    font-size:17px;
+    font-weight: 400;
+    font-size:12px;
   }
   .sp{
     color: rgba(94, 23, 235, 1);
@@ -274,6 +274,10 @@ h1 {
   color: rgba(94, 23, 235, 1);
   left: 17px;
   position: relative;
+}
+
+.r2{
+  font-weight: 600;
 }
 .vi{
   position: relative;

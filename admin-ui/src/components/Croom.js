@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 // import { use } from '../../../backend/routes/conferenceRoutes';
 
 export default function Croom({ conferenceId }) {
   const [modal, setModal] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
 
-  const [sessionName, setSessionName] = useState('');
-  const [speaker, setSpeakerName] = useState('');
-  const [SessionDetails, setSessionDetails] = useState('');
-  const [maxAttendeeCap, setMaxCapacity] = useState('');
-  const [startTime, setStartTime] = useState('');
-  const [endTime, setEndTime] = useState('');
-  const [conferenceData, setConferenceData] = useState('');
+  const [sessionName, setSessionName] = useState("");
+  const [speaker, setSpeakerName] = useState("");
+  const [SessionDetails, setSessionDetails] = useState("");
+  const [maxAttendeeCap, setMaxCapacity] = useState("");
+  const [startTime, setStartTime] = useState("");
+  const [endTime, setEndTime] = useState("");
+  const [conferenceData, setConferenceData] = useState("");
 
   const [sessions, setSessions] = useState([]);
   const [sessionDetailsList, setSessionDetailsList] = useState([]);
@@ -25,71 +25,83 @@ export default function Croom({ conferenceId }) {
 
   const handleSessionDelete = async (sessionId) => {
     // Display a confirmation dialog
-    const shouldDelete = window.confirm("Are you sure you want to delete this session?");
+    const shouldDelete = window.confirm(
+      "Are you sure you want to delete this session?"
+    );
 
     if (!shouldDelete) {
       // User canceled the deletion
       return;
     }
     try {
-      const response = await fetch(`http://localhost:5001/api/conferences/${conferenceId}/session/${sessionId}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+      const response = await fetch(
+        `http://localhost:5001/api/conferences/${conferenceId}/session/${sessionId}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       if (response.ok) {
-        console.log('Session deleted successfully');
+        console.log("Session deleted successfully");
         getSessions();
         // toggleModal();
       } else {
         const data = await response.json();
-        console.error('Session deletion failed:', data.message);
+        console.error("Session deletion failed:", data.message);
         // Handle error and show appropriate message to the user
       }
     } catch (error) {
-      console.error('Error during session deletion:', error);
+      console.error("Error during session deletion:", error);
       // Handle error and show appropriate message to the user
     }
   };
 
   const handleConferenceDelete = async () => {
     // Display a confirmation dialog
-    const shouldDelete = window.confirm("Are you sure you want to delete this conference?");
+    const shouldDelete = window.confirm(
+      "Are you sure you want to delete this conference?"
+    );
 
     if (!shouldDelete) {
       return;
     }
     try {
-      const response = await fetch(`http://localhost:5001/api/conferences/${conferenceId}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+      const response = await fetch(
+        `http://localhost:5001/api/conferences/${conferenceId}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       if (response.ok) {
-        console.log('Conference deleted successfully');
+        console.log("Conference deleted successfully");
       } else {
         const data = await response.json();
-        console.error('Conference deletion failed:', data.message);
+        console.error("Conference deletion failed:", data.message);
       }
     } catch (error) {
-      console.error('Error during conference deletion:', error);
+      console.error("Error during conference deletion:", error);
     }
   };
 
   const handleSessionEdit = async (sessionId) => {
     try {
       // Fetch the existing session details
-      const existingSession = sessionDetailsList.find(session => session._id === sessionId);
+      const existingSession = sessionDetailsList.find(
+        (session) => session._id === sessionId
+      );
 
       console.log(sessionId);
 
       // Check if the session exists
       if (!existingSession) {
-        console.error('Session not found for the given sessionId:', sessionId);
+        console.error("Session not found for the given sessionId:", sessionId);
         return;
       }
 
@@ -111,38 +123,41 @@ export default function Croom({ conferenceId }) {
       toggleModal();
 
       // Make a PUT request to update the session on the server
-      const response = await fetch(`http://localhost:5001/api/conferences/${conferenceId}/sessionup/${sessionId}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          sessionName,
-          speaker,
-          SessionDetails,
-          maxAttendeeCap: parseInt(maxAttendeeCap),
-          // startTime: new Date(startTime),
-          // endTime: new Date(endTime),
-          startTime: new Date(formattedStartTime),
-          endTime: new Date(formattedEndTime),
-        }),
-      });
+      const response = await fetch(
+        `http://localhost:5001/api/conferences/${conferenceId}/sessionup/${sessionId}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            sessionName,
+            speaker,
+            SessionDetails,
+            maxAttendeeCap: parseInt(maxAttendeeCap),
+            // startTime: new Date(startTime),
+            // endTime: new Date(endTime),
+            startTime: new Date(formattedStartTime),
+            endTime: new Date(formattedEndTime),
+          }),
+        }
+      );
 
       // setIsEditing(false);
 
-      console.log('response');
+      console.log("response");
       if (response.ok) {
-        console.log('Session updated successfully');
+        console.log("Session updated successfully");
         getSessions();
         // setIsEditing(false);
         // toggleModal();
       } else {
         const data = await response.json();
-        console.error('Session update failed:', data.message);
+        console.error("Session update failed:", data.message);
         // Handle error and show appropriate message to the user
       }
     } catch (error) {
-      console.error('Error during session update:', error);
+      console.error("Error during session update:", error);
       // Handle error and show appropriate message to the user
     }
   };
@@ -150,30 +165,34 @@ export default function Croom({ conferenceId }) {
   // create a new session
   const handleSessionCreate = async () => {
     try {
-      console.log('conferenceId:', conferenceId);
+      console.log("conferenceId:", conferenceId);
       setSessionName((prevSessionName) => {
-        console.log('sessionName:', prevSessionName);
+        console.log("sessionName:", prevSessionName);
         return prevSessionName; // Return the updated value
       });
       console.log(sessionName);
-      const response = await fetch(`http://localhost:5001/api/conferences/session/${conferenceId}`, {
-        // const response = await fetch(`http://3.110.135.90:5001/api/conferences/session/65993c23a87fe5df449913c2`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          sessions: [
-            {
-              sessionName,
-              speaker,
-              SessionDetails,
-              maxAttendeeCap: parseInt(maxAttendeeCap),
-              startTime: new Date(startTime),
-              endTime: new Date(endTime),
-            }]
-        }),
-      });
+      const response = await fetch(
+        `http://localhost:5001/api/conferences/session/${conferenceId}`,
+        {
+          // const response = await fetch(`http://3.110.135.90:5001/api/conferences/session/65993c23a87fe5df449913c2`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            sessions: [
+              {
+                sessionName,
+                speaker,
+                SessionDetails,
+                maxAttendeeCap: parseInt(maxAttendeeCap),
+                startTime: new Date(startTime),
+                endTime: new Date(endTime),
+              },
+            ],
+          }),
+        }
+      );
       // console.log('sessionName:', sessionName);
       // console.log('speakerName:', speakerName);
       // console.log('sessionDetails:', sessionDetails);
@@ -183,18 +202,18 @@ export default function Croom({ conferenceId }) {
       const data = await response.json();
 
       // console.log('Response status:', response.status);
-      console.log('Response data:', data);
+      console.log("Response data:", data);
 
       if (response.ok) {
-        console.log('Session created successfully:', data);
+        console.log("Session created successfully:", data);
         // Add logic to update your UI if needed
         toggleModal(); // Close the modal after successful creation if needed
       } else {
-        console.error('Session creation failed:', data.message);
+        console.error("Session creation failed:", data.message);
         // Handle error and show appropriate message to the user
       }
     } catch (error) {
-      console.error('Error during session creation:', error);
+      console.error("Error during session creation:", error);
       // Handle error and show appropriate message to the user
     }
   };
@@ -202,41 +221,47 @@ export default function Croom({ conferenceId }) {
   // get session ids
   const getSessions = async () => {
     try {
-      const response = await fetch(`http://localhost:5001/api/conferences/${conferenceId}/sessionIds`);
+      const response = await fetch(
+        `http://localhost:5001/api/conferences/${conferenceId}/sessionIds`
+      );
       const data = await response.json();
 
       if (response.ok) {
         setSessions(data.sessionIds);
-        console.log('Sessions fetched successfully:', data.sessionIds);
+        console.log("Sessions fetched successfully:", data.sessionIds);
 
         // Fetch session details for all sessions
-        const detailsPromises = data.sessionIds.map((sessionId) => getSessionDetails(sessionId));
+        const detailsPromises = data.sessionIds.map((sessionId) =>
+          getSessionDetails(sessionId)
+        );
         const detailsList = await Promise.all(detailsPromises);
 
         setSessionDetailsList(detailsList);
       } else {
-        console.error('Error fetching sessions:', data.message);
+        console.error("Error fetching sessions:", data.message);
       }
     } catch (error) {
-      console.error('Error fetching sessions:', error);
+      console.error("Error fetching sessions:", error);
     }
-  }
+  };
 
   // get conference details
   useEffect(() => {
     const fetchConferenceDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:5001/api/conferences/${conferenceId}`);
+        const response = await fetch(
+          `http://localhost:5001/api/conferences/${conferenceId}`
+        );
         const data = await response.json();
 
         if (response.ok) {
-          console.log('Conference details fetched successfully:', data);
+          console.log("Conference details fetched successfully:", data);
           setConferenceData(data);
         } else {
-          console.error('Error fetching conference details:', data.message);
+          console.error("Error fetching conference details:", data.message);
         }
       } catch (error) {
-        console.error('Error fetching conference details:', error);
+        console.error("Error fetching conference details:", error);
       }
     };
 
@@ -250,19 +275,21 @@ export default function Croom({ conferenceId }) {
   // get details of one session
   const getSessionDetails = async (sessionId) => {
     try {
-      const response = await fetch(`http://localhost:5001/api/conferences/${conferenceId}/session/${sessionId}`);
+      const response = await fetch(
+        `http://localhost:5001/api/conferences/${conferenceId}/session/${sessionId}`
+      );
       const data = await response.json();
 
       if (response.ok) {
-        console.log('Session details fetched successfully:', data);
+        console.log("Session details fetched successfully:", data);
         return data;
       } else {
-        console.error('Error fetching session details:', data.message);
-        return 'Error';
+        console.error("Error fetching session details:", data.message);
+        return "Error";
       }
     } catch (error) {
-      console.error('Error fetching session details:', error);
-      return 'Error';
+      console.error("Error fetching session details:", error);
+      return "Error";
     }
   };
 
@@ -272,15 +299,15 @@ export default function Croom({ conferenceId }) {
     dateTime.setMinutes(dateTime.getMinutes() - minutes);
 
     // Format the adjusted date and time
-    const adjustedTime = dateTime.toLocaleString('en-US', {
-      timeZone: 'Asia/Colombo',
+    const adjustedTime = dateTime.toLocaleString("en-US", {
+      timeZone: "Asia/Colombo",
       // weekday: 'short',
-      year: 'numeric',
-      month: 'numeric',
-      day: 'numeric',
-      hour: 'numeric',
-      minute: 'numeric',
-      second: 'numeric',
+      year: "numeric",
+      month: "numeric",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      second: "numeric",
     });
 
     return adjustedTime;
@@ -289,10 +316,10 @@ export default function Croom({ conferenceId }) {
   const handleSubmitButtonClick = (sessionId) => {
     // Determine which function to call based on the modal context
     if (isEditing) {
-      console.log('edittt');
+      console.log("edittt");
       handleSessionEdit(sessionId);
     } else {
-      console.log('createee');
+      console.log("createee");
       handleSessionCreate();
     }
     toggleModal();
@@ -301,10 +328,10 @@ export default function Croom({ conferenceId }) {
 
   return (
     <div className="cx">
-      <div className='cx11'>
+      <div className="cx11">
         {/* <h5>Conference Room: {conferenceId}</h5> */}
         {conferenceData && (
-          <h5>C Room: {conferenceData.conferenceDetails}</h5>
+          <h5>Conference Room: {conferenceData.conferenceDetails}</h5>
         )}
         <button onClick={toggleModal} className="btn-modal1">
           Add session
@@ -312,7 +339,6 @@ export default function Croom({ conferenceId }) {
         <button onClick={handleConferenceDelete} className="btn-modal">
           Delete Conference
         </button>
-
       </div>
 
       {modal && (
@@ -379,8 +405,12 @@ export default function Croom({ conferenceId }) {
               {/* <button type="submit" onClick={handleSubmitButtonClick}>
                                 Submit
                             </button> */}
-              <button className='btn-modal' type="submit" onClick={handleSubmitButtonClick}>
-                {isEditing ? 'Update' : 'Submit'}
+              <button
+                className="btn-modal"
+                type="submit"
+                onClick={handleSubmitButtonClick}
+              >
+                {isEditing ? "Update" : "Submit"}
               </button>
 
               <button className="btn-modal" onClick={toggleModal}>
@@ -395,6 +425,7 @@ export default function Croom({ conferenceId }) {
           <tr>
             <th>Session Name</th>
             <th>Start Time</th>
+            <th>End Time</th>
             <th>Speaker</th>
             <th>Max Capacity</th>
             <th>Session Details</th>
@@ -405,19 +436,35 @@ export default function Croom({ conferenceId }) {
           {sessionDetailsList.map((session) => (
             <tr key={session._id}>
               <td>{session.sessionName || "Loading"}</td>
-              <td>{new Date(session.startTime).toLocaleDateString('en-US') || "Loading"}</td>
+              <td>
+                {new Date(session.startTime).toLocaleDateString("en-US") ||
+                  "Loading"}
+              </td>
+              <td>
+                {new Date(session.endTime).toLocaleDateString("en-US") ||
+                  "Loading"}
+              </td>
               <td>{session.speaker || "Loading"}</td>
               <td>{session.maxAttendeeCap || "Loading"}</td>
               <td>{session.SessionDetails || "Loading"}</td>
               <td>
-                <button className='btned' onClick={() => handleSessionEdit(session._id)}>Edit</button>
-                <button className='btned' onClick={() => handleSessionDelete(session._id)}>Delete</button>
+                <button
+                  className="btned"
+                  onClick={() => handleSessionEdit(session._id)}
+                >
+                  Edit
+                </button>
+                <button
+                  className="btned"
+                  onClick={() => handleSessionDelete(session._id)}
+                >
+                  Delete
+                </button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-
     </div>
   );
 }
