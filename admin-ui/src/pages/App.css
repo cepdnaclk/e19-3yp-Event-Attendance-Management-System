@@ -341,7 +341,7 @@ h1 {
   margin-left: 10cm;
     padding: 10px;
 }
-.btn-modal:hover{
+.btn-modal1:hover{
   background-color:rgba(141, 94, 235, 1);
 }
 
@@ -575,7 +575,7 @@ position: absolute;
   padding: 8px;
   border-bottom: 1px solid #ddd;
   transition: background-color 0.3s ease;
- 
+
 
 }
 

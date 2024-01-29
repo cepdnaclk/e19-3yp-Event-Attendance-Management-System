@@ -255,9 +255,7 @@ const Attendees = () => {
       <div className="atendeecontainer" >
 
         <Attendee_page_card />
-        <Attendee_page_card />
-        <Attendee_page_card />
-        <Attendee_page_card />
+
 
       </div>
 
