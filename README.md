@@ -1,22 +1,23 @@
 <div align="center">
-  <img src="./docs/images/eventflow.png" alt="EventFlow Logo" width="100">
+  <img src="./docs/images/eventflow.png" alt="EventFlow Logo" width="200">
   <h1 style="display: inline-block; margin-left: 20px;">EventFlow | Event Attendance Management System</h1>
   <h3> Elevating Experiences</h3>
 </div>
 
-## Team
+<!-- <div align="center">
 
-- E/19/004 [email](e19003@eng.pdn.ac.lk) [R.B.Abeysinghe](https://github.com/RavinduBA)
-- E/19/028 [email](e19028@eng.pdn.ac.lk) [A.N.I.Atugedara](https://github.com/NilakshiInduwara)
-- E/19/167 [email](e19167@eng.pdn.ac.lk) [H.D.N.S.Jayawardena](https://github.com/sath8)
-- E/19/240 [email](e19240@eng.pdn.ac.lk) [B.M.S.Mendis](https://github.com/Shenal-M)
-- E/19/431 [email](e19431@eng.pdn.ac.lk) [I.W.A.P.D.Wickramaarachchi](https://github.com/Prageeth-Dananjaya)
+[![Contributors][contributors-shield]](https://github.com/cepdnaclk/e19-3yp-Event-Attendance-Management-System/graphs/contributors)&ensp;
+[![Forks][forks-shield]](https://github.com/cepdnaclk/e19-3yp-Event-Attendance-Management-System/network/members)&ensp;
+[![Stargazers][stars-shield]](https://github.com/cepdnaclk/e19-3yp-Event-Attendance-Management-System/stargazers)&ensp;
+[![Issues][issues-shield]](https://github.com/cepdnaclk/e19-3yp-Event-Attendance-Management-System/issues)
+
+</div> -->
 
 ## Introduction
 
 This project is dedicated to simplifying and enhancing the process of tracking attendance and session participation for registered event attendees. Whether you are organizing conferences, workshops, or any other type of gathering, our solution provides a robust and user-friendly platform to efficiently manage and monitor participant engagement.
 
-[![Example Video](https://example.com/thumbnail.jpg)](https://www.youtube.com/watch?v=6XMMViNymo0)
+[![Example Video](./docs/images/thumbnail.png)](https://www.youtube.com/watch?v=6XMMViNymo0)
 
 ## Key Featuers
 
@@ -25,6 +26,14 @@ Session Tracking in real time <br>
 Dashboard and Analytics for event organizers <br>
 Search and Reporting of attendee information <br>
 Notification System <br>
+
+## Team
+
+- E/19/004 [email](e19003@eng.pdn.ac.lk) [R.B.Abeysinghe](https://github.com/RavinduBA)
+- E/19/028 [email](e19028@eng.pdn.ac.lk) [A.N.I.Atugedara](https://github.com/NilakshiInduwara)
+- E/19/167 [email](e19167@eng.pdn.ac.lk) [H.D.N.S.Jayawardena](https://github.com/sath8)
+- E/19/240 [email](e19240@eng.pdn.ac.lk) [B.M.S.Mendis](https://github.com/Shenal-M)
+- E/19/431 [email](e19431@eng.pdn.ac.lk) [I.W.A.P.D.Wickramaarachchi](https://github.com/Prageeth-Dananjaya)
 
 ## Advising Lecturers
 
