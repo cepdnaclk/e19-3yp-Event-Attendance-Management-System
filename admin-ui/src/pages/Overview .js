@@ -192,42 +192,30 @@ export default function Overview() {
 
         {/* <div className=" Ccr1"> Ongoing Sessions</div> */}
         <div >
+          <div className="CAppss">
 
-          {ongoingConferences.map((session) => (
-            <div className="CAppss" key={session.conferenceId + session.sessionName}>
-              {/* <h3>Conference Name: {session.confName}</h3> */}
-              {/* <p>{session.sessionName}</p> */}
-              <ConferenceRoomCards
-                key={session._id}
-                conferenceName={session.confName}
-                details={session.SessionDetails}
-                name={session.speaker}
-                topic={session.sessionName}
-                StartTime={formatTime(session.startTime)}
-                EndTime={formatTime(session.endTime)}
-                Ccapacity={session.CurrentCapacity}
-                Mcapacity={session.MaxCapacity}
-              />
+            {ongoingConferences.map((session) => (
+              <div key={session.conferenceId + session.sessionName}>
 
-            </div>
-          ))}
+
+                <ConferenceRoomCards
+                  key={session._id}
+                  conferenceName={session.confName}
+                  details={session.SessionDetails}
+                  name={session.speaker}
+                  topic={session.sessionName}
+                  StartTime={formatTime(session.startTime)}
+                  EndTime={formatTime(session.endTime)}
+                  Ccapacity={session.CurrentCapacity}
+                  Mcapacity={session.MaxCapacity}
+                />
+
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </>
   );
 }
 
-const responsive = {
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 3,
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 2,
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1,
-  },
-};

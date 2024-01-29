@@ -304,9 +304,9 @@ export default function Croom({ conferenceId }) {
       <div className='cx11'>
         {/* <h5>Conference Room: {conferenceId}</h5> */}
         {conferenceData && (
-          <h5>Conference Room: {conferenceData.conferenceDetails}</h5>
+          <h5>C Room: {conferenceData.conferenceDetails}</h5>
         )}
-        <button onClick={toggleModal} className="btn-modal">
+        <button onClick={toggleModal} className="btn-modal1">
           Add session
         </button>
         <button onClick={handleConferenceDelete} className="btn-modal">
@@ -382,10 +382,10 @@ export default function Croom({ conferenceId }) {
               <button className='btn-modal' type="submit" onClick={handleSubmitButtonClick}>
                 {isEditing ? 'Update' : 'Submit'}
               </button>
-            
-            <button className="btn-modal" onClick={toggleModal}>
-              Close
-            </button>
+
+              <button className="btn-modal" onClick={toggleModal}>
+                Close
+              </button>
             </div>
           </div>
         </div>
