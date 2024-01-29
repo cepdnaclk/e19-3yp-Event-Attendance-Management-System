@@ -306,7 +306,7 @@ export default function Croom({ conferenceId }) {
         {conferenceData && (
           <h5>Conference Room: {conferenceData.conferenceDetails}</h5>
         )}
-        <button onClick={toggleModal} className="btn-modal">
+        <button onClick={toggleModal} className="btn-modal1">
           Add session
         </button>
         <button onClick={handleConferenceDelete} className="btn-modal">

@@ -99,7 +99,7 @@ th, td {
 
 th {
   background-color: #f5f1f8;
-   font-size: 13px;
+  font-size: 13px;
 }
 
 tr {
@@ -198,6 +198,7 @@ h1 {
    justify-content: flex-start;
    padding-bottom: 60px;
    flex-direction: row;
+  
   }  
 
 
@@ -328,6 +329,20 @@ h1 {
   font-size: 13px;
   border: solid rgba(94, 23, 235, 0.6) 0.5px;
 
+}
+.btn-modal1{
+  border-radius: 15px;
+    background-color: rgba(94, 23, 235, 1);
+    transition: background-color 0.3s;
+    color: rgb(255, 255, 255);
+    border: none;
+    cursor: pointer;
+    height: 38px;
+  margin-left: 10cm;
+    padding: 10px;
+}
+.btn-modal:hover{
+  background-color:rgba(141, 94, 235, 1);
 }
 
 .btn-modal{
@@ -501,33 +516,35 @@ cursor: pointer;
 }
 .CA{
   position: relative;
-  top: 13cm;
+  top: 13.5cm;
   left:9cm;
   font-size:19px;
   font-weight: 600;
 }
 .atendeecontainer{
 position: absolute;
-  background-color: rgb(172, 231, 231);
-  height: 20cm;
-  width: 28cm;
-  left: 8.6cm;
-  top:15cm;
+  height: fit-content;
+  width: 19.1cm;
+  left: 8.5cm;
+  top:14.5cm;
   display: flex;
   flex-direction: column;
-  
-  
 }
 .attendee_page_card{
-  background-color: #ada8a8;
-  width:20cm;
+  background-color: #ffffff;
+  width:18cm;
   height: fit-content;
-  margin: 20px;
+  margin: 12px;
+  padding: 11px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 .rc1{
   display: flex;
   justify-content: space-around;
   margin: 10px;
+  color: rgba(94, 23, 235, 1);
+  font-size: 15px;
 }
 .r1 {
   font-weight: bold;
@@ -544,8 +561,14 @@ position: absolute;
   margin: 10px;
   
 }
+
+.table-header{
+   background-color: #f5f1f8;
+   width: 15cm;
+}
 .ee{
   width: 15cm;
+
 }
 
 .table-data {
