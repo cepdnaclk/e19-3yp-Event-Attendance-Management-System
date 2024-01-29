@@ -1,8 +1,41 @@
 const asyncHandler = require("express-async-handler");
+const { CurrentAttendee } = require('../models/currentAttendeeModel');
 const Attendee = require("../models/attendeeModel");
 const SessionRegistered = require("../models/sessionRegisteredModel");
 
 // @access Private
+// Get attendee details for all RFID numbers relevant to a conference ID
+const getAttendeeDetailsForConference = asyncHandler(async (req, res) => {
+  try {
+    const { conferenceId } = req.params;
+
+    // Find the current attendees for the given conferenceId
+    const currentAttendees = await CurrentAttendee.findOne({ conferenceId });
+
+    if (!currentAttendees) {
+      return res.status(404).json({ message: 'No current attendees found for the given conferenceId' });
+    }
+
+    // Extract RFID numbers from the currentAttendees document
+    const rfidNos = currentAttendees.rfidNo;
+
+    // Fetch attendee details for each RFID number
+    const attendeeDetails = [];
+    for (const rfidNo of rfidNos) {
+      const attendee = await Attendee.findOne({ rfidNo });
+
+      if (attendee) {
+        const { name, id, email, conNo } = attendee;
+        attendeeDetails.push({ name, id, email, conNo, rfidNo });
+      }
+    }
+
+    res.json({ attendeeDetails });
+  } catch (error) {
+    console.error('Error fetching attendee details for conference:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
 
 // get userId by rfidNo
 const getRfidno = asyncHandler(async (req, res) => {
@@ -23,7 +56,7 @@ const getRfidno = asyncHandler(async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
-
+ 
 // get attendee datails by rfidNo
 const getAttendeeDetailsByRfidNo = asyncHandler(async (req, res) => {
   const { rfidNo } = req.params;
@@ -151,6 +184,7 @@ const getAllAttendees = asyncHandler(async (req, res) => {
 module.exports = { 
   // getAllAttendeeDetails, 
   getRfidno,
+  getAttendeeDetailsForConference,
   getAttendeeDetailsByRfidNo, createAttendee, getAttendeeDetails, getAllAttendees, getAllAttendeeIds };
 
   

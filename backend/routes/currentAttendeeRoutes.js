@@ -1,5 +1,6 @@
 const express = require('express');
 const {getTotalCurrentCapacity,
+    getRfidNos,
     getTotalCurrentCapacityByConference,
     getSumofMaxCapForConference,
     // getSumofCurrentCap,
@@ -23,6 +24,7 @@ router.get('/totalCapacityByConference', getTotalCurrentCapacityByConference);
 // get sum of maxAttendeeCap for a conferenceId
 router.get('/sumOfCapOfConf/:conferenceId', getSumofMaxCapForConference);
 
+//doesnt work
 // get percentage of capacity for each conferenceId
 router.get('/capacityPercentage', getCapacityPercentage);
 
@@ -34,9 +36,9 @@ router.get('/sums', getSumofMaxCap);
 
 // get conferenceId with max currentCapacity
 router.get('/maxCapacityConference', maxCurrentCapacityConference);
-
+router.get('/getData/:id', getCurrentAttendeeDetails);
+router.get('/rfidNos/:conferenceId', getRfidNos);
 router.get("/topSessions", getTopSessions);
 router.get('/', getAllCurrentAttendeeIds);
-router.get('/:id', getCurrentAttendeeDetails);
 
 module.exports = router;

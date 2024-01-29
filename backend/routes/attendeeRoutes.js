@@ -3,6 +3,7 @@ const express = require("express");
 const {
   // getAllAttendeeDetails,
   getRfidno,
+  getAttendeeDetailsForConference,
   getAttendeeDetailsByRfidNo,
   createAttendee,
   getAttendeeDetails,
@@ -14,6 +15,7 @@ const validateToken = require("../middleware/validateTokenHandler");
 const router = express.Router();
 // router.use(validateToken);  // since all routes are protected routes, validated
 
+router.get("/attendeesOfConf/:conferenceId", getAttendeeDetailsForConference);
 router.get('/rfidNo/:rfidNo', getRfidno);
 // router.get("/all", getAllAttendeeDetails);
 router.get("/rfid/:rfidNo", getAttendeeDetailsByRfidNo);

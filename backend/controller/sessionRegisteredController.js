@@ -1,3 +1,5 @@
+// registeredRfidNo is the userId
+
 const asyncHandler = require('express-async-handler');
 const { SessionRegistered } = require('../models/sessionRegisteredModel');
 

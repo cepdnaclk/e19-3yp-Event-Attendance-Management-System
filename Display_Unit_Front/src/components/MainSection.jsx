@@ -5,6 +5,7 @@ export default function MainSection() {
   const [hotSessions, setHotSessions] = useState([]);
   const [registeredSessions, setRegisteredSessions] = useState([]);
   const [rfidNo, setRfidNo] = useState('');
+  const [userName, setUserName] = useState('');
 
   const fetchAndSetRegisteredSessions = async (rfidNo) => {
     const sessionIds = await fetchSessionIds(rfidNo);
@@ -17,7 +18,8 @@ export default function MainSection() {
     // const defaultRfidNo = '003';
 
     const defaultRfidNo = new URLSearchParams(window.location.search).get('id') || '1894-75';
-
+    // const defaultRfidNo = new URLSearchParams(window.location.search).get('id');
+    console.log('--------------defaultRfidNo', defaultRfidNo);
     setRfidNo(defaultRfidNo);
 
     // Fetch and set registered sessions when the component mounts
@@ -40,10 +42,16 @@ export default function MainSection() {
       // const userid = await fetch(`http://localhost:5001/api/attendees/rfidNo/${rfidNo}`);
       const useridData = await userid.json();
       const user_id = useridData.userId;
-      // console.log('__________useridData', user_id);
-      const response = await fetch(`http://13.201.130.222:5001/api/sessionreg/rfid/${user_id}`);
-      // const response = await fetch(`http://localhost:5001/api/sessionreg/rfid/${user_id}`);
 
+      // console.log('**********************', user_id);
+
+      const userData = await fetch(`http://localhost:5001/api/attendees/rfid/${rfidNo}`);
+      const userDataData = await userData.json();
+      const userName = userDataData.name;    
+      setUserName(userName);      
+      console.log('__________useridData', userName);
+
+      const response = await fetch(`http://localhost:5001/api/sessionreg/rfid/${user_id}`);
       const data = await response.json();
   
       console.log('data', data);
@@ -109,9 +117,8 @@ export default function MainSection() {
         const hotSessionsList = [];
 
         for (const conferenceId of conferenceIds) {
-          // const conferenceRoom = await fetch(`http://localhost:5001/api/conferences/${conferenceId}`);
-          const conferenceRoom = await fetch(`http://13.201.130.222:5001/api/conferences/${conferenceId}`);
-          const confRoomName = await conferenceRoom.json();
+          const conferenceRoom = await fetch(`http://localhost:5001/api/conferences/${conferenceId}`);
+          const confRoomName = await conferenceRoom.json();    
 
           const sessionDetailsResponse = await fetch(`http://13.201.130.222:5001/api/conferences/${conferenceId}/sessions`);
           // const sessionDetailsResponse = await fetch(`http://localhost:5001/api/conferences/${conferenceId}/sessions`);
@@ -172,6 +179,7 @@ export default function MainSection() {
             // console.log('Current Time:', formattedCurrentTime);
             // console.log('Current Time:', CurrentTime.toLocaleString('en-US', { timeZone: 'Asia/Colombo' }));
             console.log('Adjusted Time:', adjustedTime);
+            console.log('________________ conferenceName: ', confRoomName.conferenceDetails);
             
               if (formatted_StartTime <= formattedCurrentTime && formattedCurrentTime <= formatted_EndTime) {
                 hotSessionsList.push({
@@ -230,6 +238,7 @@ export default function MainSection() {
 
       <div className="flex flex-col gap-2 justify-start items-center flex-1">
         {/* Input for entering rfidNo */}
+        <h1 className="text-3xl font-bold text-black">Welcome to EventFlow, {userName}</h1>
         <input type="text" value={rfidNo} onChange={(e) => setRfidNo(e.target.value)} placeholder="Enter rfidNo" />
 
         {/* EventSection for displaying registered events */}

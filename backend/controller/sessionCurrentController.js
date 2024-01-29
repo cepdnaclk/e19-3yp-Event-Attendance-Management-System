@@ -35,12 +35,8 @@ const getRfidnoCount = asyncHandler(async (req, res) => {
     const startTime = sessionDetails.sessions[0].startTime;
     const endTime = sessionDetails.sessions[0].endTime;
 
-    console.log('conferenceId:', conferenceId);
-console.log('sessionId:', sessionId);
-console.log('startTime:', startTime);
-console.log('endTime:', endTime);
-
-    // console.log("startTime: ",startTime);
+    console.log('startTime:', startTime);
+    console.log('endTime:', endTime);
 
     // Validate input parameters
     if (!sessionId || !startTime || !endTime) {
@@ -83,6 +79,12 @@ console.log('endTime:', endTime);
         $sort: { hour: 1 },
       },
     ]);
+    // Log the timestamps to the console
+    const timestamps = await SessionCurrent.find({
+      conferenceId: conferenceId,
+      timestamp: { $gte: startDate, $lt: endDate },
+    }).select('timestamp');
+    console.log('Timestamps in SessionCurrent:', timestamps);
 
     console.log('RfidNo count for session:', result);
     res.status(200).json(result);
@@ -91,6 +93,8 @@ console.log('endTime:', endTime);
     res.status(500).json({ message: 'Internal Server Error' });
   }
 });
+
+
 
 ////////////////////// Get sessionIds of ongoing sessions
 const getOngoingSessionIds = asyncHandler(async (req, res) => {

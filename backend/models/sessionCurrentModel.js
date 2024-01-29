@@ -4,6 +4,7 @@ const sessionCurrentSchema = new mongoose.Schema({
     // _id: mongoose.Types.ObjectId,
     conferenceId: String,
     timestamp: String,
+    // timestamp: Date,
     rfidNo: String ,
 });
 

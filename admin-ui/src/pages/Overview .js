@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import ConferneceRoomCards from "../components/ConferenceRoomCards";
+import ConferenceRoomCards from "../components/ConferenceRoomCards";
 import Sidebar from "../components/Sidebar";
 
 export default function Overview() {
@@ -61,7 +61,7 @@ export default function Overview() {
               EndTime.getSeconds(),
             );
 
-            // Subtract 19 hours
+            // Subtract 19 hours 
             const formattedCurrentTime = new Date(
               CurrentTime.getFullYear(),
               CurrentTime.getMonth(),
@@ -77,7 +77,7 @@ export default function Overview() {
 
             console.log('Start Time:', adjusted_StartTime);
             console.log('End Time:', adjusted_EndTime);
-            // console.log('Current Time:', formattedCurrentTime);
+            console.log('Current Time:', formatted_StartTime);
             // console.log('Current Time:', CurrentTime.toLocaleString('en-US', { timeZone: 'Asia/Colombo' }));
             console.log('Adjusted Time:', adjustedTime);
 
@@ -86,19 +86,20 @@ export default function Overview() {
             // console.log('Type of adjustedTime:', typeof adjustedTime);
             // console.log('Type of adjusted_EndTime:', typeof adjusted_EndTime);
 
-            try {
-              const currentAttendeesResponse = await fetch(`http://localhost:5001/api/currentattendee/${conference._id}`);
-              const currentAttendeesData = await currentAttendeesResponse.json();
+            console.log(conference._id);
+            if (adjusted_StartTime <= adjustedTime && adjustedTime <= adjusted_EndTime) {
+              try {
+                const currentAttendeesResponse = await fetch(`http://localhost:5001/api/currentattendee/getData/${conference._id}`);
+                const currentAttendeesData = await currentAttendeesResponse.json();
+                console.log("(((((((((((curentcap", currentAttendeesData.currentCapacity);
 
-              if (currentAttendeesResponse.ok) {
-                const currentCapacity = currentAttendeesData.currentCapacity || 0;
-                // console.log(currentCapacity);
-
-                // if (formattedStartTime <= adjustedTime && adjustedTime <= formattedEndTime) {
-                if (formatted_StartTime <= formattedCurrentTime && formattedCurrentTime <= formatted_EndTime) {
+                if (currentAttendeesResponse.ok) {
+                  const currentCapacity = currentAttendeesData.currentCapacity || 0;
+                  // console.log(currentCapacity);
                   ongoingSessionsList.push({
                     conferenceId: conference._id,
                     confName: conference.conferenceDetails,
+                    sessionId: session._id,
                     sessionName: session.sessionName,
                     SessionDetails: session.SessionDetails,
                     speaker: session.speaker,
@@ -107,21 +108,56 @@ export default function Overview() {
                     MaxCapacity: session.maxAttendeeCap,
                     CurrentCapacity: currentCapacity,
                   });
+                  // console.log("______________",ongoingSessionsList);
+                  // console.log("@@@@@@@@@@",formatTime(session.startTime));
+                } else {
+                  console.error(`Error fetching currentCapacity for conferenceId ${conference._id}:`, currentAttendeesData.message);
                 }
-              } else {
-                console.error(`Error fetching currentCapacity for conferenceId ${conference._id}:`, currentAttendeesData.message);
+              } catch (error) {
+                console.error(`Error fetching currentCapacity for conferenceId ${conference._id}:`, error);
               }
-            } catch (error) {
-              console.error(`Error fetching currentCapacity for conferenceId ${conference._id}:`, error);
+
+            } else {
+              console.log("No ongoing sessions");
             }
+            // try{
+            //   const currentAttendeesResponse = await fetch(`http://localhost:5001/api/currentattendee/getData/${conference._id}`);
+            //   const currentAttendeesData = await currentAttendeesResponse.json();
+            //   console.log("(((((((((((curentcap",currentAttendeesData.currentCapacity);
+
+            //   if (currentAttendeesResponse.ok) {
+            //     const currentCapacity = currentAttendeesData.currentCapacity || 0;
+            //     // console.log(currentCapacity);
+
+            //     // if (formattedStartTime <= adjustedTime && adjustedTime <= formattedEndTime) {    
+            //     // if(formatted_StartTime <= formattedCurrentTime && formattedCurrentTime <= formatted_EndTime) { 
+            //     if(adjusted_StartTime <= adjustedTime && adjustedTime <= adjusted_EndTime) {         
+            //       ongoingSessionsList.push({
+            //         conferenceId: conference._id,
+            //         confName: conference.conferenceDetails,
+            //         sessionName: session.sessionName,
+            //         SessionDetails: session.SessionDetails,
+            //         speaker: session.speaker,
+            //         startTime: session.startTime,
+            //         endTime: session.endTime,
+            //         MaxCapacity: session.maxAttendeeCap,
+            //         CurrentCapacity: currentCapacity,
+            //       });
+            //       console.log("______________",ongoingSessionsList);
+            //     }
+            //   }else{
+            //     console.error(`Error fetching currentCapacity for conferenceId ${conference._id}:`, currentAttendeesData.message);
+            //   }
+            // }catch(error){
+            //   console.error(`Error fetching currentCapacity for conferenceId ${conference._id}:`, error);
+            // }
 
             //   });
             // });
           }
         }
-
         setOngoingConferences(ongoingSessionsList);
-        console.log("Ongoing Conferences fetched successfully:", ongoingSessionsList);
+        console.log("Ongoing Conferences fetched successfully:", ongoingConferences);
       } else {
         console.error("Error fetching conferences:", data.message);
       }
@@ -149,58 +185,37 @@ export default function Overview() {
   };
 
   return (
-    <div className="ss">
-      <>
-        <Sidebar />
-
+    <>
+      <Sidebar />
+      <div>
         <div className=" Ccr1"> Ongoing Sessions</div>
+
+        {/* <div className=" Ccr1"> Ongoing Sessions</div> */}
         <div >
-          <Carousel showDots={true} responsive={responsive}>
-          <div className="CAppss" >
+          <div className="CAppss">
+
             {ongoingConferences.map((session) => (
               <div key={session.conferenceId + session.sessionName}>
-                {/* <h3>Conference Name: {session.confName}</h3> */}
-                {/* <p>{session.sessionName}</p> */}
 
-                <ConferneceRoomCards
+
+                <ConferenceRoomCards
                   key={session._id}
                   conferenceName={session.confName}
-                  // room={session.conferenceId}
                   details={session.SessionDetails}
                   name={session.speaker}
                   topic={session.sessionName}
                   StartTime={formatTime(session.startTime)}
                   EndTime={formatTime(session.endTime)}
-                  // Ccapacity={conference.CurrentCapacity}
                   Ccapacity={session.CurrentCapacity}
                   Mcapacity={session.MaxCapacity}
                 />
-               
-
 
               </div>
             ))}
-            </div>
-          </Carousel>
+          </div>
         </div>
-
-
-      </>
-    </div>
+      </div>
+    </>
   );
 }
 
-const responsive = {
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 3,
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 2,
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1,
-  },
-};
