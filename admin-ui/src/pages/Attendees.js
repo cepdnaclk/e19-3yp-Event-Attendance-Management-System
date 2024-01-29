@@ -4,7 +4,7 @@ import DataTable from "react-data-table-component";
 import "./App.css";
 import axios from "axios";
 import Sidebar from "../components/Sidebar";
-import Attendee_page_card from "../components/Attendee_page_card";
+import AttendeePageCard from "../components/Attendee_page_card";
 
 const Attendees = () => {
   // Define columns for the DataTable
@@ -57,122 +57,10 @@ const Attendees = () => {
   ];
 
   // State variables for managing data and search input
-  const [data, setData] = useState(initialData);
+  const [data, setData] = useState([]);
   const [searchValue, setSearchValue] = useState("");
+  const [conferenceIds, setConferenceIds] = useState([]);
   // const [users, setUsers] = useState([]);
-
-  const [ongoingConferences, setOngoingConferences] = useState([]);
-
-  const fetchOngoingConferences = async () => {
-    try {
-      const response = await fetch("http://localhost:5001/api/conferences/get");
-      const data = await response.json();
-
-      if (response.ok) {
-        const ongoingSessionsList = [];
-
-        for (const conference of data) {
-          for (const session of conference.sessions) {
-            // data.forEach((conference) => {
-            //   conference.sessions.forEach((session) => {
-            const startTime = new Date(session.startTime);
-            const endTime = new Date(session.endTime);
-            const currentTime = new Date();
-
-            // Format the dates to the desired format
-            const formattedStartTime = startTime.toLocaleString('en-US', { timeZone: 'Asia/Colombo' });
-            const formattedEndTime = endTime.toLocaleString('en-US', { timeZone: 'Asia/Colombo' });
-            const ToformattedCurrentTime = currentTime.toLocaleString('en-US', { timeZone: 'Asia/Colombo' });
-
-            // Convert the formatted string to a Date object
-            const CurrentTime = new Date(ToformattedCurrentTime);
-            const StartTime = new Date(formattedStartTime);
-            const EndTime = new Date(formattedEndTime);
-
-            // substract 15 hours
-            const formatted_StartTime = new Date(
-              StartTime.getFullYear(),
-              StartTime.getMonth(),
-              StartTime.getDate(),
-              StartTime.getHours() - 15,
-              StartTime.getMinutes(),
-              StartTime.getSeconds(),
-            );
-
-            const formatted_EndTime = new Date(
-              EndTime.getFullYear(),
-              EndTime.getMonth(),
-              EndTime.getDate(),
-              EndTime.getHours() - 15,
-              EndTime.getMinutes(),
-              EndTime.getSeconds(),
-            );
-
-            // Subtract 19 hours 
-            const formattedCurrentTime = new Date(
-              CurrentTime.getFullYear(),
-              CurrentTime.getMonth(),
-              CurrentTime.getDate(),
-              CurrentTime.getHours() - 19,
-              CurrentTime.getMinutes(),
-              CurrentTime.getSeconds(),
-            );
-
-            const adjusted_StartTime = formatted_StartTime.toLocaleString('en-US', { timeZone: 'Asia/Colombo' });
-            const adjusted_EndTime = formatted_EndTime.toLocaleString('en-US', { timeZone: 'Asia/Colombo' });
-            const adjustedTime = formattedCurrentTime.toLocaleString('en-US', { timeZone: 'Asia/Colombo' });
-
-            console.log('Start Time:', adjusted_StartTime);
-            console.log('End Time:', adjusted_EndTime);
-            console.log('Current Time:', formatted_StartTime);
-            // console.log('Current Time:', CurrentTime.toLocaleString('en-US', { timeZone: 'Asia/Colombo' }));
-            console.log('Adjusted Time:', adjustedTime);
-
-            console.log('Condition 1:', adjusted_StartTime <= adjustedTime);
-            console.log('Condition 2:', adjustedTime <= formattedEndTime);
-            // console.log('Type of adjustedTime:', typeof adjustedTime);
-            // console.log('Type of adjusted_EndTime:', typeof adjusted_EndTime);
-
-            console.log(conference._id);
-            if (adjusted_StartTime <= adjustedTime && adjustedTime <= adjusted_EndTime) {
-              try {
-                const currentAttendeesResponse = await fetch(`http://localhost:5001/api/currentattendee/getData/${conference._id}`);
-                const currentAttendeesData = await currentAttendeesResponse.json();
-                console.log("(((((((((((curentcap", currentAttendeesData.currentCapacity);
-
-                if (currentAttendeesResponse.ok) {
-                  const currentCapacity = currentAttendeesData.currentCapacity || 0;
-                  // console.log(currentCapacity);
-                  ongoingSessionsList.push({
-                    conferenceId: conference._id,
-                    sessionId: session._id,
-                  });
-                  console.log("______________", ongoingSessionsList);
-                } else {
-                  console.error(`Error fetching currentCapacity for conferenceId ${conference._id}:`, currentAttendeesData.message);
-                }
-              } catch (error) {
-                console.error(`Error fetching currentCapacity for conferenceId ${conference._id}:`, error);
-              }
-
-            } else {
-              console.log("No ongoing sessions");
-            }
-          }
-        }
-        setOngoingConferences(ongoingSessionsList);
-        console.log("Ongoing Conferences fetched successfully:", ongoingSessionsList);
-      } else {
-        console.error("Error fetching conferences:", data.message);
-      }
-    } catch (error) {
-      console.error("Error fetching conferences:", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchOngoingConferences();
-  }, []);
 
   useEffect(() => {
     const accessToken = localStorage.getItem("token");
@@ -212,6 +100,47 @@ const Attendees = () => {
     setSearchValue("");
     setData(data);
   };
+
+  useEffect(() => {
+    const fetchConferenceIds = async () => {
+      try {
+        const response = await axios.get('http://localhost:5001/api/currentattendee/conferenceIds');
+        setConferenceIds(response.data.conferenceIds);
+      } catch (error) {
+        console.error('Error fetching conferenceIds:', error);
+      }
+    };
+
+    fetchConferenceIds();
+  }, []);
+
+  const fetchAttendeeDetails = async (conferenceId) => {
+    try {
+      const response = await axios.get(`http://localhost:5001/api/attendees/attendeesOfConf/${conferenceId}`);
+      return response.data.attendeeDetails;
+    } catch (error) {
+      console.error(`Error fetching attendee details for conferenceId ${conferenceId}:`, error);
+      return [];
+    }
+  };
+
+  useEffect(() => {
+    const fetchAllAttendeeDetails = async () => {
+      const allAttendeeDetails = [];
+
+      for (const conferenceId of conferenceIds) {
+        const attendeeDetails = await fetchAttendeeDetails(conferenceId);
+        // allAttendeeDetails.push({ conferenceId, attendeeDetails });
+        // allAttendeeDetails.push({ conferenceId, attendeeDetails: attendeeDetails });
+        allAttendeeDetails.push({ conferenceId, attendeeDetails });
+
+      }
+      // setData(allAttendeeDetails);
+      setData((prevData) => [...prevData, ...allAttendeeDetails]);
+    };
+
+    fetchAllAttendeeDetails();
+  }, [conferenceIds]);
 
   return (
     <div className="atendeee">
@@ -253,10 +182,24 @@ const Attendees = () => {
       <div className="CA"> Current Attendees</div>
 
       <div className="atendeecontainer" >
+        {/* <Attendee_page_card /> */}
+        {data.map((conference) => (
+        <div key={conference.conferenceId}>
+          <div className='CA'>Current Attendees - Conference ID: {conference.conferenceId}</div>
 
-        <Attendee_page_card />
-
-
+          {conference.attendeeDetails?.map((attendee) => (
+            <AttendeePageCard
+              key={attendee.rfidNo}
+              roomName={conference.conferenceId} 
+              sessionName={''} 
+              attendeeName={attendee.name}
+              inTime={''} 
+              rfidNo={attendee.rfidNo}
+            />
+          ))}
+        </div>
+      ))}
+    
       </div>
 
 
