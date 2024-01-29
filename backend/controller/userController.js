@@ -7,7 +7,25 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
 
-// get user data by 
+// get user's name by email
+const getUserName = asyncHandler(async (req, res) => {
+  try {
+    const { email } = req.params;
+
+    // Find the user by email
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    // Return the user's name
+    res.json({ name: user.name });
+  } catch (error) {
+    console.error('Error fetching user:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
 
 /////////////// REGISTER event organizers ///////////////
 const registerUser = asyncHandler(async (req, res) => {
@@ -102,4 +120,4 @@ const getAllUsers = asyncHandler(async (req, res) => {
   res.status(200).json(user);
 });
 
-module.exports = { registerUser, loginUser, getCurrentUser, getAllUsers };
+module.exports = { registerUser, getUserName, loginUser, getCurrentUser, getAllUsers };

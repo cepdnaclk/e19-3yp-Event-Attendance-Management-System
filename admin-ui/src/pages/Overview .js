@@ -32,6 +32,8 @@ export default function Overview() {
             const endTime = new Date(session.endTime);
             const currentTime = new Date();
 
+            console.log("startTime:", startTime);
+
             // Format the dates to the desired format
             const formattedStartTime = startTime.toLocaleString('en-US', { timeZone: 'Asia/Colombo' });
             const formattedEndTime = endTime.toLocaleString('en-US', { timeZone: 'Asia/Colombo' });
@@ -41,6 +43,9 @@ export default function Overview() {
             const CurrentTime = new Date(ToformattedCurrentTime);
             const StartTime = new Date(formattedStartTime);
             const EndTime = new Date(formattedEndTime);
+
+            console.log("formattedSt:", formattedStartTime)
+            console.log("StartTime:", StartTime)
 
             // substract 15 hours
             const formatted_StartTime = new Date(
@@ -75,19 +80,21 @@ export default function Overview() {
             const adjusted_EndTime = formatted_EndTime.toLocaleString('en-US', { timeZone: 'Asia/Colombo' });
             const adjustedTime = formattedCurrentTime.toLocaleString('en-US', { timeZone: 'Asia/Colombo' });
 
-            console.log('Start Time:', adjusted_StartTime);
-            console.log('End Time:', adjusted_EndTime);
-            console.log('Current Time:', formatted_StartTime);
+            console.log('formatted_StartTime:', formatted_StartTime);
+            console.log('adjusted_StartTime:', adjusted_StartTime);
+            // console.log('End Time:', adjusted_EndTime);
+            
             // console.log('Current Time:', CurrentTime.toLocaleString('en-US', { timeZone: 'Asia/Colombo' }));
             console.log('Adjusted Time:', adjustedTime);
 
-            // console.log('Condition 1:', adjusted_StartTime <= adjustedTime);
-            // console.log('Condition 2:', adjustedTime <= formattedEndTime);
+            console.log('Condition 1:', adjusted_StartTime <= adjustedTime);
+            console.log('Condition 2:', adjustedTime <= formattedEndTime);
             // console.log('Type of adjustedTime:', typeof adjustedTime);
             // console.log('Type of adjusted_EndTime:', typeof adjusted_EndTime);
 
             console.log(conference._id);
-            if (adjusted_StartTime <= adjustedTime && adjustedTime <= adjusted_EndTime) {
+            // if (adjusted_StartTime <= adjustedTime && adjustedTime <= adjusted_EndTime) {
+              if(formatted_StartTime <= formattedCurrentTime && formattedCurrentTime <= formatted_EndTime) { 
               try {
                 const currentAttendeesResponse = await fetch(`http://localhost:5001/api/currentattendee/getData/${conference._id}`);
                 const currentAttendeesData = await currentAttendeesResponse.json();

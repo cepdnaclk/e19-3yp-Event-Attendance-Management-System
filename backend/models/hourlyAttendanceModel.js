@@ -4,7 +4,7 @@ const hourlyAttenSchema = new mongoose.Schema({
 conferenceId: String,
   data: [{
     hour: {
-      type: Number,
+      type: String,
     },
     value: {
       type: Number,
