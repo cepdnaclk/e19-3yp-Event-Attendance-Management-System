@@ -2677,3 +2677,49 @@ tr {
 .no-hover tr:hover {
   background-color: #f1f6fe;
 }
+
+.slider-container {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+  overflow: hidden;
+  padding-top: 60px;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  min-width: 100%;
+  box-sizing: border-box;
+}
+
+.slider-image {
+  width: 100%;
+  height: auto;
+  box-shadow: 20px 0 20px rgba(0, 0, 0, 0.3)
+}
+
+.slide-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 24px;
+  color: #5e17eb;
+  background-color: transparent;
+  border: none;
+}
+
+.prev-btn {
+  left: 0px;
+  padding-right: 50px;
+}
+
+.next-btn {
+  right: 0px;
+  padding-left: 250px;
+}
