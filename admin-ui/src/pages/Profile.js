@@ -1,11 +1,27 @@
-import React from 'react'
+
 import Sidebar from '../components/Sidebar'
 import Profile1 from '../Images/profile.png'
+import React, { useState } from "react";
 
 function Profile() {
+
+    const [modal, setModal] = useState(false);
+
+    const toggleModal = () => {
+        setModal(!modal);
+    };
+
+    if (modal) {
+        document.body.classList.add('active-modal')
+    } else {
+        document.body.classList.remove('active-modal')
+    }
+
     return (
         <div  >
             <Sidebar />
+
+            <div className="att">Profile</div>
             <div className='profilee'>
 
                 <div className='profile1' >
@@ -16,10 +32,29 @@ function Profile() {
                         <p>johnsmith@gmail.com</p>
                     </div>
 
-                    <button  className="btn-modal">
-                        Change
+                    <button className="btn-modal" onClick={toggleModal}>
+                        Change Password
                     </button>
 
+                    {modal && (
+                        <div className="modal">
+                            <div onClick={toggleModal} className="overlay"></div>
+                            <div className="modal-content">
+                                <div>
+                                    <label className="roomnaame">Current Password</label>
+                                    <input type="password" placeholder="Enter current password" autocomplete="off" />
+
+                                    <label className="roomnaame">New Password</label>
+                                    <input type="password" placeholder="Enter current password" autocomplete="off" />
+
+                                    <button className="submitbtn" type="submit" > Submit</button>
+                                </div>
+                                <button className="close-btn" onClick={toggleModal}>
+                                    close
+                                </button>
+                            </div>
+                        </div>
+                    )}
 
                 </div>
 
