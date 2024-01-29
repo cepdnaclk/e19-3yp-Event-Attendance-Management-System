@@ -77,28 +77,29 @@ export default function Overview() {
 
             console.log('Start Time:', adjusted_StartTime);
             console.log('End Time:', adjusted_EndTime);
-            // console.log('Current Time:', formattedCurrentTime);
+            console.log('Current Time:', formatted_StartTime);
             // console.log('Current Time:', CurrentTime.toLocaleString('en-US', { timeZone: 'Asia/Colombo' }));
             console.log('Adjusted Time:', adjustedTime);
 
-            // console.log('Condition 1:', adjusted_StartTime <= adjustedTime);
-            // console.log('Condition 2:', adjustedTime <= formattedEndTime);
+            console.log('Condition 1:', adjusted_StartTime <= adjustedTime);
+            console.log('Condition 2:', adjustedTime <= formattedEndTime);
             // console.log('Type of adjustedTime:', typeof adjustedTime);
             // console.log('Type of adjusted_EndTime:', typeof adjusted_EndTime);
 
-            try{
-              const currentAttendeesResponse = await fetch(`http://localhost:5001/api/currentattendee/${conference._id}`);
-              const currentAttendeesData = await currentAttendeesResponse.json();
-
-              if (currentAttendeesResponse.ok) {
-                const currentCapacity = currentAttendeesData.currentCapacity || 0;
-                // console.log(currentCapacity);
-
-                // if (formattedStartTime <= adjustedTime && adjustedTime <= formattedEndTime) {    
-                if(formatted_StartTime <= formattedCurrentTime && formattedCurrentTime <= formatted_EndTime) {          
+            console.log(conference._id);
+            if(adjusted_StartTime <= adjustedTime && adjustedTime <= adjusted_EndTime) {                   
+              try{
+                const currentAttendeesResponse = await fetch(`http://localhost:5001/api/currentattendee/getData/${conference._id}`);
+                const currentAttendeesData = await currentAttendeesResponse.json();
+                console.log("(((((((((((curentcap",currentAttendeesData.currentCapacity);
+  
+                if (currentAttendeesResponse.ok) {
+                  const currentCapacity = currentAttendeesData.currentCapacity || 0;
+                  // console.log(currentCapacity);
                   ongoingSessionsList.push({
                     conferenceId: conference._id,
                     confName: conference.conferenceDetails,
+                    sessionId: session._id,
                     sessionName: session.sessionName,
                     SessionDetails: session.SessionDetails,
                     speaker: session.speaker,
@@ -107,19 +108,53 @@ export default function Overview() {
                     MaxCapacity: session.maxAttendeeCap,
                     CurrentCapacity: currentCapacity,
                   });
+                  console.log("______________",ongoingSessionsList);
+                }else{
+                  console.error(`Error fetching currentCapacity for conferenceId ${conference._id}:`, currentAttendeesData.message);
                 }
-              }else{
-                console.error(`Error fetching currentCapacity for conferenceId ${conference._id}:`, currentAttendeesData.message);
+              }catch(error){
+                console.error(`Error fetching currentCapacity for conferenceId ${conference._id}:`, error);
               }
-            }catch(error){
-              console.error(`Error fetching currentCapacity for conferenceId ${conference._id}:`, error);
-            }
+
+            }else{
+              console.log("No ongoing sessions");
+            }      
+            // try{
+            //   const currentAttendeesResponse = await fetch(`http://localhost:5001/api/currentattendee/getData/${conference._id}`);
+            //   const currentAttendeesData = await currentAttendeesResponse.json();
+            //   console.log("(((((((((((curentcap",currentAttendeesData.currentCapacity);
+
+            //   if (currentAttendeesResponse.ok) {
+            //     const currentCapacity = currentAttendeesData.currentCapacity || 0;
+            //     // console.log(currentCapacity);
+
+            //     // if (formattedStartTime <= adjustedTime && adjustedTime <= formattedEndTime) {    
+            //     // if(formatted_StartTime <= formattedCurrentTime && formattedCurrentTime <= formatted_EndTime) { 
+            //     if(adjusted_StartTime <= adjustedTime && adjustedTime <= adjusted_EndTime) {         
+            //       ongoingSessionsList.push({
+            //         conferenceId: conference._id,
+            //         confName: conference.conferenceDetails,
+            //         sessionName: session.sessionName,
+            //         SessionDetails: session.SessionDetails,
+            //         speaker: session.speaker,
+            //         startTime: session.startTime,
+            //         endTime: session.endTime,
+            //         MaxCapacity: session.maxAttendeeCap,
+            //         CurrentCapacity: currentCapacity,
+            //       });
+            //       console.log("______________",ongoingSessionsList);
+            //     }
+            //   }else{
+            //     console.error(`Error fetching currentCapacity for conferenceId ${conference._id}:`, currentAttendeesData.message);
+            //   }
+            // }catch(error){
+            //   console.error(`Error fetching currentCapacity for conferenceId ${conference._id}:`, error);
+            // }
                       
         //   });
         // });
           }
         }
-
         setOngoingConferences(ongoingSessionsList);
         console.log("Ongoing Conferences fetched successfully:", ongoingSessionsList);
       } else {

@@ -5,6 +5,7 @@ export default function MainSection() {
   const [hotSessions, setHotSessions] = useState([]);
   const [registeredSessions, setRegisteredSessions] = useState([]);
   const [rfidNo, setRfidNo] = useState('');
+  const [userName, setUserName] = useState('');
 
   const fetchAndSetRegisteredSessions = async (rfidNo) => {
     const sessionIds = await fetchSessionIds(rfidNo);
@@ -46,8 +47,9 @@ export default function MainSection() {
 
       const userData = await fetch(`http://localhost:5001/api/attendees/rfid/${rfidNo}`);
       const userDataData = await userData.json();
-      const userName = userDataData.name;          
-      // console.log('__________useridData', userName);
+      const userName = userDataData.name;    
+      setUserName(userName);      
+      console.log('__________useridData', userName);
 
       const response = await fetch(`http://localhost:5001/api/sessionreg/rfid/${user_id}`);
       const data = await response.json();
@@ -236,7 +238,7 @@ export default function MainSection() {
 
       <div className="flex flex-col gap-2 justify-start items-center flex-1">
         {/* Input for entering rfidNo */}
-        <h1 className="text-3xl font-bold text-black">Welcome to EventFlow, </h1>
+        <h1 className="text-3xl font-bold text-black">Welcome to EventFlow, {userName}</h1>
         <input type="text" value={rfidNo} onChange={(e) => setRfidNo(e.target.value)} placeholder="Enter rfidNo" />
 
         {/* EventSection for displaying registered events */}

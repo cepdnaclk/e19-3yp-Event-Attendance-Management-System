@@ -326,20 +326,92 @@ const getAllCurrentAttendeeIds = asyncHandler(async (req, res) => {
     }
 });
 
+// Get current capacity of session Attendees 
+// const getCurrentAttendeeDetails = asyncHandler(async (req, res) => {
+//   try {
+//       const { conferenceId } = req.params;
+
+//       // Validate conferenceId
+//       if (!mongoose.Types.ObjectId.isValid(conferenceId)) {
+//           return res.status(400).json({ message: 'Invalid conferenceId' });
+//       }
+
+//       // Find current attendees based on conferenceId
+//       const currentAttendees = await CurrentAttendee.find({ conferenceId: mongoose.Types.ObjectId(conferenceId) });
+
+//       if (!currentAttendees || currentAttendees.length === 0) {
+//           return res.status(404).json({ message: 'Current attendees not found for the given conferenceId' });
+//       }
+
+//       res.status(200).json({ currentAttendees });
+//   } catch (error) {
+//       console.error(error);
+//       res.status(500).json({ message: 'Internal Server Error' });
+//   }
+// });
+
+// const getCurrentAttendeeDetails = asyncHandler(async (req, res) => {
+//     const { id } = req.params;
+    
+//     const currentAttendee = await CurrentAttendee.findOne({ conferenceId: id });
+//     console.log(currentAttendee);
+//     if (!currentAttendee) {
+//         res.status(404);
+//         throw new Error('Session not found');
+//     }
+//     res.status(200).json({ currentAttendee });
+// });
+
 // Get current session Attendees details
 const getCurrentAttendeeDetails = asyncHandler(async (req, res) => {
-    const { id } = req.params;
+  const { id } = req.params;
 
-    const currentAttendee = await CurrentAttendee.findOne({ conferenceId: id });
+  try {
+    // Find the current attendee based on conferenceId and populate the conference details
+    const currentAttendee = await CurrentAttendee
+      .findOne({ conferenceId: new mongoose.Types.ObjectId(id) })
+      .populate({
+        path: 'conferenceId',
+        select: 'currentCapacity', 
+      });
 
     if (!currentAttendee) {
-        res.status(404);
-        throw new Error('Session not found');
+      console.error(error);
+      res.status(404).json({ message: 'Session not found' });
+      return;
     }
-    res.status(200).json({ currentAttendee });
+
+    res.status(200).json({ currentCapacity: currentAttendee.currentCapacity });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
+// get current rfidNos for conferenceId
+const getRfidNos = asyncHandler(async (req, res) => {
+  try {
+    const { conferenceId } = req.params;
+
+    // Find the current attendees for the given conferenceId
+    const currentAttendees = await CurrentAttendee.findOne({ conferenceId });
+
+    if (!currentAttendees) {
+      return res.status(404).json({ message: 'No current attendees found for the given conferenceId' });
+    }
+
+    // Extract rfidNOs from the currentAttendees document
+    const rfidNOs = currentAttendees.rfidNo;
+
+    res.json({ rfidNOs });
+  } catch (error) {
+    console.error('Error fetching rfidNOs:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
 });
 
 module.exports = { 
+  getRfidNos,
   getTotalCurrentCapacity,
   getTotalCurrentCapacityByConference,
   getSumofMaxCapForConference,
