@@ -5,20 +5,20 @@ import MainSection from "./components/MainSection";
 // Main App component
 function App() {
   // State to track whether the tag is scanned
-  const [isScanned, setIsScanned] = useState(false);
+  // const [isScanned, setIsScanned] = useState(false);
 
-  // useEffect to simulate a delay (10 seconds) and update isScanned
-  useEffect(() => {
-    // Simulate a delay using setTimeout
-    setTimeout(() => {
-      // Set isScanned to true after the delay
-      setIsScanned(true);
-    }, 1000); // 1 seconds delay
-  }, [isScanned]); // useEffect will re-run when isScanned changes
+  // // useEffect to simulate a delay (10 seconds) and update isScanned
+  // useEffect(() => {
+  //   // Simulate a delay using setTimeout
+  //   setTimeout(() => {
+  //     // Set isScanned to true after the delay
+  //     setIsScanned(true);
+  //   }, 1000); // 1 seconds delay
+  // }, [isScanned]); // useEffect will re-run when isScanned changes
 
-  // Conditional rendering based on the isScanned state
+  // // Conditional rendering based on the isScanned state
   // If scanned, render the MainSection component, otherwise render VideoIntro
-  return isScanned ? <MainSection /> : <VideoIntro />;
+  return <MainSection />;
   // Alternatively, you can unconditionally render MainSection if that's your intent
   // return <MainSection />;
 }
