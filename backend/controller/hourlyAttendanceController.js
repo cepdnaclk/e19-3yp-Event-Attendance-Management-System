@@ -5,7 +5,7 @@ const HourlyAtten = require('../models/hourlyAttendanceModel');
 // get array data based on conferenceId
 const getHourlyAtten = asyncHandler(async (req, res) => {
   try {
-    const { conferenceId } = req.params;
+    const { conferenceId } = req.params; 
     console.log(conferenceId);
 
     const hourlyAttenData = await HourlyAtten.findOne({ conferenceId });
