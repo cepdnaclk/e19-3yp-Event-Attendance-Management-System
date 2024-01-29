@@ -21,7 +21,7 @@ export default function EventCard({ card }) {
       </h3>
 
       {/* Description of the event */}
-      <div className="txt-body">Conference Room: {card.confName}</div>
+      <div className="txt-body">Conference Room: {card.conferenceDetails}</div>
       <div className="txt-body">About: {card.SessionDetails}</div>
       <div className="txt-body">Speaker: {card.speaker}</div>
       <div className="txt-body">

@@ -4,6 +4,35 @@ const {Conference, Session } = require("../models/conferenceModel");
 
 ////////////////// CONFERENCES //////////////////////
 
+// Get conferenceId by sessionId
+const getConfIdBySesId = asyncHandler(async (req, res) => {
+  try {
+    const { sessionId } = req.params;
+
+    // Find the conference that contains the specified session
+    const conference = await Conference.findOne({ 'sessions._id': sessionId });
+
+    if (!conference) {
+      return res.status(404).json({ message: 'Session not found or not associated with any conference' });
+    }
+
+    // Find the session within the conference
+    const session = conference.sessions.find(session => session._id.toString() === sessionId);
+
+    if (!session) {
+      return res.status(404).json({ message: 'Session not found within the conference' });
+    }
+
+    // Retrieve the associated conferenceId
+    const conferenceId = conference._id;
+
+    res.json({ conferenceId });
+  } catch (error) {
+    console.error('Error retrieving conferenceId:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
 ///////////get All conference ids
 const getConferenceIds = asyncHandler (async (req, res) => {
   try {
@@ -345,6 +374,7 @@ const deleteSession = asyncHandler(async (req, res) => {
 module.exports = {
   // getTopSessions,
   getAllSessionDetails,
+  getConfIdBySesId,
   getSessionDetailsForConference,
   // getHotSessionIds,
   getSessionDetailsBySesId,

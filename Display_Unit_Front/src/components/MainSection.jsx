@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import EventSection from "./EventSection";
+// import { get } from "mongoose";
 
 export default function MainSection() {
   const [hotSessions, setHotSessions] = useState([]);
@@ -42,7 +43,7 @@ export default function MainSection() {
       // const userid = await fetch(`http://localhost:5001/api/attendees/rfidNo/${rfidNo}`);
       const useridData = await userid.json();
       const user_id = useridData.userId;
- 
+
       // console.log('**********************', user_id);
 
       const userData = await fetch(`http://13.201.130.222:5001/api/attendees/rfid/${rfidNo}`);
@@ -69,6 +70,25 @@ export default function MainSection() {
     }
   };
 
+  const getConferenceName = async (conferenceId) => {    
+    const getNameResponse = await fetch(
+      `http://localhost:5001/api/conferences/${conferenceId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const getNameResponseData = await getNameResponse.json();
+    // console.log("((((((((((", getNameResponse)
+
+    if (getNameResponse.ok) {
+      console.log("jshabdjhadb", getNameResponseData);
+      return getNameResponseData.conferenceDetails
+    }
+  };
+
   const fetchSessionDetails = async (sessionIds) => {
     try {
       // Array to store session details for each session ID
@@ -84,11 +104,26 @@ export default function MainSection() {
           },
         });
   
-        console.log('sessionDetailsResponse', sessionDetailsResponse);
         const sessionDetailsData = await sessionDetailsResponse.json();
+        console.log('sessionDetailsResponse', sessionDetailsData);
+
+        const confIdRes = await fetch(`http://13.201.130.222:5001/api/conferences/conferenceId/${sessionId}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
+        const confId = await confIdRes.json();
+        console.log("%%%%%%%%%", confId.conferenceId);
   
         if (sessionDetailsResponse.ok) {
-          sessionDetailsArray.push(sessionDetailsData);
+          const cName = await getConferenceName(confId.conferenceId);
+          console.log("^^^^^^^^",cName)
+          const updated = { ...sessionDetailsData, conferenceDetails: cName };
+          // sessionDetailsArray.push(sessionDetailsData);
+          console.log("UP",updated);
+          // console.log(sessionDetailsData)
+          sessionDetailsArray.push(updated);
         } else {
           console.error(`Error fetching session details for session ID ${sessionId}:`, sessionDetailsData.message);
         }
@@ -126,7 +161,7 @@ export default function MainSection() {
           const sessionDetailsResponse = await fetch(`http://13.201.130.222:5001/api/conferences/${conferenceId}/sessions`);
           // const sessionDetailsResponse = await fetch(`http://localhost:5001/api/conferences/${conferenceId}/sessions`);
           const sessionDetailsData = await sessionDetailsResponse.json();
-          console.log('sessionDetailsData: --', sessionDetailsData);
+          // console.log('sessionDetailsData: --', sessionDetailsData);
           
           if (sessionDetailsResponse.ok) {
             for (const session of sessionDetailsData.sessionDetails) {
@@ -177,12 +212,12 @@ export default function MainSection() {
             const adjusted_EndTime = formatted_EndTime.toLocaleString('en-US', { timeZone: 'Asia/Colombo' });
             const adjustedTime = formattedCurrentTime.toLocaleString('en-US', { timeZone: 'Asia/Colombo' });
 
-            console.log('Start Time:', adjusted_StartTime);
-            console.log('End Time:', adjusted_EndTime);
-            // console.log('Current Time:', formattedCurrentTime);
-            // console.log('Current Time:', CurrentTime.toLocaleString('en-US', { timeZone: 'Asia/Colombo' }));
-            console.log('Adjusted Time:', adjustedTime);
-            console.log('________________ conferenceName: ', confRoomName.conferenceDetails);
+            // console.log('Start Time:', adjusted_StartTime);
+            // console.log('End Time:', adjusted_EndTime);
+            // // console.log('Current Time:', formattedCurrentTime);
+            // // console.log('Current Time:', CurrentTime.toLocaleString('en-US', { timeZone: 'Asia/Colombo' }));
+            // console.log('Adjusted Time:', adjustedTime);
+            // console.log('________________ conferenceName: ', confRoomName.conferenceDetails);
             
               if (formatted_StartTime <= formattedCurrentTime && formattedCurrentTime <= formatted_EndTime) {
                 hotSessionsList.push({
@@ -203,7 +238,7 @@ export default function MainSection() {
           }
         }
 
-        console.log('Ongoing Sessions List:', hotSessionsList);
+        // console.log('Ongoing Sessions List:', hotSessionsList);
         setHotSessions(hotSessionsList);
       } catch (error) {
         console.error(`Error fetching hot sessions: ${error}`);
