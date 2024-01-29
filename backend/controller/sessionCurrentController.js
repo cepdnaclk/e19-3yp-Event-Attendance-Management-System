@@ -94,7 +94,26 @@ const getRfidnoCount = asyncHandler(async (req, res) => {
   }
 });
 
+// get time using rfidNo
+const getTimestamp = asyncHandler(async (req, res) => {
+  try {
+    const { rfidNo } = req.params;
 
+    // Find the session current record for the given rfidNo
+    const sessionCurrentRecord = await SessionCurrent.findOne({ rfidNo });
+
+    if (!sessionCurrentRecord) {
+      return res.status(404).json({ message: 'No record found for the given rfidNo' });
+    }
+
+    // Extract and send the timestamp
+    const { timestamp } = sessionCurrentRecord;
+    res.json({ timestamp });
+  } catch (error) {
+    console.error('Error fetching timestamp:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
 
 ////////////////////// Get sessionIds of ongoing sessions
 const getOngoingSessionIds = asyncHandler(async (req, res) => {
@@ -161,6 +180,7 @@ const getSessionCurrentDetails = asyncHandler(async (req, res) => {
 });
 
 module.exports = { getRfidnoCount,
+  getTimestamp,
   getOngoingSessionIds,
   getSessionCurrentDetails, getAllSessionCurrentIds };
 
