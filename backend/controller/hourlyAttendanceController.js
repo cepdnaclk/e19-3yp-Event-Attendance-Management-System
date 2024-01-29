@@ -1,6 +1,6 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-const HourlyAtten = require('../models/hourlyAttenModel');
+const HourlyAtten = require('../models/hourlyAttendanceModel');
 
 // get array data based on conferenceId
 const getHourlyAtten = asyncHandler(async (req, res) => {

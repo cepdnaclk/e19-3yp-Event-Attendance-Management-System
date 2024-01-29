@@ -44,7 +44,7 @@ app.use("/api/sessionreg", require("./routes/sessionRegisteredRoutes"));
 app.use("/api/sessioncurrent", require("./routes/sessionCurrentRoutes"));
 app.use("/api/currentattendee", require("./routes/currentAttendeeRoutes"));
 app.use("/api/session", require("./routes/sessionRoutes"));
-app.use("/api/hourlyAttendee", require("./routes/hourlyAttenRoutes"));
+app.use("/api/hourlyAttendee", require("./routes/hourlyAttendanceRoutes"));
 
 
 app.use(errorHandler);

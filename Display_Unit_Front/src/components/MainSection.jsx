@@ -42,7 +42,7 @@ export default function MainSection() {
       // const userid = await fetch(`http://localhost:5001/api/attendees/rfidNo/${rfidNo}`);
       const useridData = await userid.json();
       const user_id = useridData.userId;
-
+ 
       // console.log('**********************', user_id);
 
       const userData = await fetch(`http://localhost:5001/api/attendees/rfid/${rfidNo}`);
