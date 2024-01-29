@@ -12,43 +12,11 @@
 - E/19/240 [email](e19240@eng.pdn.ac.lk) [B.M.S.Mendis](https://github.com/Shenal-M)
 - E/19/431 [email](e19431@eng.pdn.ac.lk) [I.W.A.P.D.Wickramaarachchi](https://github.com/Prageeth-Dananjaya)
 
-## Table of Contents
-
-1. [Introduction](#introduction)
-2. [Control & Data Flow](#control-&-data-flow)
-3. [Key Featuers](#key-featuers)
-4. [User Experince](#user-experince)
-5. [Links](#links)
-
----
-
 ## Introduction
 
 This project is dedicated to simplifying and enhancing the process of tracking attendance and session participation for registered event attendees. Whether you are organizing conferences, workshops, or any other type of gathering, our solution provides a robust and user-friendly platform to efficiently manage and monitor participant engagement.
 
-<iframe width="90%" height="700px"
-        src="https://www.youtube.com/watch?v=6XMMViNymo0">
-</iframe>
-
-## Solution Architecture
-
-Design Flow
-
-> <img src="./docs/images/designflow.png" alt="Alt Text" width="600" height="400">
-
-High Level dArchitecture
-
-> <img src="./docs/images/highlevelArchi.png" alt="Alt_Text" width="600" height="400">
-
-Cloud Architecture
-
-> <img src="./docs/images/cloudArchi.png" alt="Alt Text" width="600" height="400">
-
-## Control & Data Flow
-
-### Data Flow
-
-> <img src="./docs/images/dataflow.png" alt="Alt Text" width="600" height="400">
+[![Example Video](https://example.com/thumbnail.jpg)](https://www.youtube.com/watch?v=6XMMViNymo0)
 
 ## Key Featuers
 
@@ -57,12 +25,6 @@ Session Tracking in real time <br>
 Dashboard and Analytics for event organizers <br>
 Search and Reporting of attendee information <br>
 Notification System <br>
-
-## Budget
-
-> <img src="./docs/images/budget.png" alt="Alt Text" width="600" height="400">
-
-## User Experince
 
 ## Advising Lecturers
 
