@@ -212,7 +212,7 @@ h1 {
     /* background-color: ; */
     position: absolute;
     font-size: 20px;
-    left: 8.5cm;
+    left: 9cm;
     top: 1cm;
     font-weight: 600;
 
@@ -516,7 +516,7 @@ cursor: pointer;
 }
 .CA{
   position: relative;
-  top: 13.5cm;
+  top: 14.5cm;
   left:9cm;
   font-size:19px;
   font-weight: 600;
@@ -526,9 +526,17 @@ position: absolute;
   height: fit-content;
   width: 19.1cm;
   left: 8.5cm;
-  top:14.5cm;
+  top:15.5cm;
   display: flex;
   flex-direction: column;
+ 
+}
+.attendee-card{
+background-color: white;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 .attendee_page_card{
   background-color: #ffffff;
@@ -582,19 +590,19 @@ position: absolute;
 
 
 .profilee{
-  background-color: aquamarine;
+  
   position: absolute;
-  top: 3cm;
-  left:9cm;
-  width: 28cm;
-  height: 22PDcm;
+  top: 2cm;
+  left:13cm;
+  width: 22.2cm;
+  height: fit-content;
   display: flex;
   padding: 20px;
 }
 .profile1{
   background-color: #ffffff;
   width: 10cm;
-  height: 10cm;
+  height: 12cm;
   margin: 10px;
   border-radius: 10px;
   padding: 20px;
@@ -608,9 +616,37 @@ position: absolute;
 .RFIDuser{
   background-color: #ffffff;
   width: 10cm;
-  height: 10cm;
-  margin: 10px;
+  height: 12cm;
+  margin-top: 10px;
+  margin-left: 40px;
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+.pr1{
+  margin-top: 10px;
+  font-weight: 600;
+  color:rgba(94, 23, 235, 1) ;
+  font-size: 17px;
+}
+.rw{
+  font-weight: 600;
+  margin-bottom: 20px;
+  color:rgba(94, 23, 235, 1) ;
+  font-size: 17px;
+}
+.name1{
+  font-size: 15px;
+  font-weight: 600;
+}
+.l11{
+  font-weight: 600;
+  font-size: 14px;
+  
+}
+.profileContents{
+  margin-top: 1px;
+}
+.mail1{
+  margin-top: 1px;
 }

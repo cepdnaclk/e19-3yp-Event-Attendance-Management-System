@@ -20,6 +20,9 @@ export default function Login_page({ onLogin }) {
         // console.log(onLogin);
         if (onLogin) {
           onLogin(response.data.accessToken);
+          // Pass email to the Profile page
+          navigate('/Profile', { state: { email } });
+          
           navigate('/ConferenceRooms');
         }
       })

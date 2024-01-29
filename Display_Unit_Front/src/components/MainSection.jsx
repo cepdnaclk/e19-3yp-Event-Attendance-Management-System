@@ -42,16 +42,18 @@ export default function MainSection() {
       // const userid = await fetch(`http://localhost:5001/api/attendees/rfidNo/${rfidNo}`);
       const useridData = await userid.json();
       const user_id = useridData.userId;
-
+ 
       // console.log('**********************', user_id);
 
-      const userData = await fetch(`http://localhost:5001/api/attendees/rfid/${rfidNo}`);
+      const userData = await fetch(`http://13.201.130.222:5001/api/attendees/rfid/${rfidNo}`);
+      // const userData = await fetch(`http://localhost:5001/api/attendees/rfid/${rfidNo}`);
       const userDataData = await userData.json();
       const userName = userDataData.name;    
       setUserName(userName);      
       console.log('__________useridData', userName);
 
-      const response = await fetch(`http://localhost:5001/api/sessionreg/rfid/${user_id}`);
+      // const response = await fetch(`http://localhost:5001/api/sessionreg/rfid/${user_id}`);
+      const response = await fetch(`http://13.201.130.222:5001/api/sessionreg/rfid/${user_id}`);
       const data = await response.json();
   
       console.log('data', data);
@@ -117,7 +119,8 @@ export default function MainSection() {
         const hotSessionsList = [];
 
         for (const conferenceId of conferenceIds) {
-          const conferenceRoom = await fetch(`http://localhost:5001/api/conferences/${conferenceId}`);
+          // const conferenceRoom = await fetch(`http://localhost:5001/api/conferences/${conferenceId}`);
+          const conferenceRoom = await fetch(`http://13.201.130.222:5001/api/conferences/${conferenceId}`);
           const confRoomName = await conferenceRoom.json();    
 
           const sessionDetailsResponse = await fetch(`http://13.201.130.222:5001/api/conferences/${conferenceId}/sessions`);
@@ -212,8 +215,9 @@ export default function MainSection() {
   }, [rfidNo]);
 
   return (
+    // w-full flex flex-row gap-4
     // Container for the main section with flex layout
-    <div className="w-full flex flex-row gap-4 bg-orange-50">
+    <div className="w-full flex flex-row gap-4 background">
       {/* Sidebar with logo and background image */}
       <div className="flex h-screen sticky top-0 items-start flex-col justify-start">
         {/* Logo */}
@@ -236,10 +240,10 @@ export default function MainSection() {
       </div>
       {/* Main content area with upcoming and registered events */}
 
-      <div className="flex flex-col gap-2 justify-start items-center flex-1">
+      <div className="flex flex-col gap-0 justify-start items-center flex-1">
         {/* Input for entering rfidNo */}
-        <h1 className="text-3xl font-bold text-black">Welcome to EventFlow, {userName}</h1>
-        <input type="text" value={rfidNo} onChange={(e) => setRfidNo(e.target.value)} placeholder="Enter rfidNo" />
+        {/* <h1 className="text-3xl font-bold text-black">Welcome to EventFlow, {userName}</h1> */}
+        {/* <input type="text" value={rfidNo} onChange={(e) => setRfidNo(e.target.value)} placeholder="Enter rfidNo" /> */}
 
         {/* EventSection for displaying registered events */}
         {/* <EventSection events={events} title="Registered Events" /> */}
@@ -250,7 +254,7 @@ export default function MainSection() {
           events={ongoingevents.slice(0, 3)} // Displaying the first 3 ongoing events
           title="Headline Events"
         /> */}
-        <EventSection events={hotSessions} title="Hot Sessions" />
+        <EventSection events={hotSessions} title="Headline Sessions" />
       </div>
     </div>
   );
