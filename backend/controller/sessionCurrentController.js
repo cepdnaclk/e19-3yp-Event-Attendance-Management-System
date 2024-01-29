@@ -98,6 +98,7 @@ const getRfidnoCount = asyncHandler(async (req, res) => {
 const getTimestamp = asyncHandler(async (req, res) => {
   try {
     const { rfidNo } = req.params;
+    console.log(rfidNo)
 
     // Find the session current record for the given rfidNo
     const sessionCurrentRecord = await SessionCurrent.findOne({ rfidNo });
