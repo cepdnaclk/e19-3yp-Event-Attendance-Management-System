@@ -182,7 +182,6 @@ const Attendees = () => {
       <div className="CA"> Current Attendees</div>
 
       <div className="atendeecontainer" >
-
         {/* <Attendee_page_card /> */}
         {data.map((conference) => (
         <div key={conference.conferenceId}>
@@ -200,7 +199,7 @@ const Attendees = () => {
           ))}
         </div>
       ))}
-        
+    
       </div>
 
 
