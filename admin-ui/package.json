@@ -17,6 +17,7 @@
     "react-icons": "^5.0.1",
     "react-multi-carousel": "^2.8.4",
     "react-router-dom": "^6.21.1",
+    "recharts": "^2.10.4",
     "react-scripts": "^5.0.1",
     "sass": "^1.69.7",
     "web-vitals": "^2.1.4"
@@ -47,5 +48,9 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC"
 }

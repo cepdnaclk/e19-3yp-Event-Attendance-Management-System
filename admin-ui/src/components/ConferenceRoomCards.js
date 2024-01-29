@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 
 export default function ConferneceRoomCards(props) {
+    console.log("passed");
     return (
 
         <div className="Ccard">
