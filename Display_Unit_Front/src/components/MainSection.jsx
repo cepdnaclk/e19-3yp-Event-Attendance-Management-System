@@ -45,13 +45,15 @@ export default function MainSection() {
 
       // console.log('**********************', user_id);
 
-      const userData = await fetch(`http://localhost:5001/api/attendees/rfid/${rfidNo}`);
+      const userData = await fetch(`http://13.201.130.222:5001/api/attendees/rfid/${rfidNo}`);
+      // const userData = await fetch(`http://localhost:5001/api/attendees/rfid/${rfidNo}`);
       const userDataData = await userData.json();
       const userName = userDataData.name;    
       setUserName(userName);      
       console.log('__________useridData', userName);
 
-      const response = await fetch(`http://localhost:5001/api/sessionreg/rfid/${user_id}`);
+      // const response = await fetch(`http://localhost:5001/api/sessionreg/rfid/${user_id}`);
+      const response = await fetch(`http://13.201.130.222:5001/api/sessionreg/rfid/${user_id}`);
       const data = await response.json();
   
       console.log('data', data);
@@ -117,7 +119,8 @@ export default function MainSection() {
         const hotSessionsList = [];
 
         for (const conferenceId of conferenceIds) {
-          const conferenceRoom = await fetch(`http://localhost:5001/api/conferences/${conferenceId}`);
+          // const conferenceRoom = await fetch(`http://localhost:5001/api/conferences/${conferenceId}`);
+          const conferenceRoom = await fetch(`http://13.201.130.222:5001/api/conferences/${conferenceId}`);
           const confRoomName = await conferenceRoom.json();    
 
           const sessionDetailsResponse = await fetch(`http://13.201.130.222:5001/api/conferences/${conferenceId}/sessions`);
