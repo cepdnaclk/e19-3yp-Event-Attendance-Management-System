@@ -189,10 +189,10 @@ export default function Overview() {
     <>
     <Sidebar />
       <div>
-
+      <div className=" Ccr1"> Ongoing Sessions</div>
         {/* <div className=" Ccr1"> Ongoing Sessions</div> */}
         <div className="CAppss">
-        <div className=" Ccr1"> Ongoing Sessions</div>
+      
           
         {ongoingConferences.map((session) => (
           <div key={session.conferenceId + session.sessionName}>
