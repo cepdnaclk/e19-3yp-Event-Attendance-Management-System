@@ -1,3 +1,48 @@
-.text-custom{
+.text-custom {
    text-transform: capitalize !important;
 }
+
+.txt-h2 {
+   font-size: 22px;
+   font-weight: 600;
+   margin-top: 15px;
+   margin-bottom: 15px;
+   padding: 0%;
+   text-align: center;
+}
+
+* {
+   box-sizing: border-box;
+   font-family: "Poppins", sans-serif;
+}
+
+.txt-body{
+   font-size: 14px;
+   font-weight: 300;
+   margin: 0%;
+   margin-bottom: 4px;
+   padding: 0%;
+ }
+
+ .txt-h4{
+   font-size: 20px;
+   font-weight: 600;
+   margin-top: 15px;
+   margin-bottom: 15px;
+   padding: 0%;
+ }
+
+ .analytic-box{
+   height: 100%;
+   width: 100%;
+   background-color:white;
+   padding: 20px;
+   padding-top: 5px;
+   margin-bottom: 20px;
+   border: 2px solid #E8E8E8;
+   border-radius: 10px;
+ }
+
+ .background{
+   background-color: rgb(240, 237, 246);
+ }
