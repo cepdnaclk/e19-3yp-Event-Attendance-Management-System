@@ -4,6 +4,7 @@ const {
   getAllSessionDetails,
   getSessionDetailsForConference,
   // getHotSessionIds,
+  getConfIdBySesId,
   getSessionDetailsBySesId,
   getConferenceIds,
   getSessionIds,
@@ -25,6 +26,8 @@ const router = express.Router();
 // Get hot sessions
 // router.get("/topSessions", getTopSessions);
 // router.get("/hotSessions", getHotSessionIds);
+
+router.get('/conferenceId/:sessionId', getConfIdBySesId);
 
 // get all session details for a list of sessionIds
 router.get("/allSessionDetails", getAllSessionDetails);

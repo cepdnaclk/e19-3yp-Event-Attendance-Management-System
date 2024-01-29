@@ -4,7 +4,7 @@ const asyncHandler = require('express-async-handler');
 const { SessionRegistered } = require('../models/sessionRegisteredModel');
 
 // get rfid
-
+ 
 // get all sessionIds for a rfidNo
 const getSessionIds = asyncHandler(async (req, res) => {
   const { rfidNo } = req.params;

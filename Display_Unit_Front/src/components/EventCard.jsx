@@ -19,7 +19,7 @@ export default function EventCard({ card }) {
 
       {/* Description of the event */}
       <div className="gap-y-1 overflow-hidden text-sm leading-6 text-black">
-        Conference Room: {card.confName}
+        Conference Room: {card.conferenceDetails}
       </div>
       <div className="gap-y-1 overflow-hidden text-sm leading-6 text-black">
         About: {card.SessionDetails}
