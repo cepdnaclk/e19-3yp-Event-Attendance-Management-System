@@ -70,9 +70,9 @@ const Sidebar = () => {
                         <MdOutlinePhone className=" sidebaricons" />
                         <a href="/ContactUs">Contact us</a>
                     </li>
-                    <li className={location.pathname === "/Analytics" ? "active" : ""}>
+                    <li className={location.pathname === "/Login_page" ? "active" : ""}>
                         <IoIosLogOut className=" sidebaricons" />
-                        <a href="/Analytics">Logout</a>
+                        <a href="/Login_page">Logout</a>
                     </li>
 
                 </ul>
