@@ -70,19 +70,19 @@ const AnalyticsTop = () => {
         <div className="analytic-box-chart">
           <h4 className="txt-h4">Attendee entrance count in each hour</h4>
           <div class="line"></div>
-          <p className="txt-body">
+          {/* <p className="txt-body">
             Session: <Bubble content={"Harnessing AI for Business Growth"} />{" "}
             max capacity <Bubble content={360} />
-          </p>
+          </p> */}
           <SessionLineChart />
         </div>
         <div className="analytic-box-chart">
           <h4 className="txt-h4">Conference room Attendance</h4>
           <div class="line"></div>
-          <p className="txt-body">
+          {/* <p className="txt-body">
             Session: <Bubble content={"Harnessing AI for Business Growth"} />{" "}
             max capacity <Bubble content={360} />
-          </p>
+          </p> */}
           <SessionBarChart data={updatedData} />
         </div>
       </div>

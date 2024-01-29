@@ -12,9 +12,9 @@ export default function ConferneceRoomCards(props) {
         <div className="r2">Room: {props.conferenceName}</div>
         <div className="ab">{props.details}</div>
         <div className="sp">Speaker: {props.name}</div>
-        <div className="ti">
+        {/* <div className="ti">
           {props.StartTime}-{props.EndTime}{" "}
-        </div>
+        </div> */}
       </p>
       <hr />
       <p className="Cname2">
