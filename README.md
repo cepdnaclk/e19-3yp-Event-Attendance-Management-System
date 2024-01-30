@@ -4,7 +4,6 @@
   <h3> Elevating Experiences</h3>
 </div>
 
-
 ## Introduction
 
 <a href="https://www.youtube.com/watch?v=6XMMViNymo0">
@@ -19,7 +18,6 @@ This project is dedicated to simplifying and enhancing the process of tracking a
   <img src="./docs/images/HighLevel.png" alt="EventFlow Logo" width="600">
 </div>
 
-
 ## Key Features
 
 - RFID/NFC Integration <br>
@@ -27,6 +25,26 @@ This project is dedicated to simplifying and enhancing the process of tracking a
 - Dashboard and Analytics for event organizers <br>
 - Search and Reporting of attendee information <br>
 - Notification System <br>
+
+##### <u>RFID Integration</u>
+
+- RC522 RFID reader is used in our system to detect RFID tag
+
+##### <u>Session Tracking in Real Time</u>
+
+- AWS services is used to get realtime data to event organizers <br>web application and for the display unit for attendees
+
+##### <u>Dashboard and Analytics for event organizers</u>
+
+- Analytical data will be provided to event organizers to make <br>inform decisions
+
+##### <u>Search and Reporting of attendee information</u>
+
+- Attendee details can be search through the web applicattion
+
+##### <u>Notification System</u>
+
+- Event Organizers can send a message if they have any concerns
 
 ## Team
 
