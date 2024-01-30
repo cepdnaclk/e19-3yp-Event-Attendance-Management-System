@@ -7,9 +7,18 @@
 
 ## Introduction
 
+<a href="https://www.youtube.com/watch?v=6XMMViNymo0">
+  <img src="./docs/images/thumbnail.png" alt="Example Video" width="300">
+</a>
+
 This project is dedicated to simplifying and enhancing the process of tracking attendance and session participation for registered event attendees. Whether you are organizing conferences, workshops, or any other type of gathering, our solution provides a robust and user-friendly platform to efficiently manage and monitor participant engagement.
 
-[![Example Video](./docs/images/thumbnail.png)](https://www.youtube.com/watch?v=6XMMViNymo0)
+## High Level Architecture
+
+<div align="center">
+  <img src="./docs/images/HighLevel.png" alt="EventFlow Logo" width="600">
+</div>
+
 
 ## Key Features
 
