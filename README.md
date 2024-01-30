@@ -4,14 +4,6 @@
   <h3> Elevating Experiences</h3>
 </div>
 
-<!-- <div align="center">
-
-[![Contributors][contributors-shield]](https://github.com/cepdnaclk/e19-3yp-Event-Attendance-Management-System/graphs/contributors)&ensp;
-[![Forks][forks-shield]](https://github.com/cepdnaclk/e19-3yp-Event-Attendance-Management-System/network/members)&ensp;
-[![Stargazers][stars-shield]](https://github.com/cepdnaclk/e19-3yp-Event-Attendance-Management-System/stargazers)&ensp;
-[![Issues][issues-shield]](https://github.com/cepdnaclk/e19-3yp-Event-Attendance-Management-System/issues)
-
-</div> -->
 
 ## Introduction
 
@@ -19,13 +11,13 @@ This project is dedicated to simplifying and enhancing the process of tracking a
 
 [![Example Video](./docs/images/thumbnail.png)](https://www.youtube.com/watch?v=6XMMViNymo0)
 
-## Key Featuers
+## Key Features
 
-RFID/NFC Integration <br>
-Session Tracking in real time <br>
-Dashboard and Analytics for event organizers <br>
-Search and Reporting of attendee information <br>
-Notification System <br>
+- RFID/NFC Integration <br>
+- Session Tracking in real time <br>
+- Dashboard and Analytics for event organizers <br>
+- Search and Reporting of attendee information <br>
+- Notification System <br>
 
 ## Team
 

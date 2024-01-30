@@ -13,7 +13,7 @@ export default function EventSection({ events, title }) {
       {/* Grid layout for displaying event cards */}
       <div
         id="default-carousel"
-        className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 mt-0"
+        className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 mt-0 my-"
         data-carousel="static"
       >
         {/* Map through each event and render an EventCard component */}
