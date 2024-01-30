@@ -1,11 +1,12 @@
 // for organizers
 
 const express = require("express");
-const { registerUser, loginUser, getCurrentUser, getAllUsers } = require("../controller/userController");
+const { registerUser, getUserName, loginUser, getCurrentUser, getAllUsers } = require("../controller/userController");
 const validateToken = require("../middleware/validateTokenHandler");
 
 const router = express.Router();
 
+router.get('/get-name/:email', getUserName);
 
 router.post("/register", registerUser);
 

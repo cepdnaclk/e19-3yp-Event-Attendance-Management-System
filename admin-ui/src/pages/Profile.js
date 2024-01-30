@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 import Sidebar from '../components/Sidebar'
@@ -6,7 +6,8 @@ import Profile1 from '../Images/profile.png'
 
 function Profile() {
     const [modal, setModal] = useState(false);
-
+    // const url = process.env.ACCESS_TOKEN_SECRET;
+    // console.log("*******",url);
     const toggleModal = () => {
         setModal(!modal);
     };
@@ -19,12 +20,18 @@ function Profile() {
 
 
 
-    const location = useLocation();
-    const emailFromLogin = location?.state?.email || ''; // Get email from state
+    // const location = useLocation();
+    // const emailFromLogin = location?.state?.email || ''; // Get email from state
+    // const location = useLocation();
+    // const email = location.state.email;
+
+   
+    const email = localStorage.getItem('email');
+     console.log("this is email",email)
 
     const [rfidNo, setRfidNo] = useState('');
     const [userId, setUserId] = useState('');
-    console.log("email: ",emailFromLogin);
+    // console.log("email: ",emailFromLogin);
 
     const handleAssign = async () => {
         try {
@@ -42,6 +49,23 @@ function Profile() {
         console.error('Error assigning RFID:', error);
         }
     };
+    
+    const [name, setName] = useState('');
+
+    useEffect(() => {
+        const fetchUserName = async () => {
+            try {
+                // Make a GET request to get the user's name
+                const response = await axios.get(`http://localhost:5001/api/users/get-name/${email}`);
+                setName(response.data.name);
+            } catch (error) {
+                // Handle errors, show error message, etc.
+                console.error('Error fetching name:', error);
+            }
+        };
+
+        fetchUserName();
+    }, [email]);
 
     return (
         <div  >
@@ -53,8 +77,8 @@ function Profile() {
                      <img src={Profile1} alt="profile" className="profile" /> 
                     <div className='pr1'>My Profile</div>
                     <div className="profileContents">
-                        <p className="name1">John Smith</p>
-                        <p className="mail1">johnsmith@gmail.com</p>
+                        <p className="name1">{name}</p>
+                        <p className="mail1">{email}</p>
                     </div>
 
                     <button  className="btn-modal" onClick={toggleModal}>
