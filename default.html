@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+            @keyframes fadein {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }
+    
+        body {
+            /* Set the background image and specify its path */
+            background-image: url('/home/pi/conference.jpg');
+            
+            /* Set background size to cover the entire viewport */
+            background-size: cover;
+
+            /* Specify the background position (optional) */
+            background-color: rgba(0, 0, 0, 0.5); /* Change the last value (0.5) for opacity */
+
+            /* Add any other styles you want for the body */
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            animation: fadein 4s;
+        }
+        
+
+        
+
+        h1 {
+            text-align: center;
+            font-size: 40px;
+            font-family: sans-serif;
+            margin: 20px;
+        }
+
+        #logo {
+            width: 400px;
+            height: 100px;
+            display: block;
+            margin: 40px auto;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 30px;
+            font-family: sans-serif;
+            margin: 20px;
+        }
+
+        /* Added a new class for the button styling */
+        .toggle-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+    <title>Shaking Image Toggle</title>
+</head>
+<body>
+
+    <img src="/home/pi/com-logo.png" id="logo" title="Company Logo" alt="logo">
+    <h1>WELCOME</h1>
+    <h2>Tap your id here for information</h2>
+    
+
+    
+
+</body>
+</html>
