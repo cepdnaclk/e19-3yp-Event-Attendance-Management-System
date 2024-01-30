@@ -72,7 +72,7 @@ export default function MainSection() {
 
   const getConferenceName = async (conferenceId) => {    
     const getNameResponse = await fetch(
-      `http://localhost:5001/api/conferences/${conferenceId}`,
+      `http://13.201.130.222:5001/api/conferences/${conferenceId}`,
       {
         method: "GET",
         headers: {
@@ -108,6 +108,7 @@ export default function MainSection() {
         console.log('sessionDetailsResponse', sessionDetailsData);
 
         const confIdRes = await fetch(`http://13.201.130.222:5001/api/conferences/conferenceId/${sessionId}`, {
+        // const confIdRes = await fetch(`http://localhost:5001/api/conferences/conferenceId/${sessionId}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -222,9 +223,9 @@ export default function MainSection() {
               if (formatted_StartTime <= formattedCurrentTime && formattedCurrentTime <= formatted_EndTime) {
                 hotSessionsList.push({
                   conferenceId: conferenceId,
-                  confName: confRoomName.conferenceDetails,  
+                  conferenceDetails: confRoomName.conferenceDetails,  
                   sessionName: session.sessionName,
-                  SessionDetails: session.SessionDetails,
+                  SessionDetails: session.sessionDetails,
                   speaker: session.speaker,
                   startTime: adjusted_StartTime,
                   endTime: adjusted_EndTime,
@@ -238,7 +239,7 @@ export default function MainSection() {
           }
         }
 
-        // console.log('Ongoing Sessions List:', hotSessionsList);
+        console.log('Ongoing Sessions List:', hotSessionsList);
         setHotSessions(hotSessionsList);
       } catch (error) {
         console.error(`Error fetching hot sessions: ${error}`);
