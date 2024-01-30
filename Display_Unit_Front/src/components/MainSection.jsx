@@ -57,7 +57,7 @@ export default function MainSection() {
       const response = await fetch(`http://13.201.130.222:5001/api/sessionreg/rfid/${user_id}`);
       const data = await response.json();
   
-      console.log('data', data);
+      console.log('_____data', data);
       if (response.ok) {
         return data.sessionIds;
       } else {
@@ -273,14 +273,23 @@ export default function MainSection() {
       </div>
       {/* Main content area with upcoming and registered events */}
 
+      <div className="flex flex-col gap-2 justify-start items-center flex-1">
+        {/* Input for entering rfidNo */}
+        <pre></pre>
+        <pre></pre>
+        {/* <pre></pre> */}
+        <h1 className="text-3xl font-bold text-black cr1">Welcome to EventFlow, {userName}</h1>
+        <pre></pre>
+        <input type="text" value={rfidNo} onChange={(e) => setRfidNo(e.target.value)} placeholder="RfidNo" />
       <div className="cr1">
        
         <EventSection events={registeredSessions} title="Registered Sessions" />
-<div className="sec2">
+      <div className="sec2">
       
         <EventSection  events={hotSessions} title="Headline Sessions" />
         </div>
-     
+      
+        </div>
       </div>
     </div>
   );
